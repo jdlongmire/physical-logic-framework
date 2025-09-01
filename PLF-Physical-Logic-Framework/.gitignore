@@ -1,0 +1,40 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints
+
+# PyCharm
+.idea/
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# Temporary files
+*.tmp
+*.temp
+
+# Data files (if large)
+# *.csv
+# *.h5
+
+# Figures (uncomment if generated)
+# figures/*.png
+# figures/*.pdf
+
+# LaTeX auxiliary files
+*.aux
+*.log
+*.out
+*.toc
+
+# Environment variables
+.env
