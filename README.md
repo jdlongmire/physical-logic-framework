@@ -47,7 +47,7 @@ Computational notebooks are in development to reproduce all results.
 - 🔄 **Computational Notebooks**: In development
 - ⏳ **Formal Verification**: Planned Lean 4 proofs
 
-## Contact
+## Contact Information
 
 **James D. Longmire**  
 Independent Researcher  
