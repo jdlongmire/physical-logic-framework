@@ -1,0 +1,29 @@
+# Logic Field Theory (LFT) Python Requirements
+# Install with: pip install -r requirements.txt
+
+# Core numerical computation
+numpy>=1.20.0
+
+# Graph algorithms and network analysis
+networkx>=2.6.0
+
+# Plotting and visualization
+matplotlib>=3.4.0
+
+# Data manipulation and CSV/JSON export
+pandas>=1.3.0
+
+# Scientific computing (SVD, linear algebra)
+scipy>=1.7.0
+
+# Jupyter notebook environment
+jupyter>=1.0.0
+notebook>=6.4.0
+ipykernel>=6.0.0
+
+# Optional but recommended for better notebook experience
+ipywidgets>=7.6.0
+nbconvert>=6.0.0
+
+# For mermaid diagrams in README (if using jupyter extensions)
+# jupyter-contrib-nbextensions>=0.5.0
