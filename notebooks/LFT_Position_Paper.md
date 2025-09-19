@@ -1,7 +1,3 @@
-Of course. Here is the revised scholarly paper with the expanded reference list and all other requested changes integrated for a more comprehensive and robust presentation.
-
------
-
 ### **Logic Field Theory: A Derivational Framework for Physics**
 
 **James D. Longmire**
@@ -54,9 +50,9 @@ Time is not an additional dimension in this geometric space. Instead, it is deri
 
 LFT successfully derives the core tenets of quantum mechanics, rather than postulating them.
 
-  * **The Quantum Bridge:** The geometry of the permutohedron in its N-1 dimensional space is affinely isomorphic to the probability simplex Δ\<sup\>N-1\</sup\>, which describes the diagonal elements of a qudit's density matrix. This provides a direct bridge between the logical state space and the quantum state space.
-  * **The Born Rule:** In standard QM, the Born rule is an axiom. Gleason's theorem shows it can be derived from non-contextuality assumptions within the Hilbert space formalism (Gleason, 1957). LFT provides an independent, physical derivation. It models measurement as a process of "constraint injection," where an observer adds random, unbiased micro-constraints. By the law of large numbers, the probability of an outcome converges to the squared projection of the state onto the outcome's subspace, yielding $\\Pr(i) = |\\Pi\_i \\psi|^2$.
-  * **The Tsirelson Bound:** Bell's theorem showed that quantum correlations are stronger than any local classical theory allows (Bell, 1964). The upper limit on these correlations, the Tsirelson bound ($|S| \\le 2\\sqrt{2}$), was established by Tsirelson (1980). LFT derives this bound as a direct consequence of logical consistency. The requirement that all correlations must be embeddable in a single, globally consistent positive-semidefinite Gram model (a mathematical representation of the logical filter *L*) naturally enforces this limit and forbids any supra-quantum correlations.
+  * **The Quantum Bridge:** The geometry of the permutohedron in its N-1 dimensional space is affinely isomorphic to the probability simplex $\Delta^{N-1}$, which describes the diagonal elements of a qudit's density matrix. This provides a direct bridge between the logical state space and the quantum state space.
+  * **The Born Rule:** In standard QM, the Born rule is an axiom. Gleason's theorem shows it can be derived from non-contextuality assumptions within the Hilbert space formalism (Gleason, 1957). LFT provides an independent, physical derivation. It models measurement as a process of "constraint injection," where an observer adds random, unbiased micro-constraints. By the law of large numbers, the probability of an outcome converges to the squared projection of the state onto the outcome's subspace, yielding $\Pr(i) = \|\Pi_i \psi\|^2$.
+  * **The Tsirelson Bound:** Bell's theorem showed that quantum correlations are stronger than any local classical theory allows (Bell, 1964). The upper limit on these correlations, the Tsirelson bound ($|S| \le 2\sqrt{2}$), was established by Tsirelson (1980). LFT derives this bound as a direct consequence of logical consistency. The requirement that all correlations must be embeddable in a single, globally consistent positive-semidefinite Gram model (a mathematical representation of the logical filter *L*) naturally enforces this limit and forbids any supra-quantum correlations.
 
 #### **3.3 A Mechanistic Model for Gravity**
 
