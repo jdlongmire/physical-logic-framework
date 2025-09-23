@@ -1,149 +1,200 @@
-# Physical Logic Framework (PLF)
-
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.17023411.svg)](https://doi.org/10.5281/zenodo.17023411)
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC_BY_4.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-
-> **A paradigm shift treating logic as prescriptive—actively constraining physical reality—rather than merely descriptive**
-
-## Overview
-
-The Physical Logic Framework (PLF) presents a fundamental reconceptualization of quantum mechanics through **prescriptive logic**. Instead of modifying logical principles to accommodate quantum phenomena, PLF demonstrates that physical reality must conform to classical logical constraints, resolving the measurement problem through deterministic selection while maintaining full empirical equivalence with standard quantum mechanics.
-
-### Why This Matters
-
-- **Resolves quantum paradoxes** without stochastic collapse or infinite world multiplication
-- **Universal parameter success** across diverse experimental platforms with no adjustments
-- **Deterministic foundation** for quantum mechanics through logical necessity
-- **Complete field theory** with novel testable predictions
-- **First formally verifiable quantum interpretation** (planned Lean 4 proofs)
-
-### Core Innovation
-
-PLF's **selection functional** $\mathcal{S}[\psi, C]$ resolves quantum superpositions through logical strain minimization:
-
-$$\mathcal{I}(\psi, C, P) = S\left(\frac{P\rho P}{\text{Tr}(P\rho)}\right) + \lambda \cdot d(C, P)$$
-
-**Key insight**: Individual measurements are deterministic given environmental context $C$, but Born rule probabilities emerge from context variation—apparent randomness becomes epistemic, not ontological.
-
-## Experimental Validation
-
-### Unprecedented Cross-Platform Success
-
-PLF achieves **universal parameter λ=1** across five major loophole-free Bell test datasets spanning different physical platforms, research groups, and nearly a decade (2015-2023):
-
-| Experiment | Platform | Trials | Experimental S | PLF Simulation | Deviation |
-|------------|----------|--------|----------------|----------------|-----------|
-| **Hensen et al. (2015)** | Diamond NV (1.3km) | 245 | 2.42 ± 0.20 | **2.398** | 0.022 |
-| **Shalm et al. (2015)** | NIST photons | 100k | 2.70 ± 0.05 | **2.682** | 0.018 |
-| **Giustina et al. (2015)** | Vienna photons | 50k | 2.35 ± 0.18 | **2.351** | 0.001 |
-| **Handsteiner et al. (2018)** | Cosmic settings | 17k | 2.416 ± 0.094 | **2.404** | 0.012 |
-| **Storz et al. (2023)** | Superconducting | 81k | 2.0747 ± 0.0033 | **2.0752** | 0.0005 |
-
-**Aggregate Results:**
-- **Mean absolute deviation: 0.011** across all platforms
-- **All results within experimental error bars**
-- **Statistical significance maintained** across 6+ orders of magnitude (p-values: 10⁻² to 10⁻¹⁰⁸)
-- **Same mathematical framework** across radically different physics (spins, photons, circuits)
-
-### Multi-Party Extension
-- **GHZ state validation**: Mermin parameter M = 3.284 vs experimental ~3.2 (Pan et al., 2000)
-- **Natural scaling** to three-qubit systems without framework modification
-
-## Repository Contents
-
-```
-PLF-Physical-Logic-Framework/
-├── PLF_Complete_Paper.md           # Complete manuscript (~12,300 words)
-├── figures/                        # Publication-quality figures
-│   ├── figure_1_chsh_comparison.png
-│   ├── figure_2_statistical_significance.png
-│   └── figure_3_outcome_distributions.png
-├── notebooks/                      # Computational validation (in development)
-│   ├── Bell_Test_Validation.ipynb
-│   ├── Statistical_Analysis.ipynb
-│   ├── Figure_Generation.ipynb
-│   └── GHZ_Extension.ipynb
-├── data/                          # Experimental parameters & validation
-│   ├── bell_test_parameters.json
-│   └── source_verification.md
-├── lean_proofs/                   # Formal verification (planned)
-│   └── PLF_Core.lean
-└── supplementary/
-    └── data_validation_report.md
-```
-
-## Quick Start
-
-1. **Read the Theory**: Start with [`PLF_Complete_Paper.md`](PLF_Complete_Paper.md) for complete theoretical framework
-2. **Explore Results**: Check [`figures/`](figures/) for visual evidence of universal parameter success
-3. **Verify Data**: See [`data/source_verification.md`](data/source_verification.md) for experimental parameter validation
-4. **Run Simulations**: Computational notebooks coming soon for full reproducibility
-
-### Key Sections
-- **Section 2**: Theoretical framework and selection functional
-- **Section 3**: Lagrangian field theory formulation  
-- **Section 4**: Experimental validation across five Bell tests
-- **Section 5**: Comparison with existing quantum interpretations
-
-## Current Status
-
-- ✅ **Theoretical Framework**: Complete with rigorous mathematical formulation
-- ✅ **Field Theory**: Full Lagrangian formulation with novel predictions
-- ✅ **Experimental Validation**: Five independent Bell test datasets verified
-- ✅ **Statistical Analysis**: P-values and significance across 6+ orders of magnitude
-- ✅ **Source Verification**: All experimental parameters validated against original publications
-- ✅ **Publication Draft**: Ready for *Foundations of Physics* submission
-- 🔄 **Computational Notebooks**: Python/QuTiP implementation in development
-- ⏳ **Lean 4 Proofs**: Formal verification of logical consistency planned
-- ⏳ **Journal Submission**: Target *Foundations of Physics* Q1 2025
-
-## Scientific Impact
-
-**Paradigm Shift Potential**: PLF challenges fundamental assumptions about logic's role in physics, potentially revolutionizing our understanding of:
-- Quantum measurement problem
-- Reality's relationship to logical structure  
-- Determinism vs. apparent randomness
-- Foundations of physical theory
-
-**Methodological Innovation**: First quantum interpretation with:
-- Universal parameter validation across independent experiments
-- Comprehensive source verification and reproducibility
-- Planned formal verification through theorem proving
-
-## Publications & Preprints
-
-**Zenodo Preprint**: Longmire, J.D. (2025). "The Physical Logic Framework: A Deterministic Foundation for Quantum Mechanics." *Zenodo*. DOI: [10.5281/zenodo.17023411](https://doi.org/10.5281/zenodo.17023411)
-
-## Contact & Collaboration
+# Logic Field Theory (LFT) - Notebook Collection README
 
 **James D. Longmire**  
 Independent Researcher, Northrop Grumman Fellow  
 📧 longmire.jd@gmail.com  
-🆔 ORCID: [0009-0009-1383-7698](https://orcid.org/0009-0009-1383-7698)
+🆔 ORCID: 0009-0009-1383-7698
 
-**Collaboration Welcome**: Particularly interested in:
-- Formal verification expertise (Lean 4)
-- Experimental tests of novel PLF predictions
-- Extensions to quantum field theory and cosmology
-- Philosophical implications of prescriptive logic
+## Overview
+
+Logic Field Theory proposes that physical reality emerges from logical filtering of information: **A = L(I)**, where Actuality equals a Logical operator acting on Information space. This collection contains mathematical derivations, computational simulations, and empirical predictions spanning quantum mechanics, spacetime geometry, and gravity.
+
+## Prerequisites
+
+### Required Libraries
+```python
+numpy >= 1.20
+matplotlib >= 3.3
+networkx >= 2.5
+pandas >= 1.3
+scipy >= 1.7
+itertools (standard library)
+random (standard library)
+math (standard library)
+```
+
+### Mathematical Background
+- Linear algebra (eigenvalues, SVD, orthonormal bases)
+- Group theory basics (symmetric group S_N, Cayley graphs)
+- Graph theory (directed graphs, DAGs, topological sort)
+- Basic quantum mechanics (state vectors, Born rule, Bell inequalities)
+
+## Installation
+
+```bash
+# Clone repository
+git clone [repository-url]
+cd LFT-notebooks
+
+# Install dependencies
+pip install numpy matplotlib networkx pandas scipy
+
+# Launch Jupyter
+jupyter notebook
+```
+
+## Notebook Navigation Guide
+
+### 🔵 FOUNDATION LAYER (Start Here)
+| Notebook | Purpose | Key Output |
+|----------|---------|------------|
+| **00_Foundations** | Core thesis A = L(I), philosophical motivation | Conceptual framework |
+| **01_Ontology_of_I** | Information space as directed graphs | Feasibility ratio ρ_N plot |
+| **02_Operator** | L = EM ∘ NC ∘ ID implementation | Algorithm specification |
+
+### 🟢 WORKED EXAMPLES
+| Notebook | Purpose | Key Output |
+|----------|---------|------------|
+| **03_FirstExample_N3** | Complete N=3 analysis | Hexagonal permutohedron |
+| **04_Geometry_N-1_Problem** | Dimension = rank(A_{N-1}) | 3D visualization for N=4 |
+| **05_Stability_N4** | Why N≤4 for stability | Convergence plots |
+
+### 🟡 SPACETIME EMERGENCE
+| Notebook | Purpose | Key Output |
+|----------|---------|------------|
+| **06_Scaling_N6** | N=6 → ℝ⁴ embedding | Stress metrics |
+| **07_Spacetime_3plus1** | Time/space factorization | Flow alignment data |
+| **08_TimeAsLFlow** | Time = monotone descent | h(t) evolution curves |
+| **09_StrainDynamics** | Strain tensor formalism | T(σ), S(σ) distributions |
+
+### 🔴 QUANTUM DERIVATIONS
+| Notebook | Purpose | Key Output |
+|----------|---------|------------|
+| **10_QuantumBridge** | Simplex ↔ Permutohedron | Affine isomorphism proof |
+| **11_Observer** | Measurement mechanics | EPR correlation demo |
+| **12_BornRule** | P(i) = \|ψᵢ\|² derivation | Convergence plots |
+| **13_TsirelsonBound** | CHSH ≤ 2√2 proof | Gram matrix analysis |
+
+### 🟣 EXTENSIONS & ANALYSIS
+| Notebook | Purpose | Key Output |
+|----------|---------|------------|
+| **14_Gravity_PoC** | Strain → gravity | Geodesic bending demo |
+| **20_Predictions** | Testable effects | Finite-K deviations |
+| **21_Explanatory_Power** | Paradox resolutions | Comparison table |
+| **22_Comparisons** | LFT vs other theories | Framework scorecard |
+
+### 📄 MANUSCRIPT
+- **LFT_Position_Paper.md** - Complete theoretical presentation with appendices
+
+## Quick Validation Tests
+
+### Test 1: Core Construction
+```python
+# Run in notebook 03
+N = 3
+assert factorial(N) == 6  # vertices
+assert N*(N-1)*factorial(N)//2 == 6  # edges
+```
+
+### Test 2: Dimension Check
+```python
+# Run in notebook 04
+N = 4
+assert N - 1 == 3  # spatial dimensions
+```
+
+### Test 3: Born Rule Convergence
+```python
+# Run in notebook 12
+psi = np.array([0.6, 0.8])  # normalized: [0.6, 0.8]
+born_probs = (psi/np.linalg.norm(psi))**2
+# Should converge to [0.36, 0.64] as K→∞
+```
+
+## Key Results Summary
+
+| Property | Value | Notebook | Verified |
+|----------|-------|----------|----------|
+| S₄ vertices | 24 | 04 | ✓ |
+| S₄ edges (adjacent) | 36 | 04 | ✓ |
+| Tsirelson bound | 2√2 | 13 | ✓ |
+| ρ₄ (feasibility) | 0.0938 | 01 | ✓ |
+| ρ₅ (feasibility) | 0.0037 | 01 | ✓ |
+| Dimension for N=4 | 3 | 04 | ✓ |
+
+## Reproduction Protocol
+
+1. **Set seeds for reproducibility**:
+```python
+import numpy as np
+import random
+np.random.seed(42)
+random.seed(42)
+```
+
+2. **Run foundation notebooks** (00-02) first to understand framework
+
+3. **Execute worked examples** (03-05) to see core constructions
+
+4. **Explore extensions** based on interest:
+   - Quantum: notebooks 10-13
+   - Gravity: notebook 14
+   - Predictions: notebook 20
+
+## Common Issues & Solutions
+
+| Issue | Solution |
+|-------|----------|
+| Memory error for N>8 | Limit to N≤6 for full enumeration |
+| Missing ./outputs/ | Create with `os.makedirs('./outputs', exist_ok=True)` |
+| Slow linear extensions | Add `limit=1000` parameter |
+| NetworkX version conflicts | Use `nx.all_topological_sorts()` for v2.6+ |
+
+## Parameter Ranges
+
+- **N** (elements): 3-6 for exact computation, 3-8 for sampling
+- **K** (micro-constraints): 1-200 for finite-K effects
+- **trials**: 1000-10000 for statistical convergence
+- **α, β, κ** (coupling): 0.1-10.0 for gravity toy model
+
+## File Outputs
+
+The notebooks generate these files in `./outputs/`:
+- `N*_permutohedron_*.png` - Geometric visualizations
+- `N*_edge_distortions.csv` - Embedding metrics
+- `finiteK_*.png` - Quantum deviation plots
+- `strain_*.png` - Dynamics visualizations
+- `*_summary.json` - Numerical results
+
+## Computational Requirements
+
+- **Minimal**: N≤4 runs on any modern laptop
+- **Standard**: N=5 requires ~1GB RAM
+- **Extended**: N=6 requires ~4GB RAM
+- **Full analysis**: ~30 minutes for all notebooks
 
 ## Citation
 
+If you use this code in research, please cite:
 ```bibtex
-@misc{longmire2025plf,
-    title={The Physical Logic Framework: A Deterministic Foundation for Quantum Mechanics},
-    author={Longmire, James D.},
-    year={2025},
-    doi={10.5281/zenodo.17023411},
-    url={https://zenodo.org/records/17023411},
-    note={Preprint}
+@article{longmire2024lft,
+  author = {Longmire, James D.},
+  title = {Logic Field Theory: A Derivational Framework for Physics},
+  year = {2024},
+  url = {https://github.com/[username]/LFT-notebooks}
 }
 ```
 
+## Support
+
+For questions or issues:
+- Email: longmire.jd@gmail.com
+- ORCID: 0009-0009-1383-7698
+
 ## License
 
-This work is licensed under [Creative Commons Attribution 4.0 International License](https://creativecommons.org/licenses/by/4.0/).
+MIT
 
 ---
 
-**"Logic does not merely describe patterns we observe in nature—it prescribes the constraints within which natural processes can unfold."**
+**Note**: This is active theoretical research. All results are mathematical/computational demonstrations. Physical interpretations await empirical validation through experiments proposed in Notebook 20.
