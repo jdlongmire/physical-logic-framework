@@ -29,7 +29,10 @@
       "Bash(pip3 install:*)",
       "Bash(jupyter nbconvert:*)",
       "Bash(sudo apt:*)",
-      "Bash(sudo apt install:*)"
+      "Bash(sudo apt install:*)",
+      "Bash(git add:*)",
+      "Read(//mnt/c/Users/jdlon/OneDrive/Documents/**)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []
