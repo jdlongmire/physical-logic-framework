@@ -23,7 +23,13 @@
       "Bash(cat:*)",
       "Bash(sed:*)",
       "Bash(/mnt/c/Users/jdlon/.elan/bin/lake.exe build PhysicalLogicFramework.QuantumBridge)",
-      "Bash(/mnt/c/Users/jdlon/.elan/bin/lake.exe build PhysicalLogicFramework.FeasibilityRatio PhysicalLogicFramework.PermutationGeometry PhysicalLogicFramework.QuantumBridge)"
+      "Bash(/mnt/c/Users/jdlon/.elan/bin/lake.exe build PhysicalLogicFramework.FeasibilityRatio PhysicalLogicFramework.PermutationGeometry PhysicalLogicFramework.QuantumBridge)",
+      "Bash(python generate_figure4_qc_predictions.py:*)",
+      "Bash(python3:*)",
+      "Bash(pip3 install:*)",
+      "Bash(jupyter nbconvert:*)",
+      "Bash(sudo apt:*)",
+      "Bash(sudo apt install:*)"
     ],
     "deny": [],
     "ask": []
