@@ -706,5 +706,5 @@ ORCID: 0009-0009-1383-7698
 Email: longmire.jd@gmail.com
 
 *Corresponding Author: James D. Longmire (longmire.jd@gmail.com)*  
-*Submitted: [Date]; Under Review*  
-*© 2024 James D. Longmire. All rights reserved.*
+*Submitted: 09-24-2025; Under Review*  
+*© 2025 James D. Longmire. All rights reserved.*
