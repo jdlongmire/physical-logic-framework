@@ -197,17 +197,62 @@ class MultiLLMBridge:
         
         return formatted_results
 
+    def validate_lean4_response(self, response_text: str) -> Dict[str, Any]:
+        """Validate if response is Lean 4 (not Lean 3) and flag issues."""
+        lean3_indicators = [
+            'import analysis.',
+            'import data.',
+            'import tactic.',
+            'begin\n',
+            'begin ',
+            ', begin',
+            '\nend\n',
+            ' end\n',
+            'cases\'',
+            'have ... :=',
+        ]
+
+        lean4_indicators = [
+            'import Mathlib.',
+            'by\n',
+            'by ',
+            ', by',
+            'obtain',
+            'rcases',
+        ]
+
+        lean3_count = sum(1 for indicator in lean3_indicators if indicator in response_text)
+        lean4_count = sum(1 for indicator in lean4_indicators if indicator in response_text)
+
+        is_lean3 = lean3_count > 0 and lean3_count > lean4_count
+        is_lean4 = lean4_count > 0 and lean4_count > lean3_count
+
+        return {
+            'is_lean3': is_lean3,
+            'is_lean4': is_lean4,
+            'lean3_count': lean3_count,
+            'lean4_count': lean4_count,
+            'warning': 'Response contains Lean 3 syntax!' if is_lean3 else None
+        }
+
     def synthesize_responses(self, responses: List[Dict[str, Any]]) -> Dict[str, Any]:
         """Synthesize expert responses into actionable recommendations."""
         successful_responses = [r for r in responses if r.get('success', False)]
         failed_responses = [r for r in responses if not r.get('success', False)]
-        
+
         if not successful_responses:
             return {
                 "synthesis_success": False,
                 "error": "All expert consultations failed",
                 "failed_responses": failed_responses
             }
+
+        # Validate Lean 4 vs Lean 3 for each response
+        lean_validations = {}
+        for response in successful_responses:
+            validation = self.validate_lean4_response(response.get('content', ''))
+            if validation['warning']:
+                lean_validations[response['source']] = validation
         
         # Extract key insights from successful responses
         recommendations = {
@@ -254,6 +299,7 @@ class MultiLLMBridge:
             "total_experts": len(responses),
             "successful_consultations": len(successful_responses),
             "failed_consultations": len(failed_responses),
+            "lean_validations": lean_validations,
             "recommendations": recommendations,
             "raw_responses": successful_responses
         }
@@ -341,13 +387,21 @@ Focus on actionable, implementable solutions with proper Lean 4 syntax.
             print("[ERROR] Expert consultation failed:")
             print(synthesis.get('error', 'Unknown error'))
             return
-        
+
         print(f"[SUCCESS] Expert Consultation Summary")
         print(f"Successfully consulted {synthesis['successful_consultations']}/{synthesis['total_experts']} experts")
-        
+
         if synthesis['failed_consultations'] > 0:
             print(f"[WARNING] {synthesis['failed_consultations']} consultation(s) failed")
-        
+
+        # Show Lean 3 vs Lean 4 validation warnings
+        lean_validations = synthesis.get('lean_validations', {})
+        if lean_validations:
+            print("\n[WARNING] Lean Version Issues Detected:")
+            for source, validation in lean_validations.items():
+                print(f"  {source.upper()}: {validation['warning']}")
+                print(f"    Lean 3 indicators: {validation['lean3_count']}, Lean 4 indicators: {validation['lean4_count']}")
+
         print("\n" + "="*60)
         
         recommendations = synthesis.get('recommendations', {})
