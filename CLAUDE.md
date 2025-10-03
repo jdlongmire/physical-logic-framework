@@ -10,18 +10,37 @@ This is the **Physical Logic Framework (PLF)** repository, containing mathematic
 
 ### Core Components
 
-1. **Jupyter Notebooks** (`notebooks/`): The primary research environment containing mathematical derivations and computational simulations organized by topic:
+1. **Publications** (`paper/`): Canonical scholarly papers and supplementary materials
+   - **Main Paper**: `It_from_Logic_Scholarly_Paper.md` (peer-review ready)
+   - **Figures**: Publication-ready visualizations (figure1-6)
+   - **Supplementary**: Foundational framework, first-principles derivation, Gödel argument
+   - This is the primary reference for the theoretical framework
+
+2. **Jupyter Notebooks** (`notebooks/approach_1/`): Computational validation and exploration
    - **Foundation Layer** (00-02): Core thesis, information space, and logical operator implementation
    - **Worked Examples** (03-05): Complete analyses for N=3,4 with geometric visualizations
    - **Spacetime Emergence** (06-09): Scaling analysis, time emergence, and strain dynamics
    - **Quantum Derivations** (10-13): Quantum mechanics derivation from geometric principles
    - **Extensions** (14, 20-22): Gravity proof-of-concept, predictions, and comparative analysis
 
-2. **Lean 4 Proofs** (`lean/`): Formal mathematical verification using the Lean theorem prover
+3. **Lean 4 Proofs** (`lean/LFT_Proofs/`): Formal mathematical verification
    - Configured with Mathlib for advanced mathematical libraries
    - Project name: `PhysicalLogicFramework`
+   - Modules: Foundations, LogicField, QuantumEmergence
 
-3. **Documentation** (`docs/`, manuscript files): Theoretical presentations and formal papers
+4. **Multi-LLM System** (`multi_LLM_model/`): AI consultation framework
+   - Public distribution package for multi-model expert consultation
+   - Used in development for Lean 4 proof assistance
+   - Parallel queries to Grok-3, GPT-4, Gemini-2.0
+
+5. **Analysis Scripts** (`scripts/`): Computational utilities
+   - Constraint analysis and validation tools
+   - Data processing scripts
+
+6. **Archive** (`archive/`): Historical development artifacts
+   - Previous paper versions (v1-v5)
+   - AI conversation logs and development notes
+   - Session artifacts
 
 ### Key Mathematical Concepts
 
@@ -92,12 +111,35 @@ Start with Foundation notebooks to understand the framework, then modify paramet
 
 ## File Organization
 
-### Outputs
-Notebooks generate files in `./outputs/`:
+### Repository Structure
+```
+physical_logic_framework/
+├── paper/                   # Canonical publications
+│   ├── It_from_Logic_Scholarly_Paper.md/pdf
+│   ├── figures/            # Publication figures
+│   └── supplementary/      # Supporting documents
+├── notebooks/              # Computational validation
+│   └── approach_1/         # Complete theory (00-22)
+├── lean/                   # Formal proofs
+│   └── LFT_Proofs/PhysicalLogicFramework/
+├── multi_LLM_model/        # AI consultation (public)
+├── scripts/                # Analysis utilities
+├── archive/                # Historical versions
+└── potential_extensions/   # Future research
+```
+
+### Notebook Outputs
+Notebooks generate files in `notebooks/approach_1/outputs/`:
 - `N*_permutohedron_*.png` - Geometric visualizations
-- `N*_edge_distortions.csv` - Embedding quality metrics  
+- `N*_edge_distortions.csv` - Embedding quality metrics
 - `finiteK_*.png` - Quantum finite-size effects
 - `*_summary.json` - Numerical results
+
+### Publication Figures
+Canonical figures are in `paper/figures/`:
+- 6 publication-ready PNG files (figure1-6)
+- `figure_data.json` - Source data
+- `figure_specifications.md` - Technical specs
 
 ### Key Verification Tests
 ```python
