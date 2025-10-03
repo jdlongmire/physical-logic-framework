@@ -2,19 +2,22 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## 🚀 Quick Start for New Sessions
+## 🚀 Session Startup Protocol
 
-**FIRST, READ THIS**: [`SESSION_STATUS.md`](SESSION_STATUS.md) - Comprehensive current status, completed work, and next steps
+**When starting a new session, you will be asked to read this file (CLAUDE.md).**
 
-**Key Info in SESSION_STATUS.md**:
-- ✅ What's been accomplished (paper revisions, Lean fixes, research roadmap)
-- 🎯 Current research focus (theory completion, not publishing)
+**Upon reading CLAUDE.md, immediately read**: [`SESSION_STATUS.md`](SESSION_STATUS.md)
+
+`SESSION_STATUS.md` contains everything needed to resume:
+- ✅ Complete session history and accomplishments
+- 🎯 Current research focus and strategic direction
 - 📊 Honest theory viability assessment
-- 🗺️ Systematic research roadmap (Year 1-2 plan)
-- 🔍 All files changed, commits made
-- 🎬 Clear next tasks (choose your track)
+- 🗺️ Full systematic research roadmap (Year 1-2)
+- 🔍 All files changed, commits made this session
+- 🎬 Specific next tasks (with clear options)
+- 📁 Guide to all key documents
 
-**TL;DR**: We pivoted from publishing to systematically completing the theory. Tier 1 paper revisions done (honest framing with acknowledged gaps). Lean I2PS aligned with permutations. ValidArrangements(3) inconsistency fixed. Ready for Phase 2 (Lean proofs) or Priority 1 (amplitude hypothesis research).
+**After reading SESSION_STATUS.md, you will have complete context and can continue work immediately.**
 
 ---
 
