@@ -52,7 +52,10 @@
       "Bash(FILTER_BRANCH_SQUELCH_WARNING=1 git filter-branch --force --index-filter \"git rm --cached --ignore-unmatch multi_LLM/api_config.json\" --prune-empty --tag-name-filter cat -- --all)",
       "Bash(git stash:*)",
       "Bash(git push:*)",
-      "Bash(git mv:*)"
+      "Bash(git mv:*)",
+      "Bash(mv:*)",
+      "Bash(test:*)",
+      "Bash(tee:*)"
     ],
     "deny": [],
     "ask": [],
