@@ -46,7 +46,9 @@
       "Bash(tree:*)",
       "Bash(git check-ignore:*)",
       "Bash(git rm:*)",
-      "Bash(chmod:*)"
+      "Bash(chmod:*)",
+      "Bash(git checkout:*)",
+      "Bash(git merge:*)"
     ],
     "deny": [],
     "ask": [],
