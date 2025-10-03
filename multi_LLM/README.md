@@ -4,6 +4,8 @@
 
 The Multi-LLM system provides parallel consultation across multiple AI experts (Grok, ChatGPT, Gemini) for Logic Field Theory development, specializing in Lean 4 formal verification challenges.
 
+**Architecture Note**: This system supplements Claude Code (your primary development assistant) by providing additional expert perspectives when needed. Claude Code handles direct development work, while the multi-LLM team offers diverse opinions for complex problems.
+
 ## Status: ✅ FULLY OPERATIONAL
 
 **All 3 APIs Working:**
@@ -264,13 +266,39 @@ Per `.claude/sorry_elimination_lessons_learned.md`:
 **Test Date**: 2025-10-03
 **Status**: All systems operational
 
+## Development Architecture
+
+**Primary Development**: Claude Code (direct interaction)
+- Direct code execution and repository access
+- Real-time file editing and tool usage
+- Full session context and continuity
+- Your main development assistant
+
+**Supplemental Consultation**: Multi-LLM Team (parallel queries)
+- Grok: Mathematical formalization, advanced tactics
+- ChatGPT: Mathlib navigation, proof strategy
+- Gemini: Combinatorics, alternative approaches
+- Use when you need multiple expert perspectives
+
+**When to Use Multi-LLM**:
+- Complex Lean 4 problems with no obvious solution
+- Need validation from multiple sources
+- Exploring different proof strategies
+- Discovering Mathlib theorems and patterns
+
+**When to Use Claude Code (me) Directly**:
+- File editing and repository operations
+- Systematic development tasks
+- Build management and debugging
+- Session management and documentation
+
 ## Future Enhancements
 
-1. **Add Claude API** - 4th expert for even better coverage
-2. **Caching** - Store common Mathlib queries
-3. **Auto-training** - Automatically send Lean 4 context on first use
-4. **Retry logic** - Exponential backoff for rate limits
-5. **Response ranking** - Score responses by Lean 4 accuracy
+1. **Caching** - Store common Mathlib queries to avoid redundant API calls
+2. **Auto-training** - Automatically send Lean 4 context on first consultation
+3. **Retry logic** - Exponential backoff for rate limits
+4. **Response ranking** - Score responses by Lean 4 accuracy
+5. **Context injection** - Auto-include recent Lean errors in prompts
 
 ---
 

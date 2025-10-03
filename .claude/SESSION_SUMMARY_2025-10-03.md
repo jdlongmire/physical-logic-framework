@@ -197,9 +197,10 @@ Lean 4 Validation: ✅ Active
    - Add pre-commit hooks
 
 3. **Multi-LLM enhancements**
-   - Add Claude API as 4th expert
    - Implement caching for common queries
+   - Add context injection (auto-include Lean errors)
    - Add retry logic with backoff
+   - Note: Claude Code (you) is the primary assistant; 3-expert team supplements
 
 ### Long-term (This Month)
 1. **Complete Lean formal verification**

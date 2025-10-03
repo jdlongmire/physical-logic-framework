@@ -68,9 +68,33 @@
 
 ### Recommendations
 
-#### Immediate Fixes Required
+#### Development Architecture Clarification
 
-1. **Fix Gemini Endpoint** (5 min effort)
+**IMPORTANT**: The multi-LLM system supplements Claude Code, not replaces it.
+
+**Primary Development Assistant**: Claude Code (this assistant)
+- Direct repository access and code execution
+- Real-time file editing (Read, Edit, Write tools)
+- Full session context and continuity
+- Build management and debugging
+- Your main development partner
+
+**Supplemental Expert Team**: Multi-LLM (Grok, ChatGPT, Gemini)
+- Parallel consultation for complex problems
+- Multiple perspectives on Lean 4 challenges
+- Validation of solutions across different models
+- Discovery of alternative approaches
+- Use when you need diverse expert opinions
+
+**Why 3 Experts (not 4)**:
+- Claude Code is already your primary assistant with full context
+- Adding "Claude API" would be redundant
+- The 3-expert team provides complementary perspectives
+- This architecture maximizes value without duplication
+
+### Immediate Fixes Required
+
+1. **Fix Gemini Endpoint** (5 min effort) ✅ COMPLETED
    ```json
    // In api_config.json, change:
    "gemini": "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent"
@@ -92,11 +116,12 @@
        # Flag if Lean 3 syntax detected
    ```
 
-4. **Add Claude API Integration** (1 hour effort)
+4. **Context Injection** (30 min effort)
    ```python
-   async def query_claude(self, prompt: str) -> Dict[str, Any]:
-       """Query Anthropic Claude API"""
-       # Add as 4th expert for better coverage
+   async def query_with_context(self, prompt: str, lean_error: str = None):
+       """Automatically inject recent Lean errors and context"""
+       # Enhance prompts with automatic file/error context
+       # Note: Claude Code (primary assistant) already has full context
    ```
 
 #### Testing Protocol
@@ -373,7 +398,7 @@ git lfs track "data/*"
 
 **Day 6-7:**
 - [ ] Multi-LLM integration improvements
-- [ ] Add Claude API as 4th expert
+- [ ] Add context injection (Lean errors, file snippets)
 - [ ] Repository size analysis & optimization
 
 ### Week 3+: Enhancement
