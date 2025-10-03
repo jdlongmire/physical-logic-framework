@@ -35,46 +35,66 @@ Logic Field Theory proposes that physical reality emerges from logical constrain
 
 ```
 physical_logic_framework/
-├── README.md                               # This file - Complete framework overview
-├── It_from_Logic_Scholarly_Paper.md      # MAIN PUBLICATION: Complete scholarly paper
-├── figures/                               # Publication-ready figures with captions
-│   ├── figure1_framework_overview.png    # A = L(I) conceptual diagram
-│   ├── figure2_constraint_theory.png     # Feasibility collapse (formally verified)
-│   ├── figure3_born_rule_emergence.png   # Quantum mechanics from constraints
-│   ├── figure4_mathematical_rigor.png    # LFT 5/5 vs others 1/5 verification
-│   ├── figure5_quantum_computing.png     # Circuit depth predictions
-│   ├── figure6_spacetime_emergence.png   # 3+1 dimensions from permutohedron
-│   ├── figure_data.json                  # Source data for all figures
-│   └── figure_specifications.md          # Technical specifications
-├── notebooks/                             # Computational exploration & validation
-│   ├── README.md               # Notebook navigation guide  
-│   ├── 00_Foundations.ipynb   # Core A=L(I) framework
-│   ├── 01_Ontology_of_I.ipynb # Information space theory
-│   ├── 02_Operator.ipynb      # L = EM ∘ NC ∘ ID implementation
-│   ├── 03_FirstExample_N3.ipynb # Complete N=3 worked example
-│   ├── 04_Geometry_N-1_Problem.ipynb # Spacetime dimensions
-│   ├── 05_Stability_N4.ipynb  # N=4 stability analysis
-│   ├── 06-09_Spacetime*.ipynb # Spacetime emergence theory
-│   ├── 10-13_Quantum*.ipynb   # Quantum mechanics derivations
-│   ├── 14_Gravity_PoC.ipynb   # Gravitational theory
-│   └── LFT_Position_Paper.md  # Complete theoretical presentation
-├── potential_extensions/       # Speculative extensions for future research
-│   ├── README.md              # Status and scope of extension ideas
-│   └── Logic Field Theory_ Deriving_QM_from_3FLL.md # Alternative approach
-└── lean/                       # Enhanced formal mathematical verification
-    ├── lakefile.toml           # Lean 4 project configuration
-    ├── lean-toolchain         # Lean version specification
-    └── LFT_Proofs/            # Complete formal proofs directory
-        ├── README.md          # Formal verification guide
-        └── PhysicalLogicFramework/
-            ├── LogicalFoundations.lean        # Three Fundamental Laws + non-contingency
-            ├── GoedelEscape.lean             # Incompleteness immunity + pre-arithmetic status
-            ├── InfiniteInformationSpace.lean # I2PS formal structure + finite actualization
-            ├── FeasibilityRatio.lean         # Enhanced constraint counting theory
-            ├── PermutationGeometry.lean      # Symmetric group geometry + embedding
-            ├── DynamicGeometricSynthesis.lean # Field-geometry equivalence + synthesis
-            └── QuantumBridge.lean            # Enhanced quantum bridge + congruence invariance
+├── README.md                    # This file - Complete framework overview
+├── paper/                       # 📄 Canonical publications and supplementary materials
+│   ├── README.md               # Publication navigation guide
+│   ├── It_from_Logic_Scholarly_Paper.md      # MAIN PUBLICATION (markdown)
+│   ├── It_from_Logic_Scholarly_Paper.pdf     # MAIN PUBLICATION (PDF)
+│   ├── supplementary/          # Supporting theoretical documents
+│   │   ├── LFT_Foundational_Framework.md     # Detailed framework exposition
+│   │   ├── LFT_from_1st_Principles.md        # First-principles derivation
+│   │   └── 3.0_Gödel_Contingency_Argument.pdf # Metamathematical foundation
+│   └── figures/                # Publication-ready figures
+│       ├── figure1_framework_overview.png    # A = L(I) conceptual diagram
+│       ├── figure2_constraint_theory.png     # Feasibility collapse
+│       ├── figure3_born_rule_emergence.png   # Quantum mechanics emergence
+│       ├── figure4_mathematical_rigor.png    # Verification comparison
+│       ├── figure5_quantum_computing.png     # Circuit depth predictions
+│       ├── figure6_spacetime_emergence.png   # 3+1 dimensions from geometry
+│       ├── figure_data.json                  # Source data for all figures
+│       └── figure_specifications.md          # Technical specifications
+├── notebooks/                   # 💻 Computational exploration & validation
+│   ├── README.md               # Notebook navigation guide
+│   └── approach_1/             # Complete theory development
+│       ├── 00_Foundations.ipynb       # Core A=L(I) framework
+│       ├── 01_Ontology_of_I.ipynb     # Information space theory
+│       ├── 02_Operator.ipynb          # L = EM ∘ NC ∘ ID
+│       ├── 03_FirstExample_N3.ipynb   # N=3 worked example
+│       ├── 04-09_*.ipynb              # Geometry & spacetime
+│       ├── 10-13_*.ipynb              # Quantum derivations
+│       ├── 14_Gravity_PoC.ipynb       # Gravitational theory
+│       └── 20-22_*.ipynb              # Predictions & comparisons
+├── lean/                        # 🔍 Formal mathematical verification (Lean 4)
+│   ├── lakefile.toml           # Lean 4 project configuration
+│   ├── lean-toolchain          # Lean version: v4.23.0-rc2
+│   └── LFT_Proofs/             # Complete formal proofs
+│       ├── README.md           # Formal verification guide
+│       └── PhysicalLogicFramework/
+│           ├── Foundations/    # Three Fundamental Laws + Gödel escape
+│           ├── LogicField/     # Constraint theory & operators
+│           └── QuantumEmergence/ # Born rule & quantum mechanics
+├── multi_LLM_model/             # 🤖 AI consultation framework (public)
+│   ├── README.md               # Complete usage documentation
+│   ├── claude_llm_bridge.py    # Multi-LLM consultation system
+│   ├── test_suite.py           # Comprehensive testing
+│   └── examples/               # Usage examples
+├── scripts/                     # 🔧 Analysis utilities
+│   ├── README.md               # Script documentation
+│   └── constraint_analysis.py  # Constraint dynamics analysis
+├── potential_extensions/        # 🔮 Speculative future research
+│   ├── README.md               # Extension scope and status
+│   └── [...]                   # Consciousness, alternative derivations
+└── archive/                     # 📦 Historical versions & development artifacts
+    ├── README.md               # Archive navigation
+    ├── papers/                 # Previous paper versions (v1-v5)
+    └── development/            # AI conversations, session artifacts
 ```
+
+**Quick Start**:
+1. **Read the paper**: [`paper/It_from_Logic_Scholarly_Paper.md`](paper/It_from_Logic_Scholarly_Paper.md)
+2. **Explore computations**: [`notebooks/README.md`](notebooks/README.md)
+3. **Review formal proofs**: [`lean/LFT_Proofs/README.md`](lean/LFT_Proofs/README.md)
+4. **Use AI consultation**: [`multi_LLM_model/README.md`](multi_LLM_model/README.md)
 
 ## Dual-Framework Approach
 

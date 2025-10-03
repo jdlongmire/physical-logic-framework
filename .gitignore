@@ -57,3 +57,6 @@ notebooks/**/outputs/
 notebooks/**/*.csv
 notebooks/**/*.png
 notebooks/**/*.json
+
+# Personal reference files (keep local only)
+z_reminders.txt
