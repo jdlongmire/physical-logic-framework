@@ -13,6 +13,71 @@ A Python framework for parallel consultation across multiple AI models (Grok, Ch
 
 ---
 
+## Architecture & Design Philosophy
+
+This system was originally developed to work **in conjunction with Claude Code** (Anthropic's AI coding assistant) for the Physical Logic Framework project. The architecture demonstrates a powerful pattern:
+
+### Two-Tier AI Architecture
+
+**Tier 1: Primary Development Assistant (e.g., Claude Code)**
+- Full repository access and file editing capabilities
+- Session context and continuity across conversations
+- Direct code execution and build verification
+- Prompt engineering and query formulation
+- Integration of multi-LLM responses into codebase
+
+**Tier 2: Expert Consultation Panel (This System)**
+- Parallel queries to 3 specialized AI models (Grok-3, GPT-4, Gemini)
+- Diverse perspectives on complex problems
+- Response synthesis and consensus detection
+- Domain-specific validation (e.g., Lean 3 vs Lean 4 detection)
+
+### Why This Architecture Works
+
+1. **Primary assistant handles prompt engineering** - Crafts detailed, context-rich queries optimized for the consultation panel
+2. **Expert panel provides diverse viewpoints** - Different models may suggest different approaches
+3. **Primary assistant synthesizes results** - Integrates recommendations into actual code changes
+4. **Validation layer catches issues** - Domain-specific checks (like Lean version detection) prevent costly mistakes
+
+### Example Workflow (Physical Logic Framework)
+
+```
+User: "Fix the Lean 4 compilation error in FeasibilityRatio.lean"
+  ↓
+Claude Code (Primary Assistant):
+  1. Reads error message and problematic code
+  2. Formulates detailed consultation prompt with full context
+  3. Calls MultiLLMBridge.consult_all_experts()
+  ↓
+Multi-LLM System (This Package):
+  1. Queries Grok, ChatGPT, Gemini in parallel
+  2. Validates responses (detects Lean 3 vs Lean 4 syntax)
+  3. Synthesizes recommendations
+  4. Returns structured results
+  ↓
+Claude Code:
+  1. Reviews all 3 expert suggestions
+  2. Identifies consensus and contradictions
+  3. Edits actual .lean files with verified fixes
+  4. Runs build to confirm success
+  ↓
+User: Sees working code with insights from 4 AI systems
+```
+
+### Standalone Use Cases
+
+While designed to work with a primary AI assistant, this system is **fully functional standalone** for:
+
+- **Code Review Workflows** - Get multiple expert opinions on code quality
+- **Research & Exploration** - Gather diverse perspectives on technical topics
+- **Decision Support** - Compare approaches with multi-model consensus
+- **Learning & Education** - See how different AI models explain concepts
+- **API Reliability** - Hedge against single-API failures or rate limits
+
+**The key insight**: A primary AI assistant with repo access can do tremendous work, but consulting a diverse expert panel for complex decisions produces better results than any single model alone.
+
+---
+
 ## What This Package Provides
 
 ### Core Components
