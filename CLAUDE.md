@@ -2,6 +2,22 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## 🚀 Quick Start for New Sessions
+
+**FIRST, READ THIS**: [`SESSION_STATUS.md`](SESSION_STATUS.md) - Comprehensive current status, completed work, and next steps
+
+**Key Info in SESSION_STATUS.md**:
+- ✅ What's been accomplished (paper revisions, Lean fixes, research roadmap)
+- 🎯 Current research focus (theory completion, not publishing)
+- 📊 Honest theory viability assessment
+- 🗺️ Systematic research roadmap (Year 1-2 plan)
+- 🔍 All files changed, commits made
+- 🎬 Clear next tasks (choose your track)
+
+**TL;DR**: We pivoted from publishing to systematically completing the theory. Tier 1 paper revisions done (honest framing with acknowledged gaps). Lean I2PS aligned with permutations. ValidArrangements(3) inconsistency fixed. Ready for Phase 2 (Lean proofs) or Priority 1 (amplitude hypothesis research).
+
+---
+
 ## Repository Overview
 
 This is the **Physical Logic Framework (PLF)** repository, containing mathematical derivations and computational simulations for Logic Field Theory (LFT) - a theoretical physics framework that proposes physical reality emerges from logical filtering of information: **A = L(I)**.
