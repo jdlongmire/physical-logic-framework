@@ -229,6 +229,207 @@ for response in responses:
 
 ---
 
+## Lean 4 Formal Verification: The Original Use Case
+
+This system was originally developed for **formal mathematical proof verification** in Lean 4, part of the Physical Logic Framework project. Understanding this use case reveals the system's power and design rationale.
+
+### The Challenge: Lean 4 Theorem Proving
+
+**Lean 4** is a theorem prover and programming language used for formal verification - writing mathematical proofs that are mechanically checked for correctness. It's extraordinarily powerful but notoriously difficult:
+
+- **Steep learning curve** - Complex syntax, type theory, dependent types
+- **Rapidly evolving** - Lean 4 is fundamentally different from Lean 3
+- **Large library (Mathlib)** - 1M+ lines of formalized mathematics
+- **Cryptic error messages** - Compilation errors require deep expertise
+- **Multiple valid approaches** - Same theorem can be proven many ways
+
+### Why Multi-LLM Consultation Was Essential
+
+When working on formal proofs for the Physical Logic Framework (deriving quantum mechanics and spacetime geometry from logical principles), several problems emerged:
+
+1. **AI models frequently suggested Lean 3 syntax** - Even when explicitly asked for Lean 4
+2. **Single models had knowledge gaps** - Missing recent Mathlib theorems or techniques
+3. **Compilation errors were cryptic** - Needed multiple perspectives to diagnose
+4. **Proof strategies varied widely** - Different models suggested different valid approaches
+
+### The Lean 4 Validation System
+
+The code includes **automatic Lean 3 vs Lean 4 detection**:
+
+```python
+def validate_lean4_response(self, response_text: str) -> Dict[str, Any]:
+    """Validate if response is Lean 4 (not Lean 3) and flag issues."""
+
+    lean3_indicators = [
+        'import analysis.',      # Lean 3 used lowercase imports
+        'import data.',
+        'begin\n',               # Lean 3 tactic blocks used 'begin...end'
+        'cases\'',               # Lean 3 syntax
+    ]
+
+    lean4_indicators = [
+        'import Mathlib.',       # Lean 4 uses capitalized Mathlib
+        'by\n',                  # Lean 4 uses 'by' for tactics
+        'obtain',                # Lean 4 preferred syntax
+        'rcases',
+    ]
+
+    # Count indicators and warn if Lean 3 detected
+    # Returns validation result with warnings
+```
+
+**Why this matters**: Even GPT-4, trained on vast code, would frequently return Lean 3 solutions that looked correct but failed compilation in Lean 4. The validation system catches this automatically.
+
+### Real-World Example: Mean Value Theorem Problem
+
+**The Task**: Prove that a function with positive derivative is strictly monotonic, using the Mean Value Theorem (MVT) in Lean 4.
+
+**The Problem**:
+- Lean 4's Mathlib has MVT theorems, but they're complex to use
+- Error message: `unknown identifier 'MonotoneOn.exists_slope_le_deriv'`
+- Need to find the correct Mathlib theorem and apply it properly
+
+**Multi-LLM Consultation**:
+
+```python
+bridge = MultiLLMBridge()
+
+prompt = """
+LEAN 4 THEOREM PROVING CONSULTATION
+
+CURRENT ISSUE: Need to prove monotonicity from positive derivative
+
+CURRENT CODE:
+theorem temporal_ordering (ε₁ ε₂ : ℝ) (h₁ : ε₁ > 0) (h₂ : ε₂ > 0) :
+  ε₁ < ε₂ ↔ C ε₁ < C ε₂ := by
+  -- Need MVT approach
+  sorry
+
+CONTEXT: Already proven derivative C'(ε) > 0 for all ε > 0
+
+REQUESTS:
+1. What Mathlib MVT theorems exist for this?
+2. Working Lean 4 code (not Lean 3!)
+3. Alternative proof strategies if MVT is too complex
+"""
+
+responses = await bridge.consult_all_experts(prompt)
+synthesis = bridge.synthesize_responses(responses)
+```
+
+**Results** (actual from development):
+- **Grok**: Suggested `Monotone.deriv_pos` approach with Lean 4 syntax ✓
+- **ChatGPT**: Provided Lean 3 syntax (caught by validator) ✗
+- **Gemini**: Suggested `StrictMonoOn.of_deriv_pos` alternative approach ✓
+
+**Outcome**: Claude Code reviewed all three suggestions, identified Grok's approach was most direct, adapted it to the specific theorem, and successfully compiled. The Lean 3 response was flagged automatically, saving debugging time.
+
+### Implications for Other Domains
+
+The Lean 4 use case demonstrates patterns applicable to any complex technical domain:
+
+#### 1. Version Validation is Critical
+
+**Lean 4 Problem**: AI models mix Lean 3/4 syntax
+**General Pattern**: Validate for version-specific syntax (Python 2/3, Angular 1/2, React class/hooks, etc.)
+
+**Implementation**:
+```python
+# Customize validate_response() for your domain
+def validate_response(self, response_text: str):
+    old_indicators = ['your_deprecated_syntax']
+    new_indicators = ['your_current_syntax']
+    # Return warnings if old syntax detected
+```
+
+#### 2. Multiple Valid Approaches
+
+**Lean 4 Problem**: Same theorem, many proof strategies
+**General Pattern**: Complex problems have multiple valid solutions with different trade-offs
+
+**Benefit**: Multi-LLM gives you 3 different approaches to choose from based on your constraints (simplicity, performance, maintainability).
+
+#### 3. Knowledge Gaps Vary by Model
+
+**Lean 4 Problem**: Different models know different Mathlib theorems
+**General Pattern**: Each AI has different strengths and training data
+
+**Example**: When asking about AWS infrastructure:
+- One model might suggest Lambda + DynamoDB
+- Another might suggest ECS + RDS
+- Another might suggest EKS + Aurora
+
+All valid, different trade-offs. Consultation reveals options you wouldn't get from a single model.
+
+#### 4. Cryptic Errors Need Multiple Perspectives
+
+**Lean 4 Problem**: `unknown identifier` - which Mathlib import is missing?
+**General Pattern**: Compilation/runtime errors with unclear causes
+
+**Example**: Database query timeout - is it:
+- Missing index? (Performance issue)
+- Lock contention? (Concurrency issue)
+- Query plan problem? (Optimizer issue)
+- Network latency? (Infrastructure issue)
+
+Different AI models may diagnose different root causes. Consultation helps triangulate the real issue.
+
+### Key Takeaways from Lean 4 Development
+
+1. **Validation catches costly mistakes** - Lean 3 syntax would waste hours of debugging
+2. **Diverse perspectives reveal better solutions** - Found simpler theorems than initially considered
+3. **Consensus builds confidence** - When 2-3 models agree, solution is likely robust
+4. **Contradictions highlight risks** - When models disagree, investigate carefully before implementing
+
+### Using This System for Lean 4 (If You're Working on Formal Proofs)
+
+The system is **pre-configured for Lean 4** with:
+
+```json
+{
+  "lean_specific_prompts": {
+    "system_prompt": "You are an expert in formal verification, Lean 4, mathematical logic, and quantum mechanics. Provide detailed, technically accurate solutions with working code examples.",
+
+    "compilation_error_template": "LEAN 4 COMPILATION ERROR RESOLUTION\n\nError Message:\n{error_message}\n\nProblematic Code:\n```lean\n{lean_code}```\n\nPlease provide:\n1. Root cause analysis\n2. Specific fixes with corrected code\n3. Alternative approaches\n4. Best practices"
+  }
+}
+```
+
+**Special Methods** in `claude_llm_bridge.py`:
+
+```python
+async def lean_mvt_consultation(self, theorem_code, issue_description, context=""):
+    """Specialized consultation for Lean 4 MVT problems"""
+    # Formats comprehensive Lean 4 consultation prompts
+    # Includes automatic Lean 3/4 validation
+    # Returns synthesis with Mathlib theorem recommendations
+
+# Usage:
+result = await bridge.lean_mvt_consultation(
+    theorem_code=your_lean_code,
+    issue_description="Need to prove monotonicity from derivative",
+    context="Logic Field Theory formal verification"
+)
+```
+
+### Resources for Lean 4 Users
+
+If you're using this system for Lean 4 work:
+
+- **Lean 4 Documentation**: https://leanprover.github.io/lean4/doc/
+- **Mathlib4 Docs**: https://leanprover-community.github.io/mathlib4_docs/
+- **Zulip Chat**: https://leanprover.zulipchat.com/ (active community)
+- **Physical Logic Framework**: Example of real-world Lean 4 proofs using this system
+
+**Pro Tip**: When consulting the multi-LLM panel about Lean 4, always:
+1. Include full error messages
+2. Specify Lean 4 explicitly (not just "Lean")
+3. Mention Mathlib version if known
+4. Request multiple approaches (MVT vs direct proof vs induction, etc.)
+5. Review validation warnings - Lean 3 suggestions won't compile!
+
+---
+
 ## Customization
 
 ### Domain-Specific System Prompts
