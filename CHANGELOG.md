@@ -1,5 +1,41 @@
 # Logic Field Theory - Changelog
 
+## [2.1.0] - 2025-10-03 - Repository Reorganization & Multi-LLM Distribution
+
+### 📦 REPOSITORY REORGANIZATION
+- **Added**: Professional directory structure with clear hierarchy
+  - `paper/` - Canonical publications and supplementary materials
+  - `archive/` - Historical versions and development artifacts
+  - `scripts/` - Analysis utilities
+- **Moved**: Main paper and figures to `paper/` directory
+- **Moved**: Previous paper versions (v1-v5) to `archive/papers/`
+- **Moved**: AI conversation logs to `archive/development/AI_conversations/`
+- **Moved**: Supplementary documents to `paper/supplementary/`
+- **Moved**: potential_extensions to `paper/potential_extensions/`
+- **Removed**: Empty `docs/` directory
+- **Removed**: `z_reminders.txt` from tracking (gitignored for local use)
+- **Updated**: README.md with new structure and Quick Start guide
+- **Updated**: CLAUDE.md with complete architecture documentation
+- **Result**: Clean root directory with only 5 essential files
+
+### 🤖 MULTI-LLM DISTRIBUTION PACKAGE
+- **Added**: `multi_LLM_model/` - Public distribution package
+  - Complete multi-LLM consultation framework (Grok-3, GPT-4, Gemini-2.0)
+  - Comprehensive 880-line README with examples
+  - Two-tier AI architecture documentation (Claude Code + Multi-LLM)
+  - Lean 4 integration section with real-world examples
+  - Test suite with 6/6 tests passing
+  - 3 working example scripts (basic usage, code review, research)
+  - MIT License for open source distribution
+- **Enhanced**: Response synthesis with Lean 3/4 validation
+- **Security**: API keys removed from git history, protected by .gitignore
+
+### 🔧 INFRASTRUCTURE IMPROVEMENTS
+- **Added**: Session management protocols (.claude/session_recovery_protocol.md)
+- **Added**: Comprehensive analysis and action plan documentation
+- **Fixed**: Lean 4 build stability (switched to working modules)
+- **Enhanced**: Git security (API keys removed from history via filter-branch)
+
 ## [2.0.0] - 2025-09-26 - Major Framework Integration
 
 ### 🚀 MAJOR ENHANCEMENTS
