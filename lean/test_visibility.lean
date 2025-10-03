@@ -1,0 +1,3 @@
+import PhysicalLogicFramework.LogicField.ConstraintAccumulation
+
+#check LFT.visibility_decay_theorem

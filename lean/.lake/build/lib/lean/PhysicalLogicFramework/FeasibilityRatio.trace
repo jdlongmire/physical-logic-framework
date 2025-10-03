@@ -1,7 +1,7 @@
 {"synthetic": false,
  "outputs":
- {"o": ["7198249042468592319"],
-  "i": "10113684681067338771",
+ {"o": ["15437507724891987557"],
+  "i": "1977748521366317393",
   "c": "8625357303983172946"},
  "log":
  [{"message":
@@ -17,46 +17,43 @@
    "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:91:8: declaration uses 'sorry'",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:132:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:147:8: declaration uses 'sorry'",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:137:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:156:8: declaration uses 'sorry'",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:146:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:204:8: declaration uses 'sorry'",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:194:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:211:8: declaration uses 'sorry'",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:201:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:217:8: declaration uses 'sorry'",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:207:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:223:8: declaration uses 'sorry'",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:213:8: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:219:8: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:225:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:229:8: declaration uses 'sorry'",
    "level": "warning"},
   {"message":
    "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:235:8: declaration uses 'sorry'",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:248:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:245:8: declaration uses 'sorry'",
    "level": "warning"},
   {"message":
    "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:258:8: declaration uses 'sorry'",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:266:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:268:8: declaration uses 'sorry'",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:278:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:276:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/FeasibilityRatio.lean:288:8: declaration uses 'sorry'",
    "level": "warning"}],
  "inputs":
  [["PhysicalLogicFramework.FeasibilityRatio:deps",
@@ -97,7 +94,7 @@
   ["Lean 4.23.0, commit ad1a017949674a947f0d6794cbf7130d642c6530",
    "2372534101328293747"],
   ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\LFT_Proofs\\PhysicalLogicFramework\\FeasibilityRatio.lean",
-   "10682802605233988649"],
+   "15214666997559348869"],
   ["options",
    [["-DmaxSynthPendingDepth=3", "14379489197236848084"],
     ["-Dweak.linter.mathlibStandardSet=true", "9949955268809796418"],
@@ -105,4 +102,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "17541170969868637177"}
+ "depHash": "8062742524080697587"}

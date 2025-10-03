@@ -32,9 +32,18 @@
       "Bash(sudo apt install:*)",
       "Bash(git add:*)",
       "Read(//mnt/c/Users/jdlon/OneDrive/Documents/**)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(/mnt/c/Users/jdlon/.elan/bin/lake.exe build PhysicalLogicFramework.ConstraintAccumulation)",
+      "Bash(\"/mnt/c/Users/jdlon/.elan/bin/lake.exe\" build PhysicalLogicFramework.ConstraintAccumulation)",
+      "WebSearch",
+      "WebFetch(domain:leanprover-community.github.io)",
+      "Bash(rm:*)",
+      "WebFetch(domain:github.com)"
     ],
     "deny": [],
-    "ask": []
+    "ask": [],
+    "additionalDirectories": [
+      "C:\\c\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework"
+    ]
   }
 }

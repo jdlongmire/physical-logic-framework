@@ -1,0 +1,11 @@
+{"plugins": [],
+ "options":
+ {"weak.linter.mathlibStandardSet": true,
+  "relaxedAutoImplicit": false,
+  "pp.unicode.fun": true,
+  "maxSynthPendingDepth": 3,
+  "autoImplicit": false},
+ "name": "PhysicalLogicFramework.NamespaceTest",
+ "isModule": false,
+ "importArts": {},
+ "dynlibs": []}

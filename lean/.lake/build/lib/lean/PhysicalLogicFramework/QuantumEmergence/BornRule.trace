@@ -1,0 +1,146 @@
+{"synthetic": false,
+ "outputs":
+ {"o": ["9770060438009893072"],
+  "i": "11585431234031063649",
+  "c": "18091456798835800544"},
+ "log":
+ [{"message":
+   ".> LEAN_PATH=C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\lib\\lean c:\\Users\\jdlon\\.elan\\toolchains\\leanprover--lean4---v4.23.0-rc2\\bin\\lean.exe C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\LFT_Proofs\\PhysicalLogicFramework\\QuantumEmergence\\BornRule.lean -o C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\lib\\lean\\PhysicalLogicFramework\\QuantumEmergence\\BornRule.olean -i C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\lib\\lean\\PhysicalLogicFramework\\QuantumEmergence\\BornRule.ilean -c C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\ir\\PhysicalLogicFramework\\QuantumEmergence\\BornRule.c --setup C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\ir\\PhysicalLogicFramework\\QuantumEmergence\\BornRule.setup.json --json",
+   "level": "trace"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:50:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:50:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:50:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:50:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:50:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:50:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:50:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:50:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:50:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:50:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:50:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:71:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:71:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:71:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:71:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:71:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:71:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:71:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:71:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:71:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:71:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:71:0: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:91:4: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:91:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:104:4: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:119:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:157:4: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:157:4: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:171:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:190:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:222:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:257:8: declaration uses 'sorry'",
+   "level": "warning"},
+  {"message":
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/BornRule.lean:284:8: declaration uses 'sorry'",
+   "level": "warning"}],
+ "inputs":
+ [["PhysicalLogicFramework.QuantumEmergence.BornRule:deps",
+   [["deps",
+     [["PhysicalLogicFramework/PhysicalLogicFramework:extraDep",
+       [["@PhysicalLogicFramework:extraDep", "1723"]]],
+      ["imports",
+       [["PhysicalLogicFramework.QuantumEmergence.HilbertSpace transitive imports (legacy)",
+         "14617677983885986835"],
+        ["PhysicalLogicFramework.QuantumEmergence.HilbertSpace:importAllArts",
+         "17798535241518586246"],
+        ["Mathlib.MeasureTheory.Measure.ProbabilityMeasure transitive imports (legacy)",
+         "13860743530325735668"],
+        ["Mathlib.MeasureTheory.Measure.ProbabilityMeasure:importAllArts",
+         "5833017786335427598"],
+        ["Mathlib.Analysis.InnerProductSpace.Spectrum transitive imports (legacy)",
+         "5953363933714258123"],
+        ["Mathlib.Analysis.InnerProductSpace.Spectrum:importAllArts",
+         "6425702325577043085"],
+        ["Mathlib.Data.Real.Basic transitive imports (legacy)",
+         "6683729138978161823"],
+        ["Mathlib.Data.Real.Basic:importAllArts", "11021404097330920743"]]]]],
+    ["libs",
+     [["import dynlibs", "1723"],
+      ["package external libraries", "1723"],
+      ["module dynlibs", "1723"],
+      ["module plugins", "1723"]]]]],
+  ["Lean 4.23.0, commit ad1a017949674a947f0d6794cbf7130d642c6530",
+   "2372534101328293747"],
+  ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\LFT_Proofs\\PhysicalLogicFramework\\QuantumEmergence\\BornRule.lean",
+   "13533172991318043276"],
+  ["options",
+   [["-DmaxSynthPendingDepth=3", "14379489197236848084"],
+    ["-Dweak.linter.mathlibStandardSet=true", "9949955268809796418"],
+    ["-DrelaxedAutoImplicit=false", "8404479228809428608"],
+    ["-Dpp.unicode.fun=true", "11210593074386665387"],
+    ["-DautoImplicit=false", "5369888039164004816"]]],
+  ["Module.leanArgs: #[]", "1723"]],
+ "depHash": "5318695886611073881"}

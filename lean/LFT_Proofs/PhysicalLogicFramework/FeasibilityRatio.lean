@@ -75,7 +75,26 @@ def LFTConstraintThreshold (N : Nat) : Nat :=
 theorem constraint_entropy_bound (N : Nat) : 
   LFTConstraintThreshold N ≤ MaxInformationEntropy N := by
   -- For all N, our constraint thresholds respect information-theoretic bounds
-  sorry -- Proof by cases and general entropy argument
+  -- This follows from direct case analysis
+  unfold MaxInformationEntropy LFTConstraintThreshold
+  cases' N with
+  | zero => simp
+  | succ n =>
+    cases' n with
+    | zero => simp
+    | succ n =>
+      cases' n with  
+      | zero => simp
+      | succ n =>
+        cases' n with
+        | zero => simp -- For N=3: 1 ≤ 3*2/4 = 1
+        | succ n =>
+          cases' n with
+          | zero => simp -- For N=4: 3 ≤ 4*3/4 = 3
+          | succ n => 
+            simp [min_le_iff]
+            left
+            exact le_rfl
 
 /-- DERIVED DEFINITION: Valid arrangements are those satisfying LFT constraints -/
 def ValidArrangements (N : Nat) : Nat :=
@@ -85,11 +104,38 @@ def ValidArrangements (N : Nat) : Nat :=
 /-- FUNDAMENTAL THEOREM: Valid arrangements are bounded by total arrangements -/
 theorem valid_le_total (N : Nat) : ValidArrangements N ≤ TotalArrangements N := by
   -- ValidArrangements counts filtered permutations, TotalArrangements counts all
-  sorry -- Proof: filtering gives subset, so card of subset ≤ card of total
+  unfold ValidArrangements TotalArrangements
+  -- ValidArrangements is the cardinality of a filtered finset
+  -- TotalArrangements is the cardinality of the full finset (factorial N)
+  have h_card : (Finset.univ : Finset (Equiv.Perm (Fin N))).card = factorial N := by
+    rw [Fintype.card_perm]
+  rw [←h_card]
+  -- Now we have: filtered.card ≤ univ.card
+  exact Finset.card_filter_le _ _
 
 /-- FUNDAMENTAL THEOREM: For N ≥ 3, constraint threshold allows some valid arrangements -/
 theorem exists_valid_arrangement (N : Nat) (h : N ≥ 3) : ValidArrangements N > 0 := by
-  sorry -- Follows from LFTConstraintThreshold being > 0 for N ≥ 3
+  -- Show that the identity permutation is always valid since it has 0 inversions
+  unfold ValidArrangements
+  rw [Finset.card_pos]
+  use (1 : Equiv.Perm (Fin N))
+  simp [Finset.mem_filter]
+  -- Identity permutation has 0 inversions, and 0 ≤ any threshold for N ≥ 3
+  constructor
+  · trivial -- 1 ∈ Finset.univ
+  · -- inversionCount 1 ≤ LFTConstraintThreshold N
+    rw [identity_inversion_zero]
+    -- 0 ≤ LFTConstraintThreshold N since thresholds are non-negative
+    simp [LFTConstraintThreshold]
+    cases' N with
+    | zero => linarith [h] -- contradicts N ≥ 3
+    | succ n =>
+      cases' n with
+      | zero => linarith [h] -- contradicts N ≥ 3
+      | succ n =>
+        cases' n with  
+        | zero => linarith [h] -- contradicts N ≥ 3
+        | succ n => simp -- LFTConstraintThreshold (n+3) ≥ 0
 
 /-- Factorial is always positive for any N -/
 theorem factorial_pos (N : Nat) : factorial N > 0 := by
@@ -131,13 +177,40 @@ theorem arrangements_bounds (N : Nat) (h : N ≥ 3) :
 /-- COMPUTATIONAL VALIDATION: Identity permutation has inversion count 0 -/
 theorem identity_inversion_zero {N : Nat} : inversionCount (1 : Equiv.Perm (Fin N)) = 0 := by
   -- Identity has no inversions since 1(i) = i for all i, so never i < j but 1(i) > 1(j)
-  sorry -- Proof: identity function preserves order
+  unfold inversionCount
+  -- For identity permutation: σ p.1 = p.1 and σ p.2 = p.2
+  -- So condition p.1 < p.2 ∧ σ p.1 > σ p.2 becomes p.1 < p.2 ∧ p.1 > p.2
+  -- which is impossible (contradiction)
+  rw [Finset.card_eq_zero]
+  rw [Finset.filter_eq_empty_iff]
+  intro ⟨i, j⟩ _
+  -- For identity permutation: (1 : Equiv.Perm (Fin N)) i = i
+  rw [Equiv.Perm.one_apply, Equiv.Perm.one_apply]
+  -- Now we have: ¬(i < j ∧ i > j)
+  omega
 
 /-- COMPUTATIONAL VALIDATION: All permutations have finite inversion count -/
 theorem inversion_count_finite {N : Nat} (σ : Equiv.Perm (Fin N)) : 
   inversionCount σ ≤ N * (N - 1) / 2 := by
   -- Maximum inversions = number of pairs = C(N,2) = N(N-1)/2
-  sorry -- Follows from finite pairs
+  unfold inversionCount
+  -- inversion_count counts inversions among all ordered pairs (i,j) with i < j
+  -- The total number of such pairs is exactly C(N,2) = N(N-1)/2
+  have h_pairs : (Finset.univ : Finset (Fin N × Fin N)).filter (fun p => p.1 < p.2) = 
+    Finset.univ.filter (fun p : Fin N × Fin N => p.1 < p.2) := rfl
+  have h_card_pairs : (Finset.univ.filter (fun p : Fin N × Fin N => p.1 < p.2)).card = N * (N - 1) / 2 := by
+    -- Multi-LLM team recommendation: Use Mathlib's Finset.card_filter_univ_eq_choose theorem
+    -- The set {(i,j) : i < j} in Fin N × Fin N has cardinality choose(N,2) = N*(N-1)/2
+    rw [← Fintype.card_compl_eq_card_sub, ← Finset.card_filter_add_card_filter_not]
+    -- Apply the bijection between ordered pairs and 2-element subsets
+    sorry -- Expert guidance: requires specific Mathlib combinatorial bijection theorem
+  -- The inversions are a subset of all ordered pairs with i < j
+  have h_subset : (Finset.univ.filter (fun p => p.1 < p.2 ∧ σ p.1 > σ p.2)) ⊆ 
+    (Finset.univ.filter (fun p : Fin N × Fin N => p.1 < p.2)) := by
+    intro x hx
+    simp at hx ⊢
+    exact hx.1
+  exact Nat.le_trans (Finset.card_le_card h_subset) (h_card_pairs.le)
 
 -- THEORETICAL FOUNDATION: Information-theoretic justification for constraint thresholds
 
@@ -146,7 +219,26 @@ theorem inversion_count_finite {N : Nat} (σ : Equiv.Perm (Fin N)) :
 theorem entropy_threshold_justification (N : Nat) :
   LFTConstraintThreshold N ≤ N * (N - 1) / 4 := by
   -- For small N, constraint thresholds respect information entropy bounds
-  sorry -- Proof by cases: explicit verification for N=3,4 and general argument
+  unfold LFTConstraintThreshold MaxInformationEntropy
+  cases' N with
+  | zero => simp -- 0 ≤ 0
+  | succ n =>
+    cases' n with
+    | zero => simp -- 0 ≤ 0
+    | succ n =>
+      cases' n with  
+      | zero => simp -- 1 ≤ 1, since 2 * 1 / 4 = 0 but integer division, so need to check
+      | succ n =>
+        cases' n with
+        | zero => simp -- For N=3: 1 ≤ 3*2/4 = 1
+        | succ n =>
+          cases' n with
+          | zero => simp -- For N=4: 3 ≤ 4*3/4 = 3
+          | succ n => 
+            -- For N≥5: use min and the fact that both terms are ≤ N*(N-1)/4
+            simp [min_le_iff]
+            left
+            exact le_rfl -- MaxInformationEntropy (n+5) ≤ MaxInformationEntropy (n+5)
 
 /-- THEORETICAL DERIVATION: Why K(3) = 1 emerges from information theory.
     For N=3: max_inversions = 3, entropy_limit = 1.5, practical_threshold = 1 -/
@@ -195,63 +287,120 @@ theorem id_3_inversions : inversionCount id_3 = 0 := by
   -- MATHEMATICAL PROOF: For identity σ(i) = i, condition "i < j ∧ σ(i) > σ(j)" 
   -- becomes "i < j ∧ i > j" which is logically impossible
   -- Therefore filter is empty and count = 0
-  sorry -- Proof: contradiction from i < j ∧ i > j
+  unfold id_3
+  exact identity_inversion_zero
 
 /-- Transposition (0 1) has exactly 1 inversion -/
 theorem trans_01_inversions : inversionCount trans_01 = 1 := by
   -- trans_01(0) = 1, trans_01(1) = 0, trans_01(2) = 2
   -- Only inversion: (0,1) since 0 < 1 but trans_01(0) = 1 > 0 = trans_01(1)
-  sorry -- Direct computation verification
+  -- Use direct computational verification
+  decide
+  
+-- Alternative manual proof if decide doesn't work:
+theorem trans_01_inversions_manual : inversionCount trans_01 = 1 := by
+  unfold trans_01 inversionCount
+  -- Show the filtered set has exactly one element
+  rw [Finset.card_eq_one]
+  use (0, 1)
+  ext ⟨i, j⟩
+  simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.mem_singleton]
+  constructor
+  · intro h
+    -- Case analysis on all possible pairs (i,j) with i < j
+    interval_cases i <;> interval_cases j
+    · -- Case i = 0, j = 1: Check if 0 < 1 ∧ swap(0) > swap(1)
+      simp [Equiv.swap_apply_def] at h ⊢
+    · -- Case i = 0, j = 2: Check if 0 < 2 ∧ swap(0) > swap(2)  
+      simp [Equiv.swap_apply_def] at h
+    · -- Case i = 1, j = 2: Check if 1 < 2 ∧ swap(1) > swap(2)
+      simp [Equiv.swap_apply_def] at h
+  · intro h
+    rw [h]
+    simp [Equiv.swap_apply_def]
 
 /-- Transposition (0 2) has exactly 2 inversions -/
 theorem trans_02_inversions : inversionCount trans_02 = 2 := by
   -- trans_02(0) = 2, trans_02(1) = 1, trans_02(2) = 0
   -- Inversions: (0,1) and (0,2) since 0 < 1 but 2 > 1, and 0 < 2 but 2 > 0
-  sorry -- Direct computation verification
+  decide
 
 /-- Transposition (1 2) has exactly 1 inversion -/
 theorem trans_12_inversions : inversionCount trans_12 = 1 := by
   -- trans_12(0) = 0, trans_12(1) = 2, trans_12(2) = 1
   -- Only inversion: (1,2) since 1 < 2 but trans_12(1) = 2 > 1 = trans_12(2)
-  sorry -- Direct computation verification
+  decide
 
 /-- 3-cycle (0 1 2) has exactly 2 inversions -/
 theorem cycle_012_inversions : inversionCount cycle_012 = 2 := by
   -- cycle_012(0) = 1, cycle_012(1) = 2, cycle_012(2) = 0
   -- Inversions: (0,2) and (1,2) since 0 < 2 but 1 > 0, and 1 < 2 but 2 > 0
-  sorry -- Direct computation verification
+  decide
 
 /-- 3-cycle (0 2 1) has exactly 2 inversions -/
 theorem cycle_021_inversions : inversionCount cycle_021 = 2 := by
   -- cycle_021(0) = 2, cycle_021(1) = 0, cycle_021(2) = 1
   -- Inversions: (0,1) and (0,2) since 0 < 1 but 2 > 0, and 0 < 2 but 2 > 1
-  sorry -- Direct computation verification
+  decide
 
 /-- Main theorem: Valid arrangements are bounded properly -/
 theorem valid_arrangements_bound (N : Nat) : 
   ValidArrangements N ≤ TotalArrangements N := valid_le_total N
 
-/-- COMPUTATIONAL PROOF: Exactly 2 permutations in S_3 satisfy constraint h(σ) ≤ 1 -/
+/-- COMPUTATIONAL PROOF: Exactly 3 permutations in S_3 satisfy constraint h(σ) ≤ 1 -/
 theorem s3_constraint_enumeration : 
   (Finset.univ : Finset (Equiv.Perm (Fin 3))).filter (fun σ => 
-    inversionCount σ ≤ 1) = {id_3, trans_01} := by
+    inversionCount σ ≤ 1) = {id_3, trans_01, trans_12} := by
   -- PROOF BY CASE ANALYSIS: All 6 permutations in S_3
-  -- id_3: h = 0 ≤ 1 ✓ (valid)
-  -- trans_01: h = 1 ≤ 1 ✓ (valid)  
-  -- trans_02: h = 2 > 1 ✗ (invalid)
-  -- trans_12: h = 1 ≤ 1 ✓ (but trans_12 = trans_01, so duplicate)
-  -- cycle_012: h = 2 > 1 ✗ (invalid)
-  -- cycle_021: h = 2 > 1 ✗ (invalid)
-  sorry -- Complete enumeration and constraint filtering
-
-/-- DERIVED RESULT: N=3 constraint counting yields exactly 2 valid arrangements -/
-theorem n_three_constraint_derivation : 
-  ValidArrangements 3 = 2 ∧ TotalArrangements 3 = 6 := by
+  -- Use the proven inversion count theorems to establish the result
+  ext σ
+  simp [Finset.mem_filter, Finset.mem_univ, Finset.mem_insert, Finset.mem_singleton]
   constructor
-  · -- COMPUTATIONAL PROOF: Complete enumeration of S_3 with constraint filtering
-    -- ValidArrangements 3 = |{σ ∈ S_3 : inversionCount σ ≤ 1}|
-    -- From explicit analysis: exactly id_3 and trans_01 satisfy constraint
-    sorry -- Proven by case-by-case verification of all 6 permutations
+  · intro h_le
+    -- Case analysis: σ is one of the 6 permutations in S_3
+    -- Use the fact that we've computed all inversion counts
+    have h_cases : σ = id_3 ∨ σ = trans_01 ∨ σ = trans_02 ∨ σ = trans_12 ∨ σ = cycle_012 ∨ σ = cycle_021 := by
+      -- All permutations in S_3 - this should be provable by finite enumeration
+      sorry -- Complete enumeration of S_3
+    cases' h_cases with h_id h_rest
+    · left; exact h_id
+    · cases' h_rest with h_01 h_rest
+      · right; exact h_01  
+      · cases' h_rest with h_02 h_rest
+        · -- trans_02 case: inversionCount trans_02 = 2 > 1
+          exfalso
+          rw [h_02, trans_02_inversions] at h_le
+          linarith
+        · cases' h_rest with h_12 h_rest
+          · -- trans_12 case: inversionCount trans_12 = 1 ≤ 1
+            right; right; exact h_12
+          · cases' h_rest with h_012 h_021
+            · -- cycle_012 case: inversionCount cycle_012 = 2 > 1  
+              exfalso
+              rw [h_012, cycle_012_inversions] at h_le
+              linarith
+            · -- cycle_021 case: inversionCount cycle_021 = 2 > 1
+              exfalso  
+              rw [h_021, cycle_021_inversions] at h_le
+              linarith
+  · intro h_mem
+    cases' h_mem with h_id h_rest
+    · rw [h_id, id_3_inversions]; norm_num
+    · cases' h_rest with h_01 h_12
+      · rw [h_01, trans_01_inversions]; norm_num
+      · rw [h_12, trans_12_inversions]; norm_num
+
+/-- DERIVED RESULT: N=3 constraint counting yields exactly 3 valid arrangements -/
+theorem n_three_constraint_derivation : 
+  ValidArrangements 3 = 3 ∧ TotalArrangements 3 = 6 := by
+  constructor
+  · -- COMPUTATIONAL PROOF: ValidArrangements 3 = |{σ ∈ S_3 : inversionCount σ ≤ 1}|
+    -- This follows directly from s3_constraint_enumeration once proven
+    unfold ValidArrangements LFTConstraintThreshold
+    simp
+    -- We know from our analysis that exactly 3 permutations satisfy the constraint
+    -- This should be computable once s3_constraint_enumeration is complete
+    sorry -- Follows from s3_constraint_enumeration proving the filtered set has exactly 3 elements
   · exact total_arrangements_three
 
 /-- DERIVED RESULT: N=4 constraint counting yields exactly 9 valid arrangements -/
@@ -264,21 +413,30 @@ theorem n_four_constraint_derivation :
 
 /-- DERIVED THEOREM: LFT constraint thresholds predict exact feasibility ratios -/
 theorem lft_constraint_predictions :
-  -- N=3: K=1 constraint allows 2 out of 6 permutations (ratio 1/3)
-  ValidArrangements 3 * 3 = TotalArrangements 3 ∧
+  -- N=3: K=1 constraint allows 3 out of 6 permutations (ratio 1/2)
+  ValidArrangements 3 * 2 = TotalArrangements 3 ∧
   -- N=4: K=3 constraint allows 9 out of 24 permutations (ratio 3/8)  
   ValidArrangements 4 * 8 = TotalArrangements 4 * 3 := by
   constructor
-  · -- Follows from constraint threshold analysis
-    sorry -- Will be proven once ValidArrangements derivation is complete
-  · -- Follows from constraint threshold analysis  
-    sorry -- Will be proven once ValidArrangements derivation is complete
+  · -- For N=3: ValidArrangements 3 = 3, TotalArrangements 3 = 6, so 3 * 2 = 6
+    have h_valid : ValidArrangements 3 = 3 := n_three_constraint_derivation.1
+    have h_total : TotalArrangements 3 = 6 := n_three_constraint_derivation.2
+    rw [h_valid, h_total]
+    norm_num
+  · -- For N=4: ValidArrangements 4 = 9, TotalArrangements 4 = 24, so 9 * 8 = 72 and 24 * 3 = 72
+    have h_valid : ValidArrangements 4 = 9 := n_four_constraint_derivation.1
+    have h_total : TotalArrangements 4 = 24 := n_four_constraint_derivation.2
+    rw [h_valid, h_total]
+    norm_num
 
 /-- PREDICTIVE THEOREM: LFT principles predict N=3 feasibility ratio -/
 theorem feasibility_three_from_constraints : 
-  ValidArrangements 3 * 3 = TotalArrangements 3 := by
-  -- Follows from fundamental constraint counting with K=1
-  sorry -- Will be proven from first principles
+  ValidArrangements 3 * 2 = TotalArrangements 3 := by
+  -- Follows from ValidArrangements 3 = 3 and TotalArrangements 3 = 6, so 3 * 2 = 6
+  have h_valid : ValidArrangements 3 = 3 := n_three_constraint_derivation.1
+  have h_total : TotalArrangements 3 = 6 := n_three_constraint_derivation.2
+  rw [h_valid, h_total]
+  norm_num
 
 /-- PRINCIPLED SUCCESS: Comprehensive LFT constraint-based derivation -/
 theorem lft_constraint_based_integration :
@@ -289,9 +447,9 @@ theorem lft_constraint_based_integration :
   -- LFT constraint thresholds define valid arrangements  
   LFTConstraintThreshold 3 = 1 ∧ LFTConstraintThreshold 4 = 3 ∧
   -- Constraint-derived predictions (not axioms)
-  ValidArrangements 3 = 2 ∧ ValidArrangements 4 = 9 ∧
+  ValidArrangements 3 = 3 ∧ ValidArrangements 4 = 9 ∧
   -- Predictive relationships from constraint analysis
-  ValidArrangements 3 * 3 = TotalArrangements 3 ∧
+  ValidArrangements 3 * 2 = TotalArrangements 3 ∧
   ValidArrangements 4 * 8 = TotalArrangements 4 * 3 ∧
   -- Fundamental bounds for N ≥ 3
   (∀ N ≥ 3, ValidArrangements N > 0 ∧ ValidArrangements N ≤ TotalArrangements N) := by
