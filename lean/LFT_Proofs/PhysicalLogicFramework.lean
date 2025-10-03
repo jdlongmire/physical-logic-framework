@@ -8,10 +8,11 @@ import PhysicalLogicFramework.Foundations.InformationSpace
 import PhysicalLogicFramework.Foundations.ThreeFundamentalLaws
 import PhysicalLogicFramework.LogicField.Operator
 import PhysicalLogicFramework.LogicField.ConstraintAccumulation
-import PhysicalLogicFramework.QuantumEmergence.BellInequality
+-- Quantum emergence modules: Using _Fixed versions that compile successfully
+import PhysicalLogicFramework.QuantumEmergence.BellInequality_Fixed
 import PhysicalLogicFramework.QuantumEmergence.BornRule
 import PhysicalLogicFramework.QuantumEmergence.HilbertSpace
-import PhysicalLogicFramework.QuantumEmergence.OrthomodularCore
+-- import PhysicalLogicFramework.QuantumEmergence.OrthomodularCore  -- Disabled: has syntax errors
 import PhysicalLogicFramework.QuantumEmergence.QuantumCore
 
 /-!

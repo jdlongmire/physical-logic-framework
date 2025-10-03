@@ -38,7 +38,15 @@
       "WebSearch",
       "WebFetch(domain:leanprover-community.github.io)",
       "Bash(rm:*)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(find:*)",
+      "Bash(/mnt/c/Users/jdlon/.elan/bin/lake.exe build)",
+      "Bash(grep:*)",
+      "Bash(awk:*)",
+      "Bash(tree:*)",
+      "Bash(git check-ignore:*)",
+      "Bash(git rm:*)",
+      "Bash(chmod:*)"
     ],
     "deny": [],
     "ask": [],

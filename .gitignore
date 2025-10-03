@@ -38,3 +38,22 @@ Thumbs.db
 
 # Environment variables
 .env
+
+# Multi-LLM sensitive files (API keys and consultation logs)
+multi_LLM/api_config.json
+multi_LLM/consultation_log_*.json
+
+# Claude AI session management files
+.claude/session_log.txt
+.claude/last_build_status.txt
+.claude/*.log
+
+# Lean build artifacts
+lean/.lake/
+lean/lake-manifest.json
+
+# Notebook outputs
+notebooks/**/outputs/
+notebooks/**/*.csv
+notebooks/**/*.png
+notebooks/**/*.json
