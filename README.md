@@ -44,15 +44,18 @@ physical_logic_framework/
 │   │   ├── LFT_Foundational_Framework.md     # Detailed framework exposition
 │   │   ├── LFT_from_1st_Principles.md        # First-principles derivation
 │   │   └── 3.0_Gödel_Contingency_Argument.pdf # Metamathematical foundation
-│   └── figures/                # Publication-ready figures
-│       ├── figure1_framework_overview.png    # A = L(I) conceptual diagram
-│       ├── figure2_constraint_theory.png     # Feasibility collapse
-│       ├── figure3_born_rule_emergence.png   # Quantum mechanics emergence
-│       ├── figure4_mathematical_rigor.png    # Verification comparison
-│       ├── figure5_quantum_computing.png     # Circuit depth predictions
-│       ├── figure6_spacetime_emergence.png   # 3+1 dimensions from geometry
-│       ├── figure_data.json                  # Source data for all figures
-│       └── figure_specifications.md          # Technical specifications
+│   ├── figures/                # Publication-ready figures
+│   │   ├── figure1_framework_overview.png    # A = L(I) conceptual diagram
+│   │   ├── figure2_constraint_theory.png     # Feasibility collapse
+│   │   ├── figure3_born_rule_emergence.png   # Quantum mechanics emergence
+│   │   ├── figure4_mathematical_rigor.png    # Verification comparison
+│   │   ├── figure5_quantum_computing.png     # Circuit depth predictions
+│   │   ├── figure6_spacetime_emergence.png   # 3+1 dimensions from geometry
+│   │   ├── figure_data.json                  # Source data for all figures
+│   │   └── figure_specifications.md          # Technical specifications
+│   └── potential_extensions/   # 🔮 Speculative future research
+│       ├── README.md           # Extension scope and status
+│       └── [...]               # Consciousness, alternative derivations
 ├── notebooks/                   # 💻 Computational exploration & validation
 │   ├── README.md               # Notebook navigation guide
 │   └── approach_1/             # Complete theory development
@@ -81,9 +84,6 @@ physical_logic_framework/
 ├── scripts/                     # 🔧 Analysis utilities
 │   ├── README.md               # Script documentation
 │   └── constraint_analysis.py  # Constraint dynamics analysis
-├── potential_extensions/        # 🔮 Speculative future research
-│   ├── README.md               # Extension scope and status
-│   └── [...]                   # Consciousness, alternative derivations
 └── archive/                     # 📦 Historical versions & development artifacts
     ├── README.md               # Archive navigation
     ├── papers/                 # Previous paper versions (v1-v5)

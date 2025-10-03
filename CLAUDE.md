@@ -117,15 +117,15 @@ physical_logic_framework/
 ├── paper/                   # Canonical publications
 │   ├── It_from_Logic_Scholarly_Paper.md/pdf
 │   ├── figures/            # Publication figures
-│   └── supplementary/      # Supporting documents
+│   ├── supplementary/      # Supporting documents
+│   └── potential_extensions/ # Speculative future research
 ├── notebooks/              # Computational validation
 │   └── approach_1/         # Complete theory (00-22)
 ├── lean/                   # Formal proofs
 │   └── LFT_Proofs/PhysicalLogicFramework/
 ├── multi_LLM_model/        # AI consultation (public)
 ├── scripts/                # Analysis utilities
-├── archive/                # Historical versions
-└── potential_extensions/   # Future research
+└── archive/                # Historical versions
 ```
 
 ### Notebook Outputs
