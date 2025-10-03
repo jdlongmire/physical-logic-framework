@@ -1,0 +1,9 @@
+# Multi-LLM Expert Consultation System - Dependencies
+
+# Async HTTP client for parallel API requests
+aiohttp>=3.8.0
+
+# HTTP library for synchronous requests
+requests>=2.28.0
+
+# Note: Python 3.7+ required

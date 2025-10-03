@@ -1,0 +1,32 @@
+# SECURITY: Protect API keys and sensitive data
+api_config.json
+
+# Consultation logs (may contain sensitive prompts)
+consultation_log_*.json
+
+# Test results
+test_results.json
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
