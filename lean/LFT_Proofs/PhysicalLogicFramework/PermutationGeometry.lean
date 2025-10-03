@@ -62,7 +62,7 @@ theorem symmetric_group_feasibility_connection (n : ℕ) :
 theorem geometric_n_three_constraint_connection :
   Fintype.card (SymmetricGroup 3) = TotalArrangements 3 ∧
   LFTConstraintThreshold 3 = 1 ∧
-  ValidArrangements 3 = 2 ∧
+  ValidArrangements 3 = 3 ∧
   TotalArrangements 3 = 6 := by
   exact ⟨symmetric_group_feasibility_connection 3, rfl, 
          n_three_constraint_derivation.1, n_three_constraint_derivation.2⟩
@@ -93,7 +93,7 @@ theorem n_three_constraint_permutohedron_structure :
   let vertices := Fintype.card (SymmetricGroup n)
   let constraint_threshold := LFTConstraintThreshold n
   let valid_arrangements := ValidArrangements n
-  dimension = 2 ∧ vertices = 6 ∧ constraint_threshold = 1 ∧ valid_arrangements = 2 := by
+  dimension = 2 ∧ vertices = 6 ∧ constraint_threshold = 1 ∧ valid_arrangements = 3 := by
   exact ⟨rfl, geometric_n_three_constraint_connection.2.2.2, 
          geometric_n_three_constraint_connection.2.1, 
          geometric_n_three_constraint_connection.2.2.1⟩
@@ -125,7 +125,7 @@ theorem lft_constraint_geometry_comprehensive :
   -- Constraint thresholds define the filtering
   LFTConstraintThreshold 3 = 1 ∧ LFTConstraintThreshold 4 = 3 ∧
   -- Constraint-derived valid arrangements (not axiomatized)
-  ValidArrangements 3 = 2 ∧ ValidArrangements 4 = 9 ∧
+  ValidArrangements 3 = 3 ∧ ValidArrangements 4 = 9 ∧
   -- Geometric structure connects to symmetric groups
   Fintype.card (SymmetricGroup 3) = 6 ∧ Fintype.card (SymmetricGroup 4) = 24 ∧
   -- Dimensional properties for permutohedron embedding
@@ -154,7 +154,7 @@ theorem lft_constraint_geometry_comprehensive :
 theorem constraint_geometry_builds_on_principles :
   -- Uses constraint-derived definitions from FeasibilityRatio
   LFTConstraintThreshold 3 = 1 ∧ LFTConstraintThreshold 4 = 3 ∧
-  ValidArrangements 3 = 2 ∧ ValidArrangements 4 = 9 ∧
+  ValidArrangements 3 = 3 ∧ ValidArrangements 4 = 9 ∧
   TotalArrangements 3 = 6 ∧ TotalArrangements 4 = 24 ∧
   -- Connects constraint filtering to symmetric group geometry
   Fintype.card (SymmetricGroup 3) = TotalArrangements 3 ∧
