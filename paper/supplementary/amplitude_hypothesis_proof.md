@@ -6,7 +6,9 @@
 
 ## Abstract
 
-We prove that quantum amplitudes in Logic Field Theory (LFT) can be derived from first principles using the maximum entropy principle. Given logical constraints that filter permutations by inversion count, we show that the unique rational probability distribution is uniform over valid states. This establishes that |a_σ|² ∝ indicator(h(σ) ≤ K(N)), transforming the amplitude hypothesis from a conjecture to a theorem.
+Following Caticha's entropic dynamics framework (Caticha 2000, 2019), we show that quantum amplitudes in Logic Field Theory (LFT) can be derived from the maximum entropy principle. **Given the Born rule postulate of quantum mechanics** (|a_σ|² = P(σ)), we derive the specific probability distribution P(σ) from information-theoretic principles. For logical constraints that filter permutations by inversion count, we prove that the unique rational distribution is uniform over valid states. This establishes that |a_σ|² ∝ indicator(h(σ) ≤ K(N)), transforming the amplitude hypothesis from a conjecture to a derived result.
+
+**Key contributions**: (1) Application of entropic dynamics to discrete permutation groups, (2) Connection between logical constraints and quantum probabilities, (3) Explicit predictions verified for N=3, N=4.
 
 ---
 
@@ -41,7 +43,41 @@ The question is: **How should probabilities be assigned to valid arrangements?**
 
 ---
 
-## 2. Maximum Entropy Principle
+## 2. Fundamental Assumptions
+
+**This derivation rests on three established principles**:
+
+### 2.1 Born Rule (Standard Quantum Mechanics)
+
+**Assumption**: The probability of measuring a quantum system in state |σ⟩ is given by:
+```
+P(σ) = |⟨σ|ψ⟩|² = |a_σ|²
+```
+where a_σ is the amplitude of state σ in the quantum state |ψ⟩.
+
+**Status**: Fundamental postulate of quantum mechanics (Born 1926).
+
+**Our approach**: We **assume** the Born rule and **derive** what the probabilities P(σ) must be, thereby determining the amplitudes |a_σ|².
+
+### 2.2 Maximum Entropy Principle (Jaynes 1957)
+
+**Principle**: When faced with incomplete information, choose the probability distribution that maximizes Shannon entropy subject to known constraints.
+
+**Justification**: Minimum bias, maximum uncertainty, consistency with rational inference.
+
+**Status**: Standard in statistical mechanics, Bayesian inference, information theory.
+
+### 2.3 Insufficient Reason (Caticha 2000)
+
+**Principle**: "If there is no reason to prefer one region of the configuration space over another, then they should be 'weighted' equally."
+
+**Justification**: Symmetry and consistency of rational inference.
+
+**Status**: Established in Caticha's entropic dynamics framework.
+
+---
+
+## 3. Maximum Entropy Principle
 
 ### 2.1 Jaynes' Framework
 
@@ -320,39 +356,99 @@ P(σᵢ) = 1/9  for all i ∈ {1,...,9} ✓
 
 ## 8. Discussion
 
-### 8.1 Significance
+### 8.1 What This Proof Establishes
 
 This derivation establishes that:
 
-1. **Quantum amplitudes emerge from logic**: No need to postulate Born rule
-2. **Information theory ⟺ Quantum mechanics**: Deep connection proven
-3. **LFT is complete**: Major theoretical gap closed
+1. **Amplitude distribution from information theory**: Given the Born rule postulate, the specific form of quantum amplitudes follows from maximum entropy
+2. **No ad-hoc assumptions**: The uniform distribution on valid states is the unique rational choice
+3. **LFT theoretical gap closed**: The amplitude hypothesis is now a derived result, not a conjecture
 
-**Comparison to other approaches**:
-- Zurek (2005): Derives Born rule from envariance
-- Masanes et al. (2019): Derives from basic QM postulates
-- **LFT**: Derives from logical constraints + maximum entropy
+**Important clarification**:
+- We **assume** the Born rule (|a_σ|² = P(σ)) as a standard QM postulate
+- We **derive** what P(σ) must be using information-theoretic principles
+- Therefore we **determine** what |a_σ|² must be
 
-**Novelty**: First derivation of Born rule from **logical filtering** of information space.
+**This is NOT**: A derivation of the Born rule from scratch
+**This IS**: A derivation of the amplitude distribution from MaxEnt + Born rule
 
-### 8.2 Philosophical Implications
+### 8.2 Relationship to Entropic Dynamics
 
-**Question**: Why do quantum probabilities follow |ψ|²?
+**This work builds directly on Caticha's entropic dynamics framework** (Caticha 2000, 2019).
 
-**Traditional answer**: Postulate (Born rule)
+**Caticha's contributions**:
+- Derives Born rule from insufficient reason + Hilbert space structure
+- Establishes entropic dynamics for continuous configuration spaces
+- Shows quantum probabilities emerge from rational inference
 
-**LFT answer**: Because it's the unique rational inference given logical constraints.
+**Our contribution**:
+- **Application to discrete groups**: Sₙ instead of continuous spaces
+- **Connection to logical constraints**: h(σ) ≤ K(N) as filtering criterion
+- **Explicit predictions**: N=3, N=4 cases with verification
+
+**Novelty**: First application of entropic dynamics to permutation groups filtered by logical constraints.
+
+**Attribution**: The core methodology (insufficient reason → MaxEnt → quantum probabilities) is due to Caticha. We apply it to a new domain (LFT).
+
+### 8.3 Comparison to Other Approaches
+
+**vs Zurek (2005) - Envariance**:
+- **Zurek**: Derives Born rule from entanglement + symmetry
+- **Ours**: Derives amplitude distribution from MaxEnt (assumes Born rule)
+- **Advantage**: Simpler, uses standard information theory
+- **Disadvantage**: Assumes what Zurek derives
+
+**vs Masanes et al. (2019) - Operational**:
+- **Masanes**: Derives from basic QM postulates + unique outcomes
+- **Ours**: Derives from constraint filtering + MaxEnt
+- **Advantage**: Information-theoretic foundation
+- **Disadvantage**: Less general (finite groups only)
+
+**vs Caticha (2000, 2019) - Entropic Dynamics**:
+- **Caticha**: General framework for continuous spaces
+- **Ours**: Application to discrete permutations
+- **Relationship**: We build on Caticha's framework
+- **Contribution**: Explicit connection to LFT and logical constraints
+
+### 8.4 Limitations and Scope
+
+**What this proof covers**:
+- ✅ Finite symmetric groups Sₙ
+- ✅ Discrete permutation spaces
+- ✅ Specific N values (verified for N=3, N=4)
+
+**What this proof does NOT cover**:
+- ❌ Continuous Hilbert spaces (Caticha 2019 addresses this)
+- ❌ Infinite-dimensional systems
+- ❌ Derivation of Born rule itself (assumed as QM postulate)
+- ❌ Why Born rule holds universally
+
+**Extensions needed for complete theory**:
+1. **Continuum limit**: How does discrete Sₙ → continuous spacetime?
+2. **Infinite N**: What happens as N → ∞?
+3. **Born rule foundation**: Can we derive it more fundamentally? (Caticha attempts this)
+
+**Assessment**: The finite group limitation is appropriate for LFT, which models physical reality through finite-N approximations. The continuum limit is a separate research question.
+
+### 8.5 Philosophical Implications
+
+**Question**: Why are quantum amplitudes distributed as |a_σ|² ∝ I(h ≤ K)?
+
+**Answer**: Because it's the unique rational inference given:
+- Logical constraints (h ≤ K)
+- No preference among valid states
+- Maximum entropy principle
 
 **Epistemic interpretation**:
 - Probabilities reflect our information state
 - Maximum entropy = honest representation of ignorance
-- Born rule = consistency requirement, not fundamental mystery
+- Amplitude distribution = consistency requirement, not ad-hoc choice
 
 **Connection to Caticha's ED**:
 - ED: "Quantum probabilities are not more objective than classical"
-- LFT: Same conclusion from different foundation (logic vs geometry)
+- LFT: Same conclusion, applied to discrete constraint filtering
 
-### 8.3 Remaining Questions
+### 8.6 Remaining Questions
 
 **What we've proven**:
 - ✅ Amplitude formula given constraints
