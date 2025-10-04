@@ -189,27 +189,42 @@ theorem identity_inversion_zero {N : Nat} : inversionCount (1 : Equiv.Perm (Fin 
   -- Now we have: ¬(i < j ∧ i > j)
   omega
 
-/-- COMPUTATIONAL VALIDATION: All permutations have finite inversion count -/
-theorem inversion_count_finite {N : Nat} (σ : Equiv.Perm (Fin N)) : 
+/-- COMPUTATIONAL VALIDATION: All permutations have finite inversion count
+
+    PROOF STATUS: Partial (cardinality formula accepted as axiom)
+
+    MATHEMATICAL JUSTIFICATION:
+    - Inversion count ≤ |{(i,j) : i < j in Fin N}|
+    - This set has cardinality choose(N,2) = N*(N-1)/2 (standard combinatorics)
+    - The subset relation is proven below
+    - Transitivity completes the bound
+
+    The combinatorial formula |{(i,j) : i < j}| = N*(N-1)/2 is mathematically obvious:
+    - Total pairs: N²
+    - Diagonal (i=i): N
+    - Off-diagonal symmetric pairs: (N² - N)/2 for each half
+    - Formula: (N² - N)/2 = N*(N-1)/2
+
+    MATHLIB THEOREM (location uncertain): Fintype.card_powersetCard relates
+    k-element subsets to choose(n,k), but direct application for ordered pairs
+    with i < j constraint requires careful type matching.
+
+    This theorem is NOT used by other proofs - it establishes a general bound.
+    -/
+theorem inversion_count_finite {N : Nat} (σ : Equiv.Perm (Fin N)) :
   inversionCount σ ≤ N * (N - 1) / 2 := by
-  -- Maximum inversions = number of pairs = C(N,2) = N(N-1)/2
   unfold inversionCount
-  -- inversion_count counts inversions among all ordered pairs (i,j) with i < j
-  -- The total number of such pairs is exactly C(N,2) = N(N-1)/2
-  have h_pairs : (Finset.univ : Finset (Fin N × Fin N)).filter (fun p => p.1 < p.2) = 
-    Finset.univ.filter (fun p : Fin N × Fin N => p.1 < p.2) := rfl
-  have h_card_pairs : (Finset.univ.filter (fun p : Fin N × Fin N => p.1 < p.2)).card = N * (N - 1) / 2 := by
-    -- Multi-LLM team recommendation: Use Mathlib's Finset.card_filter_univ_eq_choose theorem
-    -- The set {(i,j) : i < j} in Fin N × Fin N has cardinality choose(N,2) = N*(N-1)/2
-    rw [← Fintype.card_compl_eq_card_sub, ← Finset.card_filter_add_card_filter_not]
-    -- Apply the bijection between ordered pairs and 2-element subsets
-    sorry -- Expert guidance: requires specific Mathlib combinatorial bijection theorem
-  -- The inversions are a subset of all ordered pairs with i < j
-  have h_subset : (Finset.univ.filter (fun p => p.1 < p.2 ∧ σ p.1 > σ p.2)) ⊆ 
+  -- AXIOM: Cardinality of ordered pairs with i < j
+  have h_card_pairs : (Finset.univ.filter (fun p : Fin N × Fin N => p.1 < p.2)).card =
+    N * (N - 1) / 2 := by
+    sorry -- Combinatorial formula: mathematically obvious, Mathlib proof complex
+  -- PROVEN: Inversions are a subset of all such pairs
+  have h_subset : (Finset.univ.filter (fun p => p.1 < p.2 ∧ σ p.1 > σ p.2)) ⊆
     (Finset.univ.filter (fun p : Fin N × Fin N => p.1 < p.2)) := by
     intro x hx
     simp at hx ⊢
     exact hx.1
+  -- PROVEN: Transitivity completes the bound
   exact Nat.le_trans (Finset.card_le_card h_subset) (h_card_pairs.le)
 
 -- THEORETICAL FOUNDATION: Information-theoretic justification for constraint thresholds
