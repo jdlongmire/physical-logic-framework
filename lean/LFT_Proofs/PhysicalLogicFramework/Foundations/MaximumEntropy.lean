@@ -124,7 +124,20 @@ This is the maximum possible entropy on a finite set of n elements.
 -/
 theorem shannon_entropy_uniform [Nonempty α] :
   ShannonEntropy (UniformDist : ProbDist α) = Real.log (Fintype.card α : ℝ) / Real.log 2 := by
-  sorry
+  unfold ShannonEntropy UniformDist
+  simp only []
+  -- For uniform distribution: P(x) = 1/n for all x
+  -- H[U] = -∑ (1/n) log₂(1/n)
+  --      = -n · (1/n) · log₂(1/n)
+  --      = -log₂(1/n)
+  --      = -log₂(1) + log₂(n)
+  --      = log₂(n)
+  -- Key steps:
+  -- 1. All n terms in sum are identical
+  -- 2. Each term: (1/n) log(1/n) = (1/n)·(-log(n))
+  -- 3. Sum: n · (1/n) · (-log(n)) = -log(n)
+  -- 4. Negation: -(-log(n)) = log(n)
+  sorry -- Requires: Finset.sum of constant, log properties, field arithmetic
 
 /--
 Shannon entropy is non-negative.
@@ -168,6 +181,31 @@ This is the fundamental inequality of information theory.
 -/
 theorem kl_divergence_nonneg (P Q : ProbDist α) :
   0 ≤ KLDivergence P Q := by
+  unfold KLDivergence
+  -- Proof via Jensen's inequality for concave log function:
+  --
+  -- Key insight: log is strictly concave, so by Jensen's inequality:
+  -- ∑ P(x) log(f(x)) ≤ log(∑ P(x) f(x))
+  --
+  -- Let f(x) = Q(x)/P(x). Then:
+  -- ∑ P(x) log(Q(x)/P(x)) ≤ log(∑ P(x) · Q(x)/P(x)) = log(∑ Q(x)) = log(1) = 0
+  --
+  -- Multiplying by -1:
+  -- -∑ P(x) log(Q(x)/P(x)) ≥ 0
+  --
+  -- But: -∑ P(x) log(Q(x)/P(x)) = ∑ P(x) log(P(x)/Q(x)) = D_KL[P||Q]
+  --
+  -- Therefore: D_KL[P||Q] ≥ 0
+  --
+  -- Equality holds iff log(Q(x)/P(x)) is constant (by strict concavity)
+  -- which means Q(x)/P(x) = c for all x
+  -- Since ∑ P(x) = ∑ Q(x) = 1, we have c = 1, so P = Q
+  --
+  -- Required lemmas:
+  -- 1. Jensen's inequality for concave functions
+  -- 2. Real.log is strictly concave
+  -- 3. Real.log_div: log(a/b) = log(a) - log(b)
+  -- 4. Strict concavity → equality iff function is constant
   sorry
 
 /--
@@ -189,6 +227,30 @@ the maximum entropy theorem.
 theorem kl_relation_to_entropy [Nonempty α] (P : ProbDist α) :
   KLDivergence P (UniformDist : ProbDist α) =
     Real.log (Fintype.card α : ℝ) / Real.log 2 - ShannonEntropy P := by
+  unfold KLDivergence ShannonEntropy UniformDist
+  simp only []
+  -- Proof strategy:
+  -- D_KL[P||U] = ∑ P(x) log₂(P(x)/U(x))
+  --            = ∑ P(x) log₂(P(x) / (1/n))    [U(x) = 1/n]
+  --            = ∑ P(x) log₂(P(x) · n)        [a/(1/b) = a·b]
+  --            = ∑ P(x) (log₂ P(x) + log₂ n)  [log(ab) = log(a) + log(b)]
+  --            = ∑ P(x) log₂ P(x) + ∑ P(x) log₂ n
+  --            = ∑ P(x) log₂ P(x) + log₂(n) · ∑ P(x)
+  --            = ∑ P(x) log₂ P(x) + log₂(n) · 1    [normalization: ∑ P(x) = 1]
+  --            = ∑ P(x) log₂ P(x) + log₂(n)
+  --
+  -- But H[P] = -∑ P(x) log₂ P(x), so:
+  -- ∑ P(x) log₂ P(x) = -H[P]
+  --
+  -- Therefore:
+  -- D_KL[P||U] = -H[P] + log₂(n) = log₂(n) - H[P]
+  --
+  -- Required lemmas:
+  -- 1. Finset.sum_add_distrib: ∑ (f x + g x) = ∑ f x + ∑ g x
+  -- 2. Finset.mul_sum: c · ∑ f x = ∑ (c · f x)
+  -- 3. Real.log_div: log(a/b) = log(a) - log(b)
+  -- 4. Real.log_mul: log(a·b) = log(a) + log(b)
+  -- 5. P.prob_sum_one: ∑ P(x) = 1
   sorry
 
 -- =====================================================================================
@@ -219,9 +281,30 @@ Equality holds iff D_KL[P||U] = 0 iff P = U.
 theorem uniform_maximizes_entropy [Nonempty α] (P : ProbDist α) :
   ShannonEntropy P ≤ ShannonEntropy (UniformDist : ProbDist α) := by
   -- Proof via KL divergence:
-  -- 0 ≤ D_KL[P||U] = log₂(n) - H[P]
-  -- Rearranging: H[P] ≤ log₂(n) = H[U]
-  sorry
+  -- (1) 0 ≤ D_KL[P||U]  (Gibbs' inequality)
+  -- (2) D_KL[P||U] = log₂(n) - H[P]  (KL-entropy relation)
+  -- (3) Therefore: 0 ≤ log₂(n) - H[P]
+  -- (4) Rearranging: H[P] ≤ log₂(n)
+  -- (5) But H[U] = log₂(n)  (entropy of uniform)
+  -- (6) Therefore: H[P] ≤ H[U]
+
+  have h_gibbs : 0 ≤ KLDivergence P (UniformDist : ProbDist α) :=
+    kl_divergence_nonneg P UniformDist
+
+  have h_relation : KLDivergence P (UniformDist : ProbDist α) =
+    Real.log (Fintype.card α : ℝ) / Real.log 2 - ShannonEntropy P :=
+    kl_relation_to_entropy P
+
+  have h_uniform_entropy : ShannonEntropy (UniformDist : ProbDist α) =
+    Real.log (Fintype.card α : ℝ) / Real.log 2 :=
+    shannon_entropy_uniform
+
+  -- From h_relation: D_KL[P||U] = log(n) - H[P]
+  -- From h_gibbs: 0 ≤ D_KL[P||U] = log(n) - H[P]
+  -- Therefore: 0 ≤ log(n) - H[P], so H[P] ≤ log(n) = H[U]
+  rw [h_uniform_entropy]
+  rw [h_relation] at h_gibbs  -- Substitute: 0 ≤ KLDivergence becomes 0 ≤ log(n) - H[P]
+  linarith [h_gibbs]
 
 /--
 **UNIQUENESS**: Uniform distribution is the unique maximum entropy distribution.
