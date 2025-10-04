@@ -2,7 +2,8 @@
   "permissions": {
     "allow": [
       "Bash(\"/mnt/c/Users/jdlon/.elan/bin/lake.exe\" build PhysicalLogicFramework.Foundations.MaximumEntropy)",
-      "Bash(\"/c/Users/jdlon/.elan/bin/lake.exe\" build PhysicalLogicFramework.Foundations.MaximumEntropy)"
+      "Bash(\"/c/Users/jdlon/.elan/bin/lake.exe\" build PhysicalLogicFramework.Foundations.MaximumEntropy)",
+      "Bash(python:*)"
     ],
     "deny": [],
     "ask": [],

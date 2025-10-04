@@ -1,0 +1,49 @@
+{
+  "summary": {
+    "N": 5,
+    "K": 3,
+    "total_permutations": 120,
+    "valid_permutations": 29,
+    "feasibility_ratio": 0.24166666666666667,
+    "born_probability": 0.034482758620689655
+  },
+  "inversion_distribution": {
+    "0": 1,
+    "1": 4,
+    "2": 9,
+    "3": 15,
+    "4": 20,
+    "5": 22,
+    "6": 20,
+    "7": 15,
+    "8": 9,
+    "9": 4,
+    "10": 1
+  },
+  "comparative_results": [
+    {
+      "N": 3,
+      "K": 1,
+      "Total": 6,
+      "Valid": 3,
+      "Ratio": 0.5,
+      "P(sigma)": 0.3333333333333333
+    },
+    {
+      "N": 4,
+      "K": 2,
+      "Total": 24,
+      "Valid": 9,
+      "Ratio": 0.375,
+      "P(sigma)": 0.1111111111111111
+    },
+    {
+      "N": 5,
+      "K": 3,
+      "Total": 120,
+      "Valid": 29,
+      "Ratio": 0.24166666666666667,
+      "P(sigma)": 0.034482758620689655
+    }
+  ]
+}
