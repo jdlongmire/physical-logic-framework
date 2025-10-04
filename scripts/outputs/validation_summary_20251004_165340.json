@@ -1,0 +1,80 @@
+{
+  "timestamp": "20251004_165340",
+  "analysis_parameters": {
+    "N_max_entropy": 8,
+    "N_max_connectivity": 6
+  },
+  "validation_results": {
+    "peak_success_rate": 0.0,
+    "n_matches": "0",
+    "n_total": 6,
+    "connectivity_transitions": [
+      {
+        "N": "3",
+        "first_connected_K": "0",
+        "predicted_K": "1",
+        "matches": "False",
+        "close": "True"
+      },
+      {
+        "N": "4",
+        "first_connected_K": "0",
+        "predicted_K": "2",
+        "matches": "False",
+        "close": "False"
+      },
+      {
+        "N": "5",
+        "first_connected_K": "0",
+        "predicted_K": "3",
+        "matches": "False",
+        "close": "False"
+      },
+      {
+        "N": "6",
+        "first_connected_K": "0",
+        "predicted_K": "4",
+        "matches": "False",
+        "close": "False"
+      }
+    ]
+  },
+  "peak_locations": [
+    {
+      "N": 3,
+      "K_at_peak": 3,
+      "K_predicted": 1,
+      "matches": false
+    },
+    {
+      "N": 4,
+      "K_at_peak": 6,
+      "K_predicted": 2,
+      "matches": false
+    },
+    {
+      "N": 5,
+      "K_at_peak": 10,
+      "K_predicted": 3,
+      "matches": false
+    },
+    {
+      "N": 6,
+      "K_at_peak": 15,
+      "K_predicted": 4,
+      "matches": false
+    },
+    {
+      "N": 7,
+      "K_at_peak": 21,
+      "K_predicted": 5,
+      "matches": false
+    },
+    {
+      "N": 8,
+      "K_at_peak": 28,
+      "K_predicted": 6,
+      "matches": false
+    }
+  ]
+}
