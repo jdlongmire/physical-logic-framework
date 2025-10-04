@@ -23,6 +23,27 @@ Major theoretical breakthrough session artifacts:
 - Literature review: `lean/AMPLITUDE_HYPOTHESIS_RESEARCH_NOTES.md`
 - Validation: `multi_LLM_model/validation_results/self_validation_claude.md`
 
+### `paper_development/` (2025-01-03)
+
+Paper revision process artifacts from Tier 1 critical revisions:
+
+**Subdirectories**:
+- `consultations/`: Multi-LLM expert consultations (Born rule, I2PS, spacetime)
+- `revision_plans/`: Revision plans based on expert feedback (Gemini analyses)
+- `peer_review/`: Mock peer review materials and readiness assessment
+
+**Key achievements**:
+- Rigorous I2PS formalization (∏ Sₙ with measure theory)
+- Honest Born rule framing (verified cases, not general derivation)
+- Honest spacetime framing (research program with identified challenges)
+- Amplitude hypothesis identified as critical gap (later proven!)
+
+**Old versions**:
+- It_from_Logic_Scholarly_Paper_PRE_RESTRUCTURE.md (before Tier 1 revisions)
+- CONDENSED_Section7.md (condensed version of Section 7)
+
+See `paper_development/README.md` for detailed documentation.
+
 ## Organization
 
 This directory is for:
@@ -41,3 +62,7 @@ This directory is for:
 
 - 2025-01-04: Created as research_and_data (renamed from data)
 - 2025-01-04: Added amplitude_hypothesis_breakthrough artifacts
+- 2025-01-04: Moved paper development artifacts from paper/ folder
+  - Consultations, revision plans, peer review materials
+  - Old paper versions and condensed sections
+  - Cleaned paper/ to contain only main paper and appendices
