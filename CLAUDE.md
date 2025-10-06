@@ -134,6 +134,49 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ---
 
+## 🔄 Git Synchronization Protocol
+
+**IMPORTANT**: Keep the remote repository synchronized to ensure work is backed up and accessible.
+
+### When to Push to Remote
+
+**Push commits to GitHub**:
+- ✅ After completing major phases/milestones (every Session_X.Y update)
+- ✅ Before ending a work session (final safety backup)
+- ✅ After significant breakthroughs or research results
+- ✅ When session log indicates completion of substantial work
+
+### Standard Push Command
+
+```bash
+git push origin main
+```
+
+### Verification Steps
+
+1. **Check sync status**: `git log origin/main..HEAD --oneline`
+   - If output shows commits, they need to be pushed
+
+2. **Push to remote**: `git push origin main`
+
+3. **Verify on GitHub**: Check the repository to confirm latest commits are visible
+
+### Integration with Session Workflow
+
+**Updated "End of Session: Finalize" checklist**:
+1. ✅ Make final rename to highest Y value
+2. ✅ Complete all sections in session log
+3. ✅ Update `CURRENT_STATUS.md` with latest status
+4. ✅ **Push all commits to GitHub** (`git push origin main`)
+5. ✅ Archive any old/superseded session files to `archive/` if needed
+6. ✅ Ensure `Session_Log/` contains only:
+   - Current and recent session logs (Session_X.Y.md format)
+   - README.md
+
+**Result**: All work is safely backed up on GitHub and available for collaboration/review.
+
+---
+
 ## Repository Overview
 
 This is the **Physical Logic Framework (PLF)** repository, containing mathematical derivations and computational simulations for Logic Field Theory (LFT) - a theoretical physics framework that proposes physical reality emerges from logical filtering of information: **A = L(I)**.
