@@ -16,6 +16,7 @@ import PhysicalLogicFramework.QuantumEmergence.HilbertSpace
 import PhysicalLogicFramework.QuantumEmergence.QuantumCore
 -- Dynamics modules: Theorem D.1 formalization (NEW - October 6, 2025)
 import PhysicalLogicFramework.Dynamics.GraphLaplacian
+import PhysicalLogicFramework.Dynamics.FisherGeometry
 import PhysicalLogicFramework.Dynamics.TheoremD1
 
 /-!
