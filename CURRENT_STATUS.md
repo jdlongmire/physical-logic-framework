@@ -1,8 +1,8 @@
-# Current Status - Week 2 Day 5 (October 6) ⭐⭐⭐ SPRINTS 1-3 COMPLETE
+# Current Status - Week 2 Day 5 (October 6) ⭐⭐⭐ STRATEGY PIVOT
 
 **Last Updated**: October 6, 2025 (Evening)
-**Session**: Week 2 Day 5 - Theorem D.1 Lean formalization (Sprints 1-3)
-**Status**: ✅✅✅ **Sprints 1-3 complete**, Convergence theory formalized
+**Session**: Week 2 Day 5 - Lean formalization strategy redefined
+**Status**: ✅ **Infrastructure complete**, pivoting to PROVE novel results (not axiomatize)
 
 ---
 
@@ -11,17 +11,46 @@
 | Track | Progress | Status |
 |-------|----------|--------|
 | **Dynamics Research** | **Theorem D.1 ALL 3 parts rigorously proven** | **99% viable** ✅ |
-| **Lean Formalization** | **Sprints 1-3 complete (Parts 0-2)** | **20% → 60%** ✅✅✅ |
+| **Lean Formalization** | **Infrastructure complete, strategy redefined** | **NEW: Prove novel, axiomatize established** ⭐ |
 | **Paper Revision** | All concerns addressed + visualization complete | 5/5 + figures done |
-| **Overall Timeline** | Week 2 Day 5 done | **Ahead of schedule** |
+| **Overall Timeline** | Week 2 Day 5 done | **Strategic pivot complete** |
+
+---
+
+## ⭐ MAJOR STRATEGIC DECISION (Day 5 Evening)
+
+**Problem identified**: Axiomatizing all of Theorem D.1 would be **disingenuous** to call "formal proof"
+
+**New strategy**: **PROVE what's novel, AXIOMATIZE what's established**
+
+**What we'll PROVE** (our intellectual contribution):
+1. ✅ K(N) = N-2 from maximum entropy (highest priority)
+2. ✅ Permutohedron emerges from information space structure
+3. ✅ Born rule from logical constraints (main result)
+4. ✅ H = L uniqueness given axiomatized results (synthesis)
+
+**What we'll AXIOMATIZE** (with literature citations):
+- ✅ Fisher = Fubini-Study (Braunstein & Caves 1994) - DONE
+- ✅ Laplace-Beltrami convergence (Belkin & Niyogi 2008) - DONE
+- ✅ Basic graph properties (Mathlib) - DONE
+
+**Why this passes peer review**:
+- Standard practice in mathematics (cite and build)
+- Clear intellectual contribution
+- Honest and transparent
+- Proves OUR claims, not textbook results
+
+**Document created**: `lean/LEAN_FORMALIZATION_STRATEGY.md` (comprehensive plan)
+
+**Next priority**: Prove K(N) = N-2 in `Foundations/MaximumEntropy.lean`
 
 ---
 
 ## ✅ What We Accomplished
 
-### Day 5 (October 6, 2025) - Lean Formalization ⭐⭐ **SPRINTS 1-2 COMPLETE**
+### Day 5 (October 6, 2025) - Lean Formalization ⭐⭐⭐ **STRATEGY PIVOT**
 
-**Lean Track (100% time - Theorem D.1 formalization)**:
+**Lean Track (100% time - Infrastructure + Strategy)**:
 
 1. **Sprint 1: Foundation & Infrastructure** ⭐⭐ **COMPLETE**
    - Files: `GraphLaplacian.lean` (~200 lines), `TheoremD1.lean` (skeleton)
@@ -49,7 +78,15 @@
    - **Strategy**: Axiomatize (requires extensive manifold analysis)
    - **Status**: Module compiles successfully (2,411 jobs)
 
-4. **Mathlib Integration** ⭐
+4. **STRATEGIC PIVOT** ⭐⭐⭐ **CRITICAL DECISION**
+   - **Problem identified**: Axiomatizing all results ≠ "formal proof" (would be disingenuous)
+   - **New strategy**: PROVE novel contributions, AXIOMATIZE established results
+   - **Document created**: `LEAN_FORMALIZATION_STRATEGY.md` (~500 lines, comprehensive)
+   - **Redefined priorities**: K(N) = N-2 → Permutohedron → Born rule → Uniqueness
+   - **Peer review plan**: Clear delineation of contributions vs citations
+   - **Result**: Honest, rigorous, scientifically sound approach
+
+5. **Mathlib Integration** ⭐
    - `SimpleGraph.lapMatrix`: L = D - A definition (Sprint 1)
    - `isSymm_lapMatrix`, `posSemidef_lapMatrix`: Properties imported (Sprint 1)
    - `Projectivization`: Projective space structure exists but no Fubini-Study (Sprint 2)
@@ -194,12 +231,13 @@
 - **`PEER_REVIEW_RESPONSE_PLAN.md`** - Full revision strategy [Week 1]
 
 ### Lean Formalization (Week 2 Day 5)
+- **`LEAN_FORMALIZATION_STRATEGY.md`** - Complete strategy: prove novel, axiomatize established (~500 lines) [Day 5] ⭐⭐⭐
 - **`GraphLaplacian.lean`** - Graph Laplacian H = D - A formalized (~200 lines) [Day 5] ⭐
 - **`FisherGeometry.lean`** - Fisher/Fubini-Study metrics (~140 lines) [Day 5] ⭐
 - **`ConvergenceTheorem.lean`** - Laplace-Beltrami convergence (~206 lines) [Day 5] ⭐⭐
 - **`TheoremD1.lean`** - Complete theorem statement skeleton [Day 5]
 - **`SPRINT1_MATHLIB_SURVEY.md`** - Mathlib capabilities assessment (~2,000 words) [Day 5] ⭐
-- **`THEOREM_D1_LEAN_FORMALIZATION_PLAN.md`** - 5-sprint roadmap [Week 2 Day 1]
+- **`THEOREM_D1_LEAN_FORMALIZATION_PLAN.md`** - 5-sprint roadmap [Week 2 Day 1] [SUPERSEDED by strategy doc]
 
 ### Planning
 - **`COMPLETE_THEORY_RESEARCH_PLAN.md`** - 18-month roadmap
