@@ -1,134 +1,142 @@
-# Figures for LFT Scholarly Paper
+# Figures - Publication Ready
 
-This directory contains publication-ready figures for the Logic Field Theory scholarly paper.
+**Purpose**: Publication-ready figures for Logic Field Theory papers
 
-## Figure Organization for Academic Paper
-
-### **Figure 1: Framework Overview** 
-- **File**: `fig1_lft_framework_overview.pdf`
-- **Purpose**: Conceptual diagram showing A = L(I) with information space → logical filtering → actuality
-- **Status**: 🔄 Needs creation
-- **Notebook Source**: Conceptual synthesis from notebooks 00-02
-
-### **Figure 2: Constraint Theory Foundation**
-- **File**: `fig2_constraint_counting_theory.pdf` 
-- **Purpose**: Feasibility ratio ρ_N vs N, showing constraint collapse beyond N=4
-- **Status**: 🔄 Needs creation from notebook data
-- **Notebook Source**: Notebook 01 (Ontology of I)
-- **Formal Basis**: FeasibilityRatio.lean computations
-
-### **Figure 3: Quantum Bridge Validation**
-- **File**: `fig3_quantum_bridge_verification.pdf`
-- **Purpose**: Born rule emergence + formal proof correspondence
-- **Status**: 🔄 Needs creation
-- **Notebook Source**: Notebook 12 (Born Rule) + QuantumBridge.lean
-- **Formal Basis**: `born_rule_emergence` theorem
-
-### **Figure 4: Quantum Computing Predictions** 
-- **File**: `fig4_quantum_computing_constraints.pdf`
-- **Purpose**: Circuit depth limits vs qubit count from constraint theory
-- **Status**: 🔄 Needs creation
-- **Notebook Source**: Notebook 20 (Predictions) Part A
-- **Formal Basis**: MaxInformationEntropy bounds
-
-### **Figure 5: Dimensional Emergence**
-- **File**: `fig5_spacetime_emergence.pdf`
-- **Purpose**: 3+1 spacetime from permutohedron geometry (N=4 case)
-- **Status**: 🔄 Needs creation  
-- **Notebook Source**: Notebook 04 (Geometry N-1 Problem)
-- **Formal Basis**: PermutationGeometry.lean theorems
-
-### **Figure 6: Framework Comparison**
-- **File**: `fig6_framework_comparison.pdf`
-- **Purpose**: LFT vs other quantum foundations (formal rigor emphasis)
-- **Status**: 🔄 Needs creation
-- **Notebook Source**: Notebook 22 (Comparisons)
-- **Formal Basis**: Formal verification advantage
-
-## Figure Specifications for Publication
-
-### **Technical Requirements**
-- **Format**: PDF (vector graphics preferred)
-- **Resolution**: 300+ DPI for raster elements
-- **Size**: Single column (3.5") or double column (7") width
-- **Fonts**: Times, Arial, or journal-specific requirements
-- **Color**: Grayscale compatible with color enhancement
-
-### **Content Guidelines**
-- **Self-contained**: Each figure interpretable without main text
-- **Professional typography**: Clear labels, legends, captions
-- **Mathematical notation**: Consistent with paper LaTeX formatting
-- **Cross-references**: Figure numbers align with paper structure
-- **Accessibility**: Color-blind friendly palettes
-
-## Figure Generation Workflow
-
-### **Step 1: Extract Key Data**
-```bash
-# Copy relevant data from notebook outputs
-cp ../notebooks/outputs/*.png ./raw_data/
-cp ../notebooks/outputs/*.json ./raw_data/
-```
-
-### **Step 2: Create Publication Versions**
-```python
-# Use matplotlib with publication settings
-plt.rcParams.update({
-    'font.size': 10,
-    'font.family': 'serif', 
-    'figure.figsize': (3.5, 2.5),  # Single column
-    'savefig.dpi': 300,
-    'savefig.format': 'pdf'
-})
-```
-
-### **Step 3: Quality Control**
-- [ ] Mathematical notation consistency
-- [ ] Color accessibility (colorbrewer palettes)
-- [ ] Label readability at print size
-- [ ] Legend clarity and positioning
-- [ ] Caption accuracy and completeness
-
-## Priority Order for Paper
-
-### **Essential (Must Have)**
-1. **Figure 2**: Constraint theory foundation - core theoretical result
-2. **Figure 4**: Quantum computing predictions - immediate testability  
-3. **Figure 3**: Quantum bridge validation - formal verification highlight
-
-### **Important (Should Have)**
-4. **Figure 1**: Framework overview - conceptual clarity
-5. **Figure 5**: Dimensional emergence - spacetime connection
-
-### **Supplementary (Nice to Have)**
-6. **Figure 6**: Framework comparison - competitive positioning
-
-## Cross-Reference Integration
-
-### **Paper Sections ↔ Figures**
-- **Introduction**: Figure 1 (framework overview)
-- **Mathematical Framework**: Figure 2 (constraint theory)
-- **Quantum Bridge**: Figure 3 (validation) 
-- **Predictions**: Figure 4 (quantum computing)
-- **Discussion**: Figure 5 (spacetime), Figure 6 (comparison)
-
-### **Formal Verification Integration**
-Each figure should reference corresponding Lean theorems:
-- Figure 2 → FeasibilityRatio.lean citations
-- Figure 3 → QuantumBridge.lean theorems  
-- Figure 4 → MaxInformationEntropy bounds
-- Figure 5 → PermutationGeometry.lean results
-
-## Next Steps
-
-1. **Generate essential figures** (2, 4, 3) from notebook data
-2. **Create conceptual diagrams** (1, 5) for framework explanation  
-3. **Compile comparison charts** (6) for competitive analysis
-4. **Quality review** all figures for publication standards
-5. **Generate high-resolution PDFs** for journal submission
+**Date**: October 2025
 
 ---
 
-**Status**: Figure organization planned, awaiting creation of publication-ready versions from validated notebook data and formal verification results.
+## 📊 Current Figures
 
-**Timeline**: Essential figures should be completed within 1-2 weeks to support paper drafting.
+### Original LFT Paper Figures (September 2025)
+
+**Complete Set** (figure1-6.png):
+1. **figure1_framework_overview.png** (172 KB) - A = L(I) conceptual framework
+2. **figure2_constraint_theory.png** (89 KB) - Feasibility ratio vs N
+3. **figure3_born_rule_emergence.png** (113 KB) - Born rule emergence validation
+4. **figure4_mathematical_rigor.png** (75 KB) - Mathematical rigor comparison
+5. **figure5_quantum_computing.png** (105 KB) - Quantum computing predictions
+6. **figure6_spacetime_emergence.png** (284 KB) - 3+1 spacetime from permutohedron
+
+**Supporting Files**:
+- **figure_data.json** (4.4 KB) - Source data for figures
+- **figure_specifications.md** (7.7 KB) - Technical specifications
+
+**Status**: ✅ Complete publication-ready set
+
+---
+
+### Born Rule Paper - Permutohedron Figures (October 2025)
+
+**New Figures for Born Rule Paper**:
+- **permutohedron_N3.png** (129 KB) - N=3 permutohedron (hexagon in 2D)
+- **permutohedron_N4.png** (353 KB) - N=4 permutohedron (truncated octahedron in 3D)
+- **permutohedron_combined.png** (277 KB) - Combined N=3 and N=4 visualization
+
+**Generation Script**:
+- **generate_permutohedron_figures.py** (12 KB) - Python script to generate permutohedron visualizations
+
+**Purpose**:
+- Visualize Cayley graph structure of symmetric groups S_3 and S_4
+- Show K=1 and K=2 valid state subspaces
+- Illustrate graph Laplacian Hamiltonian on permutohedron geometry
+
+**Specifications**: See `../supporting_material/PERMUTOHEDRON_FIGURE_SPECIFICATIONS.md` for complete technical details
+
+**Status**: ✅ Publication-ready (integrated into Born Rule paper)
+
+---
+
+### K(N) Triple Proof Figures (October 2025)
+
+**Triple Convergence Visualization**:
+- **figure4_triple_convergence.png** (371 KB) - Standard resolution
+- **figure4_triple_convergence_hires.png** (832 KB) - High resolution version
+
+**Purpose**: Visualize three independent proofs converging on K(N) = N-2:
+1. Mahonian statistics (Coxeter numbers)
+2. Braid group topology
+3. Maximum entropy principle
+
+**Status**: ✅ Complete
+
+---
+
+## 📁 Figure Organization
+
+### For It from Logic Scholarly Paper
+**Main figures**: figure1-6.png (original LFT framework)
+**Location**: `../supplementary/It_from_Logic_Scholarly_Paper.md`
+
+### For Born Rule Paper
+**Main paper**: `../Born_Rule_Paper_FINAL_v1.md` (v2)
+**Permutohedron figures**: permutohedron_N3.png, permutohedron_N4.png, permutohedron_combined.png
+**Status**: Integrated into paper (Figure 2 - Permutohedron State Space)
+
+---
+
+## 🔧 Figure Generation
+
+### Permutohedron Figures
+
+**Script**: `generate_permutohedron_figures.py`
+
+**Dependencies**:
+```python
+import numpy as np
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D
+import networkx as nx
+from itertools import permutations
+```
+
+**Usage**:
+```bash
+python generate_permutohedron_figures.py
+```
+
+**Output**: Creates permutohedron_N3.png, permutohedron_N4.png, permutohedron_combined.png
+
+---
+
+## 📐 Technical Specifications
+
+### Publication Standards
+- **Format**: PNG (raster graphics, 300 DPI equivalent)
+- **Size**: Optimized for journal submission
+- **Color**: Professional color schemes, grayscale compatible
+- **Fonts**: Arial/Helvetica sans-serif, readable at print size
+
+### Figure Quality
+- ✅ Self-contained with clear legends
+- ✅ Professional typography and layout
+- ✅ Mathematical notation consistent with papers
+- ✅ Color-blind friendly palettes where applicable
+
+---
+
+## 📚 Figure Documentation
+
+### Detailed Specifications
+- **Original figures**: `figure_specifications.md` (technical specs for figure1-6)
+- **Permutohedron figures**: `../supporting_material/PERMUTOHEDRON_FIGURE_SPECIFICATIONS.md` (complete specs, ~4,000 words)
+
+### Source Data
+- **figure_data.json**: Numerical data for original LFT figures
+- **Notebooks**: Computational data from `../../notebooks/approach_1/`
+
+---
+
+## Current Status
+
+**Original LFT Figures**: ✅ 6 figures complete (figure1-6.png)
+
+**Born Rule Paper Figures**: ✅ 3 permutohedron figures complete
+
+**K(N) Proof Figures**: ✅ 2 triple convergence figures complete
+
+**Total**: 11 publication-ready figures (2.8 MB)
+
+---
+
+**All figures ready for publication** ✅

@@ -3,7 +3,22 @@
     "allow": [
       "Bash(\"/mnt/c/Users/jdlon/.elan/bin/lake.exe\" build PhysicalLogicFramework.Foundations.MaximumEntropy)",
       "Bash(\"/c/Users/jdlon/.elan/bin/lake.exe\" build PhysicalLogicFramework.Foundations.MaximumEntropy)",
-      "Bash(python:*)"
+      "Bash(python:*)",
+      "Bash(ls:*)",
+      "WebFetch(domain:oeis.org)",
+      "WebFetch(domain:www.ms.uky.edu)",
+      "Bash(for:*)",
+      "Bash(do echo \"$file:\")",
+      "Bash(wc:*)",
+      "Bash(done)",
+      "Bash(iconv:*)",
+      "WebFetch(domain:journals.aps.org)",
+      "WebSearch",
+      "Bash(grep:*)",
+      "Bash(xargs:*)",
+      "Bash(tree:*)",
+      "Bash(awk:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": [],

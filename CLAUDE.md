@@ -6,9 +6,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **When starting a new session, you will be asked to read this file (CLAUDE.md).**
 
-**Upon reading CLAUDE.md, immediately read**: [`SESSION_STATUS.md`](SESSION_STATUS.md)
+**Upon reading CLAUDE.md, immediately read**: [`CURRENT_STATUS.md`](CURRENT_STATUS.md)
 
-`SESSION_STATUS.md` contains everything needed to resume:
+`CURRENT_STATUS.md` contains everything needed to resume:
 - ✅ Complete session history and accomplishments
 - 🎯 Current research focus and strategic direction
 - 📊 Honest theory viability assessment
@@ -17,7 +17,94 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 🎬 Specific next tasks (with clear options)
 - 📁 Guide to all key documents
 
-**After reading SESSION_STATUS.md, you will have complete context and can continue work immediately.**
+**After reading CURRENT_STATUS.md, you will have complete context and can continue work immediately.**
+
+---
+
+## 📝 Session Logging Protocol
+
+**IMPORTANT**: At the start of each NEW session (new date), create a new session log file:
+
+### Creating New Session Log
+
+**Format**: `Session_Log/SESSION_YYYY_MM_DD_COMPLETE.md`
+
+**Example**: `Session_Log/SESSION_2025_10_06_COMPLETE.md`
+
+**When to create**:
+- ✅ At the start of each new work session on a different date
+- ✅ If continuing work on same date, update existing session file
+- ❌ Do NOT create multiple session files for same date
+
+**Template structure**:
+```markdown
+# Complete Session Log - [Month DD, YYYY]
+
+**Date**: [Month DD, YYYY]
+**Duration**: [Estimated or actual hours]
+**Type**: [Research / Paper / Both / Organization]
+
+---
+
+## Session Overview
+
+[Brief summary of goals and achievements]
+
+---
+
+## Phase 1: [Name] ([Time estimate])
+
+### Accomplishments
+1. [Item 1]
+2. [Item 2]
+
+### Files Created/Modified
+- [File 1]
+- [File 2]
+
+---
+
+## Files Created ([Total count])
+
+[Categorized list of all files]
+
+---
+
+## Key Achievements
+
+[Major milestones]
+
+---
+
+## Next Session Resume
+
+**To Resume**:
+1. Read: CURRENT_STATUS.md
+2. Review: [Key documents from this session]
+3. Continue: [Next major task]
+```
+
+### During Session: Update Periodically
+
+**Update frequency**: Every 1-2 hours or after completing major tasks
+
+**What to update**:
+- Add new phases/sections as work progresses
+- Update "Files Created" list
+- Add "Key Achievements" as milestones reached
+- Update time estimates
+
+### End of Session: Finalize
+
+**Before ending session**:
+1. ✅ Complete all sections in session log
+2. ✅ Update `CURRENT_STATUS.md` with latest status
+3. ✅ Archive any intermediate/duplicate session files to `archive/`
+4. ✅ Ensure `Session_Log/` contains only:
+   - Current and recent session logs
+   - README.md
+
+**Result**: Clean, dated, comprehensive session history
 
 ---
 
