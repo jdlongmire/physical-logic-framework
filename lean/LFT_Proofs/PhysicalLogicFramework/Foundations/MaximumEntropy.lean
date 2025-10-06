@@ -89,7 +89,8 @@ noncomputable def UniformDist [Nonempty α] : ProbDist α where
     intro x
     apply div_nonneg
     · norm_num
-    · norm_cast; sorry -- Fintype.card α > 0 for nonempty fintype
+    · norm_cast
+      exact Fintype.card_pos
   prob_sum_one := by
     simp only [Finset.sum_const, Finset.card_univ, nsmul_eq_mul]
     sorry -- ∑ 1/n = n · (1/n) = 1
