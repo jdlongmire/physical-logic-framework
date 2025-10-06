@@ -1054,5 +1054,3 @@ The path forward is clear: extend the Fisher information geometry approach (Theo
 The authors thank the Lean community for Mathlib and proof assistance tools. Computational validation was performed using Python 3.9+ with NumPy. This work received no specific funding.
 
 ---
-
-**FINAL DRAFT v1 - ASSEMBLY COMPLETE**
