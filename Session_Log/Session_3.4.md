@@ -463,3 +463,119 @@ This session focused on completing the MaximumEntropy.lean module (reducing sorr
   - Final submission package
 
 **Next session**: Continue Session 3 → Session_3.4.md (Sprint 4) OR new Session 4.0
+
+---
+
+## Phase 8: Sprint 4 Execution (Supplemental Materials)
+
+### Accomplishments
+
+**Sprint 4: Supplemental Materials** - ALL TASKS COMPLETE ✅
+
+1. **Task 1: Appendix B - Coxeter Groups and Braid Relations** ✅
+   - Converted `research_and_data/K_N_BRAID_DERIVATION.md` to formal appendix
+   - Complete Coxeter primer (~135 lines, ~2,000 words):
+     - B.1: Coxeter presentation of S_N (generators, 3 relation types)
+     - B.2: Word length = inversion count (standard theorem)
+     - B.3: Why braid relations matter (irreducible non-commutativity)
+     - B.4: Rank and braid relation count (r-1 = N-2 formula)
+     - B.5: Connection to constraint threshold K
+     - B.6: Literature references (Humphreys, Björner & Brenti, Kassel & Turaev)
+     - B.7: Summary (triple determination)
+   - Example (N=4): S₄ ≅ A₃ with 2 braid relations
+   - Table: Verification for N=3-6 showing pattern
+   - **Result**: Group theory background accessible to non-specialists
+
+2. **Task 2: Appendix C - Lean 4 Formal Verification** ✅
+   - Documented formal verification with Lean 4 + Mathlib
+   - Complete verification summary (~135 lines, ~1,800 words):
+     - C.1: Verification overview (project, modules, status)
+     - C.2: Module 1 - ConstraintThreshold.lean (definitions, theorems)
+     - C.3: Module 2 - MaximumEntropy.lean (entropy maximization proofs)
+     - C.4: Build verification (1,816/1,816 jobs, 0 sorrys)
+     - C.5: Axiomatized vs proven results (standard vs novel)
+     - C.6: Summary (key achievements, significance)
+   - Highlighted: **0 sorrys** in both foundation modules
+   - Main theorems: uniform_maximizes_entropy, uniform_unique_maxent
+   - **Result**: Transparent verification status with reproducibility instructions
+
+3. **Task 3: Verify Figure References** ✅
+   - Confirmed Figure 1 (permutohedron_combined.png) exists
+   - Path verified: `paper/figures/permutohedron_combined.png` (282 KB)
+   - Already integrated with detailed caption in Section 2 (Sprint 2)
+   - No additional figures needed for main paper
+   - **Result**: All figure references correct and files present
+
+### Files Modified
+- `paper/Logic_Field_Theory_I_Quantum_Probability.md` (+270 lines)
+  - New Appendix B (~135 lines, Coxeter primer)
+  - New Appendix C (~135 lines, Lean verification)
+- Figure verification: 1 figure confirmed
+
+### Git Commit
+**Pending**: Sprint 4 changes ready to commit
+
+---
+
+## Session 3.4 Summary
+
+**Total Duration**: ~6-7 hours (cumulative with Session 3.0-3.3)
+
+**Phase Breakdown**:
+- Phase 1-4: MaxEnt completion + peer review analysis (Session 3.0)
+- Phase 5: Sprint 1 execution (Session 3.1)
+- Phase 6: Sprint 2 execution (Session 3.2)
+- Phase 7: Sprint 3 execution (Session 3.3)
+- Phase 8: Sprint 4 execution (Session 3.4)
+
+**Cumulative Output**:
+- Lean modules: 2 complete (0 sorrys each)
+- Paper revisions: 12 tasks across 4 sprints
+  - Sprint 1: Claims moderated, table added, sensitivity analysis
+  - Sprint 2: Appendix A, figure integration, Coxeter strengthening
+  - Sprint 3: Metric comparison, scope clarification, complex phases callout
+  - Sprint 4: Appendix B (Coxeter), Appendix C (Lean verification), figures verified
+- Session protocol: Updated (date → count format)
+- Commits: 3 (Sprint 1, Sprint 2, Sprint 3) + 1 pending (Sprint 4)
+
+**Key Achievements**:
+1. ✅ Two novel Lean results proven (ConstraintThreshold + MaxEnt)
+2. ✅ Peer review response plan created (6 sprints)
+3. ✅ **Sprint 1 complete** (Foundational Framework)
+4. ✅ **Sprint 2 complete** (Core Mathematical Proofs)
+5. ✅ **Sprint 3 complete** (Theoretical Extensions)
+6. ✅ **Sprint 4 complete** (Supplemental Materials)
+
+**Peer Review Concerns Addressed**:
+- ✅ Concern #1: Logical-permutation mapping (metric comparison Section 2.2, Appendix B)
+- ✅ Concern #2: K=N-2 necessity (Appendix A + B, sensitivity analysis, Coxeter strengthening)
+- ✅ Concern #3: Quantum bridge scope (Section 3.6)
+- ⏳ Concern #4: Lorentz gap (deferred to Sprint 5 - paper already frames as conjecture)
+- ✅ Concern #5: Overreach in claims (moderated throughout, scope table, Derived vs Assumed)
+
+**Paper Status**:
+- Total length: ~1,800 lines (~25,000 words)
+- Sections: 7 main sections (Introduction → Conclusion)
+- Appendices: 3 (A: Mahonian proof, B: Coxeter primer, C: Lean verification)
+- Figures: 1 (permutohedron geometry)
+- Tables: 17 (includes Derived vs Assumed, sensitivity analysis, metric comparison, etc.)
+
+**Status**: ✅✅✅ **Session 3.4 COMPLETE - SPRINT 4 DONE**
+
+**Progress**: 4/6 sprints complete (67% of peer review response plan)
+
+**Next Steps**:
+- **Sprint 5**: Finalization & Review
+  - Fix notation inconsistencies (thorough read-through)
+  - Add recent references (Leifer & Pusey 2020, Caticha 2022, Fuchs et al.)
+  - Verify all cross-references (sections, equations, theorems)
+  - Draft response letter to reviewers
+  - Final consistency check
+- **Sprint 6**: Validation & Submission
+  - External feedback from colleagues (if available)
+  - Buffer for unexpected issues
+  - Final submission package (paper + response letter + cover letter)
+
+**Estimated time remaining**: Sprint 5 (~2-3 hours), Sprint 6 (~1-2 hours) = 3-5 hours total
+
+**Next session**: Continue Session 3 → Session_3.5.md (Sprint 5) OR new Session 4.0
