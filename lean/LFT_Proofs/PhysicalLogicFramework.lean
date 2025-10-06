@@ -7,6 +7,7 @@ Authors: James D. Longmire
 import PhysicalLogicFramework.Foundations.InformationSpace
 import PhysicalLogicFramework.Foundations.ThreeFundamentalLaws
 import PhysicalLogicFramework.Foundations.ConstraintThreshold
+import PhysicalLogicFramework.Foundations.MaximumEntropy
 import PhysicalLogicFramework.LogicField.Operator
 import PhysicalLogicFramework.LogicField.ConstraintAccumulation
 -- Quantum emergence modules: Using _Fixed versions that compile successfully
