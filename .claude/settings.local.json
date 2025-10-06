@@ -25,7 +25,11 @@
       "Bash(claude doctor)",
       "Bash(claude --version)",
       "Bash(lake build:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(/c/Users/jdlon/.elan/bin/lake build PhysicalLogicFramework.Dynamics.ConvergenceTheorem)",
+      "Bash(/c/Users/jdlon/.elan/bin/lake build)",
+      "Bash(/c/Users/jdlon/.elan/bin/lake build PhysicalLogicFramework.Foundations.ConstraintThreshold)",
+      "Bash(/c/Users/jdlon/.elan/bin/lake build PhysicalLogicFramework.Foundations.MaximumEntropy)"
     ],
     "deny": [],
     "ask": [],
