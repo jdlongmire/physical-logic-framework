@@ -29,7 +29,10 @@
       "Bash(/c/Users/jdlon/.elan/bin/lake build PhysicalLogicFramework.Dynamics.ConvergenceTheorem)",
       "Bash(/c/Users/jdlon/.elan/bin/lake build)",
       "Bash(/c/Users/jdlon/.elan/bin/lake build PhysicalLogicFramework.Foundations.ConstraintThreshold)",
-      "Bash(/c/Users/jdlon/.elan/bin/lake build PhysicalLogicFramework.Foundations.MaximumEntropy)"
+      "Bash(/c/Users/jdlon/.elan/bin/lake build PhysicalLogicFramework.Foundations.MaximumEntropy)",
+      "Bash(git rm:*)",
+      "Bash(test:*)",
+      "Bash(\"/c/Program Files/Pandoc/pandoc\" Logic_Field_Theory_I_Quantum_Probability.md -o Logic_Field_Theory_I_Quantum_Probability.pdf --pdf-engine=pdflatex --variable=geometry:margin=1in --variable=documentclass:article --variable=fontsize:11pt --variable=colorlinks:true --table-of-contents --number-sections)"
     ],
     "deny": [],
     "ask": [],

@@ -1,0 +1,66 @@
+name: Build Paper with Figures
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'paper/**'
+      - '.github/workflows/build-paper.yml'
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:  # Allow manual triggering
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Python 3.10
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: Install Python dependencies
+      run: |
+        pip install --upgrade pip
+        pip install matplotlib networkx pandas numpy scipy
+
+    - name: Generate figures from data
+      run: |
+        cd paper/figures
+        python generate_figures.py
+
+    - name: Install Pandoc and LaTeX
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y pandoc texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended
+
+    - name: Convert Markdown to PDF
+      run: |
+        cd paper
+        pandoc Logic_Field_Theory_I_Quantum_Probability.md \
+          -o Logic_Field_Theory_I_Quantum_Probability.pdf \
+          --pdf-engine=pdflatex \
+          --variable=geometry:margin=1in \
+          --variable=documentclass:article \
+          --variable=fontsize:11pt \
+          --variable=colorlinks:true \
+          --table-of-contents \
+          --number-sections
+
+    - name: Upload PDF artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: paper-pdf
+        path: paper/Logic_Field_Theory_I_Quantum_Probability.pdf
+        retention-days: 90
+
+    - name: Upload figures artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: paper-figures
+        path: paper/figures/outputs/
+        retention-days: 90
