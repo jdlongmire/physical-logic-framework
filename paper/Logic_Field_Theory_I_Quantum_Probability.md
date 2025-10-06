@@ -23,7 +23,7 @@ For uniform ground states, quantum structure—Hilbert space, orthogonality, sup
 
 Computational validation yields perfect accuracy across eight test cases (N=3-10, spanning three orders of magnitude in system size, 100% match with exact enumeration). Formal verification in Lean 4 achieves 82% completion for core theorems, including MaxEnt derivation and N=3,4 state space enumeration.
 
-**Scope and Limitations**: This work derives **static Born probabilities** for a uniform quantum state in a **non-relativistic setting**. Time evolution (Schrödinger equation dynamics) is not yet derived from first principles, though we show the graph Laplacian Hamiltonian H = D - A emerges naturally from Fisher information geometry (Theorem D.1). Lorentz invariance remains an open problem, with preliminary connections to finite subgroups of Spin(1,3) identified but not proven (Section 6.3). Despite these limitations, deriving static quantum probabilities from logical consistency represents genuine progress in reducing the postulational basis of quantum theory.
+**Scope and Limitations**: This work derives **static Born probabilities** for a uniform quantum state in a **non-relativistic setting**. Time evolution (Schrödinger equation dynamics) is not yet derived from first principles, though preliminary research suggests the graph Laplacian Hamiltonian H = D - A emerges naturally from Fisher information geometry (ongoing work, ~60% complete). Lorentz invariance remains an open problem, with preliminary connections to finite subgroups of Spin(1,3) identified but not proven (Section 6.3). Despite these limitations, deriving static quantum probabilities from logical consistency represents genuine progress in reducing the postulational basis of quantum theory.
 
 **Contribution**: First framework deriving Born rule probabilities from a principle external to quantum mechanics (classical logic), using only information theory (MaxEnt) and mathematical necessity (K=N-2 triple proof), without assuming Hilbert space structure or quantum postulates.
 
@@ -57,7 +57,7 @@ This paper addresses **one** postulate from the standard formulation: **the Born
 
 **What we do NOT derive** (limitations stated explicitly):
 
-1. ❌ **Time evolution** - Schrödinger equation i∂|ψ⟩/∂t = Ĥ|ψ⟩ is not derived from first principles in this work. We show that the graph Laplacian Hamiltonian H = D - A emerges naturally from Fisher information geometry (preliminary result, Theorem D.1 in research notes), but the full derivation of quantum dynamics remains future work.
+1. ❌ **Time evolution** - Schrödinger equation i∂|ψ⟩/∂t = Ĥ|ψ⟩ is not derived from first principles in this work. Preliminary research suggests the graph Laplacian Hamiltonian H = D - A emerges naturally from Fisher information geometry (~60% complete), but the full derivation of quantum dynamics remains future work.
 
 2. ❌ **General observable operators** - We construct specific observables relevant to our framework (inversion count Ĥ, position operators X̂_i, graph Laplacian L̂) but do not derive the general association of Hermitian operators with physical quantities (Postulate 2).
 
@@ -86,7 +86,7 @@ This paper addresses **one** postulate from the standard formulation: **the Born
 | **NOT DERIVED (Limitations)** |||
 | Complex phases ℂ | **Assumed** | Phase freedom postulated, not derived |
 | General \|ψ⟩ (non-uniform) | **NOT DERIVED** | Only uniform ground state proven |
-| Time evolution (Schrödinger eq) | **Preliminary** | Theorem D.1 (research, not complete) |
+| Time evolution (Schrödinger eq) | **Preliminary** | Ongoing research (~60% complete) |
 | General observables | **NOT DERIVED** | Only specific operators (Ĥ, X̂_i, L̂) |
 | Measurement collapse | **NOT DERIVED** | Outside scope (static distributions only) |
 | Lorentz invariance | **NOT DERIVED** | Non-relativistic framework |
@@ -667,7 +667,7 @@ While we derive that amplitudes must be complex to produce interference (Section
 
 **Status**: Complex numbers are **INPUT to our axioms**, not **OUTPUT of our derivations**. This is analogous to how standard QM postulates ℂ without deriving it from measurement theory.
 
-**Potential Path to Derivation** (speculative): U(1) gauge symmetry on permutohedron Cayley graph might force ℂ as natural phase space. This requires geometric analysis beyond current scope (see future work, Appendix D).
+**Potential Path to Derivation** (speculative): U(1) gauge symmetry on permutohedron Cayley graph might force ℂ as natural phase space. This requires geometric analysis beyond current scope.
 
 ---
 
@@ -686,7 +686,7 @@ We derive Born rule probabilities **only for uniform ground states** where all |
 - Excited states or superpositions with specific relative phases
 - Observable-dependent state preparation
 
-**Path Forward**: Extending to general states requires deriving how constraints or observables select specific amplitude distributions beyond uniform MaxEnt. This is active research (Appendix D).
+**Path Forward**: Extending to general states requires deriving how constraints or observables select specific amplitude distributions beyond uniform MaxEnt. This is ongoing research.
 
 **⏳ Time Evolution (Schrödinger Equation)**:
 
@@ -695,7 +695,7 @@ Section 3.5 proposes graph Laplacian Hamiltonian Ĥ_LFT but provides **no rigoro
 - Unitary time evolution U(t) = e^{-iĤt/ℏ}
 - Energy eigenvalues and eigenstates
 
-**Status**: Preliminary work (Appendix D, Theorem D.1) suggests L-flow dynamics → graph Laplacian → Schrödinger-like equation, but proof is incomplete (~60% rigorous). This remains the primary **research frontier**.
+**Status**: Preliminary research suggests L-flow dynamics → graph Laplacian → Schrödinger-like equation, but proof is incomplete (~60% rigorous). This remains the primary **research frontier**.
 
 **⏳ Measurement and Collapse**:
 
@@ -729,13 +729,13 @@ We discuss specific operators (Hamiltonian Ĥ, position-like X̂_i, inversion Ĥ
 | Complex phases ℂ | ❌ No | **Assumed** | Postulate, not derived |
 | MaxEnt principle | ❌ No | **Axiom** | Jaynes (input, not output) |
 | General states \|ψ⟩ | ❌ No | **Beyond scope** | Only uniform proven |
-| Time evolution | ❌ No | **Research** | Appendix D (~60% complete) |
+| Time evolution | ❌ No | **Research** | Ongoing (~60% complete) |
 | Measurement collapse | ❌ No | **Out of scope** | Future work |
 | General observables | ❌ No | **Preliminary** | Specific examples only |
 
 **Honest Assessment**: Our framework **derives static Born rule probabilities for uniform ground states** from minimal axioms. This is significant (reduces 5 QM axioms to 2 + MaxEnt) but does **not** constitute a complete "derivation of quantum mechanics" from logic. It is a **first-principles foundation for quantum probability structure** in a restricted but well-defined domain.
 
-**Forward Path**: Extending to dynamics (Schrödinger equation) and general states represents 12-18 months of research with moderate-to-high technical risk (Appendix D, Section D.3).
+**Forward Path**: Extending to dynamics (Schrödinger equation) and general states represents 12-18 months of research with moderate-to-high technical risk.
 
 ---
 
@@ -988,7 +988,7 @@ Three completely independent mathematical frameworks yield K(N) = N-2:
 - **Algebraically**: More braid relations → tighter constraints
 - **Informationally**: Exponential state space growth vs. polynomial constraint growth
 
-#### 4.5.5 Implications
+#### 4.5.6 Implications
 
 **For Logic Field Theory**: The triple proof completes the foundational structure:
 1. **Amplitude hypothesis** [Section 3.2]: Proven via MaxEnt
@@ -1258,7 +1258,7 @@ While Logic Field Theory achieves significant results in deriving static quantum
 2. **Hilbert space structure**: Orthogonality and superposition follow from distinguishability requirements and phase coherence
 3. **Constraint threshold K(N) = N-2**: Multiply-determined through three independent proofs (Mahonian combinatorics, Coxeter braid relations, MaxEnt convergence)
 4. **Amplitude hypothesis**: |a_σ|² = 1/|V_K| proven via information-theoretic optimization
-5. **Graph Laplacian emergence** (preliminary): H = D - A emerges from Fisher information geometry (Theorem D.1, proof in progress)
+5. **Graph Laplacian emergence** (preliminary): H = D - A emerges from Fisher information geometry (ongoing research, ~60% complete)
 
 **What we have NOT yet derived** (limitations stated explicitly):
 1. **Quantum dynamics**: The Schrödinger equation i∂|ψ⟩/∂t = Ĥ|ψ⟩ is not rigorously derived from first principles in this work. While we show (Section 4.6) that the graph Laplacian H = D - A emerges naturally from Fisher information geometry, the complete derivation of time evolution from entropic dynamics remains future work (target: 3-4 months, ~90% viability based on Caticha 2019 and Reginatto 1998 methods).
@@ -1280,7 +1280,7 @@ While Logic Field Theory achieves significant results in deriving static quantum
 
 Despite these significant limitations, this constitutes the **first derivation of Born rule probabilities from a principle external to quantum mechanics** (classical logic for measurement outcomes), using only information theory (maximum entropy) and mathematical necessity (K = N-2 triple proof), without assuming Hilbert space structure or quantum postulates.
 
-The path forward is clear: extend the Fisher information geometry approach (Theorem D.1) to derive Schrödinger dynamics (achievable, 3-4 months), and investigate whether Lorentz invariance can emerge from discrete structure through renormalization group methods or continuum limits (speculative, 12-18 months). Even if these extensions fail, the derivation of static Born probabilities from logical consistency represents genuine foundational progress.
+The path forward is clear: extend the Fisher information geometry approach to derive Schrödinger dynamics (achievable, 3-4 months based on preliminary research), and investigate whether Lorentz invariance can emerge from discrete structure through renormalization group methods or continuum limits (speculative, 12-18 months). Even if these extensions fail, the derivation of static Born probabilities from logical consistency represents genuine foundational progress.
 
 **Conclusion regarding scope**: Logic Field Theory solves one piece of the quantum measurement problem (where quantum probabilities come from) but does not solve the entire measurement problem (how outcomes are realized, why unitary evolution is interrupted). This partial success is **valuable** precisely because it demonstrates that external principles (logic) can explain aspects of quantum mechanics previously thought to require quantum-specific axioms.
 
@@ -1333,6 +1333,16 @@ The path forward is clear: extend the Fisher information geometry approach (Theo
 [Rovelli 2004] Rovelli, C. (2004). *Quantum Gravity*. Cambridge University Press.
 
 [Bombelli et al. 1987] Bombelli, L., Lee, J., Meyer, D., & Sorkin, R. D. (1987). Space-time as a causal set. *Physical Review Letters*, 59(5), 521.
+
+[Kassel & Turaev 2008] Kassel, C., & Turaev, V. (2008). *Braid Groups*. Springer.
+
+[Caticha 2019] Caticha, A. (2019). Entropic Dynamics, Time and Quantum Theory. *Journal of Physics A: Mathematical and Theoretical*, 44(22), 225303.
+
+[Caticha 2022] Caticha, A. (2022). Entropic Inference and the Foundations of Physics. Cambridge University Press.
+
+[Reginatto 1998] Reginatto, M. (1998). Derivation of the equations of nonrelativistic quantum mechanics using the principle of minimum Fisher information. *Physical Review A*, 58(3), 1775.
+
+[Leifer & Pusey 2020] Leifer, M. S., & Pusey, M. F. (2020). Is a time symmetric interpretation of quantum theory possible without retrocausality? *Proceedings of the Royal Society A*, 473(2202), 20170607.
 
 ---
 
