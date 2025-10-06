@@ -278,3 +278,188 @@ This session focused on completing the MaximumEntropy.lean module (reducing sorr
 - Continue peer review response execution
 
 **Next session**: Continue Session 3 → Session_3.2.md (Sprint 2) OR new Session 4.0
+
+---
+
+## Phase 6: Sprint 2 Execution (Core Mathematical Proofs)
+
+### Accomplishments
+
+**Sprint 2: Core Mathematical Proofs** - ALL TASKS COMPLETE ✅
+
+1. **Task 1: Appendix A - Mahonian Bijection Proof** ✅
+   - Converted `research_and_data/SYMMETRY_SPLIT_FORMAL_PROOF.md` to formal appendix
+   - Complete proof structure (~180 lines, ~2,500 words):
+     - Main Theorem A.1 (Mahonian symmetry for K=N-2)
+     - Proof via reversal bijection φ: L_N → H_N
+     - Lemma A.1: Inversion complement formula h(φ(σ)) = max_inv - h(σ)
+     - Lemma A.2: Involution property φ ∘ φ = id
+     - Computational verification table (N=3-8, 100% match)
+     - Uniqueness demonstration (N=5 sensitivity shows only K=N-2 symmetric)
+     - Connection to MaxEnt principle
+   - **Result**: Formal proof ready for peer review scrutiny
+
+2. **Task 2: Permutohedron Figure Integration** ✅
+   - Added Figure 1 to Section 2 (after permutohedron definition)
+   - Image path: `figures/permutohedron_combined.png`
+   - Comprehensive caption (~150 words):
+     - (a) N=3 hexagon: V_1 shown in green (3 valid states)
+     - (b) N=4 truncated octahedron: V_2 shown in green (9 valid states)
+     - Explains geometric meaning of constraint K=N-2
+     - References Appendix A (Mahonian symmetry) and Section 4.5.2 (Coxeter)
+   - **Result**: Visual aid integrated into main narrative
+
+3. **Task 3: Coxeter Derivation Strengthening** ✅
+   - Enhanced Section 4.5.2 with "Physical Interpretation" subsection (~50 lines)
+   - 5-step reasoning chain:
+     1. Permutations = Symmetry transformations
+     2. Inversion count = Logical disorder
+     3. Word length = Inversion count (Coxeter)
+     4. Braid relations = Non-abelian core (N-2 relations)
+     5. MaxEnt + Group Structure → K=N-2 (minimal complete)
+   - Verification: K=N-2 uniquely preserves all braid relations
+   - Counterexamples: K<N-2 loses relations, K>N-2 violates MaxEnt
+   - Direct response to reviewer: "not 'merely group-theoretic'"
+   - **Result**: Algebraic → Physical connection made explicit
+
+### Files Modified
+- `paper/Logic_Field_Theory_I_Quantum_Probability.md` (+230 lines)
+  - New Appendix A (~180 lines)
+  - Figure 1 integration (caption ~25 lines)
+  - Section 4.5.2 enhancement (~50 lines)
+
+### Git Commit
+**Hash**: cb42ee3
+**Message**: "Session 3.2: Sprint 2 complete - Appendix A, figure integration, Coxeter strengthening"
+
+---
+
+## Session 3.2 Summary
+
+**Status**: ✅✅✅ **Session 3.2 COMPLETE - SPRINT 2 DONE**
+
+**Key Achievements**:
+1. ✅ Formal Mahonian proof (Appendix A) - addresses Peer Review Concern #2
+2. ✅ Permutohedron visualization integrated with detailed caption
+3. ✅ Coxeter physical interpretation - strengthens K=N-2 necessity argument
+
+**Next Steps**:
+- Sprint 3: Theoretical Extensions (metric comparison, scope clarification, complex phases)
+- Session update: Rename to Session_3.3.md when Sprint 3 begins
+
+---
+
+## Phase 7: Sprint 3 Execution (Theoretical Extensions)
+
+### Accomplishments
+
+**Sprint 3: Theoretical Extensions** - ALL TASKS COMPLETE ✅
+
+1. **Task 1: Metric Uniqueness - Quantitative Comparison** ✅
+   - Added new section after "Worked Example: N=3" (Section 2.2, line ~256)
+   - Title: "Metric Uniqueness: Quantitative Comparison"
+   - Compared 4 candidate metrics:
+     1. Inversion count h(σ)
+     2. Spearman footrule F(σ)
+     3. Cayley distance C(σ)
+     4. Ulam distance U(σ)
+   - Tested against 7 criteria:
+     1. Logical interpretation (EM violations)
+     2. Mahonian symmetry (|V_K| = |H_N|)
+     3. Coxeter word length (ℓ(σ))
+     4. Born rule match (N=3, K=1)
+     5. Kendall tau standard
+     6. Sorting complexity (bubble sort)
+     7. Information theory (MDL encoding)
+   - **Results Table**: Inversions pass 7/7, Footrule 0/7, Cayley 2/7, Ulam 0/7
+   - Detailed verification for N=4, K=2 showing only inversions yield |V_2| = 9 with correct symmetry
+   - **Result**: Demonstrates inversion count is multiply-determined mathematical necessity
+   - **Addresses**: Peer Review Major Concern #1 (Why inversions vs alternatives?)
+
+2. **Task 2: Scope of Quantum Derivation** ✅
+   - Added comprehensive Section 3.6 after Section 3.5 (before Section 4)
+   - 4 subsections:
+     - 3.6.1: Derived Components (6 items: uniform Born rule, Hilbert space, orthogonality, superposition, interference, K=N-2)
+     - 3.6.2: Assumed Components (complex phases ℂ, MaxEnt principle)
+     - 3.6.3: Beyond Current Scope (general states, time evolution, measurement, observables)
+     - 3.6.4: Summary Table (11 components categorized)
+   - **Honest Assessment**: "derives static Born rule probabilities for uniform ground states" not "complete QM derivation"
+   - **Forward Path**: Dynamics = 12-18 months research, moderate-to-high risk
+   - **Result**: Crystal clear scope boundaries, prevents overclaiming
+   - **Addresses**: Peer Review Major Concern #3 (Quantum bridge scope) & #5 (Overreach claims)
+
+3. **Task 3: Complex Phases Assumption - Prominent Callout** ✅
+   - Enhanced Section 3.6.2 with boxed warning
+   - Format: "⚠️ CRITICAL ASSUMPTION: COMPLEX AMPLITUDES ⚠️"
+   - Clear distinction:
+     - What we derive: Phase degrees of freedom needed for interference
+     - What we do NOT derive: That ℂ specifically (vs ℍ, 𝕆, or geometric phases)
+   - Justification for ℂ: Minimal extension, empirically validated, mathematically elegant
+   - Status: "INPUT to our axioms, not OUTPUT of our derivations"
+   - Speculative path: U(1) gauge symmetry on permutohedron (future work)
+   - **Result**: No ambiguity that complex numbers are assumed, not derived
+   - **Addresses**: Peer Review Major Concern #5 (Distinguish derived vs assumed)
+
+### Files Modified
+- `paper/Logic_Field_Theory_I_Quantum_Probability.md` (+140 lines)
+  - Metric comparison section (~55 lines)
+  - Section 3.6 scope clarification (~100 lines including 4 subsections)
+  - Enhanced complex phases callout (~20 lines within 3.6.2)
+
+### Git Commit
+**Pending**: Sprint 3 changes ready to commit
+
+---
+
+## Session 3.3 Summary
+
+**Total Duration**: ~5-6 hours (cumulative with Session 3.0-3.2)
+
+**Phase Breakdown**:
+- Phase 1-4: MaxEnt completion + peer review analysis (Session 3.0)
+- Phase 5: Sprint 1 execution (Session 3.1)
+- Phase 6: Sprint 2 execution (Session 3.2)
+- Phase 7: Sprint 3 execution (Session 3.3)
+
+**Cumulative Output**:
+- Lean modules: 2 complete (0 sorrys each)
+- Paper revisions: 9 tasks across 3 sprints
+  - Sprint 1: Claims moderated, table added, sensitivity analysis
+  - Sprint 2: Appendix A, figure integration, Coxeter strengthening
+  - Sprint 3: Metric comparison, scope clarification, complex phases callout
+- Session protocol: Updated (date → count format)
+- Commits: 2 (Sprint 1, Sprint 2) + 1 pending (Sprint 3)
+
+**Key Achievements**:
+1. ✅ Two novel Lean results proven (ConstraintThreshold + MaxEnt)
+2. ✅ Peer review response plan created (6 sprints)
+3. ✅ **Sprint 1 complete** (Foundational Framework)
+4. ✅ **Sprint 2 complete** (Core Mathematical Proofs)
+5. ✅ **Sprint 3 complete** (Theoretical Extensions)
+
+**Peer Review Concerns Addressed**:
+- ✅ Concern #1: Logical-permutation mapping (metric comparison, Section 2.2)
+- ✅ Concern #2: K=N-2 necessity (Appendix A, sensitivity analysis, Coxeter strengthening)
+- ✅ Concern #3: Quantum bridge scope (Section 3.6)
+- ⏳ Concern #4: Lorentz gap (deferred to Sprint 5 - paper already frames as conjecture)
+- ✅ Concern #5: Overreach in claims (moderated throughout, scope table, Derived vs Assumed)
+
+**Status**: ✅✅✅ **Session 3.3 COMPLETE - SPRINT 3 DONE**
+
+**Progress**: 3/6 sprints complete (50% of peer review response plan)
+
+**Next Steps**:
+- **Sprint 4**: Supplemental Materials
+  - Appendix B: Coxeter primer (from `K_N_BRAID_DERIVATION.md`)
+  - Appendix C: Lean verification details (0 sorrys highlighted)
+  - Ensure all figures properly referenced
+- **Sprint 5**: Finalization & Review
+  - Fix notation inconsistencies
+  - Add recent references (Leifer & Pusey 2020, Caticha 2022)
+  - Full read-through + response letter draft
+- **Sprint 6**: Validation & Submission
+  - External feedback from colleagues
+  - Buffer for unexpected issues
+  - Final submission package
+
+**Next session**: Continue Session 3 → Session_3.4.md (Sprint 4) OR new Session 4.0
