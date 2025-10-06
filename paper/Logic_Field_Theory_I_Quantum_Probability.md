@@ -1,4 +1,4 @@
-# Quantum Probability from Logical Constraints: The A = L(I) Framework
+# Logic Field Theory I: Deriving Quantum Probability from Logical Constraints
 
 **Authors**: James D. (JD) Longmire
 
@@ -8,6 +8,8 @@ ORCID: 0009-0009-1383-7698
 **Target Journal**: Foundations of Physics
 
 **Status**: FINAL DRAFT v2 (Peer Review Revisions Integrated)
+
+**Series**: Logic Field Theory - Part I
 
 ---
 

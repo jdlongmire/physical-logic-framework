@@ -60,8 +60,8 @@ physical_logic_framework/
 ├── CLAUDE.md                         # Instructions for Claude Code sessions
 │
 ├── paper/                            # 📄 Papers and publications
-│   ├── Born_Rule_Paper_FINAL_v1.md   # Main paper (v2 - peer review integrated)
-│   ├── It_from_Logic_Scholarly_Paper.md  # Original LFT paper
+│   ├── Logic_Field_Theory_I_Quantum_Probability.md  # Main paper (Part I - v2)
+│   ├── supplementary/              # Supplementary materials
 │   ├── supporting_material/          # Development docs (29 files)
 │   │   ├── Peer review response docs
 │   │   ├── Moderated sections (integrated into v2)
@@ -110,7 +110,7 @@ physical_logic_framework/
 3. Review specific documents as needed
 
 **To understand the theory**:
-1. Read [`paper/Born_Rule_Paper_FINAL_v1.md`](paper/Born_Rule_Paper_FINAL_v1.md) - Main paper
+1. Read [`paper/Logic_Field_Theory_I_Quantum_Probability.md`](paper/Logic_Field_Theory_I_Quantum_Probability.md) - Main paper (Part I)
 2. Read [`research_and_data/THEOREM_D1_COMPLETE.md`](research_and_data/THEOREM_D1_COMPLETE.md) - Hamiltonian derivation
 
 **To run code**:
@@ -126,7 +126,7 @@ physical_logic_framework/
 - **COMPLETE_THEORY_RESEARCH_PLAN.md** - 18-month roadmap
 
 ### Paper
-- **Born_Rule_Paper_FINAL_v1.md** - Main paper (v2, ready for resubmission)
+- **Logic_Field_Theory_I_Quantum_Probability.md** - Main paper (Part I, v2, ready for resubmission)
 - **paper/supporting_material/** - Peer review response + development docs
 
 ### Status & Planning

@@ -85,13 +85,13 @@
 ### 7. Draft Versions (1 file)
 
 - `Born_Rule_Paper_DRAFT.md` - Earlier draft version
-  - **Current version**: `../Born_Rule_Paper_FINAL_v1.md` (v2)
+  - **Current version**: `../Logic_Field_Theory_I_Quantum_Probability.md` (v2)
 
 ---
 
 ## Integration Status
 
-**Main Paper**: `../Born_Rule_Paper_FINAL_v1.md` (v2)
+**Main Paper**: `../Logic_Field_Theory_I_Quantum_Probability.md` (v2)
 
 **Integrated sections**:
 - ✅ Abstract (moderated)
@@ -142,10 +142,10 @@ These documents support the Born Rule paper development and peer review response
 ## File Organization
 
 **Main paper folder** (`../`):
-- Born_Rule_Paper_FINAL_v1.md (v2) - Current working version
-- It_from_Logic_Scholarly_Paper.md - Original LFT paper
+- Logic_Field_Theory_I_Quantum_Probability.md (v2) - Current working version (Part I)
 - Supplementary_Material_COMPLETE.md - Supplementary materials
 - README.md - Folder documentation
+- supplementary/ - It from Logic Scholarly Paper (original LFT paper)
 
 **This folder** (`supporting_material/`):
 - All development/planning documents (29 files)

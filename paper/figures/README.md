@@ -26,9 +26,9 @@
 
 ---
 
-### Born Rule Paper - Permutohedron Figures (October 2025)
+### Logic Field Theory Part I - Permutohedron Figures (October 2025)
 
-**New Figures for Born Rule Paper**:
+**New Figures for LFT Part I**:
 - **permutohedron_N3.png** (129 KB) - N=3 permutohedron (hexagon in 2D)
 - **permutohedron_N4.png** (353 KB) - N=4 permutohedron (truncated octahedron in 3D)
 - **permutohedron_combined.png** (277 KB) - Combined N=3 and N=4 visualization
@@ -68,8 +68,8 @@
 **Main figures**: figure1-6.png (original LFT framework)
 **Location**: `../supplementary/It_from_Logic_Scholarly_Paper.md`
 
-### For Born Rule Paper
-**Main paper**: `../Born_Rule_Paper_FINAL_v1.md` (v2)
+### For Logic Field Theory Part I
+**Main paper**: `../Logic_Field_Theory_I_Quantum_Probability.md` (v2)
 **Permutohedron figures**: permutohedron_N3.png, permutohedron_N4.png, permutohedron_combined.png
 **Status**: Integrated into paper (Figure 2 - Permutohedron State Space)
 
@@ -131,7 +131,7 @@ python generate_permutohedron_figures.py
 
 **Original LFT Figures**: ✅ 6 figures complete (figure1-6.png)
 
-**Born Rule Paper Figures**: ✅ 3 permutohedron figures complete
+**LFT Part I Figures**: ✅ 3 permutohedron figures complete
 
 **K(N) Proof Figures**: ✅ 2 triple convergence figures complete
 

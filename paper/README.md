@@ -2,12 +2,13 @@
 
 ## Main Publications
 
-### Born Rule Paper (Active - October 2025)
+### Logic Field Theory Part I (Active - October 2025)
 
-- **Born_Rule_Paper_FINAL_v1.md** - Born rule derivation from logical constraints (v2 - peer review revisions integrated)
+- **Logic_Field_Theory_I_Quantum_Probability.md** - Deriving quantum probability from logical constraints (v2 - peer review revisions integrated)
 - **Author**: James D. (JD) Longmire
 - **Status**: Ready for resubmission to Foundations of Physics
 - **Target Journal**: Foundations of Physics
+- **Series**: Logic Field Theory - Part I
 
 This paper derives static quantum probabilities (Born rule) from logical consistency requirements in a non-relativistic framework.
 
