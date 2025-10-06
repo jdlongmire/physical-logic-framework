@@ -14,6 +14,9 @@ import PhysicalLogicFramework.QuantumEmergence.BornRule
 import PhysicalLogicFramework.QuantumEmergence.HilbertSpace
 -- import PhysicalLogicFramework.QuantumEmergence.OrthomodularCore  -- Disabled: has syntax errors
 import PhysicalLogicFramework.QuantumEmergence.QuantumCore
+-- Dynamics modules: Theorem D.1 formalization (NEW - October 6, 2025)
+import PhysicalLogicFramework.Dynamics.GraphLaplacian
+import PhysicalLogicFramework.Dynamics.TheoremD1
 
 /-!
 # Physical Logic Framework (PLF)
@@ -33,6 +36,7 @@ that proposes physical reality emerges from logical filtering of information: A 
 - **Quantum Inevitability**: Reality has no choice but to be quantum
 - **Born Rule Derivation**: Probability emerges from logical necessity
 - **Spacetime Emergence**: 3+1 dimensions from permutohedron geometry
+- **Theorem D.1**: Graph Laplacian emerges as natural Hamiltonian (October 2025)
 - **Unified Framework**: Single principle explains fundamental physics
 
 This formalization proves these results mathematically in Lean 4.

@@ -1,6 +1,6 @@
 {"synthetic": false,
  "outputs":
- {"o": ["16695085763492151286"],
+ {"o": ["17789842421428962643"],
   "i": "5259468243098310063",
   "c": "15577491980136968169"},
  "log":
@@ -134,9 +134,9 @@
        [["@PhysicalLogicFramework:extraDep", "1723"]]],
       ["imports",
        [["PhysicalLogicFramework.QuantumEmergence.BellInequality_Fixed transitive imports (legacy)",
-         "3585249661295937226"],
+         "6064155220970026390"],
         ["PhysicalLogicFramework.QuantumEmergence.BellInequality_Fixed:importAllArts",
-         "103797498278371863"],
+         "4463949132455162146"],
         ["Mathlib.Analysis.InnerProductSpace.Basic transitive imports (legacy)",
          "4026462219530672127"],
         ["Mathlib.Analysis.InnerProductSpace.Basic:importAllArts",
@@ -171,4 +171,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "16338954934508504566"}
+ "depHash": "6390058830405740756"}

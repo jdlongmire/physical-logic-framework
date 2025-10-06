@@ -1,6 +1,6 @@
 {"synthetic": false,
  "outputs":
- {"o": ["9770060438009893072"],
+ {"o": ["13649087804206390211"],
   "i": "11585431234031063649",
   "c": "18091456798835800544"},
  "log":
@@ -113,9 +113,9 @@
        [["@PhysicalLogicFramework:extraDep", "1723"]]],
       ["imports",
        [["PhysicalLogicFramework.QuantumEmergence.HilbertSpace transitive imports (legacy)",
-         "14617677983885986835"],
+         "1182926139335412940"],
         ["PhysicalLogicFramework.QuantumEmergence.HilbertSpace:importAllArts",
-         "17798535241518586246"],
+         "4918573491723279256"],
         ["Mathlib.MeasureTheory.Measure.ProbabilityMeasure transitive imports (legacy)",
          "13860743530325735668"],
         ["Mathlib.MeasureTheory.Measure.ProbabilityMeasure:importAllArts",
@@ -143,4 +143,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "5318695886611073881"}
+ "depHash": "17998575417331473143"}

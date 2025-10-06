@@ -1628,6 +1628,8 @@
   ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean\\Mathlib\\GroupTheory\\QuotientGroup\\Defs.olean"],
   "Mathlib.GroupTheory.QuotientGroup.Basic":
   ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean\\Mathlib\\GroupTheory\\QuotientGroup\\Basic.olean"],
+  "Mathlib.GroupTheory.Perm.Basic":
+  ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean\\Mathlib\\GroupTheory\\Perm\\Basic.olean"],
   "Mathlib.GroupTheory.OrderOfElement":
   ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean\\Mathlib\\GroupTheory\\OrderOfElement.olean"],
   "Mathlib.GroupTheory.Index":
@@ -2140,6 +2142,8 @@
   ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean\\Mathlib\\Data\\Fintype\\Pigeonhole.olean"],
   "Mathlib.Data.Fintype.Pi":
   ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean\\Mathlib\\Data\\Fintype\\Pi.olean"],
+  "Mathlib.Data.Fintype.Perm":
+  ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean\\Mathlib\\Data\\Fintype\\Perm.olean"],
   "Mathlib.Data.Fintype.Option":
   ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean\\Mathlib\\Data\\Fintype\\Option.olean"],
   "Mathlib.Data.Fintype.OfMap":

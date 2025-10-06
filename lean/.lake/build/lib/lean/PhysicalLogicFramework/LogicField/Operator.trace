@@ -1,7 +1,7 @@
 {"synthetic": false,
  "outputs":
- {"o": ["2453394793221891540"],
-  "i": "15581902295480260545",
+ {"o": ["18228989401787019232"],
+  "i": "6090314073572247264",
   "c": "17122841448713637661"},
  "log":
  [{"message":
@@ -21,9 +21,6 @@
    "level": "warning"},
   {"message":
    "LFT_Proofs/PhysicalLogicFramework/LogicField/Operator.lean:276:8: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/Operator.lean:319:8: declaration uses 'sorry'",
    "level": "warning"}],
  "inputs":
  [["PhysicalLogicFramework.LogicField.Operator:deps",
@@ -36,9 +33,9 @@
         ["PhysicalLogicFramework.Foundations.ThreeFundamentalLaws:importAllArts",
          "2609154114742361977"],
         ["PhysicalLogicFramework.Foundations.InformationSpace transitive imports (legacy)",
-         "2417943184197972888"],
+         "10597744576576296984"],
         ["PhysicalLogicFramework.Foundations.InformationSpace:importAllArts",
-         "8918086260788180357"],
+         "1558335000534038425"],
         ["Mathlib.Data.Set.Basic transitive imports (legacy)",
          "15405079330372128603"],
         ["Mathlib.Data.Set.Basic:importAllArts", "17589818717043669713"],
@@ -57,7 +54,7 @@
   ["Lean 4.23.0, commit ad1a017949674a947f0d6794cbf7130d642c6530",
    "2372534101328293747"],
   ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\LFT_Proofs\\PhysicalLogicFramework\\LogicField\\Operator.lean",
-   "7357013720003519261"],
+   "6866336706217795120"],
   ["options",
    [["-DmaxSynthPendingDepth=3", "14379489197236848084"],
     ["-Dweak.linter.mathlibStandardSet=true", "9949955268809796418"],
@@ -65,4 +62,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "4135502936178814803"}
+ "depHash": "5622297595418747503"}

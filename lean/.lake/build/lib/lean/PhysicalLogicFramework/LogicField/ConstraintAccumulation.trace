@@ -1,6 +1,6 @@
 {"synthetic": false,
  "outputs":
- {"o": ["13710499682126778968"],
+ {"o": ["17522056409813182068"],
   "i": "6479888305461726910",
   "c": "4433184853042026154"},
  "log":
@@ -56,9 +56,9 @@
        [["@PhysicalLogicFramework:extraDep", "1723"]]],
       ["imports",
        [["PhysicalLogicFramework.LogicField.Operator transitive imports (legacy)",
-         "3580268729939444517"],
+         "5423604748312005589"],
         ["PhysicalLogicFramework.LogicField.Operator:importAllArts",
-         "5902735951985368128"],
+         "3826387155664684845"],
         ["Mathlib.Analysis.SpecialFunctions.Exp transitive imports (legacy)",
          "11238687873220535714"],
         ["Mathlib.Analysis.SpecialFunctions.Exp:importAllArts",
@@ -110,4 +110,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "4656866344370052856"}
+ "depHash": "749684137846887786"}
