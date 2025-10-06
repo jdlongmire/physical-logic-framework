@@ -23,36 +23,43 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## 📝 Session Logging Protocol
 
-**IMPORTANT**: At the start of each NEW session (new date), create a new session log file:
+**IMPORTANT**: Sessions are tracked by sequential count, with progressive updates during active work.
 
 ### Creating New Session Log
 
-**Format**: `Session_Log/SESSION_YYYY_MM_DD_COMPLETE.md`
+**Format**: `Session_Log/Session_X.Y.md`
+- **X** = Session number (increments with each new session)
+- **Y** = Update number within session (starts at 0, increments as work progresses)
 
-**Example**: `Session_Log/SESSION_2025_10_06_COMPLETE.md`
+**Examples**:
+- `Session_Log/Session_3.0.md` (new session starts)
+- `Session_Log/Session_3.1.md` (first major update)
+- `Session_Log/Session_3.2.md` (second major update)
+- `Session_Log/Session_3.3.md` (final update before completion)
 
 **When to create**:
-- ✅ At the start of each new work session on a different date
-- ✅ If continuing work on same date, update existing session file
-- ❌ Do NOT create multiple session files for same date
+- ✅ At the start of each new work session: Create `Session_X.0.md`
+- ✅ After completing major tasks/phases: Rename to `Session_X.Y.md` (increment Y)
+- ✅ Progressive updates capture evolving work in real-time
+- ❌ Do NOT create multiple files - rename the same file with incremented Y
 
 **Template structure**:
 ```markdown
-# Complete Session Log - [Month DD, YYYY]
+# Session X.Y - [Brief Description]
 
-**Date**: [Month DD, YYYY]
-**Duration**: [Estimated or actual hours]
-**Type**: [Research / Paper / Both / Organization]
+**Session Number**: X.Y
+**Started**: [Timestamp if known]
+**Focus**: [Research / Paper / Lean / Review / Organization]
 
 ---
 
 ## Session Overview
 
-[Brief summary of goals and achievements]
+[Brief summary of goals and current progress]
 
 ---
 
-## Phase 1: [Name] ([Time estimate])
+## Phase 1: [Name]
 
 ### Accomplishments
 1. [Item 1]
@@ -64,19 +71,23 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ---
 
-## Files Created ([Total count])
+## Files Created/Modified (Total: [count])
 
-[Categorized list of all files]
+### Created
+- [New files]
+
+### Modified
+- [Modified files]
 
 ---
 
 ## Key Achievements
 
-[Major milestones]
+[Major milestones reached this session]
 
 ---
 
-## Next Session Resume
+## Next Steps
 
 **To Resume**:
 1. Read: CURRENT_STATUS.md
@@ -84,27 +95,42 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 3. Continue: [Next major task]
 ```
 
-### During Session: Update Periodically
+### During Session: Progressive Updates
 
-**Update frequency**: Every 1-2 hours or after completing major tasks
+**Update trigger**: After completing each major phase/task
 
-**What to update**:
-- Add new phases/sections as work progresses
-- Update "Files Created" list
-- Add "Key Achievements" as milestones reached
-- Update time estimates
+**How to update**:
+1. Rename current file: `Session_X.Y.md` → `Session_X.(Y+1).md`
+2. Update all sections with new progress
+3. Add new phases as they complete
+4. Update "Files Created/Modified" list
+5. Note key achievements
+
+**Example progression**:
+- `Session_3.0.md` - Session start (Sprint 1 begins)
+- `Session_3.1.md` - After claim moderation complete
+- `Session_3.2.md` - After sensitivity analysis complete
+- `Session_3.3.md` - After table addition complete (Sprint 1 done)
 
 ### End of Session: Finalize
 
 **Before ending session**:
-1. ✅ Complete all sections in session log
-2. ✅ Update `CURRENT_STATUS.md` with latest status
-3. ✅ Archive any intermediate/duplicate session files to `archive/`
-4. ✅ Ensure `Session_Log/` contains only:
-   - Current and recent session logs
+1. ✅ Make final rename to highest Y value
+2. ✅ Complete all sections in session log
+3. ✅ Update `CURRENT_STATUS.md` with latest status
+4. ✅ Archive any old/superseded session files to `archive/` if needed
+5. ✅ Ensure `Session_Log/` contains only:
+   - Current and recent session logs (Session_X.Y.md format)
    - README.md
 
-**Result**: Clean, dated, comprehensive session history
+**Result**: Sequential, versioned session history with clear progression
+
+### Retroactive Numbering
+
+**Previous date-based sessions** map to new numbering:
+- `SESSION_2025_10_05_COMPLETE.md` = Session 1.0 (retroactive)
+- `SESSION_2025_10_06_COMPLETE.md` = Session 2.0 (retroactive)
+- Current session = Session 3.0 (new format begins)
 
 ---
 
