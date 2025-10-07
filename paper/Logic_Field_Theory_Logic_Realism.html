@@ -679,12 +679,20 @@ class="header-section-number">1.4.6.1</span> 3.6.1 Path-Based Systems
 <p><strong>Rule</strong>: N equals the number of <strong>distinguishable
 paths</strong> through the apparatus.</p>
 <table>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 4%" />
+<col style="width: 32%" />
+<col style="width: 20%" />
+<col style="width: 17%" />
+</colgroup>
 <thead>
 <tr>
 <th>Physical System</th>
 <th>N</th>
 <th>Valid Configurations</th>
-<th>V_K</th>
+<th>Size of V_K</th>
+<th>K(N) = N-2</th>
 </tr>
 </thead>
 <tbody>
@@ -693,24 +701,28 @@ paths</strong> through the apparatus.</p>
 <td>2</td>
 <td>Paths through slit 1 or 2</td>
 <td>2</td>
+<td>0</td>
 </tr>
 <tr>
 <td>Triple-slit</td>
 <td>3</td>
 <td>Three path options</td>
 <td>4</td>
+<td>1</td>
 </tr>
 <tr>
 <td>Four-slit</td>
 <td>4</td>
 <td>Four path options</td>
 <td>9</td>
+<td>2</td>
 </tr>
 <tr>
 <td>Mach-Zehnder</td>
 <td>2</td>
 <td>Two interferometer arms</td>
 <td>2</td>
+<td>0</td>
 </tr>
 </tbody>
 </table>
@@ -735,8 +747,8 @@ basis states).</p>
 <th>System</th>
 <th>Qubits (n)</th>
 <th>N = 2^n</th>
-<th></th>
-<th>V_K</th>
+<th>Size of V_K</th>
+<th>K(N) = N-2</th>
 </tr>
 </thead>
 <tbody>
