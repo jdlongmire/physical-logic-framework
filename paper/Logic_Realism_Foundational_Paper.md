@@ -20,7 +20,9 @@ We demonstrate that this single principle, combined with Maximum Entropy reasoni
 4. The arrow of time from monotonic logical consistency
 5. Conservation laws via Noether correspondence on permutation symmetry
 
-We prove the **Lagrangian-Hamiltonian duality** of logical dynamics, showing that minimal-inconsistency (logical action principle) and minimum Fisher information (Hamiltonian formulation) are equivalent variational principles. The framework is empirically grounded in the consistency of all recorded measurements with the logical field framework once recast through $S_N$ structure, and provides explicit falsification criteria. Logic Realism thus repositions logic from abstract formalism to physical substrate, offering a complete reformulation of quantum mechanics grounded in logical necessity rather than quantum postulates. **Note**: The theory currently applies to distinguishable-path and basis-distinguishable systems; extension to indistinguishable particles (fermions/bosons) remains the primary open problem.
+We prove the **Lagrangian-Hamiltonian duality** of logical dynamics, showing that minimal-inconsistency (logical action principle) and minimum Fisher information (Hamiltonian formulation) are equivalent variational principles. The framework is empirically grounded in the consistency of all recorded measurements with the logical field framework once recast through $S_N$ structure, and provides explicit falsification criteria.
+
+**Scope**: This framework currently reformulates quantum **statics** (Born rule, Hilbert space) and **unitary dynamics** (Hamiltonian evolution) for **path-distinguishable and basis-distinguishable systems**. Two critical extensions remain open: (1) measurement collapse dynamics, and (2) indistinguishable particles (fermions/bosons via Young tableaux). Within its established domain, Logic Realism repositions logic from abstract formalism to physical substrate, deriving quantum probability structure from logical necessity rather than postulates.
 
 **Keywords**: Logic Realism, foundational physics, quantum foundations, information theory, variational principles, Lagrangian-Hamiltonian duality
 
@@ -121,29 +123,13 @@ This paper establishes the **philosophical and mathematical foundations** of Log
 
 ### 2.1 Principle Statement
 
-**Logic Realism Principle (LRP)**: The laws of logic—Identity (ID), Non-Contradiction (NC), and Excluded Middle (EM)—are not descriptions of how physical systems appear, but **prescriptions** determining which configurations of information can exist at all.
+**Logic Realism Principle (LRP)**: The laws of logic (Identity, Non-Contradiction, Excluded Middle) are **prescriptive constraints** determining which information configurations can physically exist, formalized as $A = L(I)$ where $L$ enforces:
 
-**Formal Expression**:
-```
-A = L(I)
-```
+1. **Identity (ID)**: $A = A$ — Self-identity preserved under evolution
+2. **Non-Contradiction (NC)**: $\neg(A \land \neg A)$ — No simultaneous exclusives
+3. **Excluded Middle (EM)**: $A \lor \neg A$ — Definite measurement outcomes
 
-where **A** is the actualized world (physically real configurations), **I** is the total information field (all conceivable states), and **L** is the logical filtering operator enforcing:
-
-1. **Identity (ID)**: A = A
-   Every entity maintains self-identity through continuous evolution
-
-2. **Non-Contradiction (NC)**: ¬(A ∧ ¬A)
-   No system exhibits mutually exclusive properties simultaneously
-
-3. **Excluded Middle (EM)**: A ∨ ¬A
-   Every measurement yields a definite outcome
-
-**Ontological Interpretation**:
-- Logic is the **constraint field** underlying physics
-- Physical theories model dynamics *within* the allowed state space
-- Logic Realism defines *what that state space can be*
-- Thus: **logic is not emergent from matter; matter is emergent from logical constraint**
+**Ontological commitment**: Logic is the constraint field; matter emerges from logical constraint, not vice versa.
 
 ### 2.2 Empirical Baseline
 
@@ -345,18 +331,7 @@ This mapping from physical systems to the mathematical structure S_N is **essent
 
 ### 4.1 Formal Definition
 
-The **Information-Logic Mapping** expresses the transformation from unconstrained informational possibility to physically realized actuality under the action of logical law:
-
-```
-A = L(I)
-```
-
-where:
-- I = Infinite Information Space (all conceivable configurations)
-- L = Logical Field operator (enforcing ID, NC, EM)
-- A = Actualized reality (logically valid, physically realized subset)
-
-This defines the **ontological bridge** between information (what could be) and existence (what is).
+The **Information-Logic Mapping** $A = L(I)$ expresses the ontological bridge from informational possibility to physical actuality through logical constraint.
 
 ![Figure 1: The Information-Logic Mapping](figures/logic_realism_fig1_mapping.png)
 **Figure 1**: The Information-Logic Mapping A = L(I). The Logical Field ℒ transforms the Infinite Information Space (all conceivable configurations) into Actualized Reality (physically realized states) by enforcing the three classical logical laws (Identity, Non-Contradiction, Excluded Middle).
@@ -1147,10 +1122,13 @@ The framework is:
 - ⚠️ **Primary open problem**: Extension to indistinguishable particles (fermions/bosons via Young tableaux)
 - ⚠️ **Unresolved dynamics**: Measurement collapse mechanism requires explicit logical-entropy transfer theory
 
-**Future Outlook**: If forthcoming experiments continue to confirm the framework within its established domain, and if extensions to indistinguishable particles prove successful, the **Logic Realism Principle** will stand not as philosophy but as the **foundational law of nature**:
+**Future Outlook**: If forthcoming experiments continue to confirm the framework within its established domain, **and** if extensions to indistinguishable particles and measurement collapse prove successful, the **Logic Realism Principle** could emerge as a **candidate foundational framework**—pending resolution of these critical open problems.
 
+**The Core Hypothesis**:
 > Logic is not a map of reality; it is the terrain.
 > Physical law is logic made quantitative.
+
+This remains a conjecture, not established fact. Its validation requires: (1) experimental confirmation of finite-N predictions, (2) successful extension to fermionic/bosonic statistics, and (3) rigorous derivation of measurement dynamics. Until then, Logic Realism stands as a promising but incomplete program.
 
 ---
 
