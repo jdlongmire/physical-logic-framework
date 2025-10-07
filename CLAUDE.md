@@ -342,3 +342,4 @@ np.random.seed(42); random.seed(42)
 ## Research Context
 
 This repository implements active theoretical research in fundamental physics. All results are mathematical/computational demonstrations of the LFT framework. The core thesis is that physical laws (quantum mechanics, spacetime geometry, gravity) can be derived rather than postulated, emerging from logical consistency requirements on an information space.
+- after each session make sure and update the current status file and all relevant readme files

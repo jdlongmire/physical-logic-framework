@@ -34,7 +34,14 @@
       "Bash(test:*)",
       "Bash(\"/c/Program Files/Pandoc/pandoc\" Logic_Field_Theory_I_Quantum_Probability.md -o Logic_Field_Theory_I_Quantum_Probability.pdf --pdf-engine=pdflatex --variable=geometry:margin=1in --variable=documentclass:article --variable=fontsize:11pt --variable=colorlinks:true --table-of-contents --number-sections)",
       "WebFetch(domain:www.constructortheory.org)",
-      "WebFetch(domain:arxiv.org)"
+      "WebFetch(domain:arxiv.org)",
+      "Bash(git fetch:*)",
+      "Bash(git push:*)",
+      "Bash(pip install:*)",
+      "WebFetch(domain:math.mit.edu)",
+      "WebFetch(domain:pi.math.cornell.edu)",
+      "WebFetch(domain:en.wikipedia.org)",
+      "WebFetch(domain:www.symmetricfunctions.com)"
     ],
     "deny": [],
     "ask": [],
