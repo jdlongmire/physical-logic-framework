@@ -1,9 +1,10 @@
 # Logic Field Theory I: Deriving Quantum Probability from Logical Constraints
 
-**Authors**: James D. (JD) Longmire
+**Author**: James D. (JD) Longmire
 
 **Affiliation**: Northrop Grumman Fellow (unaffiliated research)
-ORCID: 0009-0009-1383-7698
+**ORCID**: [0009-0009-1383-7698](https://orcid.org/0009-0009-1383-7698)
+**Email**: longmire.jd@gmail.com
 
 **Target Journal**: Foundations of Physics
 
@@ -1380,7 +1381,7 @@ The path forward is clear: extend the Fisher information geometry approach to de
 
 ## Acknowledgments
 
-The authors thank the Lean community for Mathlib and proof assistance tools. Computational validation was performed using Python 3.9+ with NumPy. This work received no specific funding.
+The author thanks the developers of Lean 4 and Mathlib for providing the formal verification infrastructure, and the maintainers of the OEIS for cataloging the combinatorial structures central to this work. Computational validation was performed using Python 3.9+ with NumPy. This research was conducted independently during a Northrop Grumman fellowship period.
 
 ---
 
