@@ -20,9 +20,11 @@
       margin: 0 0.8em 0.2em -1.6em;
       vertical-align: middle;
     }
-    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
   </style>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css" />
+  <script
+  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js"
+  type="text/javascript"></script>
 </head>
 <body>
 <header id="title-block-header">
@@ -691,8 +693,8 @@ paths</strong> through the apparatus.</p>
 <th>Physical System</th>
 <th>N</th>
 <th>Valid Configurations</th>
-<th>Size of V_K</th>
-<th>K(N) = N-2</th>
+<th><span class="math inline">\(\|V_K\|\)</span></th>
+<th><span class="math inline">\(K(N) = N-2\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -739,16 +741,16 @@ level</p>
 <h4 data-number="1.4.6.2" id="qubit-systems-quantum-information"><span
 class="header-section-number">1.4.6.2</span> 3.6.2 Qubit Systems
 (Quantum Information)</h4>
-<p><strong>Rule</strong>: For n-qubit system, N = 2^n (computational
-basis states).</p>
+<p><strong>Rule</strong>: For n-qubit system, <span
+class="math inline">\(N = 2^n\)</span> (computational basis states).</p>
 <table>
 <thead>
 <tr>
 <th>System</th>
 <th>Qubits (n)</th>
-<th>N = 2^n</th>
-<th>Size of V_K</th>
-<th>K(N) = N-2</th>
+<th><span class="math inline">\(N = 2^n\)</span></th>
+<th><span class="math inline">\(\|V_K\|\)</span></th>
+<th><span class="math inline">\(K(N) = N-2\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -1616,10 +1618,10 @@ class="header-section-number">1.9.4</span> 8.3.1 Ontological Status of
 the Information Space</h3>
 <p><strong>Deep Question</strong>: Logic Realism posits that physical
 reality emerges from a <strong>pre-physical Information Space</strong>
-<span class="math inline"><em>I</em></span> acted upon by a Logical
-Field <span class="math inline"><em>L</em></span>. But what does it mean
-for “information” to exist <strong>prior to</strong> spacetime, matter,
-or energy? What is the substrate for this information?</p>
+<span class="math inline">\(I\)</span> acted upon by a Logical Field
+<span class="math inline">\(L\)</span>. But what does it mean for
+“information” to exist <strong>prior to</strong> spacetime, matter, or
+energy? What is the substrate for this information?</p>
 <p>This question connects LFT to foundational debates in metaphysics and
 philosophy of mathematics:</p>
 <h4 data-number="1.9.4.1" id="structural-realism"><span
@@ -1633,22 +1635,21 @@ sets) exist in abstract realm</li>
 exist; “objects” are nodes in networks of relations</li>
 <li><strong>Logic Realism</strong>: Physical reality <strong>is</strong>
 the structure selected by logical consistency; <span
-class="math inline"><em>I</em></span> is the space of all possible
-relational structures, <span class="math inline"><em>L</em></span> is
-the selection rule</li>
+class="math inline">\(I\)</span> is the space of all possible relational
+structures, <span class="math inline">\(L\)</span> is the selection
+rule</li>
 </ul>
 <p><strong>Commitment</strong>: The Information Space <span
-class="math inline"><em>I</em></span> is not a “thing” with location or
+class="math inline">\(I\)</span> is not a “thing” with location or
 substance—it is the <strong>totality of combinatorial
-possibility</strong>. The mapping <span
-class="math inline"><em>A</em> = <em>L</em>(<em>I</em>)</span> does not
-happen “somewhere” or “at some time”; it is the <strong>atemporal
-logical ground</strong> of spacetime itself.</p>
+possibility</strong>. The mapping <span class="math inline">\(A =
+L(I)\)</span> does not happen “somewhere” or “at some time”; it is the
+<strong>atemporal logical ground</strong> of spacetime itself.</p>
 <p>This avoids infinite regress: we do not require a “meta-space” in
-which <span class="math inline"><em>I</em></span> resides. Rather, <span
-class="math inline"><em>I</em></span> is the <strong>logical
-space</strong> of conceivability, and physics is the subset that
-satisfies consistency.</p>
+which <span class="math inline">\(I\)</span> resides. Rather, <span
+class="math inline">\(I\)</span> is the <strong>logical space</strong>
+of conceivability, and physics is the subset that satisfies
+consistency.</p>
 <h4 data-number="1.9.4.2" id="mathematical-universe-hypothesis"><span
 class="header-section-number">1.9.4.2</span> Mathematical Universe
 Hypothesis</h4>
@@ -1660,7 +1661,7 @@ Realism can be viewed as:</p>
 are physical—only those satisfying ID, NC, EM</li>
 <li><strong>Selection Mechanism</strong>: Where MUH lacks explanation
 for <em>which</em> structures realize, LFT provides: <span
-class="math inline"><em>A</em> = <em>L</em>(<em>I</em>)</span></li>
+class="math inline">\(A = L(I)\)</span></li>
 <li><strong>Testability</strong>: Unlike MUH (often critiqued as
 unfalsifiable), LFT makes specific predictions (K(N) = N-2, Born rule,
 etc.)</li>
@@ -1679,11 +1680,9 @@ field—derives its existence from bits”</li>
 <li><strong>Logic Realism</strong>: Every actualized configuration
 derives its existence from logically consistent bit-strings</li>
 <li><strong>Formalization</strong>: The permutation group <span
-class="math inline"><em>S</em><sub><em>N</em></sub></span> is a discrete
-information structure; <span
-class="math inline"><em>V</em><sub><em>K</em></sub></span> is the
-logical filtering of <span
-class="math inline"><em>S</em><sub><em>N</em></sub></span></li>
+class="math inline">\(S_N\)</span> is a discrete information structure;
+<span class="math inline">\(V_K\)</span> is the logical filtering of
+<span class="math inline">\(S_N\)</span></li>
 </ul>
 <p><strong>Advance</strong>: LFT specifies <em>exactly</em> which
 bit-configurations satisfy logical filtering (h(σ) ≤ K), making
@@ -1745,19 +1744,17 @@ saying “logic constrains information” explain anything, or merely rename
 the mystery?</p>
 <p><strong>Response</strong>: Unlike purely philosophical frameworks,
 LFT provides: 1. <strong>Mathematical specificity</strong>: Exact
-constraint <span
-class="math inline"><em>K</em>(<em>N</em>) = <em>N</em> − 2</span>
-derived three ways 2. <strong>Testable predictions</strong>: Finite-N
-deviations, spectral gaps, entropy ceiling 3. <strong>Derivational
-power</strong>: Born rule, unitary evolution, time’s arrow emerge
-without postulates</p>
-<p>The ontological claim (<span class="math inline"><em>I</em></span> is
+constraint <span class="math inline">\(K(N) = N-2\)</span> derived three
+ways 2. <strong>Testable predictions</strong>: Finite-N deviations,
+spectral gaps, entropy ceiling 3. <strong>Derivational power</strong>:
+Born rule, unitary evolution, time’s arrow emerge without postulates</p>
+<p>The ontological claim (<span class="math inline">\(I\)</span> is
 pre-physical) gains weight from the theory’s <strong>empirical
 success</strong>. If LFT continues to correctly predict quantum
 phenomena, the question “what is <span
-class="math inline"><em>I</em></span>?” becomes less philosophical and
-more like “what is a field?” in physics—a primitive notion validated by
-its explanatory and predictive role.</p>
+class="math inline">\(I\)</span>?” becomes less philosophical and more
+like “what is a field?” in physics—a primitive notion validated by its
+explanatory and predictive role.</p>
 <h3 data-number="1.9.5" id="open-questions"><span
 class="header-section-number">1.9.5</span> 8.4 Open Questions</h3>
 <p>The following represent critical frontiers for LFT development:</p>

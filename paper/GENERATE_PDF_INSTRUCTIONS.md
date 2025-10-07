@@ -5,6 +5,9 @@
 1. **Open the HTML file**:
    - Navigate to `paper/Logic_Field_Theory_Logic_Realism.html`
    - Double-click to open in your default browser
+   - **IMPORTANT**: Wait 3-5 seconds for MathJax to fully load and render all mathematical formulas
+   - Verify that tables are displaying properly as formatted tables (not compressed lines)
+   - Verify that mathematical symbols (like |V_K|, N = 2^n) are properly formatted
 
 2. **Print to PDF**:
    - Press `Ctrl+P` (Windows/Linux) or `Cmd+P` (Mac)
@@ -12,12 +15,19 @@
    - **Recommended settings**:
      - Layout: Portrait
      - Margins: Default
-     - Background graphics: ON (to preserve styling)
+     - Background graphics: ON (to preserve styling and table borders)
      - Headers and footers: OFF
+     - Scale: 100% (do not shrink to fit)
    - Click "Save" or "Print"
    - Save as: `Logic_Field_Theory_Logic_Realism.pdf`
 
-**Result**: High-quality PDF with table of contents, formatting, and styling preserved
+3. **Verify the PDF**:
+   - Open the generated PDF
+   - Check that Section 3.6.1 table (Path-Based Systems) displays as proper table with rows/columns
+   - Check that Section 3.6.2 table (Qubit Systems) displays as proper table with rows/columns
+   - Check that all mathematical notation is properly rendered
+
+**Result**: High-quality PDF with table of contents, proper tables, LaTeX math formatting, and styling preserved
 
 ## Method 2: Pandoc with LaTeX (If LaTeX installed)
 

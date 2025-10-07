@@ -296,7 +296,7 @@ This mapping from physical systems to the mathematical structure S_N is **essent
 
 **Rule**: N equals the number of **distinguishable paths** through the apparatus.
 
-| Physical System | N | Valid Configurations | Size of V_K | K(N) = N-2 |
+| Physical System | N | Valid Configurations | $\|V_K\|$ | $K(N) = N-2$ |
 |----------------|---|---------------------|-------------|-----------|
 | Double-slit | 2 | Paths through slit 1 or 2 | 2 | 0 |
 | Triple-slit | 3 | Three path options | 4 | 1 |
@@ -316,9 +316,9 @@ This mapping from physical systems to the mathematical structure S_N is **essent
 
 #### 3.6.2 Qubit Systems (Quantum Information)
 
-**Rule**: For n-qubit system, N = 2^n (computational basis states).
+**Rule**: For n-qubit system, $N = 2^n$ (computational basis states).
 
-| System | Qubits (n) | N = 2^n | Size of V_K | K(N) = N-2 |
+| System | Qubits (n) | $N = 2^n$ | $\|V_K\|$ | $K(N) = N-2$ |
 |--------|-----------|---------|-------------|-----------|
 | Single qubit | 1 | 2 | 2 | 0 |
 | Two qubits | 2 | 4 | 9 | 2 |
