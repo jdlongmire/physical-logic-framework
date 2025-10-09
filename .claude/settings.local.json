@@ -45,7 +45,9 @@
       "Bash(chmod:*)",
       "Bash(\"/c/Program Files/Pandoc/pandoc\" Logic_Realism_Foundational_Paper.md -o Logic_Field_Theory_Logic_Realism.pdf --pdf-engine=pdflatex --variable=geometry:margin=1in --variable=documentclass:article --variable=fontsize:11pt --variable=colorlinks:true --table-of-contents --number-sections)",
       "Bash(\"/c/Program Files/Pandoc/pandoc\" Logic_Realism_Foundational_Paper.md -o Logic_Field_Theory_Logic_Realism.pdf --pdf-engine=wkhtmltopdf --variable=geometry:margin=1in --table-of-contents)",
-      "Bash(\"/c/Program Files/Pandoc/pandoc\" Logic_Realism_Foundational_Paper.md -o Logic_Field_Theory_Logic_Realism.html --standalone --table-of-contents --number-sections --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.css --metadata title=\"Logic Field Theory: Deriving Quantum Mechanics from Logical Consistency\")"
+      "Bash(\"/c/Program Files/Pandoc/pandoc\" Logic_Realism_Foundational_Paper.md -o Logic_Field_Theory_Logic_Realism.html --standalone --table-of-contents --number-sections --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.css --metadata title=\"Logic Field Theory: Deriving Quantum Mechanics from Logical Consistency\")",
+      "Bash(\"/c/Program Files/Pandoc/pandoc\" Logic_Realism_Foundational_Paper.md -o Logic_Field_Theory_Logic_Realism.html --standalone --table-of-contents --number-sections --mathjax --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.css --metadata title=\"Logic Field Theory: Deriving Quantum Mechanics from Logical Consistency\")",
+      "Bash(python3:*)"
     ],
     "deny": [],
     "ask": [],
