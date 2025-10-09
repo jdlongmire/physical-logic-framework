@@ -218,6 +218,58 @@ def PreservesEntropy {N : ℕ} (f : SymmetricGroup N → SymmetricGroup N) : Pro
 -- PART 5: MAIN THEOREM - UNITARITY FROM COMBINATORICS + INFORMATION
 -- =====================================================================================
 
+-- Helper lemmas for Theorem 2
+-- These break down the complex proof into manageable pieces
+
+/--
+Left multiplication in S_N preserves Kendall tau distance.
+This follows from the fact that left multiplication is an isometry of the Cayley graph.
+-/
+lemma left_multiplication_preserves_distance (N : ℕ) (g : SymmetricGroup N) :
+  PreservesKendallDistance (fun σ => g * σ) := by
+  intro σ τ
+  -- Left multiplication preserves the group metric
+  -- Need to show: KendallDistance (g*σ) (g*τ) = KendallDistance σ τ
+  sorry
+
+/--
+Left multiplication preserves Shannon entropy of any probability distribution.
+This is because left multiplication is a bijection, so it preserves the multiset
+of probability values.
+-/
+lemma left_multiplication_preserves_entropy (N : ℕ) (g : SymmetricGroup N) :
+  PreservesEntropy (fun σ => g * σ) := by
+  intro p hp
+  -- Left multiplication is a bijection, so it preserves probability multisets
+  -- Therefore entropy is preserved
+  sorry
+
+/--
+Key lemma: If f preserves both distance and entropy, then f must be left multiplication.
+
+Strategy (from Team Consultation 6):
+1. Use distance_preserving_iff_automorphism to get conjugation: f(σ) = g·σ·g⁻¹
+2. Use entropy preservation to show that the right factor g⁻¹ must be trivial
+3. This forces f to be left multiplication: f(σ) = g·σ
+-/
+lemma distance_and_entropy_implies_left_multiplication (N : ℕ)
+  (f : SymmetricGroup N → SymmetricGroup N)
+  (h_dist : PreservesKendallDistance f)
+  (h_entropy : PreservesEntropy f) :
+  ∃ g : SymmetricGroup N, ∀ σ : SymmetricGroup N, f σ = g * σ := by
+  -- Step 1: Use distance preservation to get conjugation
+  obtain ⟨g, h_conj⟩ := (distance_preserving_iff_automorphism N f).mp h_dist
+  -- Now we have: ∀ σ, f σ = g * σ * g⁻¹
+
+  -- Step 2: Use entropy preservation to show g⁻¹ = 1
+  -- Key insight: For S_N, conjugation by non-identity element
+  -- can change the cycle structure, which affects entropy of certain distributions
+
+  -- For now, we'll use sorry and focus on the overall structure
+  -- The full proof requires showing that entropy preservation
+  -- on ALL distributions forces the conjugation to be trivial
+  sorry
+
 /--
 **THEOREM 2**: Distance + entropy preservation characterizes S_N operations.
 
@@ -228,16 +280,25 @@ theorem distance_entropy_preserving_iff_group_operation (N : ℕ)
   (f : SymmetricGroup N → SymmetricGroup N) :
   PreservesKendallDistance f ∧ PreservesEntropy f ↔
     (∃ g : SymmetricGroup N, ∀ σ : SymmetricGroup N, f σ = g * σ) := by
-  -- Forward direction:
-  -- 1. Distance preservation → f is automorphism (Theorem 1)
-  -- 2. Entropy preservation → f is bijective measure-preserving
-  -- 3. Both together → f is left multiplication (not just conjugation)
-  --
-  -- Backward direction:
-  -- 1. Left multiplication preserves group structure
-  -- 2. Group structure determines distances (Cayley graph)
-  -- 3. Bijection preserves uniform distribution entropy
-  sorry
+  constructor
+  -- Forward direction: Both properties → left multiplication
+  · intro ⟨h_dist, h_entropy⟩
+    exact distance_and_entropy_implies_left_multiplication N f h_dist h_entropy
+
+  -- Backward direction: Left multiplication → both properties
+  · intro ⟨g, h_left⟩
+    constructor
+    -- Prove distance preservation
+    · intro σ τ
+      rw [h_left σ, h_left τ]
+      exact left_multiplication_preserves_distance N g σ τ
+    -- Prove entropy preservation
+    · intro p hp
+      -- Rewrite f using h_left
+      have : (fun σ => p (f σ)) = (fun σ => p (g * σ)) := by
+        ext σ; rw [h_left]
+      rw [this]
+      exact left_multiplication_preserves_entropy N g p hp
 
 /--
 Embedding of S_N into a vector space.
@@ -266,6 +327,37 @@ def IsUnitary {N : ℕ} (U : PermutationVectorSpace N → PermutationVectorSpace
     Finset.sum Finset.univ (fun σ => Complex.conj (U ψ σ) * (U φ σ)) =
     Finset.sum Finset.univ (fun σ => Complex.conj (ψ σ) * (φ σ))
 
+-- Helper lemmas for Theorem 3 (Main Theorem)
+-- These establish the connection between group operations and unitary matrices
+
+/--
+Left multiplication by g in S_N corresponds to a permutation matrix.
+The matrix has a 1 in position (τ, σ) if f(σ) = τ, and 0 otherwise.
+For left multiplication f(σ) = g·σ, this gives a permutation matrix.
+-/
+lemma left_multiplication_is_permutation_matrix (N : ℕ) (g : SymmetricGroup N) :
+  ∃ (is_perm : True), -- Placeholder for "TransformationMatrix represents a permutation"
+    IsUnitary (TransformationMatrix (fun σ => g * σ)) := by
+  -- A permutation matrix has exactly one 1 in each row and column
+  -- Such matrices are orthogonal (and hence unitary in ℂ)
+  -- For left multiplication, the matrix element M(τ,σ) = 1 iff g·σ = τ, i.e., σ = g⁻¹·τ
+  sorry
+
+/--
+Permutation matrices are unitary.
+A permutation matrix P satisfies P†P = I because:
+- Each row has exactly one 1, rest 0s
+- Each column has exactly one 1, rest 0s
+- Therefore (P†P)ᵢⱼ = δᵢⱼ (Kronecker delta)
+-/
+lemma permutation_matrix_is_unitary (N : ℕ)
+  (T : PermutationVectorSpace N → PermutationVectorSpace N)
+  (h_perm : True) : -- Placeholder for "T is a permutation matrix"
+  IsUnitary T := by
+  -- Permutation matrices satisfy P†P = I
+  -- This is because permuting basis vectors preserves orthonormality
+  sorry
+
 /--
 **THEOREM 3** (MAIN): Unitarity emerges from distance + entropy preservation.
 
@@ -280,15 +372,20 @@ theorem unitarity_from_distance_entropy_preservation (N : ℕ)
   (h_dist : PreservesKendallDistance f)
   (h_entropy : PreservesEntropy f) :
   IsUnitary (TransformationMatrix f) := by
-  -- Proof strategy:
-  -- 1. Apply Theorem 2: f is left multiplication by some g ∈ S_N
-  -- 2. Show left multiplication by g is a permutation matrix
-  -- 3. Permutation matrices are unitary (orthogonal)
-  -- 4. Therefore TransformationMatrix f is unitary
-  --
-  -- Key insight: The ONLY matrices satisfying distance + entropy preservation
-  -- are permutation matrices, which are automatically unitary.
-  sorry
+  -- Step 1: Use Theorem 2 to get left multiplication
+  have h_left := distance_entropy_preserving_iff_group_operation N f
+  obtain ⟨g, h_f⟩ := (h_left.mp ⟨h_dist, h_entropy⟩)
+  -- Now we know: ∀ σ, f σ = g * σ
+
+  -- Step 2: Show that TransformationMatrix f equals TransformationMatrix (g * ·)
+  have h_matrix_eq : TransformationMatrix f = TransformationMatrix (fun σ => g * σ) := by
+    -- They're equal because f σ = g * σ for all σ
+    sorry
+
+  -- Step 3: Use lemma that left multiplication gives unitary matrix
+  rw [h_matrix_eq]
+  obtain ⟨_, h_unitary⟩ := left_multiplication_is_permutation_matrix N g
+  exact h_unitary
 
 /--
 **COROLLARY**: The Born Rule assumption of unitary invariance is non-circular.
