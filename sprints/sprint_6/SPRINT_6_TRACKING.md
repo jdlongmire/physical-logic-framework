@@ -62,19 +62,46 @@ Demonstrate that the Born Rule derivation is non-circular by proving that assump
 ### Day 1 - 2025-10-09
 
 **Notebook Track**:
-- Status: Starting Notebook 12 (Unitary Invariance Foundations)
-- Plan: Structure notebook, begin combinatorial symmetry analysis
+- Status: Creating Notebook 12 (Unitary Invariance Foundations) [In Progress]
+- Plan: Structure based on team consultation guidance
+- Sections: Permutohedron symmetries → Distance metrics → Entropy preservation → Unitarity uniqueness
 
 **Lean Track**:
-- Status: Planning module structure
-- Plan: Define assumption hierarchy, set up dependency graph
+- Status: Module structure planned from consultation
+- Plan: Define permutohedron, symmetries, distances, entropy preservation
+- Priority: Small N (N=3) first, then generalize
 
 **Team Track**:
-- Consultation 1: [Pending] "How can we derive unitary transformations from pure combinatorial symmetries without assuming Hilbert space structure?"
+- Consultation 1: [COMPLETE] "How can we derive unitary transformations from pure combinatorial symmetries?"
+  - Quality: Grok 0.70/1.0, Gemini 0.55/1.0, ChatGPT 0.34/1.0
+  - Average: 0.53/1.0 (Grok meets threshold)
+  - Key insight: Derive from distance preservation + entropy preservation → uniquely determines unitary structure
+  - Saved: consultation_01_unitary_20251009_085455.txt/json
 
 **Integration**:
-- Establish parallel development approach
-- Ensure notebook discoveries inform Lean formalization
+- Team consultation provides clear roadmap for both notebook and Lean tracks
+- Grok's response gives mathematical outline (7 theorems/lemmas)
+- Gemini's response reinforces approach with Coxeter group emphasis
+- Notebook will implement computational validation (N=3,4)
+- Lean will formalize key theorems starting with permutohedron structure
+
+**Key Guidance from Team**:
+1. Start with permutohedron Cayley graph (adjacent transpositions)
+2. Define Kendall tau / inversion distance (provably preserved by S_N symmetries)
+3. Show transformations preserving distance + entropy must be bijective isometries
+4. Map to vector space → these transformations correspond to unitary matrices
+5. Prove uniqueness: only unitary structure satisfies all constraints
+
+**Potential Pitfalls Identified**:
+- Avoid implicit vector space assumptions before deriving them
+- Ensure constraints (K(N)=N-2) justified combinatorially, not from QM
+- Ground symmetries in graph-theoretic terms (Cayley graph automorphisms)
+- Validate beyond small N to ensure generalization
+
+**Next Steps**:
+- Create Notebook 12 following team guidance
+- Implement N=3, N=4 computational validation
+- Begin Lean module planning with formalization priorities from team
 
 ---
 
