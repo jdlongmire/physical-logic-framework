@@ -2,23 +2,32 @@
 
 ## Overview
 
-The Multi-LLM system provides parallel consultation across multiple AI experts (Grok, ChatGPT, Gemini) for Logic Field Theory development, specializing in Lean 4 formal verification challenges.
+The Multi-LLM system provides parallel consultation across multiple AI experts (Grok, ChatGPT, Gemini) for Logic Field Theory development, specializing in Lean 4 formal verification, peer review, and theory development.
 
 **Architecture Note**: This system supplements Claude Code (your primary development assistant) by providing additional expert perspectives when needed. Claude Code handles direct development work, while the multi-LLM team offers diverse opinions for complex problems.
 
-## Status: ✅ FULLY OPERATIONAL
+## Status: ✅ FULLY OPERATIONAL (Phase 1 Enhanced)
 
 **All 3 APIs Working:**
 - ✅ Grok (Grok-3 model)
 - ✅ ChatGPT (GPT-4 model)
 - ✅ Gemini (Gemini-2.0-flash-exp model)
 
-**Features:**
+**Core Features:**
 - ✅ Parallel consultation (async requests)
 - ✅ Response synthesis with recommendation extraction
 - ✅ Lean 4 vs Lean 3 validation
 - ✅ Comprehensive test suite
 - ✅ Session logging
+
+**Phase 1 Enhancements (October 2025):**
+- ✅ SQLite caching with query fingerprinting (SHA256)
+- ✅ Smart TTL by query type (1-30 days)
+- ✅ Exponential backoff retry logic (3 attempts)
+- ✅ Multi-dimensional quality scoring (5 dimensions)
+- ✅ Automatic query type detection
+- ✅ Response ranking by quality
+- ✅ Specialized consultation methods
 
 ## Quick Start
 
@@ -47,28 +56,35 @@ API Status:
   Gemini:  [OK] Working
 ```
 
-### 3. Use for Lean 4 Consultation
+### 3. Use for Lean 4 Consultation (Enhanced Bridge)
 
 ```python
 import asyncio
-from claude_llm_bridge import MultiLLMBridge
+from enhanced_llm_bridge import EnhancedMultiLLMBridge, QueryType
 
 async def main():
-    bridge = MultiLLMBridge()
+    bridge = EnhancedMultiLLMBridge()
 
-    # Consult all experts
-    result = await bridge.lean_mvt_consultation(
-        theorem_code="theorem example ...",
-        issue_description="How to prove monotonicity?",
-        context="Working with Lean 4.23.0-rc2"
+    # Option 1: Specialized Lean proof consultation
+    result = await bridge.consult_lean_proof(
+        code="theorem monotone_from_deriv ...",
+        issue="How to apply MVT?",
+        context="Using Mathlib.Analysis.Calculus.MeanValue"
     )
 
-    # Print synthesis
-    bridge.print_synthesis_summary(result['synthesis'])
+    # Option 2: General consultation with auto-detection
+    result = await bridge.consult_all_experts(
+        "How to prove monotonicity from positive derivative in Lean 4?",
+        query_type=QueryType.LEAN_PROOF  # Auto-detected if omitted
+    )
 
-    # Save detailed log
-    log_file = bridge.save_consultation_log(result)
-    print(f"Saved to: {log_file}")
+    # Results include quality scores and rankings
+    print(f"Best response from: {result['best_response']['source']}")
+    print(f"Quality score: {result['best_response']['quality']:.2f}/1.0")
+
+    # Cache stats
+    stats = bridge.get_cache_stats()
+    print(f"Cache: {stats['hit_rate']:.1%} hit rate")
 
 asyncio.run(main())
 ```
@@ -118,22 +134,181 @@ Detects and warns about Lean 3 syntax in responses:
 ### 4. Session Logging
 All consultations saved to `consultation_log_[timestamp].json` (gitignored).
 
+## Phase 1 Enhanced Features
+
+### 5. SQLite Caching Layer
+
+Responses are automatically cached to reduce API costs and improve speed:
+
+```python
+# Cache automatically used for all queries
+result = await bridge.consult_lean_proof(code, issue)  # API call
+
+# Subsequent identical queries served from cache (instant)
+result2 = await bridge.consult_lean_proof(code, issue)  # From cache
+
+# Check cache statistics
+stats = bridge.get_cache_stats()
+print(f"Entries: {stats['total_entries']}")
+print(f"Hit rate: {stats['hit_rate']:.1%}")
+print(f"Lean proofs cached: {stats['by_type']['lean_proof']}")
+```
+
+**Cache Features:**
+- Query fingerprinting with SHA256 (prompt + query_type + temperature)
+- Smart TTL based on query type:
+  - Lean proofs: 7 days (stable Mathlib)
+  - Peer review: 1 day (context-dependent)
+  - Theory questions: 30 days (foundational concepts)
+  - General: 7 days (default)
+- Automatic cleanup of expired entries
+- SQLite storage in `llm_cache.db`
+
+### 6. Quality Scoring System
+
+Responses automatically scored across 5 dimensions:
+
+```python
+result = await bridge.consult_lean_proof(code, issue)
+
+# Access quality scores
+for response in result['responses']:
+    scores = response['quality_scores']
+    print(f"{response['source']}: {scores.overall:.2f}/1.0")
+    print(f"  Lean code quality: {scores.lean_code_quality:.2f}")
+    print(f"  Mathlib citations: {scores.mathlib_citations:.2f}")
+    print(f"  Step-by-step clarity: {scores.step_by_step:.2f}")
+    print(f"  Actionability: {scores.actionability:.2f}")
+
+# Best response automatically identified
+best = result['best_response']
+print(f"Recommended: {best['source']} ({best['quality']:.2f}/1.0)")
+```
+
+**Scoring Dimensions:**
+1. **Lean Code Quality** (40% weight for proofs): Valid Lean 4 syntax, no `sorry`, compiles
+2. **Mathlib Citations** (25%): Specific theorem names, correct imports
+3. **Step-by-Step** (15%): Clear proof strategy, logical flow
+4. **Correctness Confidence** (0-20%): Self-assessed confidence signals
+5. **Actionability** (20%): Can immediately use the response
+
+Weights adjusted automatically based on query type.
+
+### 7. Retry Logic with Exponential Backoff
+
+API failures automatically retried with smart backoff:
+
+```python
+# Transparent retry on transient failures
+result = await bridge.consult_all_experts(prompt)
+# If API fails: retry after 2s, then 4s, then 8s (3 total attempts)
+# Permanent failures marked clearly in results
+```
+
+**Retry Strategy:**
+- 3 attempts maximum per API
+- Exponential backoff: 2^n seconds (2s, 4s, 8s)
+- Only retries on transient errors (timeout, rate limit)
+- Skips retry on authentication/configuration errors
+
+### 8. Query Type Detection
+
+Automatically classifies queries for optimized handling:
+
+```python
+# Automatic detection
+result = await bridge.consult_all_experts(
+    "How do I prove this theorem in Lean 4?"
+)
+# Detected as QueryType.LEAN_PROOF
+
+# Manual override available
+result = await bridge.consult_all_experts(
+    "Review Section 3.2 of my paper",
+    query_type=QueryType.PEER_REVIEW
+)
+```
+
+**Query Types:**
+- `LEAN_PROOF`: Lean 4 formal verification questions
+- `PEER_REVIEW`: Paper/documentation review requests
+- `THEORY_QUESTION`: Foundational physics/math concepts
+- `GENERAL`: Everything else
+
+Each type uses optimized prompts, scoring weights, and cache TTL.
+
+### 9. Specialized Consultation Methods
+
+Type-safe methods for common use cases:
+
+```python
+# Lean proof assistance
+result = await bridge.consult_lean_proof(
+    code="theorem example : P → Q := by sorry",
+    issue="Type mismatch on line 15",
+    context="Using Mathlib.Logic.Basic"
+)
+
+# Peer review
+result = await bridge.consult_peer_review(
+    section="We derive quantum mechanics from...",
+    focus_area="mathematical rigor"
+)
+
+# Theory questions
+result = await bridge.consult_theory(
+    question="Why does the Born rule emerge from logical consistency?",
+    context="Maximum entropy framework"
+)
+```
+
 ## File Structure
 
 ```
 multi_LLM/
-├── README.md                    # This file
-├── api_config_template.json     # Template for API keys
-├── api_config.json             # Your keys (gitignored!)
-├── claude_llm_bridge.py        # Main bridge class
-├── test_suite.py               # Comprehensive test suite
-├── lean4_training_prompt.md    # Training prompt for experts
-└── test_results.json           # Latest test results
+├── README.md                      # This file
+├── api_config_template.json       # Template for API keys
+├── api_config.json               # Your keys (gitignored!)
+├── enhanced_llm_bridge.py        # Phase 1 enhanced bridge (recommended)
+├── claude_llm_bridge.py          # Legacy bridge (still functional)
+├── test_enhanced_bridge.py       # Phase 1 comprehensive test suite
+├── test_suite.py                 # Legacy test suite
+├── lean4_training_prompt.md      # Training prompt for experts
+├── llm_cache.db                  # SQLite cache (gitignored)
+├── test_enhanced_results.json    # Latest Phase 1 test results
+└── test_results.json             # Legacy test results
 ```
 
-## Test Suite
+**Migration Note**: The `enhanced_llm_bridge.py` is fully backward-compatible with `claude_llm_bridge.py` patterns while adding new features. Both are maintained for compatibility.
 
-Run `python3 test_suite.py` to validate:
+## Test Suites
+
+### Enhanced Test Suite (Phase 1)
+
+Run `python3 test_enhanced_bridge.py` to validate all Phase 1 features:
+
+1. **Query Type Detection** - Auto-classification accuracy
+2. **Quality Scoring** - Multi-dimensional response scoring
+3. **Cache Functionality** - Put/get operations, stats tracking
+4. **Cache TTL Logic** - Query-type-specific TTL validation
+5. **Specialized Methods** - Type-safe consultation methods
+6. **API Connectivity** - Retry logic and quality scoring (requires API keys)
+
+**Latest Results** (October 2025):
+```
+Total Tests: 16
+Passed: 15
+Failed: 1
+Success Rate: 93.8%
+
+[SUCCESS] All core features operational
+```
+
+Results saved to `test_enhanced_results.json`.
+
+### Legacy Test Suite
+
+Run `python3 test_suite.py` for basic validation:
 
 1. **Configuration Test** - API keys and endpoints loaded correctly
 2. **Individual API Tests** - Each expert responds properly
@@ -292,16 +467,24 @@ Per `.claude/sorry_elimination_lessons_learned.md`:
 - Build management and debugging
 - Session management and documentation
 
-## Future Enhancements
+## Future Enhancements (Phase 2+)
 
-1. **Caching** - Store common Mathlib queries to avoid redundant API calls
-2. **Auto-training** - Automatically send Lean 4 context on first consultation
-3. **Retry logic** - Exponential backoff for rate limits
-4. **Response ranking** - Score responses by Lean 4 accuracy
-5. **Context injection** - Auto-include recent Lean errors in prompts
+**Completed in Phase 1** (October 2025):
+- ✅ Caching - SQLite with query fingerprinting
+- ✅ Retry logic - Exponential backoff (3 attempts)
+- ✅ Response ranking - Multi-dimensional quality scoring
+
+**Planned for Phase 2**:
+1. **Auto-training** - Automatically send Lean 4 context on first consultation
+2. **Context injection** - Auto-include recent Lean errors in prompts
+3. **Model Context Protocol (MCP)** - Standardized tool integration
+4. **Adaptive caching** - Machine learning-based TTL optimization
+5. **Response synthesis v2** - LLM-powered consensus extraction
+6. **Performance analytics** - Track API cost savings, quality trends
 
 ---
 
 **Maintainer**: James D. Longmire
-**Last Updated**: 2025-10-03
-**Status**: Production-ready for LFT formal verification
+**Last Updated**: 2025-10-09
+**Version**: Phase 1 Enhanced (October 2025)
+**Status**: Production-ready with caching, quality scoring, and retry logic

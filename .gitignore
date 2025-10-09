@@ -39,9 +39,11 @@ Thumbs.db
 # Environment variables
 .env
 
-# Multi-LLM sensitive files (API keys and consultation logs)
+# Multi-LLM sensitive files (API keys, consultation logs, cache database)
 multi_LLM/api_config.json
 multi_LLM/consultation_log_*.json
+multi_LLM/llm_cache.db
+multi_LLM/test_enhanced_results.json
 
 # Claude AI session management files
 .claude/session_log.txt
