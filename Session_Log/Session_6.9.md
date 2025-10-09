@@ -213,7 +213,7 @@ User requested comprehensive README updates with new framework title: "Physical 
 4. **Key Status Updates in Root README**:
    - 14 production notebooks complete (~37,000 words LaTeX proofs)
    - Sprints 1-6 delivered (Foundation → Non-Circularity)
-   - Lean formalization: 83% complete (10/12 notebooks, 0 sorry statements)
+   - Lean formalization: 7 complete modules with 0 sorry statements (BornRuleNonCircularity, ConstraintThreshold, MaximumEntropy, ThreeFundamentalLaws, ConvergenceTheorem, FisherGeometry, QuantumCore)
    - Born Rule Non-Circularity fully proven
    - Team Consultation 8: Grok 0.80/1.0 ACCEPT, average 0.63/1.0
    - Experimental predictions: 15 testable deviations at ~10^{-8} precision
@@ -338,7 +338,7 @@ User requested comprehensive README updates with new framework title: "Physical 
 - ✅ Peer review: Lead reviewer acceptance (Grok 0.80/1.0 ACCEPT)
 
 **Overall Program Progress**:
-- Lean formalization: 83% complete (10/12 notebooks, 0 sorry statements)
+- Lean formalization: 7 complete modules with 0 sorry statements
 - Notebooks: 14/14 complete (~37,000 words)
 - Sprints: 6/10 complete (60% overall progress)
 - Team consultations: 8 completed, 53 remaining (budget: 61 total)

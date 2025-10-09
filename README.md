@@ -29,7 +29,7 @@ Both tracks employ rigorous multi-modal validation: computational verification (
 **Major Milestones**:
 - **14 Production Notebooks**: Logic Realism V2 architecture complete (~37,000 words LaTeX proofs)
 - **Sprints 1-6 Delivered**: Foundation → Core Theorems → Physical Systems → Experimental Predictions → Non-Circularity
-- **Lean Formalization**: 83% complete (10/12 notebooks with formal proofs, **0 sorry statements**)
+- **Lean Formalization**: 7 modules complete with **0 sorry statements** (BornRuleNonCircularity, ConstraintThreshold, MaximumEntropy, ThreeFundamentalLaws, ConvergenceTheorem, FisherGeometry, QuantumCore)
 - **Born Rule Non-Circularity**: Fully proven (unitarity from combinatorics + information theory)
 - **Peer Review**: Team Consultation 8 complete (Grok 0.80/1.0 ACCEPT, avg 0.63/1.0)
 - **Experimental Predictions**: 15 testable deviations from standard QM quantified
@@ -191,7 +191,7 @@ Every theoretical claim must satisfy **three independent validation criteria**:
 
 **Output**: ~400-500 lines per major theorem, fully verified
 
-**Status**: 10/12 notebooks formalized (83%), 0 sorry statements
+**Status**: 7/15 Lean modules complete (0 sorry statements in: BornRuleNonCircularity, ConstraintThreshold, MaximumEntropy, ThreeFundamentalLaws, ConvergenceTheorem, FisherGeometry, QuantumCore)
 
 #### Track 3: Team - Multi-LLM Consultation
 
@@ -445,7 +445,7 @@ lake build
 | **Unitarity (Non-Circular)** | ✅ Proven in Lean (0 sorrys) | Done | 100% |
 | **Hamiltonian (H = D - A)** | ✅ Proven (Theorem D.1) | Done | 100% |
 | **Notebooks 00-13** | ✅ Complete (14 notebooks) | Done | 100% |
-| **Lean Formalization** | 🔄 10/12 notebooks (83%) | Sprints 7-10 | 95% |
+| **Lean Formalization** | 🔄 7/15 modules (47%) | Sprints 7-10 | 95% |
 | **Schrödinger Equation** | 🔄 In progress | 2-4 weeks | 99% |
 | **Spacetime Metric** | 🔄 Derived (future sprint) | 3-6 months | 95% |
 | **Full Lorentz Group** | 🔄 Continuum limit | 6-12 months | 70% |
@@ -651,4 +651,4 @@ If you use this work in research, please cite:
 
 ---
 
-**Status** (October 9, 2025): Sprint 6 complete. Born Rule Non-Circularity fully proven in Lean (0 sorry statements). 14 production notebooks complete (~37,000 words). Lean formalization 83% complete (10/12 notebooks). Peer review: Team Consultation 8 complete (Grok 0.80/1.0 ACCEPT). Ready for Sprints 7-10 (remaining Lean formalization) and paper integration. Repository synchronized with remote.
+**Status** (October 9, 2025): Sprint 6 complete. Born Rule Non-Circularity fully proven in Lean (0 sorry statements). 14 production notebooks complete (~37,000 words). Lean formalization: 7 complete modules (BornRuleNonCircularity, ConstraintThreshold, MaximumEntropy, ThreeFundamentalLaws, ConvergenceTheorem, FisherGeometry, QuantumCore). Peer review: Team Consultation 8 complete (Grok 0.80/1.0 ACCEPT). Ready for Sprints 7-10 (remaining Lean formalization) and paper integration. Repository synchronized with remote.

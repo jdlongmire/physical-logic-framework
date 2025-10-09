@@ -65,7 +65,7 @@ This isn't AI doing math badly—it's **human-AI collaboration** on rigorous the
 
 **Current status (Oct 9, 2025):**
 
-- 83% Lean formalization complete (10/12 notebooks, 0 sorrys)
+- 7 Lean modules complete with 0 sorrys (BornRuleNonCircularity, ConstraintThreshold, MaximumEntropy, + 4 more)
 - 14/14 computational notebooks validated
 - 2 papers ready for submission (14k + 18k words)
 - Sprint 6 complete: Born rule non-circularity proven
