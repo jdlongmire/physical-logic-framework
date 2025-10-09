@@ -13,14 +13,14 @@ This framework derives **static quantum probabilities (Born rule)** from logical
 **Major Milestones**:
 - **12 Production Notebooks**: Logic Realism V2 architecture (~37,000 words LaTeX proofs)
 - **Sprints 1-4 Delivered**: Foundation → Core Theorems → Physical Systems → Experimental Predictions
-- **Computational Validation**: All 12 notebooks verified (mathematics and code)
-- **Experimental Predictions**: 15 testable deviations from standard QM quantified
+- **Computational Validation**: All 12 notebooks verified (mathematical consistency and code correctness)
+- **Experimental Predictions**: 15 testable deviations from standard QM quantified (awaiting experimental confirmation)
 - **Lean Formalization**: 50% complete (6/12 notebooks with formal proofs, 0 sorrys)
-- **Derivation Chain**: Complete first-principles derivation from logical consistency to experimental predictions
+- **Derivation Chain**: Mathematical formulation complete from logical consistency to experimental predictions
 
 ### Recent Achievements (October 8-9, 2025)
 
-**Session 5.3 - Complete Theory Validation**:
+**Session 5.3 - Computational Validation Complete**:
 - ✅ **Sprint 1 Complete**: Foundation Layer (Notebooks 00-02)
   - 00: Permutations & Inversions (permutohedron geometry)
   - 01: Logical Operators (L-flow, arrow of time)
@@ -37,7 +37,7 @@ This framework derives **static quantum probabilities (Born rule)** from logical
   - 09: Finite-N Quantum Corrections (5 measurable deviations from standard QM)
   - 10: Spectral Mode Analysis (5 spectral properties, semi-Poisson statistics)
   - 11: Entropy Saturation & Thermalization (Page curve, ETH emergence)
-- ✅ **Validation**: 100% computational validation (all 12 notebooks verified: Math ✓ | Code ✓)
+- ✅ **Computational Validation**: All 12 notebooks verified (mathematical consistency and code correctness confirmed)
 - ✅ **Quality Assurance**: Copyright/license corrections, professional tone cleanup
 - ✅ **Documentation**: NOTEBOOK_STATUS.md (429 lines, comprehensive status report)
 - ✅ **Lean Formalization**: 50% complete (6/12 notebooks: Foundations + Dynamics formalized)
@@ -317,4 +317,4 @@ This repository implements active theoretical research in fundamental physics. T
 
 ---
 
-**Status**: Session 5.3 complete. Full derivation chain from first principles to experimental predictions validated computationally (12/15 notebooks, 80% complete). Lean formalization 50% complete (6/12 notebooks). Ready for paper integration and experimental proposal writing.
+**Status**: Session 5.3 complete. Derivation chain from first principles to experimental predictions: mathematical formulation complete, computational validation complete for 12/15 notebooks (80%). Lean formalization 50% complete (6/12 notebooks). Experimental validation pending. Ready for paper integration and experimental proposal writing.
