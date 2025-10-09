@@ -199,6 +199,115 @@ git push origin main
 
 ---
 
+## 📋 Sprint Documentation Protocol
+
+**IMPORTANT**: Sprints are tracked in the `sprints/` folder with daily progress updates and team consultation logs.
+
+### Sprint Folder Structure
+
+```
+sprints/
+├── README.md                                    # Sprint overview and status
+├── SPRINT_PLAN_ENHANCED_TEAM_INTEGRATION.md    # Master 10-week sprint plan
+├── sprint_X/                                    # Individual sprint folders
+    ├── SPRINT_X_TRACKING.md                    # Daily progress tracking
+    ├── team_consultations/                     # Team consultation logs
+    ├── notebooks/                              # Sprint-specific notebook outputs
+    └── lean/                                   # Sprint-specific Lean development
+```
+
+### Starting a New Sprint
+
+**When beginning a new sprint**:
+1. ✅ Create sprint folder: `sprints/sprint_X/`
+2. ✅ Initialize tracking document: `SPRINT_X_TRACKING.md` (see template in `sprints/README.md`)
+3. ✅ Create subfolders: `team_consultations/`, `notebooks/`, `lean/`
+4. ✅ Update `sprints/README.md`: Mark sprint as "In Progress" in status table
+5. ✅ Update session log: Reference sprint start in `Session_Log/Session_X.Y.md`
+6. ✅ Update todo list: Add sprint deliverables as trackable tasks
+7. ✅ Commit and push: Initial sprint setup
+
+### During Sprint (Daily Updates)
+
+**CRITICAL**: Update sprint tracking document daily to protect against session interruption.
+
+**Daily workflow**:
+1. ✅ Add daily log entry to `SPRINT_X_TRACKING.md` with:
+   - Notebook track progress
+   - Lean track progress
+   - Team track consultations and quality scores
+   - Integration notes (how tracks informed each other)
+2. ✅ Save team consultations: Store in `sprint_X/team_consultations/` with date stamps
+3. ✅ Update deliverables checklist: Mark items as in progress or complete
+4. ✅ Commit regularly: Push progress at end of each day or major milestone
+5. ✅ Cross-reference: Update both sprint tracking and session log
+
+**Team consultation workflow**:
+1. Run consultation via multi-LLM bridge
+2. Save results to `sprint_X/team_consultations/consultation_X_YYYYMMDD.txt` and `.json`
+3. Document in tracking file with quality score
+4. Apply insights to current development
+5. Ensure quality score >0.70 for sprint success metrics
+
+### Completing a Sprint
+
+**Before marking sprint complete**:
+1. ✅ Finalize tracking document: Mark all deliverables as complete with final status
+2. ✅ Sprint review: Conduct comprehensive team review and document results
+3. ✅ Update `sprints/README.md`: Mark sprint as "Complete" with completion date
+4. ✅ Archive outputs: Ensure all notebooks, Lean files, and consultations are saved
+5. ✅ Update master plan: Mark sprint complete in `SPRINT_PLAN_ENHANCED_TEAM_INTEGRATION.md`
+6. ✅ Session log: Document sprint completion with full accomplishments
+7. ✅ Next sprint handoff: Document what's ready, open questions, recommendations
+8. ✅ Commit and push: Final sprint state
+
+### Sprint Success Metrics
+
+**Per Sprint**:
+- All team consultations score >0.70 average
+- 0 `sorry` statements in Lean modules
+- 100% computational validation in notebooks
+- Daily integration maintained across all three tracks
+- Sprint review: Team consensus "Accept" or "Minor Revision"
+
+**Overall Program (All Sprints Complete)**:
+- All critical peer review issues addressed
+- Complete Lean package (~1,500 lines, fully verified)
+- New notebooks (~30,000 words) validated
+- Paper ready for submission
+- Final team review: "Accept" or "Minor Revision" from all 3 LLMs
+
+### Integration with Session Logs
+
+Sprint tracking complements session logs:
+
+- **Session Logs** (`Session_Log/`): Overall session progress, git commits, file changes, cross-session continuity
+- **Sprint Tracking** (`sprints/sprint_X/`): Detailed daily sprint-specific work, team consultations, deliverable status
+
+**Cross-referencing**:
+- Session logs should reference active sprint
+- Sprint tracking should note which session(s) contain the work
+- Both should be updated progressively throughout the day
+
+### Team Consultation Budget
+
+**Total Available**: 61 consultations over 10 weeks (Sprints 6-10)
+**Actual API Calls**: ~40-45 (due to 50% cache hit rate)
+
+**Consultation allocation per sprint** (see master plan for details):
+- Sprint 6: 13 consultations
+- Sprint 7: 15 consultations
+- Sprint 8: 10 consultations
+- Sprint 9: 14 consultations
+- Sprint 10: 9 consultations
+
+**Quality requirements**:
+- Each consultation must be documented with quality score
+- Average consultation quality >0.70 required for sprint success
+- Failed consultations (quality <0.50) should be re-run with refined prompts
+
+---
+
 ## 👤 Author Information
 
 **Author**: James D. (JD) Longmire
@@ -357,8 +466,14 @@ physical_logic_framework/
 │   └── approach_1/         # Complete theory (00-22)
 ├── lean/                   # Formal proofs
 │   └── LFT_Proofs/PhysicalLogicFramework/
-├── multi_LLM_model/        # AI consultation (public)
+├── multi_LLM/              # AI consultation (public)
+│   ├── consultation/       # Team consultation results
+│   └── enhanced_llm_bridge.py  # Multi-LLM system
+├── sprints/                # Sprint planning and tracking
+│   ├── sprint_6/           # Current sprint (Born Rule)
+│   └── SPRINT_PLAN_ENHANCED_TEAM_INTEGRATION.md
 ├── scripts/                # Analysis utilities
+├── Session_Log/            # Session tracking (X.Y format)
 └── archive/                # Historical versions
 ```
 
