@@ -48,12 +48,13 @@
       "Bash(\"/c/Program Files/Pandoc/pandoc\" Logic_Realism_Foundational_Paper.md -o Logic_Field_Theory_Logic_Realism.html --standalone --table-of-contents --number-sections --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.css --metadata title=\"Logic Field Theory: Deriving Quantum Mechanics from Logical Consistency\")",
       "Bash(\"/c/Program Files/Pandoc/pandoc\" Logic_Realism_Foundational_Paper.md -o Logic_Field_Theory_Logic_Realism.html --standalone --table-of-contents --number-sections --mathjax --css=https://cdn.jsdelivr.net/npm/water.css@2/out/water.css --metadata title=\"Logic Field Theory: Deriving Quantum Mechanics from Logical Consistency\")",
       "Bash(python3:*)",
-      "Bash(/c/Users/jdlon/.elan/bin/lake build PhysicalLogicFramework.Foundations.BornRuleNonCircularity)"
+      "Bash(/c/Users/jdlon/.elan/bin/lake build PhysicalLogicFramework.Foundations.BornRuleNonCircularity)",
+      "Bash(git log:*)"
     ],
     "deny": [],
     "ask": [],
     "additionalDirectories": [
-      "C:\\c\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework"
+      "C:/Users/jdlon/OneDrive/Documents/physical_logic_framework"
     ]
   }
 }
