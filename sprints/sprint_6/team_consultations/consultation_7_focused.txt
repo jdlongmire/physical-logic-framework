@@ -1,0 +1,70 @@
+TEAM CONSULTATION 7: Prove entropy preservation forces trivial conjugation
+
+SPECIFIC PROBLEM:
+We have f : S_N → S_N with:
+1. f(σ) = g·σ·g⁻¹ for some fixed g (from distance preservation) ✓
+2. f preserves Shannon entropy on ALL probability distributions ✓
+
+NEED TO PROVE: g⁻¹ = 1 (equivalently: g is in the center, which is trivial)
+
+================================================================================
+KEY QUESTION: How to show g⁻¹ = 1 in Lean 4?
+================================================================================
+
+MATHEMATICAL APPROACHES:
+
+**Approach A: Center of S_N**
+- If g commutes with all σ, then g ∈ center(S_N)
+- For N ≥ 3, center(S_N) = {1} (standard result)
+- How to show conjugation preserves entropy → g in center?
+
+**Approach B: Specific distribution**
+- Construct a distribution p where conjugation by g ≠ 1 changes entropy
+- Use this to contradict entropy preservation
+- What specific p works for S_N?
+
+**Approach C: Bijection argument**
+- Conjugation by g is always a bijection
+- But only when g = 1 does it equal left multiplication
+- How does entropy distinguish these?
+
+WHICH APPROACH IS EASIEST IN LEAN 4?
+
+================================================================================
+PRACTICAL LEAN 4 QUESTIONS:
+================================================================================
+
+1. **Mathlib theorem for center**: Is there `center_symmetric_group_trivial`?
+   ```lean
+   import Mathlib.GroupTheory.???
+   theorem center_trivial : Subgroup.center (SymmetricGroup N) = ⊥ := ???
+   ```
+
+2. **Working with conjugation**:
+   ```lean
+   -- We have: h_conj : ∀ σ, f σ = g * σ * g⁻¹
+   -- How to prove g⁻¹ = 1?
+   have h_inv_trivial : g⁻¹ = 1 := by
+     -- What tactics? by_contra?
+     sorry
+   ```
+
+3. **Using entropy hypothesis**:
+   ```lean
+   h_entropy : ∀ p, ValidProbDist p → ShannonEntropy (p ∘ f) = ShannonEntropy p
+   -- How to derive contradiction if g⁻¹ ≠ 1?
+   ```
+
+4. **Simplest working proof sketch**:
+   Please provide a COMPLETE proof sketch with specific Lean 4 tactics.
+
+================================================================================
+FALLBACK QUESTION:
+================================================================================
+
+Is axiomatization acceptable given:
+- 100% computational validation (Notebook 12: 30/30 transformations)
+- Sound mathematical reasoning (conjugation ≠ left multiplication for g ≠ 1)
+- Time/complexity tradeoff (this is genuinely hard to formalize)
+
+Please advise on best path forward.

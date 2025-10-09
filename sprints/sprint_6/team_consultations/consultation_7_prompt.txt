@@ -1,0 +1,198 @@
+TEAM CONSULTATION 7: Tactical Lean 4 Guidance for Key Lemma
+
+CONTEXT:
+We're implementing the hardest piece of our Born Rule non-circularity proof:
+the lemma `distance_and_entropy_implies_left_multiplication`.
+
+This is the **novel mathematical insight** that makes Theorems 1 & 2 work.
+
+CURRENT STATUS:
+- Main theorem structures: COMPLETE ✅
+- 5 helper lemmas: Standard results (straightforward)
+- 1 key lemma: Novel insight (THIS ONE - needs tactical guidance)
+
+================================================================================
+THE KEY LEMMA: distance_and_entropy_implies_left_multiplication
+================================================================================
+
+STATEMENT (Lean 4):
+```lean
+lemma distance_and_entropy_implies_left_multiplication (N : ℕ)
+  (f : SymmetricGroup N → SymmetricGroup N)
+  (h_dist : PreservesKendallDistance f)
+  (h_entropy : PreservesEntropy f) :
+  ∃ g : SymmetricGroup N, ∀ σ : SymmetricGroup N, f σ = g * σ := by
+  -- Step 1: Use distance preservation to get conjugation
+  obtain ⟨g, h_conj⟩ := (distance_preserving_iff_automorphism N f).mp h_dist
+  -- Now we have: ∀ σ, f σ = g * σ * g⁻¹
+
+  -- Step 2: Use entropy preservation to show g⁻¹ = 1
+  -- [NEED HELP HERE]
+
+  sorry
+```
+
+MATHEMATICAL STRATEGY (from Team Consultation 6):
+1. We know f(σ) = g·σ·g⁻¹ from distance_preserving_iff_automorphism axiom ✅
+2. Need to show: Entropy preservation forces g⁻¹ = 1 (i.e., g is constant) ⏳
+3. Key insight: Conjugation by non-identity changes cycle structure
+4. Different cycle structures → different entropy for certain distributions
+5. Entropy preservation on ALL distributions → forces trivial conjugation
+
+================================================================================
+SPECIFIC QUESTIONS - PLEASE BE VERY TACTICAL
+================================================================================
+
+QUESTION 1: How to prove g⁻¹ = 1 from entropy preservation?
+
+**Mathematical Approach Options**:
+A. Show entropy preservation on uniform distribution forces g⁻¹ = 1
+B. Construct a specific distribution that only conjugation by identity preserves
+C. Use center of S_N argument (center is trivial for N > 2)
+D. Other approach?
+
+**Which is easiest to formalize in Lean 4?**
+
+**Specific Lean 4 tactics needed**:
+- How to work with group conjugation in Mathlib?
+- How to access center of SymmetricGroup N?
+- How to construct specific probability distributions for proof by contradiction?
+
+================================================================================
+
+QUESTION 2: Accessing the conjugating element
+
+Current code:
+```lean
+obtain ⟨g, h_conj⟩ := (distance_preserving_iff_automorphism N f).mp h_dist
+```
+
+This gives us: `h_conj : ∀ σ, f σ = g * σ * g⁻¹`
+
+**How do I extract and reason about g⁻¹ specifically?**
+- Do I need to introduce g⁻¹ as a separate variable?
+- How to show g⁻¹ = 1 implies f σ = g * σ?
+- Relevant Mathlib tactics: `group`, `ring`, `simp`?
+
+================================================================================
+
+QUESTION 3: Working with entropy preservation hypothesis
+
+We have:
+```lean
+h_entropy : PreservesEntropy f
+-- Which means: ∀ p : ProbabilityDistribution N, ValidProbDist p →
+--              ShannonEntropy (p ∘ f) = ShannonEntropy p
+```
+
+**How to use this effectively?**
+- Do I need to construct a specific distribution p?
+- How to show conjugation by g ≠ 1 violates entropy for some p?
+- Can I use proof by contradiction (assume g⁻¹ ≠ 1, derive contradiction)?
+
+**Lean 4 tactics for this**:
+- `by_contra` or `by_cases`?
+- How to construct probability distributions in Lean?
+- Mathlib theorems about entropy and permutations?
+
+================================================================================
+
+QUESTION 4: Symmetric group center (if using approach C)
+
+**Mathlib theorem access**:
+- Is there a theorem: `Subgroup.center (SymmetricGroup N) = {1}` for N > 2?
+- How to access it? `import Mathlib.GroupTheory.Perm.???`
+- Relevant Lean 4 code snippet?
+
+**Strategy if using center**:
+```lean
+-- Idea: Show f commutes with all σ, therefore g ∈ center, therefore g = 1
+have h_commute : ∀ σ τ, f σ * f τ = f τ * f σ := by
+  -- Use entropy preservation somehow?
+  sorry
+have h_center : g ∈ Subgroup.center (SymmetricGroup N) := by
+  -- From h_commute?
+  sorry
+have h_trivial_center : Subgroup.center (SymmetricGroup N) = {1} := by
+  -- Mathlib theorem (for N > 2)?
+  sorry
+-- Therefore g = 1
+```
+
+**Is this approach viable? Specific tactics?**
+
+================================================================================
+
+QUESTION 5: Alternative simpler approach?
+
+**Could we instead axiomatize this lemma with computational validation?**
+- We have 100% computational proof (Notebook 12: 30/30 transformations)
+- All 30 S_3 and S_4 transformations tested: entropy + distance ⇒ left multiplication
+- Is it acceptable to axiomatize with citation to computational proof?
+
+**Pros**: Immediate progress, focus formal effort on other lemmas
+**Cons**: Less satisfying formally
+
+**Team recommendation**?
+
+================================================================================
+
+QUESTION 6: Intermediate lemma strategy
+
+**Should I break this down further?**
+
+Possible intermediate lemmas:
+1. `conjugation_changes_cycle_structure`: Non-trivial conjugation changes cycles
+2. `entropy_cycle_dependent`: Entropy depends on cycle structure
+3. `entropy_all_distributions`: Preservation on all distributions very strong
+
+**Code sketch**:
+```lean
+lemma conjugation_preserves_entropy_iff_trivial (N : ℕ) (g : SymmetricGroup N) :
+  (∀ p : ProbabilityDistribution N, ValidProbDist p →
+    ShannonEntropy (p ∘ (fun σ => g * σ * g⁻¹)) = ShannonEntropy p) →
+  g⁻¹ = 1 := by
+  sorry
+```
+
+**Would this intermediate lemma help? How to prove it?**
+
+================================================================================
+
+QUESTION 7: Practical example (N=3)
+
+**Can we ground this in N=3 case?**
+- S_3 has 6 elements
+- Conjugation classes: identity, 3-cycles (2 classes), 2-cycles (3 elements)
+- Specific example of distribution where non-trivial conjugation changes entropy?
+
+**Lean 4 code for N=3 case**:
+```lean
+example : ∀ (f : SymmetricGroup 3 → SymmetricGroup 3),
+  PreservesKendallDistance f → PreservesEntropy f →
+  ∃ g, ∀ σ, f σ = g * σ := by
+  -- Can we prove this concrete case more directly?
+  sorry
+```
+
+================================================================================
+
+REQUEST SUMMARY
+================================================================================
+
+Please provide:
+
+1. **Recommended Approach** (A, B, C, or other) with justification
+2. **Step-by-step Lean 4 proof sketch** with specific tactics
+3. **Relevant Mathlib imports** and theorem names
+4. **Code snippets** showing key moves (obtain, have, use, etc.)
+5. **Intermediate lemmas** if decomposition helps
+6. **Fallback option**: Is axiomatization acceptable given computational proof?
+
+PRIORITY: This is the last hard piece blocking completion. Tactical, actionable
+guidance will enable rapid completion of all 6 remaining lemmas.
+
+We have strong mathematical intuition (conjugation by g ≠ 1 changes cycle structure,
+which affects entropy). Need help translating to Lean 4 formal proof.
+
+Thank you!
