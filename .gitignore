@@ -45,6 +45,10 @@ multi_LLM/consultation/
 multi_LLM/llm_cache.db
 multi_LLM/test_enhanced_results.json
 
+# LLM cache databases (generated during consultations)
+llm_cache.db
+**/llm_cache.db
+
 # Claude AI session management files
 .claude/session_log.txt
 .claude/last_build_status.txt

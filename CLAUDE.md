@@ -520,3 +520,4 @@ This repository implements active theoretical research in fundamental physics. A
 **Important**: After each session, ensure the current session log (Session_X.Y.md) is complete with updated status, accomplishments, viability assessments, and next steps. Also update relevant README files as needed.
 - keep hyperbole to a minimum
 - always keep the tone professional
+- track sprints in the sprints root folder
