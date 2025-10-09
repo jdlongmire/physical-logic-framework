@@ -41,7 +41,7 @@ Thumbs.db
 
 # Multi-LLM sensitive files (API keys, consultation logs, cache database)
 multi_LLM/api_config.json
-multi_LLM/consultation_log_*.json
+multi_LLM/consultation/
 multi_LLM/llm_cache.db
 multi_LLM/test_enhanced_results.json
 

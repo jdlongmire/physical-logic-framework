@@ -130,10 +130,25 @@ class ResponseCache:
         conn.commit()
         conn.close()
 
+        responses = json.loads(responses_json)
+        quality_scores_data = json.loads(quality_json) if quality_json else None
+
+        # Reconstruct best_response from cached data
+        best_response = None
+        if responses and responses[0].get('success'):
+            best = responses[0]
+            best_response = {
+                'source': best['source'],
+                'content': best['content'],
+                'quality': best.get('quality_score', 0.0)
+            }
+
         return {
-            'responses': json.loads(responses_json),
-            'quality_scores': json.loads(quality_json) if quality_json else None,
-            'from_cache': True
+            'responses': responses,
+            'quality_scores': quality_scores_data,
+            'best_response': best_response,
+            'from_cache': True,
+            'query_type': query_type.value
         }
 
     def put(self, prompt: str, query_type: QueryType, temperature: float,
@@ -141,6 +156,17 @@ class ResponseCache:
         """Store response in cache."""
         cache_key = self._generate_cache_key(prompt, query_type, temperature)
         ttl = self._get_ttl(query_type)
+
+        # Convert QualityScores objects to dicts if needed
+        if quality_scores:
+            serializable_scores = {}
+            for key, val in quality_scores.items():
+                if hasattr(val, 'to_dict'):
+                    serializable_scores[key] = val.to_dict()
+                else:
+                    serializable_scores[key] = val
+        else:
+            serializable_scores = None
 
         conn = sqlite3.connect(self.db_path)
         cursor = conn.cursor()
@@ -155,7 +181,7 @@ class ResponseCache:
             prompt,
             query_type.value,
             json.dumps(responses),
-            json.dumps(quality_scores) if quality_scores else None,
+            json.dumps(serializable_scores) if serializable_scores else None,
             time.time(),
             time.time(),
             1,
@@ -391,6 +417,8 @@ class EnhancedMultiLLMBridge:
         self.cache = ResponseCache()
         self.scorer = QualityScorer()
         self.session_logs = []
+        self.cache_hits = 0
+        self.cache_misses = 0
 
     def _load_config(self) -> Dict[str, Any]:
         """Load API configuration from JSON file."""
@@ -593,8 +621,11 @@ class EnhancedMultiLLMBridge:
             cached = self.cache.get(prompt, query_type,
                                    self.config['default_settings']['temperature'])
             if cached:
+                self.cache_hits += 1
                 print(f"[CACHE HIT] Retrieved from cache (query_type: {query_type.value})")
                 return cached
+            else:
+                self.cache_misses += 1
 
         print(f"Consulting expert LLMs (query_type: {query_type.value})...")
 
@@ -637,9 +668,20 @@ class EnhancedMultiLLMBridge:
             reverse=True
         )
 
+        # Identify best response
+        best_response = None
+        if formatted_responses and formatted_responses[0].get('success'):
+            best = formatted_responses[0]
+            best_response = {
+                'source': best['source'],
+                'content': best['content'],
+                'quality': best.get('quality_score', 0.0)
+            }
+
         result = {
             'responses': formatted_responses,
             'quality_scores': quality_scores,
+            'best_response': best_response,
             'from_cache': False,
             'query_type': query_type.value
         }
@@ -752,8 +794,19 @@ Please provide:
                 print(f"   Error: {response.get('error', 'Unknown error')}")
 
     def get_cache_stats(self) -> Dict[str, Any]:
-        """Get cache statistics."""
-        return self.cache.get_stats()
+        """Get cache statistics with hit/miss tracking."""
+        base_stats = self.cache.get_stats()
+
+        # Add session hit/miss tracking
+        total_requests = self.cache_hits + self.cache_misses
+        hit_rate = self.cache_hits / total_requests if total_requests > 0 else 0.0
+
+        return {
+            **base_stats,
+            'cache_hits': self.cache_hits,
+            'cache_misses': self.cache_misses,
+            'hit_rate': hit_rate
+        }
 
     def cleanup_cache(self) -> int:
         """Clean up expired cache entries."""
