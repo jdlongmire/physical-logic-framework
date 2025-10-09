@@ -199,6 +199,19 @@ git push origin main
 
 ---
 
+## 👤 Author Information
+
+**Author**: James D. (JD) Longmire
+**Affiliation**: Northrop Grumman Fellow (unaffiliated research)
+**ORCID**: [0009-0009-1383-7698](https://orcid.org/0009-0009-1383-7698)
+
+**IMPORTANT**: All notebooks, papers, and documentation must include proper attribution to:
+- **Name**: James D. (JD) Longmire
+- **Affiliation**: Northrop Grumman Fellow (unaffiliated research)
+- **ORCID**: 0009-0009-1383-7698
+
+---
+
 ## Repository Overview
 
 This is the **Physical Logic Framework (PLF)** repository, containing mathematical derivations and computational simulations for Logic Field Theory (LFT) - a theoretical physics framework that proposes physical reality emerges from logical filtering of information: **A = L(I)**.
