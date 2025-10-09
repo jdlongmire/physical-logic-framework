@@ -252,13 +252,22 @@ Logic Realism / Logic Field Theory (LFT) demonstrates that **quantum mechanics e
 
 ### 🔄 Remaining Work
 
-**Priority 2: Lean 4 Formalization**
-- [ ] Formalize Foundation theorems (00-04)
-- [ ] Formalize Dynamics theorems (05-08)
-- [ ] Formalize Predictions theorems (09-11)
-- [ ] Build complete proof library in PhysicalLogicFramework
+**Priority 2: Lean 4 Formalization (50% Complete)**
 
-**Estimated Time**: 20-30 hours (long-term project)
+**✅ Completed:**
+- [x] Foundation theorems (00-04): InformationSpace, ThreeFundamentalLaws, ConstraintThreshold, MaximumEntropy
+- [x] Dynamics theorems (05): GraphLaplacian, FisherGeometry, TheoremD1
+- [x] Quantum emergence: BornRule, HilbertSpace, QuantumCore, BellInequality
+
+**🔄 Remaining:**
+- [ ] Interferometry formalization (06)
+- [ ] Qubit systems formalization (07)
+- [ ] Energy level structure formalization (08)
+- [ ] Finite-N corrections formalization (09)
+- [ ] Spectral mode analysis formalization (10)
+- [ ] Entropy saturation formalization (11)
+
+**Estimated Time**: 10-15 hours (50% complete, 6 notebooks remaining)
 
 **Priority 3: Paper Integration**
 - [ ] Update main paper with experimental predictions
@@ -345,12 +354,12 @@ All notebooks 00-11 fully validated computationally!
 
 | Notebook | Mathematics | Computation | Lean 4 |
 |----------|------------|-------------|--------|
-| 00 | ✓ Complete | ✓ Validated | ⧗ Pending |
-| 01 | ✓ Complete | ✓ Validated | ⧗ Pending |
-| 02 | ✓ Complete | ✓ Validated | ⧗ Pending |
-| 03 | ✓ Complete | ✓ Validated | ⧗ Pending |
-| 04 | ✓ Complete | ✓ Validated | ⧗ Pending |
-| 05 | ✓ Complete | ✓ Validated | ⧗ Pending |
+| 00 | ✓ Complete | ✓ Validated | ✓ Formalized (InformationSpace.lean) |
+| 01 | ✓ Complete | ✓ Validated | ✓ Formalized (ThreeFundamentalLaws.lean) |
+| 02 | ✓ Complete | ✓ Validated | ✓ Formalized (ConstraintThreshold.lean) |
+| 03 | ✓ Complete | ✓ Validated | ✓ Formalized (MaximumEntropy.lean, BornRule.lean) |
+| 04 | ✓ Complete | ✓ Validated | ✓ Formalized (FisherGeometry.lean) |
+| 05 | ✓ Complete | ✓ Validated | ✓ Formalized (GraphLaplacian.lean, TheoremD1.lean) |
 | 06 | ✓ Complete | ✓ Validated | ⧗ Pending |
 | 07 | ✓ Complete | ✓ Validated | ⧗ Pending |
 | 08 | ✓ Complete | ✓ Validated | ⧗ Pending |
@@ -358,7 +367,31 @@ All notebooks 00-11 fully validated computationally!
 | 10 | ✓ Complete | ✓ Validated | ⧗ Pending |
 | 11 | ✓ Complete | ✓ Validated | ⧗ Pending |
 
-**Overall Progress**: Mathematics 100% | Computation 100% | Lean 4 0%
+**Overall Progress**: Mathematics 100% | Computation 100% | Lean 4 50% (6/12 notebooks)
+
+### Lean 4 Proof Library Mapping
+
+The completed Lean formalizations reside in `lean/LFT_Proofs/PhysicalLogicFramework/`:
+
+**Foundations/** (Notebooks 00-04):
+- `InformationSpace.lean` → Notebook 00: Infinite product ∏ S_n, permutation space structure
+- `ThreeFundamentalLaws.lean` → Notebook 01: Logical operators (Identity, Non-Contradiction, Excluded Middle)
+- `ConstraintThreshold.lean` → Notebook 02: K(N)=N-2 proof (Coxeter groups, Mahonian symmetry)
+- `MaximumEntropy.lean` → Notebook 03: Shannon entropy, MaxEnt principle, uniform distribution
+
+**Dynamics/** (Notebook 04-05):
+- `FisherGeometry.lean` → Notebook 04: Fisher metric = Fubini-Study metric equivalence
+- `GraphLaplacian.lean` → Notebook 05: Hamiltonian H = D - A (graph Laplacian)
+- `ConvergenceTheorem.lean` → Notebook 05: Laplace-Beltrami → Graph Laplacian
+- `TheoremD1.lean` → Notebook 05: Complete Theorem D.1 integration
+
+**QuantumEmergence/** (Notebooks 03-05):
+- `BornRule.lean` → Notebook 03: Gleason's theorem → Born rule derivation
+- `HilbertSpace.lean` → Notebooks 03-05: Hilbert space structure from constraints
+- `QuantumCore.lean` → Infrastructure for quantum formalism
+- `BellInequality_Fixed.lean` → Bell violations formalization
+
+**Note**: Notebooks 06-11 (Interferometry, Qubits, Energy Levels, Experimental Predictions) remain to be formalized in Lean 4. The mathematical and computational validation is complete for all 12 notebooks; Lean formalization provides the third pillar of rigorous verification.
 
 ---
 
