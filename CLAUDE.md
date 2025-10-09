@@ -225,6 +225,13 @@ git push origin main
 
 **Correct placement**: In first markdown cell, after title and subtitle, before "Purpose" section.
 
+**Professional tone**: Notebooks must maintain a professional, scholarly tone throughout:
+- ❌ NO informal thinking commentary ("Wait, that doesn't seem right...")
+- ❌ NO self-correction notes ("Let me recalculate...", "Actually, this is wrong...")
+- ❌ NO stream-of-consciousness ("Hmm, let me think about this...")
+- ✅ Present the correct approach directly and professionally
+- ✅ If multiple approaches exist, present them as alternatives, not as corrections
+
 See Notebook 08 (`notebooks/Logic_Realism/08_Energy_Level_Structure.ipynb`) for reference template.
 
 ---
