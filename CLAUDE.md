@@ -6,18 +6,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **When starting a new session, you will be asked to read this file (CLAUDE.md).**
 
-**Upon reading CLAUDE.md, immediately read**: [`Session_Log/Session_0.0.md`](Session_Log/Session_0.0.md)
+**Upon reading CLAUDE.md, immediately read the latest session file in `Session_Log/`**
 
-`Session_Log/Session_0.0.md` is the master status file containing everything needed to resume:
+Find the most recent `Session_X.Y.md` file (highest X.Y number) in the `Session_Log/` directory. This file contains everything needed to resume:
 - ✅ Complete session history and accomplishments
 - 🎯 Current research focus and strategic direction
 - 📊 Honest theory viability assessment
-- 🗺️ Full systematic research roadmap (Year 1-2)
+- 🗺️ Full systematic research roadmap
 - 🔍 All files changed, commits made this session
 - 🎬 Specific next tasks (with clear options)
 - 📁 Guide to all key documents
 
-**After reading Session_Log/Session_0.0.md, you will have complete context and can continue work immediately.**
+**After reading the latest session file, you will have complete context and can continue work immediately.**
+
+**Note**: Session_0.0.md is a historical snapshot and should not be updated.
 
 ---
 
@@ -90,7 +92,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Next Steps
 
 **To Resume**:
-1. Read: Session_Log/Session_0.0.md
+1. Read: Latest Session_X.Y.md file in Session_Log/
 2. Review: [Key documents from this session]
 3. Continue: [Next major task]
 ```
@@ -116,11 +118,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **Before ending session**:
 1. ✅ Make final rename to highest Y value
-2. ✅ Complete all sections in session log
-3. ✅ Update `Session_Log/Session_0.0.md` with latest status
+2. ✅ Complete all sections in current session log (Session_X.Y.md)
+3. ✅ Ensure session log includes updated status, viability, next steps
 4. ✅ Archive any old/superseded session files to `archive/` if needed
-5. ✅ Ensure `Session_Log/` contains only:
-   - Session_0.0.md (master status file)
+5. ✅ Ensure `Session_Log/` contains:
+   - Session_0.0.md (historical snapshot, do not modify)
    - Current and recent session logs (Session_X.Y.md format)
    - README.md
 
@@ -166,12 +168,12 @@ git push origin main
 
 **Updated "End of Session: Finalize" checklist**:
 1. ✅ Make final rename to highest Y value
-2. ✅ Complete all sections in session log
-3. ✅ Update `Session_Log/Session_0.0.md` with latest status
+2. ✅ Complete all sections in current session log (Session_X.Y.md)
+3. ✅ Ensure session log includes updated status, viability, next steps
 4. ✅ **Push all commits to GitHub** (`git push origin main`)
 5. ✅ Archive any old/superseded session files to `archive/` if needed
-6. ✅ Ensure `Session_Log/` contains only:
-   - Session_0.0.md (master status file)
+6. ✅ Ensure `Session_Log/` contains:
+   - Session_0.0.md (historical snapshot, do not modify)
    - Current and recent session logs (Session_X.Y.md format)
    - README.md
 
@@ -345,4 +347,4 @@ np.random.seed(42); random.seed(42)
 
 This repository implements active theoretical research in fundamental physics. All results are mathematical/computational demonstrations of the LFT framework. The core thesis is that physical laws (quantum mechanics, spacetime geometry, gravity) can be derived rather than postulated, emerging from logical consistency requirements on an information space.
 
-**Important**: After each session make sure to update `Session_Log/Session_0.0.md` (master status file) and all relevant README files.
+**Important**: After each session, ensure the current session log (Session_X.Y.md) is complete with updated status, accomplishments, viability assessments, and next steps. Also update relevant README files as needed.
