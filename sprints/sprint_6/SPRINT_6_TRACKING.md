@@ -156,9 +156,67 @@ Demonstrate that the Born Rule derivation is non-circular by proving that assump
 - ✅ Notebook 12 COMPLETE (all 8 sections, validation 100%)
 - ✅ Team Consultation 2 COMPLETE (expert feedback received)
 - ✅ Lean formalization SCAFFOLD COMPLETE (compiles, 12 sorry statements)
+- ✅ Notebook 13 Plan COMPLETE (comprehensive 8-section structure)
+- ✅ Team Consultation 3 COMPLETE (K(N) approach reviewed)
+- ⏳ Implement Notebook 13 (focus on Mahonian + Coxeter approaches)
 - ⏳ Complete Lean proofs (remove sorry statements)
 - ⏳ Address complex vector space justification
-- ⏳ Begin Notebook 13 (K(N)=N-2 derivation)
+
+### Day 3 - 2025-10-09 (continued)
+
+**Notebook Track**:
+- Status: Notebook 13 (K(N)=N-2 from First Principles) [**PLAN COMPLETE**]
+- **Created**: NOTEBOOK_13_PLAN.md (comprehensive 8-section plan)
+- **Structure**: 5 independent approaches → K(N)=N-2
+  * Approach 1: Information Theory (entropy maximization)
+  * Approach 2: Graph Theory (permutohedron tree covering)
+  * Approach 3: Mahonian Statistics (descent space dimension - PRIORITY 1)
+  * Approach 4: Coxeter Groups (root system dimension - PRIORITY 1)
+  * Approach 5: Maximum Entropy Principle (minimal sufficient constraints)
+- **Target**: ~3,500 words with computational validation
+
+**Team Track**:
+- Consultation 3: [COMPLETE] "K(N)=N-2 Derivation Approach Review"
+  - Quality: Grok 0.73/1.0, ChatGPT 0.62/1.0, Gemini 0.58/1.0
+  - Average: 0.64/1.0 (below threshold but substantial feedback)
+  - **Key Guidance**: Focus on Mahonian + Coxeter approaches (strongest)
+  - Saved: consultation_03_K_N_approach_20251009_104331.txt/json
+
+**Critical Feedback from Team**:
+1. **Approach Rankings** (all 3 experts agree):
+   - PRIORITY 1: Mahonian Statistics (Stanley's theorem - established result)
+   - PRIORITY 1: Coxeter Groups (root systems - well-established framework)
+   - Priority 2: Graph Theory (needs more rigor)
+   - Priority 3: MaxEnt Principle (complex to formalize)
+   - Priority 4: Information Theory (weakest, defer)
+
+2. **Independence Concerns**:
+   - Approaches may share underlying assumptions
+   - "N-1 minus identity" heuristic appears in multiple approaches
+   - Need to explicitly demonstrate independence
+
+3. **Rigor Gaps**:
+   - Many derivations are suggestive, not rigorous proofs
+   - Need formal definitions (constraint efficiency, tree covering, etc.)
+   - Stanley's theorem needs explicit connection to K(N)
+
+4. **Key Question** (from Grok):
+   > "How can we rigorously prove that the dimension of the descent space (Stanley's theorem) directly corresponds to K(N), and can this be computationally validated for small N?"
+
+**Integration Strategy**:
+- Focus on 2-3 strongest approaches (Mahonian, Coxeter, Graph) instead of all 5
+- Prioritize rigor over breadth
+- Computational validation essential for all approaches tested
+- Start with Mahonian Statistics (most established theorem base)
+
+**Organization Update**:
+- Notebook 12 MOVED to correct location: `notebooks/Logic_Realism/` ✓
+- Future notebooks will be in Logic_Realism folder (continuing series 00-12)
+
+**Next Steps**:
+- ⏳ Implement Notebook 13 (prioritize Mahonian + Coxeter approaches)
+- ⏳ Computational validation for N=3,4,5,6
+- ⏳ Team Consultation 4: Review Notebook 13 implementation
 
 ---
 
@@ -183,7 +241,8 @@ Demonstrate that the Born Rule derivation is non-circular by proving that assump
   - Grok 0.70/1.0, Average 0.53/1.0
 - [x] Consultation 2: Notebook 12 review - **COMPLETE** (Day 2)
   - Grok 0.81/1.0, Average 0.68/1.0
-- [ ] Consultation 3: K(N) information theory - Not Started
+- [x] Consultation 3: K(N) approach review - **COMPLETE** (Day 3)
+  - Grok 0.73/1.0, Average 0.64/1.0
 - [ ] Consultation 4: Graph-theoretic K(N) verification - Not Started
 - [ ] Consultation 5: Notebook 13 draft review - Not Started
 - [ ] Consultation 6: Lean formalization strategy - Not Started
@@ -252,6 +311,6 @@ Demonstrate that the Born Rule derivation is non-circular by proving that assump
 
 ---
 
-**Last Updated**: 2025-10-09 (Day 2)
-**Current Phase**: Lean formalization + Team feedback integration
-**Next Milestone**: Complete Lean proofs, address complex vector space justification, begin Notebook 13
+**Last Updated**: 2025-10-09 (Day 3)
+**Current Phase**: Notebook 13 implementation + Lean proof completion
+**Next Milestone**: Implement Notebook 13 (Mahonian + Coxeter approaches), validate K(N)=N-2
