@@ -62,9 +62,11 @@ Demonstrate that the Born Rule derivation is non-circular by proving that assump
 ### Day 1 - 2025-10-09
 
 **Notebook Track**:
-- Status: Creating Notebook 12 (Unitary Invariance Foundations) [In Progress]
-- Plan: Structure based on team consultation guidance
-- Sections: Permutohedron symmetries → Distance metrics → Entropy preservation → Unitarity uniqueness
+- Status: Notebook 12 (Unitary Invariance Foundations) [Partial Implementation Complete]
+- **Created**: `12_Unitary_Invariance_Foundations.ipynb` (18KB)
+- **Implemented**: Sections 1-3 (Introduction, Permutohedron/Cayley graph, Distance metrics)
+- **Code Working**: Cayley graph construction, distance matrix computation, visualizations
+- **Remaining**: Sections 4-8 (transformations, entropy, unitarity theorem, validation, QM connection)
 
 **Lean Track**:
 - Status: Module structure planned from consultation
@@ -115,8 +117,8 @@ Demonstrate that the Born Rule derivation is non-circular by proving that assump
 ## Deliverables Status
 
 ### Notebook Track
-- [ ] Notebook 12: Unitary Invariance Foundations - **In Progress** (Day 1)
-- [ ] Notebook 13: K(N)=N-2 from First Principles - Pending (Day 3)
+- [~] Notebook 12: Unitary Invariance Foundations - **Partial** (Day 1 - Sections 1-3/8 complete)
+- [ ] Notebook 13: K(N)=N-2 from First Principles - Pending (Day 3+)
 
 ### Lean Track
 - [ ] BornRuleNonCircularity.lean - **Planning** (Day 1)
