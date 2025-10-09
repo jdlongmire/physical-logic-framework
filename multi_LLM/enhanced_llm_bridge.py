@@ -812,6 +812,98 @@ Please provide:
         """Clean up expired cache entries."""
         return self.cache.cleanup_expired()
 
+    async def health_check(self) -> Dict[str, Any]:
+        """
+        Check health of all APIs with simple test query.
+
+        Returns dict with:
+        - overall_status: 'healthy', 'degraded', or 'unhealthy'
+        - api_status: dict of {api_name: {'status': bool, 'response_time': float, 'error': str}}
+        - healthy_count: number of working APIs
+        - timestamp: when check was performed
+        """
+        import time
+
+        test_prompt = "Respond with just the word 'OK'."
+        results = {
+            'timestamp': time.time(),
+            'api_status': {},
+            'healthy_count': 0
+        }
+
+        # Test each API individually
+        apis = [
+            ('grok', self.query_grok),
+            ('chatgpt', self.query_chatgpt),
+            ('gemini', self.query_gemini)
+        ]
+
+        for api_name, api_func in apis:
+            start = time.time()
+            try:
+                response = await asyncio.wait_for(api_func(test_prompt), timeout=10.0)
+                elapsed = time.time() - start
+
+                if response.get('success'):
+                    results['api_status'][api_name] = {
+                        'status': True,
+                        'response_time': elapsed,
+                        'message': 'OK'
+                    }
+                    results['healthy_count'] += 1
+                else:
+                    results['api_status'][api_name] = {
+                        'status': False,
+                        'response_time': elapsed,
+                        'error': response.get('error', 'Unknown error')
+                    }
+            except asyncio.TimeoutError:
+                results['api_status'][api_name] = {
+                    'status': False,
+                    'response_time': 10.0,
+                    'error': 'Timeout after 10 seconds'
+                }
+            except Exception as e:
+                results['api_status'][api_name] = {
+                    'status': False,
+                    'response_time': time.time() - start,
+                    'error': str(e)
+                }
+
+        # Determine overall status
+        if results['healthy_count'] == 3:
+            results['overall_status'] = 'healthy'
+        elif results['healthy_count'] > 0:
+            results['overall_status'] = 'degraded'
+        else:
+            results['overall_status'] = 'unhealthy'
+
+        return results
+
+    def print_health_check(self, health: Dict[str, Any]):
+        """Print formatted health check results."""
+        print("=" * 70)
+        print("API HEALTH CHECK")
+        print("=" * 70)
+
+        status_emoji = {
+            'healthy': '[OK]',
+            'degraded': '[WARN]',
+            'unhealthy': '[FAIL]'
+        }
+
+        print(f"\nOverall Status: {status_emoji.get(health['overall_status'], '[?]')} {health['overall_status'].upper()}")
+        print(f"Healthy APIs: {health['healthy_count']}/3")
+
+        print("\nAPI Status:")
+        for api_name, status in health['api_status'].items():
+            if status['status']:
+                print(f"  [OK] {api_name.upper()}: {status['response_time']:.2f}s")
+            else:
+                print(f"  [FAIL] {api_name.upper()}: {status.get('error', 'Unknown')}")
+
+        print("=" * 70)
+
 
 # Example usage
 async def main():

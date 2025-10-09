@@ -39,10 +39,41 @@ cp api_config_template.json api_config.json
 # Edit api_config.json with your keys (NEVER commit this file!)
 ```
 
-### 2. Test All APIs
+### 2. Validate API Health
+
+Quick health check (recommended before each session):
 
 ```bash
 cd multi_LLM
+python3 health_check.py
+```
+
+Expected output:
+```
+======================================================================
+API HEALTH CHECK
+======================================================================
+
+Overall Status: [OK] HEALTHY
+Healthy APIs: 3/3
+
+API Status:
+  [OK] GROK: 0.47s
+  [OK] CHATGPT: 0.51s
+  [OK] GEMINI: 0.34s
+======================================================================
+
+[SUCCESS] All APIs operational and ready for use
+```
+
+**Exit Codes**:
+- `0`: All APIs healthy
+- `1`: Degraded (some APIs unavailable)
+- `2`: Unhealthy (no APIs available)
+
+### 3. Full Test Suite
+
+```bash
 python3 test_suite.py
 ```
 
@@ -56,7 +87,7 @@ API Status:
   Gemini:  [OK] Working
 ```
 
-### 3. Use for Lean 4 Consultation (Enhanced Bridge)
+### 4. Use for Lean 4 Consultation (Enhanced Bridge)
 
 ```python
 import asyncio
@@ -262,6 +293,35 @@ result = await bridge.consult_theory(
 )
 ```
 
+### 10. API Health Monitoring
+
+Built-in health check for validating API readiness:
+
+```python
+# Programmatic health check
+health = await bridge.health_check()
+
+if health['overall_status'] == 'healthy':
+    print("All systems go!")
+    # health['healthy_count'] = 3
+    # health['api_status'] = {'grok': {...}, 'chatgpt': {...}, 'gemini': {...}}
+
+# Pretty print
+bridge.print_health_check(health)
+```
+
+**Standalone health check**:
+```bash
+python3 health_check.py  # Exit code 0 = healthy, 1 = degraded, 2 = unhealthy
+```
+
+**Features**:
+- 10-second timeout per API (prevents hanging)
+- Response time measurement
+- Detailed error messages for failed APIs
+- Exit codes for CI/CD integration
+- Recommended before each session
+
 ## File Structure
 
 ```
@@ -271,12 +331,18 @@ multi_LLM/
 ├── api_config.json               # Your keys (gitignored!)
 ├── enhanced_llm_bridge.py        # Phase 1 enhanced bridge (recommended)
 ├── claude_llm_bridge.py          # Legacy bridge (still functional)
+├── health_check.py               # API health check script
 ├── test_enhanced_bridge.py       # Phase 1 comprehensive test suite
 ├── test_suite.py                 # Legacy test suite
+├── test_api_connection.py        # Basic API connectivity test
 ├── lean4_training_prompt.md      # Training prompt for experts
 ├── llm_cache.db                  # SQLite cache (gitignored)
 ├── test_enhanced_results.json    # Latest Phase 1 test results
-└── test_results.json             # Legacy test results
+├── test_results.json             # Legacy test results
+└── consultation/                 # Consultation logs and scripts (gitignored)
+    ├── consultation_log_*.json   # Historical consultation logs
+    ├── consult_*.py              # Specialized consultation scripts
+    └── *.md                      # Expert responses and summaries
 ```
 
 **Migration Note**: The `enhanced_llm_bridge.py` is fully backward-compatible with `claude_llm_bridge.py` patterns while adding new features. Both are maintained for compatibility.
