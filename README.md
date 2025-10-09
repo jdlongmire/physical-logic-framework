@@ -125,6 +125,269 @@ This framework derives **static quantum probabilities (Born rule)** from logical
 - ⏳ **Quantum field theory**: Connection to standard QFT formalism
 - ⏳ **General relativity**: Logical geometry of spacetime
 
+## Research Methods
+
+This project employs a novel **multi-modal research methodology** combining computational validation, formal verification, multi-AI consultation, and AI-assisted development in an integrated sprint-based workflow. This approach is designed for rigorous theoretical physics research with immediate quality assurance.
+
+### Development Philosophy
+
+**Core Principle**: Every theoretical claim must satisfy three independent validation criteria:
+1. **Computational verification** (Jupyter notebooks with executable code)
+2. **Formal proof** (Lean 4 theorem proving, zero `sorry` statements)
+3. **Multi-expert review** (consensus from 3 independent AI models)
+
+This triple-validation approach ensures mathematical rigor, computational reproducibility, and peer-reviewed quality before publication.
+
+### Three-Track Integration
+
+Development proceeds in parallel across three synchronized tracks:
+
+#### 1. Notebook Track - Computational Validation
+
+**Tool**: Jupyter notebooks with Python (NumPy, SciPy, NetworkX, Matplotlib)
+
+**Purpose**:
+- Computational validation of mathematical claims
+- Visualization of geometric structures (permutohedra, root systems)
+- Parameter exploration and edge case testing
+- Professional LaTeX exposition with inline code
+
+**Workflow**:
+```python
+# Each notebook follows V2 architecture:
+# 1. Purpose & context (peer review connections)
+# 2. Mathematical exposition (LaTeX with citations)
+# 3. Computational implementation
+# 4. Validation results (100% success rate required)
+# 5. Physical interpretation
+# 6. Conclusion & next steps
+```
+
+**Quality Standards**:
+- Professional scholarly tone (no informal commentary)
+- Copyright attribution (Apache 2.0 license)
+- All code cells must execute successfully
+- Results must match theoretical predictions (100% validation)
+- Figures publication-quality (300 DPI, proper labels)
+
+**Output**: ~3,000-5,000 words per notebook with complete computational validation
+
+#### 2. Lean Track - Formal Verification
+
+**Tool**: Lean 4 with Mathlib (formal proof assistant)
+
+**Purpose**:
+- Rigorous mathematical proofs with zero `sorry` statements
+- Type-checked verification of theorem dependencies
+- Machine-checkable derivation chains
+- Prevents circular reasoning (acyclic dependency graphs)
+
+**Workflow**:
+```lean
+-- Each proof module follows structure:
+-- 1. Type definitions (permutations, constraints, metrics)
+-- 2. Axioms and basic lemmas
+-- 3. Main theorems with complete proofs
+-- 4. Derivation chain verification
+```
+
+**Quality Standards**:
+- Zero `sorry` statements (no placeholders in production)
+- Complete Mathlib documentation
+- Type soundness (all proofs type-check)
+- Dependency acyclicity (detected automatically)
+
+**Output**: ~400 lines per major theorem, fully verified
+
+#### 3. Team Track - Multi-LLM Consultation
+
+**Tool**: Custom multi-LLM bridge (Grok-3, GPT-4, Gemini-2.0)
+
+**Purpose**:
+- Independent expert review of mathematical claims
+- Quality scoring (0.0-1.0 scale) from multiple perspectives
+- Identification of gaps, circular reasoning, unclear exposition
+- Peer review simulation before manuscript submission
+
+**Workflow**:
+```python
+# Consultation protocol:
+# 1. Formulate focused research question
+# 2. Query 3 LLMs in parallel
+# 3. Parse and score responses (5-dimension quality metrics)
+# 4. Require average quality > 0.70 for acceptance
+# 5. Iterate on feedback until threshold met
+```
+
+**Quality Metrics** (per consultation):
+- **Mathematical rigor** (0-40%): Proof completeness, citation quality
+- **Clarity** (0-25%): Exposition quality, logical flow
+- **Correctness** (0-20%): Mathematical accuracy, consistency
+- **Actionability** (0-15%): Specific, implementable suggestions
+
+**Budget**: 13 consultations per 2-week sprint (~40-45 API calls with caching)
+
+### Sprint-Based Research Workflow
+
+Development follows **2-week sprints** with daily progress tracking:
+
+**Sprint Structure**:
+```
+Week 1: Foundation & Implementation
+- Day 1: Team consultation (approach validation)
+- Days 2-4: Notebook development + computational validation
+- Days 5-6: Lean formalization (theorem scaffolding)
+- Day 7: Week 1 integration review (team consultation)
+
+Week 2: Verification & Integration
+- Days 8-10: Complete Lean proofs (remove all `sorry` statements)
+- Days 11-12: Notebook enhancements (address team feedback)
+- Day 13: Final team consultation (comprehensive review)
+- Day 14: Sprint retrospective + documentation
+```
+
+**Daily Tracking**:
+- Progressive session log updates (`Session_X.Y.md` format)
+- Git commits after each major phase (recovery protection)
+- Sprint tracking document (`SPRINT_X_TRACKING.md`)
+- Todo list management (clear status transitions)
+
+**Success Criteria** (per sprint):
+- All team consultations average > 0.70
+- Lean modules compile with 0 `sorry` statements
+- 100% computational validation (all tests pass)
+- Complete documentation (session logs, sprint tracking)
+
+### AI-Assisted Development
+
+**Tool**: Claude Code (Anthropic Sonnet 4.5)
+
+**Role**: Research accelerator and development partner
+
+**Capabilities Leveraged**:
+- **Code generation**: Jupyter notebooks, Python scripts, Lean modules
+- **Mathematical exposition**: LaTeX proofs with proper citation
+- **Literature synthesis**: Integration of established theorems
+- **Quality assurance**: Copyright/license compliance, tone consistency
+- **Version control**: Git workflow management, commit messages
+
+**Workflow Integration**:
+- Reads session logs at startup (complete context recovery)
+- Uses todo lists for task tracking
+- Commits work incrementally (abrupt session protection)
+- Documents progress in sprint tracking
+
+**Human-AI Collaboration**:
+- Human: Research direction, theoretical insights, peer review interpretation
+- AI: Implementation, documentation, computational validation, formal proofs
+- Result: 10-20x research velocity with maintained quality
+
+### Version Control & Reproducibility
+
+**Tool**: Git + GitHub
+
+**Commit Protocol**:
+- Atomic commits per deliverable (notebook, proof module, consultation)
+- Descriptive messages (accomplishments, validation results, next steps)
+- Progressive updates during active work (every 30-60 minutes)
+- Push to remote after each major milestone
+
+**Reproducibility Standards**:
+- All notebooks include random seeds (deterministic results)
+- Dependencies specified (`requirements.txt`, `lakefile.toml`)
+- Exact version tracking (Lean toolchain, Python packages)
+- Complete session logs (recovery from any point)
+
+### Quality Assurance Pipeline
+
+**Four-Stage Validation**:
+
+1. **Computational**: Run all notebook cells, verify 100% success
+2. **Formal**: Build Lean modules, verify 0 `sorry` statements
+3. **Peer Review**: Multi-LLM consultation, require > 0.70 average
+4. **Integration**: Cross-track consistency checks
+
+**Acceptance Criteria** (before declaring "complete"):
+- ✅ All notebook code executes successfully
+- ✅ All Lean proofs type-check with 0 placeholders
+- ✅ Team consultation consensus ("Accept" or "Minor Revision")
+- ✅ Documentation complete (session logs, sprint tracking, README)
+- ✅ Git synchronized (all commits pushed to remote)
+
+### Communities of Interest
+
+This methodology may be relevant to:
+
+**Theoretical Physics**:
+- Rigorous derivations with computational validation
+- Formal proof standards for foundational claims
+- AI-assisted exploration of mathematical structures
+
+**Formal Verification**:
+- Lean 4 integration with computational notebooks
+- Automated quality metrics for proof completeness
+- Dependency acyclicity verification
+
+**AI/ML Research**:
+- Multi-agent consultation for quality assurance
+- AI-assisted theorem proving and proof discovery
+- Human-AI collaboration in mathematical research
+
+**Open Science**:
+- Complete reproducibility (code + proofs + documentation)
+- Transparent research methodology
+- Public version control (GitHub)
+
+**Computational Mathematics**:
+- Jupyter notebooks for mathematical exposition
+- Executable proofs with visualizations
+- Integration with symbolic computation
+
+### Tools & Infrastructure
+
+**Development Environment**:
+- **OS**: Windows 11 (WSL for Linux tools)
+- **IDE**: Claude Code (AI-assisted development)
+- **Notebooks**: Jupyter Lab with Python 3.12
+- **Theorem Prover**: Lean 4.13.0 with Mathlib
+- **Version Control**: Git 2.47 + GitHub
+- **Multi-LLM**: Custom bridge to Grok/GPT-4/Gemini APIs
+
+**Dependencies**:
+```
+Python: numpy, scipy, matplotlib, networkx, pandas
+Lean: mathlib4 (latest), aesop, std4
+AI: anthropic-sdk, openai, google-generativeai
+```
+
+**Compute Requirements**:
+- Notebooks: Any modern laptop (N ≤ 6 systems)
+- Lean: ~4GB RAM, ~30 min build time
+- Multi-LLM: API access with ~500 token/consultation budget
+
+### Publications & Reproducibility
+
+**Reproducibility Commitment**:
+- All notebooks executable with provided dependencies
+- Complete Lean proofs build with specified toolchain
+- Session logs document every research decision
+- Git history preserves complete development timeline
+
+**Citation**:
+```
+Longmire, J.D. (2025). Logic Field Theory: Deriving Quantum Mechanics
+from Logical Consistency. Physical Logic Framework Repository.
+https://github.com/jdlongmire/physical-logic-framework
+```
+
+**Open Science**:
+- Public repository (GitHub)
+- Apache 2.0 license (code) + CC-BY 4.0 (documentation)
+- Complete research artifacts (notebooks + proofs + consultations)
+- Transparent methodology (this Methods section)
+
+---
+
 ## Repository Structure
 
 ```
