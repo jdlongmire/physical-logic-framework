@@ -99,6 +99,8 @@ Find the most recent `Session_X.Y.md` file (highest X.Y number) in the `Session_
 
 ### During Session: Progressive Updates
 
+**CRITICAL**: Update session log progressively to protect against abrupt session interruption.
+
 **Update trigger**: After completing each major phase/task
 
 **How to update**:
@@ -107,12 +109,28 @@ Find the most recent `Session_X.Y.md` file (highest X.Y number) in the `Session_
 3. Add new phases as they complete
 4. Update "Files Created/Modified" list
 5. Note key achievements
+6. **Commit and push** session log immediately after each update
+
+**Progressive Update Protocol** (Protection Against Interruption):
+
+✅ **DO** update session log in real-time:
+- After each major task completion
+- After each git commit
+- After each notebook/file creation
+- Before any long-running operations
+- At natural breakpoints in work
+
+❌ **DO NOT** wait until end of session to update
+
+**Update Frequency**: Every 30-60 minutes of active work, or after each deliverable
 
 **Example progression**:
 - `Session_3.0.md` - Session start (Sprint 1 begins)
-- `Session_3.1.md` - After claim moderation complete
-- `Session_3.2.md` - After sensitivity analysis complete
-- `Session_3.3.md` - After table addition complete (Sprint 1 done)
+- `Session_3.1.md` - After claim moderation complete [COMMITTED & PUSHED]
+- `Session_3.2.md` - After sensitivity analysis complete [COMMITTED & PUSHED]
+- `Session_3.3.md` - After table addition complete (Sprint 1 done) [COMMITTED & PUSHED]
+
+**Session Recovery**: If session ends abruptly, the most recent Session_X.Y.md provides complete recovery point.
 
 ### End of Session: Finalize
 
