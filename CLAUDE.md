@@ -205,10 +205,27 @@ git push origin main
 **Affiliation**: Northrop Grumman Fellow (unaffiliated research)
 **ORCID**: [0009-0009-1383-7698](https://orcid.org/0009-0009-1383-7698)
 
-**IMPORTANT**: All notebooks, papers, and documentation must include proper attribution to:
-- **Name**: James D. (JD) Longmire
-- **Affiliation**: Northrop Grumman Fellow (unaffiliated research)
-- **ORCID**: 0009-0009-1383-7698
+**IMPORTANT**: All notebooks, papers, and documentation must include proper attribution.
+
+### Notebook Copyright Format
+
+**All Jupyter notebooks** must use this exact copyright block (3 lines, clean format):
+
+```markdown
+**Copyright © 2025 James D. (JD) Longmire**
+**License**: Apache License 2.0
+**Citation**: Longmire, J.D. (2025). *Logic Field Theory: Deriving Quantum Mechanics from Logical Consistency*. Physical Logic Framework Repository.
+```
+
+**DO NOT use**:
+- ❌ Any other author name (e.g., "Jesse Lonquist")
+- ❌ Any other license (e.g., "MIT License")
+- ❌ Multi-line author blocks with separate fields
+- ❌ Excessive formatting or bold headers
+
+**Correct placement**: In first markdown cell, after title and subtitle, before "Purpose" section.
+
+See Notebook 08 (`notebooks/Logic_Realism/08_Energy_Level_Structure.ipynb`) for reference template.
 
 ---
 
