@@ -35,7 +35,7 @@
         ["PhysicalLogicFramework.Foundations.InformationSpace transitive imports (legacy)",
          "10597744576576296984"],
         ["PhysicalLogicFramework.Foundations.InformationSpace:importAllArts",
-         "1558335000534038425"],
+         "6404893676255717122"],
         ["Mathlib.Data.Set.Basic transitive imports (legacy)",
          "15405079330372128603"],
         ["Mathlib.Data.Set.Basic:importAllArts", "17589818717043669713"],
@@ -62,4 +62,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "5622297595418747503"}
+ "depHash": "12360220802974445102"}

@@ -1,18 +1,12 @@
 {"synthetic": false,
  "outputs":
- {"o": ["9966701691853607438"],
-  "i": "3600086092855742995",
+ {"o": ["18110633973685952023"],
+  "i": "16613431851774583582",
   "c": "642192231877907366"},
  "log":
  [{"message":
    ".> LEAN_PATH=C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\lib\\lean c:\\Users\\jdlon\\.elan\\toolchains\\leanprover--lean4---v4.23.0-rc2\\bin\\lean.exe C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\LFT_Proofs\\PhysicalLogicFramework\\Foundations\\InformationSpace.lean -o C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\lib\\lean\\PhysicalLogicFramework\\Foundations\\InformationSpace.olean -i C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\lib\\lean\\PhysicalLogicFramework\\Foundations\\InformationSpace.ilean -c C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\ir\\PhysicalLogicFramework\\Foundations\\InformationSpace.c --setup C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\ir\\PhysicalLogicFramework\\Foundations\\InformationSpace.setup.json --json",
-   "level": "trace"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/Foundations/InformationSpace.lean:287:8: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/Foundations/InformationSpace.lean:316:8: declaration uses 'sorry'",
-   "level": "warning"}],
+   "level": "trace"}],
  "inputs":
  [["PhysicalLogicFramework.Foundations.InformationSpace:deps",
    [["deps",
@@ -41,7 +35,7 @@
   ["Lean 4.23.0, commit ad1a017949674a947f0d6794cbf7130d642c6530",
    "2372534101328293747"],
   ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\LFT_Proofs\\PhysicalLogicFramework\\Foundations\\InformationSpace.lean",
-   "7020816035704106086"],
+   "13416096517676897894"],
   ["options",
    [["-DmaxSynthPendingDepth=3", "14379489197236848084"],
     ["-Dweak.linter.mathlibStandardSet=true", "9949955268809796418"],
@@ -49,4 +43,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "5822483917026626183"}
+ "depHash": "8620936321424746644"}
