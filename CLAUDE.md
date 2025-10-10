@@ -23,6 +23,91 @@ Find the most recent `Session_X.Y.md` file (highest X.Y number) in the `Session_
 
 ---
 
+## 🔍 Program Auditor Agent Protocol
+
+**CRITICAL**: Before making ANY claims about project completion status, run the Program Auditor Agent critical review.
+
+**Purpose**: Prevent overclaiming, hype, and disconnect between formal proofs and computational validation.
+
+### When to Run Auditor
+
+**Mandatory audit triggers**:
+- ✅ At the start of each new session (after reading session log)
+- ✅ Before making any public claims about completion status
+- ✅ After completing any sprint or major milestone
+- ✅ Monthly comprehensive audit
+- ✅ Before updating README or documentation with completion statistics
+
+### Quick Audit Checklist
+
+**Lean Proof Status**:
+```bash
+# Count sorry statements by folder
+echo "Foundations:"
+grep -c sorry lean/LFT_Proofs/PhysicalLogicFramework/Foundations/*.lean 2>/dev/null || echo "0"
+echo "LogicField:"
+grep -c sorry lean/LFT_Proofs/PhysicalLogicFramework/LogicField/*.lean 2>/dev/null || echo "0"
+echo "Dynamics:"
+grep -c sorry lean/LFT_Proofs/PhysicalLogicFramework/Dynamics/*.lean 2>/dev/null || echo "0"
+echo "QuantumEmergence:"
+grep -c sorry lean/LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/*.lean 2>/dev/null || echo "0"
+
+# Verify builds
+cd lean && lake build
+```
+
+**Completion Criteria**:
+- ❌ **NOT complete** if file contains ANY `sorry` statements
+- ❌ **NOT complete** if file fails to build (`lake build` errors)
+- ❌ **NOT complete** if any imported dependency has `sorry` statements
+- ✅ **Complete** ONLY if: 0 sorry + builds successfully + all dependencies complete
+
+### Validation Rules (from Program_Auditor_Agent.md)
+
+**Rule 1**: Stop using "complete," "validated," "finished" without verification
+**Rule 2**: Cross-validate Lean proofs ↔ computational notebooks
+**Rule 3**: Quantify with numbers, not qualitative statements
+**Rule 4**: Start with what's wrong, not what works
+**Rule 5**: Puncture hype with facts
+
+### Red Flag Language
+
+**DO NOT use without verification**:
+- ❌ "complete" / "completed" / "finished"
+- ❌ "validated" / "proven"
+- ❌ "historic achievement" / "breakthrough"
+- ❌ "X modules with 0 sorry" (without showing grep results)
+
+**DO use**:
+- ✅ "X sorry statements remain in module Y" (with grep evidence)
+- ✅ "Module builds successfully (verified YYYY-MM-DD)"
+- ✅ "Module has 0 sorry but depends on incomplete module Z"
+- ✅ Conservative, verifiable claims with audit evidence
+
+### Full Audit Protocol
+
+For comprehensive audits, follow the complete protocol in `Program_Auditor_Agent.md`:
+1. Lean Code Inventory (Phase 1)
+2. Notebook Execution Audit (Phase 2)
+3. Cross-Validation Matrix (Phase 3)
+4. Empirical Testability (Phase 4)
+5. Dependency Analysis (Phase 5)
+
+**Generate audit report** using template in Program_Auditor_Agent.md
+
+### Integration with Session Startup
+
+**Updated Session Startup Protocol**:
+1. Read CLAUDE.md (this file)
+2. Read latest session file in `Session_Log/`
+3. **Run quick audit checklist** (grep for sorry, verify latest build status)
+4. **Update understanding** with audit results before making claims
+5. Continue work with honest baseline
+
+**Protection**: This ensures every session starts with verified facts, not assumptions.
+
+---
+
 ## 📝 Session Logging Protocol
 
 **IMPORTANT**: Sessions are tracked by sequential count, with progressive updates during active work.
@@ -521,3 +606,5 @@ This repository implements active theoretical research in fundamental physics. A
 - keep hyperbole to a minimum
 - always keep the tone professional
 - track sprints in the sprints root folder
+- validate all claims tied to amount of sorrys in Lean proofs
+- validate all notebooks, Lean proofs, code, etc with the multi-LLM team
