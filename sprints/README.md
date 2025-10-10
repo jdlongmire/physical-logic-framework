@@ -19,16 +19,16 @@ sprints/
 ## Sprint Overview
 
 ### Current Status
-- **Active Sprint**: Sprint 6 (Weeks 1-2)
-- **Focus**: Address Born Rule Circularity
-- **Start Date**: 2025-10-09
+- **Active Sprint**: Sprint 7 (Weeks 3-4)
+- **Focus**: Measurement Theory + Lean Remediation
+- **Start Date**: 2025-10-10
 
 ### Sprint Timeline (10 Weeks Total)
 
 | Sprint | Weeks | Focus | Status |
 |--------|-------|-------|--------|
-| Sprint 6 | 1-2 | Born Rule Circularity | **IN PROGRESS** |
-| Sprint 7 | 3-4 | Measurement Theory | Pending |
+| Sprint 6 | 1-2 | Born Rule Circularity | COMPLETE (2025-10-09) |
+| Sprint 7 | 3-4 | Measurement Theory + Remediation | **IN PROGRESS** |
 | Sprint 8 | 5-6 | Ontology & Interpretation | Pending |
 | Sprint 9 | 7-8 | Comparative Analysis & Experiments | Pending |
 | Sprint 10 | 9-10 | Integration & Paper Revision | Pending |
@@ -179,6 +179,6 @@ Both should cross-reference each other for complete documentation.
 
 ---
 
-**Last Updated**: 2025-10-09
-**Current Sprint**: 6 (In Progress)
-**Next Milestone**: Sprint 6 completion (Week 2 end)
+**Last Updated**: 2025-10-10
+**Current Sprint**: 7 (In Progress - Measurement Theory + Remediation)
+**Next Milestone**: Sprint 7 completion (Week 4 end)
