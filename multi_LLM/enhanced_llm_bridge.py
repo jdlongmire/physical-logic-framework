@@ -905,9 +905,141 @@ Please provide:
         print("=" * 70)
 
 
-# Example usage
-async def main():
-    """Example usage of enhanced bridge."""
+# CLI Interface
+async def cli_main():
+    """CLI interface for team consultations."""
+    import argparse
+
+    parser = argparse.ArgumentParser(
+        description="Multi-LLM Consultation System for Logic Field Theory Research",
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog="""
+Examples:
+  # General query (auto-detect type)
+  python enhanced_llm_bridge.py --query "How does quantum entanglement work?"
+
+  # Lean proof consultation
+  python enhanced_llm_bridge.py --query "Need help with HasDerivAt proof" --mode lean
+
+  # Peer review
+  python enhanced_llm_bridge.py --query "Review my paper section" --mode review
+
+  # Theory question
+  python enhanced_llm_bridge.py --query "Explain Bell's theorem" --mode theory
+
+  # Health check
+  python enhanced_llm_bridge.py --health-check
+
+  # Disable cache
+  python enhanced_llm_bridge.py --query "My question" --no-cache
+        """
+    )
+
+    parser.add_argument('--query', type=str, help='Query text to send to LLMs')
+    parser.add_argument('--mode', type=str, choices=['lean', 'review', 'theory', 'general', 'auto'],
+                       default='auto', help='Consultation mode (default: auto-detect)')
+    parser.add_argument('--models', type=str, default='all',
+                       help='Comma-separated list of models (grok,chatgpt,gemini) or "all"')
+    parser.add_argument('--no-cache', action='store_true',
+                       help='Disable cache for this query')
+    parser.add_argument('--health-check', action='store_true',
+                       help='Run API health check')
+    parser.add_argument('--cache-stats', action='store_true',
+                       help='Show cache statistics')
+    parser.add_argument('--cleanup-cache', action='store_true',
+                       help='Clean up expired cache entries')
+    parser.add_argument('--output', type=str, choices=['full', 'best', 'json'],
+                       default='full', help='Output format (default: full)')
+
+    args = parser.parse_args()
+
+    bridge = EnhancedMultiLLMBridge()
+
+    # Health check
+    if args.health_check:
+        print("Running API health check...")
+        health = await bridge.health_check()
+        bridge.print_health_check(health)
+        return
+
+    # Cache stats
+    if args.cache_stats:
+        stats = bridge.get_cache_stats()
+        print("=" * 70)
+        print("CACHE STATISTICS")
+        print("=" * 70)
+        print(f"Total entries: {stats['total_entries']}")
+        print(f"Total accesses: {stats['total_accesses']}")
+        print(f"Cache hits: {stats['cache_hits']}")
+        print(f"Cache misses: {stats['cache_misses']}")
+        print(f"Hit rate: {stats['hit_rate']:.1%}")
+        print("\nBy type:")
+        for qtype, data in stats.get('by_type', {}).items():
+            print(f"  {qtype}: {data['count']} entries, {data['avg_accesses']:.1f} avg accesses")
+        print("=" * 70)
+        return
+
+    # Cleanup cache
+    if args.cleanup_cache:
+        deleted = bridge.cleanup_cache()
+        print(f"Cleaned up {deleted} expired cache entries")
+        return
+
+    # Query required if not running special commands
+    if not args.query:
+        parser.print_help()
+        print("\nError: --query is required unless using --health-check, --cache-stats, or --cleanup-cache")
+        return
+
+    # Determine query type
+    if args.mode == 'auto':
+        query_type = bridge.detect_query_type(args.query)
+        print(f"[AUTO-DETECT] Query type: {query_type.value}")
+    else:
+        mode_map = {
+            'lean': QueryType.LEAN_PROOF,
+            'review': QueryType.PEER_REVIEW,
+            'theory': QueryType.THEORY_QUESTION,
+            'general': QueryType.GENERAL
+        }
+        query_type = mode_map[args.mode]
+
+    # Execute query
+    use_cache = not args.no_cache
+    result = await bridge.consult_all_experts(args.query, query_type, use_cache=use_cache)
+
+    # Output results (handle Unicode encoding for Windows)
+    import sys
+    if sys.platform == 'win32':
+        sys.stdout.reconfigure(encoding='utf-8')
+
+    if args.output == 'json':
+        print(json.dumps(result, indent=2))
+    elif args.output == 'best':
+        best = result.get('best_response')
+        if best:
+            print("=" * 70)
+            print(f"BEST RESPONSE ({best['source'].upper()}) - Quality: {best['quality']:.2f}")
+            print("=" * 70)
+            # Handle potential Unicode characters
+            try:
+                print(best['content'])
+            except UnicodeEncodeError:
+                print(best['content'].encode('utf-8', errors='replace').decode('utf-8'))
+        else:
+            print("No successful responses received")
+    else:  # full
+        bridge.print_results_with_scores(result)
+
+        # Show cache stats
+        print("\n" + "=" * 70)
+        stats = bridge.get_cache_stats()
+        print(f"Cache Statistics: {stats}")
+
+
+# Example usage (for library import)
+async def example_usage():
+    """Example usage of enhanced bridge (for documentation)."""
     bridge = EnhancedMultiLLMBridge()
 
     # Example 1: Lean proof consultation
@@ -930,4 +1062,4 @@ async def main():
 
 
 if __name__ == "__main__":
-    asyncio.run(main())
+    asyncio.run(cli_main())
