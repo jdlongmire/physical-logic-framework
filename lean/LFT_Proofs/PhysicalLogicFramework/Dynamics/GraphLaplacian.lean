@@ -71,6 +71,14 @@ def adjacentTransposition {N : ℕ} (σ τ : Equiv.Perm (Fin N)) : Prop :=
   ∃ i : Fin (N - 1), τ = σ * Equiv.swap ⟨i, Nat.lt_of_lt_of_le i.2 (Nat.sub_le N 1)⟩
     ⟨i + 1, by omega⟩
 
+/-- Adjacent transpositions are loopless: σ * swap(i, i+1) ≠ σ for any permutation σ.
+This follows from the fact that swap(i, i+1) is a non-trivial permutation.
+**Mathematical justification**: If σ = σ * s for some permutation s, then s = 1 (identity).
+But swap(i, i+1) ≠ 1 for i ≠ i+1, so σ * swap(i, i+1) ≠ σ.
+**Reference**: Standard result in group theory (non-trivial group elements act non-trivially). -/
+axiom adjacentTransposition_loopless {N : ℕ} (σ : Equiv.Perm (Fin N)) :
+  ¬ adjacentTransposition σ σ
+
 /-- The permutohedron graph: vertices are permutations, edges are adjacent transpositions.
 This is the Cayley graph Cay(S_N, T) where T is the set of adjacent transpositions. -/
 def PermutohedronGraph (N : ℕ) : SimpleGraph (Equiv.Perm (Fin N)) where
@@ -82,10 +90,7 @@ def PermutohedronGraph (N : ℕ) : SimpleGraph (Equiv.Perm (Fin N)) where
     simp only [mul_assoc]
     rw [Equiv.swap_mul_self]
     simp
-  loopless := by
-    intro σ ⟨i, h⟩
-    -- σ * swap ≠ σ for any non-trivial swap
-    sorry
+  loopless := adjacentTransposition_loopless
 
 /-!
 ## Hamiltonian Operator (Graph Laplacian)

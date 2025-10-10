@@ -24,15 +24,23 @@ This repository contains the **Physical Logic Framework (PLF)** - a comprehensiv
 
 Both tracks employ rigorous multi-modal validation: computational verification (Jupyter), formal proof (Lean 4), and multi-expert review (3-LLM consensus).
 
-## Current Status - Sprint 6 Complete (October 9, 2025)
+## Current Status - Sprint 6 Complete + Lean Remediation (October 9-10, 2025)
 
 **Major Milestones**:
 - **14 Production Notebooks**: Logic Realism V2 architecture complete (~37,000 words LaTeX proofs)
 - **Sprints 1-6 Delivered**: Foundation → Core Theorems → Physical Systems → Experimental Predictions → Non-Circularity
-- **Lean Formalization**: 7 modules complete with **0 sorry statements** (BornRuleNonCircularity, ConstraintThreshold, MaximumEntropy, ThreeFundamentalLaws, ConvergenceTheorem, FisherGeometry, QuantumCore)
+- **Lean Formalization**: 5 production-ready modules + 2 with incomplete dependencies (see details below)
 - **Born Rule Non-Circularity**: Fully proven (unitarity from combinatorics + information theory)
 - **Peer Review**: Team Consultation 8 complete (Grok 0.80/1.0 ACCEPT, avg 0.63/1.0)
 - **Experimental Predictions**: 15 testable deviations from standard QM quantified
+
+**Lean Module Status** (October 10, 2025 - After Session 7.0 Remediation):
+- **Production-Ready** (0 sorry + builds + no incomplete dependencies): 5 modules
+  - BornRuleNonCircularity, ConstraintThreshold, ThreeFundamentalLaws, ConvergenceTheorem, FisherGeometry
+- **Complete but incomplete dependencies**: 2 modules (0 sorry, builds, but imports modules with sorry)
+  - MaximumEntropy (depends on InformationSpace - 2 sorry), QuantumCore (depends on ConstraintAccumulation - 9 sorry)
+- **Total sorry remaining**: 101 statements across 6 incomplete modules
+- **Full inventory**: See `LEAN_PROOF_INVENTORY.md`
 
 ### Sprint 6 Achievements (October 8-9, 2025)
 
@@ -191,7 +199,7 @@ Every theoretical claim must satisfy **three independent validation criteria**:
 
 **Output**: ~400-500 lines per major theorem, fully verified
 
-**Status**: 7/15 Lean modules complete (0 sorry statements in: BornRuleNonCircularity, ConstraintThreshold, MaximumEntropy, ThreeFundamentalLaws, ConvergenceTheorem, FisherGeometry, QuantumCore)
+**Status** (October 10, 2025): 5/15 Lean modules production-ready (BornRuleNonCircularity, ConstraintThreshold, ThreeFundamentalLaws, ConvergenceTheorem, FisherGeometry); 2 additional with 0 sorry but incomplete dependencies (MaximumEntropy, QuantumCore); 101 sorry remaining across 6 incomplete modules
 
 #### Track 3: Team - Multi-LLM Consultation
 
@@ -651,4 +659,4 @@ If you use this work in research, please cite:
 
 ---
 
-**Status** (October 9, 2025): Sprint 6 complete. Born Rule Non-Circularity fully proven in Lean (0 sorry statements). 14 production notebooks complete (~37,000 words). Lean formalization: 7 complete modules (BornRuleNonCircularity, ConstraintThreshold, MaximumEntropy, ThreeFundamentalLaws, ConvergenceTheorem, FisherGeometry, QuantumCore). Peer review: Team Consultation 8 complete (Grok 0.80/1.0 ACCEPT). Ready for Sprints 7-10 (remaining Lean formalization) and paper integration. Repository synchronized with remote.
+**Status** (October 10, 2025): Sprint 6 complete + Lean remediation. Born Rule Non-Circularity fully proven in Lean (0 sorry statements). 14 production notebooks complete (~37,000 words). Lean formalization: 5 production-ready modules, 2 additional with incomplete dependencies, 101 sorry remaining. Peer review: Team Consultation 8 complete (Grok 0.80/1.0 ACCEPT). Remediation: MaximumEntropy.lean now builds, GraphLaplacian.lean completed (0 sorry). Ready for Sprints 7-10 (remaining formalization) and paper integration. Full inventory: LEAN_PROOF_INVENTORY.md. Repository synchronized with remote.

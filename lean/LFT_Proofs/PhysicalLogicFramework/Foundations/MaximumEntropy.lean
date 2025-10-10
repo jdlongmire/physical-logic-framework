@@ -89,15 +89,15 @@ noncomputable def UniformDist [Nonempty α] : ProbDist α where
     intro x
     apply div_nonneg
     · norm_num
-    · norm_cast
-      exact Fintype.card_pos
+    · have h_pos : 0 < Fintype.card α := Fintype.card_pos
+      exact Nat.cast_nonneg (Fintype.card α)
   prob_sum_one := by
     simp only [Finset.sum_const, Finset.card_univ, nsmul_eq_mul]
     -- Goal: (Fintype.card α : ℝ) * (1 / Fintype.card α) = 1
-    rw [mul_div_assoc, mul_one, div_self]
-    -- Show Fintype.card α ≠ 0
-    norm_cast
-    exact Fintype.card_ne_zero
+    have h_ne_zero : (Fintype.card α : ℝ) ≠ 0 := by
+      norm_cast
+      exact Fintype.card_ne_zero
+    field_simp [h_ne_zero]
 
 -- =====================================================================================
 -- SHANNON ENTROPY
@@ -397,12 +397,15 @@ theorem amplitude_distribution_from_maxent (N K : ℕ) [Nonempty (ValidPerms N K
   -- By uniqueness (uniform_unique_maxent), P = Uniform
 
   -- Step 1: Show P achieves maximum entropy
-  have h_P_max : ShannonEntropy P = ShannonEntropy (UniformDist : ProbDist (ValidPerms N K)) := by
+  have h_P_max :
+    ShannonEntropy P = ShannonEntropy (UniformDist : ProbDist (ValidPerms N K)) := by
     -- P is maximal by assumption
-    have h_P_ge_uniform : ShannonEntropy (UniformDist : ProbDist (ValidPerms N K)) ≤ ShannonEntropy P :=
+    have h_P_ge_uniform :
+      ShannonEntropy (UniformDist : ProbDist (ValidPerms N K)) ≤ ShannonEntropy P :=
       h_maxent UniformDist
     -- But uniform is maximal by theorem
-    have h_uniform_ge_P : ShannonEntropy P ≤ ShannonEntropy (UniformDist : ProbDist (ValidPerms N K)) :=
+    have h_uniform_ge_P :
+      ShannonEntropy P ≤ ShannonEntropy (UniformDist : ProbDist (ValidPerms N K)) :=
       uniform_maximizes_entropy P
     -- Therefore equal
     linarith
