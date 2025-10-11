@@ -6,25 +6,32 @@
 
 ---
 
-## Primary Publication (Ready for ArXiv)
+## Primary Publication
 
 ### Logic Field Theory: Deriving Quantum Mechanics from Logical Consistency ⭐
 
-**Status**: Publication-ready standalone paper (October 2025)
+**Status**: **In development** - Foundational paper with peer review feedback integrated (October 2025)
+
+**Mission Alignment**: See `../MISSION_STATEMENT.md` for complete framework scope and honest boundaries
 
 **Files**:
 - `Logic_Realism_Foundational_Paper.md` - Source (~14,000 words)
 - `Logic_Field_Theory_Logic_Realism.html` - HTML with TOC (93 KB)
 - `Logic_Field_Theory_Logic_Realism.pdf` - PDF (generate via `GENERATE_PDF_INSTRUCTIONS.md`)
 
-**Description**: Complete foundational framework establishing Logic Realism as a scientific principle. Derives the Born rule from Maximum Entropy on logically constrained permutation space.
+**Description**: Foundational framework establishing Logic Realism as a research program. Derives core quantum mechanics principles (Born rule, measurement mechanism, Schrödinger equation) from logical constraints on information space.
 
-**Key Results**:
-- **Theorem 5.1**: Born rule P = |a|² uniquely determined from entropy preservation + unitary invariance
-- **Theorem 6.1**: Lagrangian-Hamiltonian duality (minimal action ≡ minimal Fisher information)
-- **K(N) = N-2**: Constraint threshold proven three ways (Mahonian, Coxeter, MaxEnt)
-- **Section 3.6**: Physical system mapping dictionary (interferometry, qubits, energy levels)
-- **Section 8.3.1**: Ontological foundations (structural realism, MUH, Wheeler's "It from Bit")
+**Key Results** (with confidence levels from `../SCOPE_AND_LIMITATIONS.md`):
+- **Theorem 5.1** (High): Born rule P = |a|² from MaxEnt + unitary invariance (0 sorry in Lean)
+- **Theorem 6.1** (Moderate): Lagrangian-Hamiltonian duality with strategic axioms
+- **K(N) = N-2** (High): Constraint threshold proven three ways (0 sorry in Lean)
+- **Section 3.6** (High): Physical system mapping dictionary (interferometry, qubits, energy levels)
+- **Section 8.3.1**: Ontological foundations (structural realism, Wheeler's "It from Bit")
+
+**Honest Scope** (see `../SCOPE_AND_LIMITATIONS.md`):
+- **Derived**: Core QM principles (Born rule, Schrödinger equation, measurement)
+- **Hypothesized**: Field theory, many-body systems, gravity (0% confidence, speculative)
+- **Known Limitations**: Indistinguishable particles require further work (3 proposed resolutions)
 
 **Peer Review Status**: ✅ Two rounds complete (13 revisions addressed)
 - Round 1: 9 revisions (measurement dynamics, Reader's Guide, experimental context)
@@ -37,11 +44,11 @@
 4. Lagrangian-Hamiltonian Duality
 5. Permutohedron with V_K (N=4)
 
-**Target**: arXiv (quant-ph, physics.hist-ph)
+**Target**: arXiv (quant-ph, physics.hist-ph) - pending completion of Sprint 9-10
 
 **Companion Documentation**:
 - `Response_to_Reviewers_Round2.md` - Detailed revision responses (2,200 words)
-- Session log: `../Session_Log/Session_4.3_logic_realism_paper.md`
+- Session log: `../Session_Log/Session_9.0.md` (current)
 
 ---
 
@@ -138,4 +145,4 @@ Located in `figures/`:
 
 ---
 
-**Last Updated**: October 7, 2025 (Session 4.3)
+**Last Updated**: October 11, 2025 (Session 9.0 - Sprint 9: Mission Statement Refinement)
