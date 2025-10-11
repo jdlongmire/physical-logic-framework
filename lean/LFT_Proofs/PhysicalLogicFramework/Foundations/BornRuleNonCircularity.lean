@@ -83,8 +83,8 @@ the novel theoretical contribution (entropy_forces_trivial_conjugation axiom).
 ## References
 
 - Jaynes, E.T. (1957). Information Theory and Statistical Mechanics
-- Notebook 12: Unitary Invariance Foundations (computational validation)
-- Notebook 13: Constraint Parameter K(N) = N-2
+- Notebook 16: Unitary Invariance Foundations (computational validation)
+- Notebook 17: Constraint Parameter K(N) = N-2
 - Sprint 6: Born Rule Circularity Resolution
 - Team Consultations 6,7,8: Multi-LLM proof strategy and peer review
 
@@ -268,7 +268,7 @@ Cayley graph structure. Since Kendall tau distance equals graph distance on the 
 (see `cayley_distance_eq_kendall`), and left multiplication preserves the graph structure,
 it preserves distances.
 
-**Computational Validation** (Notebook 12):
+**Computational Validation** (Notebook 16):
 - N=3,4: 100% validation across all group elements
 - All 30 tested transformations show distance preservation property
 - Verified via direct computation of pairwise distances
@@ -299,7 +299,7 @@ elements), entropy is preserved under bijective relabeling.
 - Sum becomes: -Σ_τ p(τ) log p(τ) = H(p)
 - Requires `Finset.sum_bij` showing bijection preserves sum
 
-**Computational Validation** (Notebook 12):
+**Computational Validation** (Notebook 16):
 - N=3,4: 100% validation for all probability distributions tested
 - Entropy preservation verified for uniform, concentrated, and mixed distributions
 
@@ -328,7 +328,7 @@ axiom left_multiplication_preserves_entropy (N : ℕ) (g : SymmetricGroup N) :
   - Therefore g must be in the center of S_N, which is trivial for N ≥ 3
   - Hence g⁻¹ = 1
 
-  **Computational Validation** (Notebook 12):
+  **Computational Validation** (Notebook 16):
   - **100% verification**: All 30 test cases (S_3 and S_4) confirmed
   - Every transformation preserving both distance and entropy is left multiplication
   - Tested with uniform, concentrated, and mixed probability distributions
@@ -484,7 +484,7 @@ basis vectors. Specifically:
 - = Σ_σ conj(ψ(σ)) * φ(σ) (change of variables: σ = g⁻¹τ)
 - = ⟪ψ, φ⟫
 
-**Computational Validation** (Notebook 12):
+**Computational Validation** (Notebook 16):
 - N=3,4: 100% validation for all group elements
 - All transformation matrices from left multiplication verified unitary
 - Inner product preservation checked for multiple test vectors
@@ -515,7 +515,7 @@ Permutation matrices are unitary.
 **Key Insight**: Permuting an orthonormal basis yields another orthonormal basis,
 preserving all inner products. This is the defining property of unitary transformations.
 
-**Computational Validation** (Notebook 12):
+**Computational Validation** (Notebook 16):
 - All permutation matrices verified to satisfy P†P = I
 - Inner product preservation checked across multiple test cases
 - 100% validation for N=3,4
@@ -587,7 +587,7 @@ theorem unitary_invariance_non_circular (N : ℕ) :
 
 /--
 The constraint parameter K(N) for a system of N elements.
-As proven in Notebook 13 via Mahonian statistics and Coxeter group theory,
+As proven in Notebook 17 via Mahonian statistics and Coxeter group theory,
 this equals N-2 for all N ≥ 3.
 -/
 def ConstraintParameter (N : ℕ) : ℕ := N - 2
@@ -602,7 +602,7 @@ The specific value K(N) = N-2 has been shown to emerge from:
 
 **Proof**: This is trivial by the definition of `ConstraintParameter N := N - 2`.
 
-**Computational Validation** (Notebook 13):
+**Computational Validation** (Notebook 17):
 - N=3,4,5,6: 100% convergence via both Mahonian and Coxeter approaches
 - Both independent derivations yield K(N) = N-2
 
@@ -631,8 +631,8 @@ Therefore, the Born Rule derivation A = L(I) → QM is non-circular.
 The constructive existential part (deriving U and K) follows from Theorems 3 & 4.
 The "no quantum assumptions" part is a meta-logical claim about the derivation chain,
 which has been validated through:
-- Notebook 12: 100% computational validation (30/30 transformations unitary)
-- Notebook 13: 100% computational validation (K(N)=N-2 for N=3,4,5,6)
+- Notebook 16: 100% computational validation (30/30 transformations unitary)
+- Notebook 17: 100% computational validation (K(N)=N-2 for N=3,4,5,6)
 - Team Consultations 2, 4, 5, 6: Expert consensus on non-circularity
 
 **Team Consensus** (Consultation 6): Grok & Gemini recommend axiomatization,
