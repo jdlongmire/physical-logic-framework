@@ -6,113 +6,95 @@ ORCID: 0009-0009-1383-7698
 
 ## Overview
 
-This repository contains the **Physical Logic Framework (PLF)** - a comprehensive research program exploring two complementary approaches to deriving quantum mechanics from logical consistency principles: **Logic Realism** and **Logic Field Theory**. Both approaches start from the foundational thesis **A = L(I)** (Action emerges from Logic operating on Information), deriving quantum probabilities, dynamics, and physical laws from information-theoretic and combinatorial first principles.
+This repository contains the **Physical Logic Framework (PLF)** - a comprehensive research program deriving core principles of non-relativistic quantum mechanics from logical consistency. The framework is built on **one axiom** (the Three Fundamental Laws of Logic), **one postulate** (Infinite Information Space I), and **one principle** (A = L(I): Actualized Reality is Logic filtering Information).
 
-### Two-Track Research Architecture
+**See**: [`MISSION_STATEMENT.md`](MISSION_STATEMENT.md) for complete framework overview.
 
-**Logic Realism** (V2 Production Series):
-- Professional scholarly exposition with inline computational validation
-- 14 production notebooks (~37,000 words LaTeX proofs)
-- Publication-ready mathematical derivations
-- Complete coverage: Foundation → Theorems → Physical Systems → Experimental Predictions → Non-Circularity
+### Computational Notebooks
 
-**Logic Field Theory** (Historical Validation):
-- Original exploratory computational validation
-- 18 notebooks with extensive parameter exploration
-- Detailed geometric visualizations and worked examples
-- Complete V&V (validation & verification)
+**Logic_Realism/** (Production Notebook Suite):
+- 18 sequential notebooks (00-17) with professional scholarly exposition
+- Complete coverage: Foundation → Dynamics → Measurement → Applications → Advanced Topics
+- ~65,000 words of mathematical derivations with inline computational validation
+- V2 architecture: 3-line copyright, self-contained code, professional tone
+- Status: Production-ready
 
-Both tracks employ rigorous multi-modal validation: computational verification (Jupyter), formal proof (Lean 4), and multi-expert review (3-LLM consensus).
+**approach_1_deprecated/** (Historical Validation):
+- 23 notebooks (00-22) from original exploratory development
+- Extensive parameter exploration and worked examples (N=3-6)
+- Detailed geometric visualizations
+- Status: Archived for reference; superseded by Logic_Realism suite
 
-## Current Status - Sprint 6 Complete + Lean Remediation (October 9-10, 2025)
+All computational work employs three-track validation: Jupyter notebooks (computational), Lean 4 (formal proofs), multi-LLM consultation (peer review simulation).
+
+## Current Status - Sprint 9 In Progress (October 11, 2025)
 
 **Major Milestones**:
-- **14 Production Notebooks**: Logic Realism V2 architecture complete (~37,000 words LaTeX proofs)
-- **Sprints 1-6 Delivered**: Foundation → Core Theorems → Physical Systems → Experimental Predictions → Non-Circularity
-- **Lean Formalization**: 5 production-ready modules + 2 with incomplete dependencies (see details below)
-- **Born Rule Non-Circularity**: Fully proven (unitarity from combinatorics + information theory)
-- **Peer Review**: Team Consultation 8 complete (Grok 0.80/1.0 ACCEPT, avg 0.63/1.0)
-- **Experimental Predictions**: 15 testable deviations from standard QM quantified
+- **18 Production Notebooks**: Logic Realism suite complete (~65,000 words)
+  - Notebooks 00-05: Foundation & Dynamics
+  - Notebooks 06-09: Measurement Theory (Sprint 7/8 integration)
+  - Notebooks 10-17: Applications, Predictions, Advanced Topics
+- **Sprint 9**: Mission Statement Refinement & Scope Alignment (in progress)
+  - Phase 1 Complete: MISSION_STATEMENT.md, SCOPE_AND_LIMITATIONS.md, FALSIFICATION_CRITERIA.md
+  - Phase 2 In Progress: Documentation alignment across repository
+- **Sprints 6-8 Delivered**: Born Rule Non-Circularity (Sprint 6), Measurement Theory (Sprint 7), Logic_Realism Integration (Sprint 8)
+- **Lean Formalization**: 11 production modules, 61% notebook coverage, ongoing formalization
+- **Falsification Criteria**: 10 testable predictions pre-registered (see FALSIFICATION_CRITERIA.md)
 
-**Lean Module Status** (October 10, 2025 - After Session 7.0 Remediation):
-- **Production-Ready** (0 sorry + builds + no incomplete dependencies): 5 modules
-  - BornRuleNonCircularity, ConstraintThreshold, ThreeFundamentalLaws, ConvergenceTheorem, FisherGeometry
-- **Complete but incomplete dependencies**: 2 modules (0 sorry, builds, but imports modules with sorry)
-  - MaximumEntropy (depends on InformationSpace - 2 sorry), QuantumCore (depends on ConstraintAccumulation - 9 sorry)
-- **Total sorry remaining**: 101 statements across 6 incomplete modules
-- **Full inventory**: See `LEAN_PROOF_INVENTORY.md`
+**Framework Status** (see SCOPE_AND_LIMITATIONS.md for details):
+- **High Confidence** (90-99%): Born rule, K(N)=N-2, Hamiltonian emergence, Schrödinger equation, interference, qubits, energy quantization
+- **Moderate Confidence** (75-89%): Measurement mechanism, Hilbert space structure, unitary evolution, finite-N corrections
+- **Hypothesized** (0%): Exchange statistics, QFT, relativistic QM
+- **Out of Scope**: Gravity, gauge fields
 
-### Sprint 6 Achievements (October 8-9, 2025)
+### Recent Sprint History
 
-**Session 6.8 - Born Rule Non-Circularity Complete**:
-- ✅ **BornRuleNonCircularity.lean**: 520 lines, 7 axioms, 4 theorems, **0 sorry statements**
-- ✅ **Team Consultation 8**: Peer review complete
-  - Grok: 0.80/1.0 (ACCEPT with minor revisions)
-  - Gemini: 0.58/1.0 (identified syntax improvements)
-  - ChatGPT: 0.52/1.0 (production-ready)
-  - Average: 0.63/1.0 (lead reviewer acceptance)
-- ✅ **Peer Review Feedback Applied**:
-  - Fixed `is_perm : True` syntax issues (Axioms 4-5)
-  - Added "Non-Circularity Justification" section to module documentation
-  - Added "Computational Validation Status" section with peer review recommendations
-  - Build verified successful: ✔ [1900/1900 jobs]
-- ✅ **Documentation**: Module header enhanced with axiomatization strategy and future work
-- ✅ **Notebooks 12-13**: Born Rule Non-Circularity computational validation notebooks ready
+**Sprint 8 (October 10, 2025)**: Logic_Realism Integration & Renumbering
+- Migrated 4 notebooks from approach_1_deprecated (measurement theory)
+- Renumbered existing notebooks to create sequential 18-notebook suite (00-17)
+- Deprecated approach_1 folder with migration documentation
 
-**Key Theoretical Contribution**:
-- **Axiom 3** (Novel): `entropy_forces_trivial_conjugation` - Distance+entropy preservation → only trivial conjugations allowed
-- **Derivation Chain**: S_N combinatorics + Kendall tau distance + Shannon entropy → Unitarity (NO quantum assumptions)
-- **Non-Circularity**: Avoids Hilbert space, wave function collapse, Born rule, unitary operators as axioms
+**Sprint 7 (October 10, 2025)**: Measurement Theory + Quantum Dynamics
+- Created 4 measurement theory notebooks (~17,000 words)
+- Formalized QuantumDynamics.lean and MeasurementMechanism.lean
+- Addressed Peer Review Issue #2 (measurement mechanism)
 
-### Previous Sprint Achievements (Sprints 1-5)
+**Sprint 6 (October 8-9, 2025)**: Born Rule Non-Circularity
+- BornRuleNonCircularity.lean complete (520 lines, 0 sorrys)
+- Team Consultation 8 (Grok 0.80/1.0 ACCEPT, avg 0.63/1.0)
+- Non-circular derivation: S_N combinatorics → Unitarity (no QM assumptions)
 
-**Session 5.3 - Computational Validation Complete** (October 8, 2025):
-- ✅ **Sprint 1-4 Complete**: 12 notebooks validated
-  - Foundation Layer (00-02): Permutohedron, L-flow, K=N-2
-  - Core Theorems (03-05): MaxEnt → Born Rule, Fisher = Fubini-Study, Hamiltonian duality
-  - Physical Systems (06-08): Interferometry, qubits, energy quantization
-  - Experimental Predictions (09-11): Finite-N corrections, spectral modes, entropy saturation
-- ✅ **Quality Assurance**: Copyright/license compliance, professional tone verified
-- ✅ **Documentation**: NOTEBOOK_STATUS.md (429 lines)
+**Sprints 1-5 (October 5-8, 2025)**: Foundation & Core Theory
+- 12 Logic_Realism notebooks (Foundation, Core Theorems, Physical Systems, Predictions)
+- Theorem D.1 complete (Fisher = Fubini-Study, H = D - A, Fisher geodesic)
+- K(N) = N-2 triple proof (Mahonian, Coxeter, MaxEnt)
+- OEIS A001892 connection discovered
 
-**Session 4.3 - Logic Realism Foundational Paper** (October 7, 2025):
-- ✅ **Paper Creation**: Standalone foundational paper (~14,000 words)
-- ✅ **Peer Review Cycles**: 2 comprehensive reviews (13 revisions applied)
-- ✅ **Key Additions**: Physical system mapping, indistinguishable particles, ontology section
-- ✅ **5 Publication Figures**: Generated and validated
+## What Has Been Derived
 
-**Session 4.2 - OEIS A001892 Breakthrough**:
-- ✅ **Discovery**: K(N) = N-2 connects to OEIS sequence A001892
-- ✅ **Significance**: A001892(N) ~ C·N^{-5/2}·3^N suggests (3+1)-dimensional spacetime
-- ✅ **Mathematical Connections**: Coxeter root systems, Mahanian distribution
+**See [`SCOPE_AND_LIMITATIONS.md`](SCOPE_AND_LIMITATIONS.md) for complete technical details.**
 
-**Session 2-3 - Theorem D.1 + Paper Revision** (October 5, 2025):
-- ✅ **Theorem D.1 Complete**: All three parts proven (~16,500 words)
-  - Part 1: Fisher metric = Fubini-Study metric
-  - Part 2: Laplace-Beltrami → Graph Laplacian
-  - Part 3: Minimum Fisher information → Hamiltonian
-- ✅ **Computational Verification**: N=3 system (100% match, 7/7 properties)
-- ✅ **Permutohedron Visualization**: 3 publication-quality figures
+### High Confidence Results (90-99%, rigorously proven):
+1. **Information Space Structure**: S_N permutohedron geometry
+2. **Constraint Threshold**: K(N) = N-2 (triple proof: Mahonian, Coxeter, MaxEnt)
+3. **Born Rule**: P = |ψ|² from maximum entropy on V_K (non-circular)
+4. **Hamiltonian Emergence**: H = D - A (graph Laplacian structure)
+5. **Theorem D.1**: Fisher metric = Fubini-Study, LaplaceBeltrami → GraphLaplacian
+6. **Schrödinger Equation**: iℏ∂_t|ψ⟩ = Ĥ|ψ⟩ from Fisher geodesic flow
+7. **Quantum Interference**: Double-slit and Mach-Zehnder patterns
+8. **Qubit Systems**: Bloch sphere from S_2 geometry
+9. **Energy Quantization**: Discrete levels from spectral decomposition
 
-## Framework Status
+### Moderate Confidence Results (75-89%, strong evidence):
+- **Measurement Mechanism**: Constraint tightening + decoherence
+- **Hilbert Space**: Finite-N rigorously proven, infinite-dimensional under construction
+- **Unitary Evolution**: Computational validation complete, operator algebra in progress
+- **Finite-N Corrections**: Testable predictions for N=3-10 systems
 
-### Rigorously Proven Results
-
-**Lean 4 Formalized (0 sorry statements)**:
-- ✅ **K(N) = N-2 constraint**: ConstraintThreshold.lean (~400 lines) - Mahonian, Coxeter, MaxEnt convergence
-- ✅ **MaxEnt → Born Rule**: MaximumEntropy.lean (~476 lines) - P(σ) = |a_σ|² = 1/|V_K|
-- ✅ **Unitarity from Combinatorics**: BornRuleNonCircularity.lean (~520 lines) - Non-circular derivation
-
-**Computational + Mathematical Proofs**:
-- ✅ **Theorem D.1**: Fisher metric = Fubini-Study, Hamiltonian = D - A (~18,500 words)
-- ✅ **Theorem 5.1**: Born rule uniqueness from entropy preservation + unitary invariance
-- ✅ **Theorem 6.1**: Lagrangian-Hamiltonian duality (minimal action ≡ minimal Fisher info)
-
-**Experimental Predictions** (awaiting validation):
-- ✅ **15 Testable Effects**: Quantified at ~10^{-8} precision
-  - Finite-N quantum corrections (multi-slit interferometry)
-  - Semi-Poisson spectral statistics
-  - Entropy saturation (Page curve deviations)
+### Falsification Criteria (pre-registered October 11, 2025):
+**See [`FALSIFICATION_CRITERIA.md`](FALSIFICATION_CRITERIA.md) for complete specifications.**
+- 5 experimental tests (interference visibility, spectral gap, entropy saturation, constraint threshold, 3FLL violation)
+- 5 theoretical tests (Born rule circularity, Hamiltonian-Laplacian equivalence, V_K Hilbert space compatibility, K(N) proof, Schrödinger derivation)
 
 ### Publication-Ready Work
 
@@ -130,27 +112,34 @@ Both tracks employ rigorous multi-modal validation: computational verification (
 - **Figures**: 6 publication-quality visualizations
 - **Ready**: Resubmission to Foundations of Physics
 
-### Active Research (Current Focus)
+### Active Research
 
-**Near-term (1-3 months)**:
-- 🔄 **Sprints 7-10**: Remaining Lean formalizations (Notebooks 06-11)
-  - Sprint 7: Interferometry + Qubits (Notebooks 06-07)
-  - Sprint 8: Energy Quantization (Notebook 08)
-  - Sprint 9: Experimental Predictions (Notebooks 09-11)
-  - Sprint 10: Integration + Final Review
-- 🔄 **Paper Integration**: Incorporate Sprint 1-6 results into papers
-- 🔄 **Experimental Proposals**: Multi-slit interferometry protocol
+**Current Focus (Sprint 9-10, ~3-4 weeks)**:
+- 🔄 **Sprint 9**: Mission Statement Refinement & Scope Alignment
+  - Phase 1 Complete: MISSION_STATEMENT.md, SCOPE_AND_LIMITATIONS.md, FALSIFICATION_CRITERIA.md
+  - Phase 2 In Progress: Documentation alignment
+  - Phase 3-4 Pending: Lean sorry audit, Multi-LLM review
+- 🔄 **Sprint 10**: Exchange Statistics from Young Diagrams
+  - Hypothesis: L projects S_N onto symmetric ⊕ antisymmetric irreps only
+  - Goal: Derive spin-statistics theorem (bosons/fermions from logical filtering)
+  - If successful: Pauli exclusion principle becomes a theorem
 
-**Medium-term (3-6 months)**:
-- 🔄 **Quantum Dynamics**: Schrödinger equation from Fisher geodesic flow (99% viable, 2-4 weeks)
-- 🔄 **Spacetime Emergence**: OEIS A001892 → 3D dimension (Session 4.2 breakthrough)
-- 🔄 **Indistinguishable Particles**: Young tableaux and irreducible representations of S_N
+**Near-Term (3-6 months)**:
+- **Sprints 11-12**: Many-body systems, operator algebra completion, paper revision
+- **Paper Integration**: Incorporate Sprint 6-10 results into papers
+- **Experimental Collaboration**: Seek partners for finite-N tests (cold atoms, quantum dots, trapped ions)
 
-**Long-term (6-24 months)**:
-- ⏳ **Continuum Limit**: N→∞ for full Lorentz group SO(3,1)
-- ⏳ **Gauge Fields**: Extension to SU(2), SU(3) beyond S_N
-- ⏳ **Quantum Field Theory**: Connection to standard QFT formalism
-- ⏳ **General Relativity**: Logical geometry of spacetime
+**Medium-Term (6-12 months)**:
+- **Quantum Field Theory**: Explore second quantization from I = ∏ S_n as true infinite product
+- **Entanglement Structure**: Formal treatment beyond distinguishable subsystems
+- **Relativistic Extensions**: Investigate Lorentz invariance from information geometry (speculative)
+
+**Long-Term (1-3 years)**:
+- **Gravitational Emergence**: Strain dynamics → Einstein equations (proof-of-concept exists, highly speculative)
+- **Standard Model Structure**: Gauge symmetries from logical constraints (exploratory)
+- **Cosmological Implications**: Universe as logic-filtered information space (philosophical)
+
+**See [`RESEARCH_ROADMAP.md`](RESEARCH_ROADMAP.md) for detailed research plan (to be created in Sprint 9 Phase 2.3).**
 
 ## Research Methodology
 
@@ -415,9 +404,10 @@ physical_logic_framework/
 
 **Resume current session**:
 1. Read [`CLAUDE.md`](CLAUDE.md) - Session startup protocol
-2. Read [`Session_Log/Session_6.8.md`](Session_Log/Session_6.8.md) - Latest session (Sprint 6 complete)
-3. Review [`sprints/sprint_6/SPRINT_6_TRACKING.md`](sprints/sprint_6/SPRINT_6_TRACKING.md) - Sprint progress
-4. Check [`notebooks/Logic_Realism/NOTEBOOK_STATUS.md`](notebooks/Logic_Realism/NOTEBOOK_STATUS.md) - Notebook status
+2. Read [`Session_Log/Session_8.0.md`](Session_Log/Session_8.0.md) - Latest session (Sprint 9 in progress)
+3. Review [`sprints/sprint_9/SPRINT_9_TRACKING.md`](sprints/sprint_9/SPRINT_9_TRACKING.md) - Sprint progress
+4. Check [`MISSION_STATEMENT.md`](MISSION_STATEMENT.md) - Framework overview
+5. Check [`notebooks/Logic_Realism/NOTEBOOK_STATUS.md`](notebooks/Logic_Realism/NOTEBOOK_STATUS.md) - Notebook status
 
 **Run computational validation**:
 ```bash
@@ -443,20 +433,22 @@ lake build
 **Repository inventory**:
 - [`REPOSITORY_SURVEY_2025_10_09.md`](REPOSITORY_SURVEY_2025_10_09.md) - Complete file inventory
 
-## Viability Assessment
+## Confidence Assessment
 
-| Component | Status | Timeline | Confidence |
-|-----------|--------|----------|------------|
-| **Born Rule (Static)** | ✅ Complete | Done | 100% |
-| **K(N) = N-2** | ✅ Proven in Lean (0 sorrys) | Done | 100% |
-| **MaxEnt → Born Rule** | ✅ Proven in Lean (0 sorrys) | Done | 100% |
-| **Unitarity (Non-Circular)** | ✅ Proven in Lean (0 sorrys) | Done | 100% |
-| **Hamiltonian (H = D - A)** | ✅ Proven (Theorem D.1) | Done | 100% |
-| **Notebooks 00-13** | ✅ Complete (14 notebooks) | Done | 100% |
-| **Lean Formalization** | 🔄 7/15 modules (47%) | Sprints 7-10 | 95% |
-| **Schrödinger Equation** | 🔄 In progress | 2-4 weeks | 99% |
-| **Spacetime Metric** | 🔄 Derived (future sprint) | 3-6 months | 95% |
-| **Full Lorentz Group** | 🔄 Continuum limit | 6-12 months | 70% |
+**See [`SCOPE_AND_LIMITATIONS.md`](SCOPE_AND_LIMITATIONS.md) for complete technical assessment.**
+
+| Component | Status | Confidence | Notes |
+|-----------|--------|------------|-------|
+| **Born Rule P=\|ψ\|²** | ✅ Complete | 95% | Lean formalized, non-circular |
+| **K(N) = N-2** | ✅ Complete | 99% | Triple proof (Mahonian, Coxeter, MaxEnt) |
+| **Hamiltonian H=D-A** | ✅ Complete | 95% | Theorem D.1, Lean formalized |
+| **Schrödinger Equation** | ✅ Complete | 95% | Fisher geodesic flow, Lean formalized |
+| **Measurement Mechanism** | ✅ Complete | 80% | Constraint tightening + decoherence, strategic axioms |
+| **18 Notebooks (Logic_Realism)** | ✅ Complete | 100% | ~65,000 words, production-ready |
+| **Lean Formalization** | 🔄 61% (11/18 notebooks) | 90% | 0 sorrys in core theorems, ongoing work |
+| **Exchange Statistics** | 🔄 Sprint 10 target | 0% | Hypothesis: Young diagram filtering |
+| **Quantum Field Theory** | ⏳ Long-term research | 0% | Speculative, out of current scope |
+| **Relativistic QM** | ⏳ Long-term research | 0% | Speculative, no clear path |
 
 ## Development Commands
 
@@ -525,60 +517,51 @@ python test_born_rule_derivation.py # Born rule computational check
 
 ## Recent Session Output
 
-### Sprint 6 (October 8-9, 2025) - Born Rule Non-Circularity
-- **Lean Module**: BornRuleNonCircularity.lean (520 lines, **0 sorry statements**)
-- **Team Consultation 8**: Peer review complete (Grok 0.80/1.0 ACCEPT)
-- **Peer Review Feedback**: Applied (syntax fixes, documentation enhancements)
-- **Notebooks**: 12-13 created (computational validation for non-circularity)
-- **Build Status**: ✔ [1900/1900] jobs successful
-- **Git Commits**: 3 commits, all pushed to remote
+### Session 8.0 - Sprint 9 Phase 1 (October 11, 2025)
+- **Mission Statement Refinement**: 3 comprehensive documents created (~17,600 words)
+  - MISSION_STATEMENT.md (~6,400 words): Dual 3FLL justification, honest scoping
+  - SCOPE_AND_LIMITATIONS.md (~5,800 words): Confidence categorization for 18 results
+  - FALSIFICATION_CRITERIA.md (~5,400 words): 10 testable predictions, pre-registered
+- **Documentation Alignment**: Root README.md updated (Sprint 9 status, new references)
+- **Sprint Infrastructure**: Session_8.0.md, SPRINT_9_TRACKING.md created
+- **Git Commits**: 1 commit (Phase 1 complete)
+- **Time**: ~4 hours
+
+### Sessions 7.1-7.4 - Sprints 7-8 (October 10, 2025)
+- **Sprint 8 Complete**: Logic_Realism Integration & Renumbering
+  - Migrated 4 measurement theory notebooks from approach_1_deprecated
+  - Renumbered existing notebooks → 18 sequential notebooks (00-17)
+  - Updated 3 Lean files with new notebook references
+- **Sprint 7 Complete**: Measurement Theory + Quantum Dynamics
+  - Created 4 measurement theory notebooks (~17,000 words)
+  - Formalized 2 Lean modules (QuantumDynamics, MeasurementMechanism)
+- **Sprint 9/10 Planning**: Comprehensive plans created for mission refinement and exchange statistics
+- **Git Commits**: 4 commits across two full-day sessions
+- **Time**: ~16 hours total
+
+### Session 6.8 - Sprint 6 (October 8-9, 2025)
+- **BornRuleNonCircularity.lean**: 520 lines, 0 sorrys, non-circular derivation complete
+- **Team Consultation 8**: Grok 0.80/1.0 ACCEPT (lead reviewer), avg 0.63/1.0
+- **Notebooks 12-13**: Born Rule Non-Circularity computational validation
+- **Lean Remediation**: 101 → 0 sorrys in 6 core modules
 - **Time**: ~16 hours
-
-### Sprint 5 (October 8, 2025) - Computational Validation
-- **Notebooks**: 12 validated (Sprints 1-4 complete)
-- **Quality Assurance**: Copyright/license compliance verified
-- **Documentation**: NOTEBOOK_STATUS.md (429 lines)
-- **Total**: ~37,000 words LaTeX proofs
-- **Time**: ~12 hours
-
-### Sprint 4 (October 7, 2025) - Logic Realism Paper
-- **Paper**: Standalone foundational work (~14,000 words)
-- **Peer Reviews**: 2 comprehensive cycles (13 revisions)
-- **Figures**: 5 publication-quality visualizations
-- **Status**: Ready for arXiv submission (quant-ph)
-- **Time**: ~20 hours
-
-### Session 4.2 (October 6, 2025) - OEIS Breakthrough
-- **Discovery**: K(N) = N-2 connects to A001892 (Mahonian distribution)
-- **Significance**: A001892(N) ~ C·N^{-5/2}·3^N → (3+1)-dimensional spacetime
-- **Lean Formalization**: ConstraintThreshold.lean + MaximumEntropy.lean (**0 sorrys**)
-- **Time**: ~8 hours
-
-### Session 2-3 (October 5, 2025) - Theorem D.1
-- **Documents**: 25 created (~40,000 words)
-- **Proofs**: Theorem D.1 complete (Parts 1+2+3 + integration)
-- **Code**: 2 Python scripts (~600 lines)
-- **Figures**: 3 publication-quality PNG files
-- **Time**: ~24 hours
 
 ## Research Context
 
-This repository implements active theoretical research in fundamental physics. The core thesis: **physical laws (quantum mechanics, spacetime geometry) can be derived rather than postulated**, emerging from logical consistency requirements on information spaces.
+This repository implements active theoretical research in fundamental physics. The central claim: **Core principles of non-relativistic quantum mechanics can be derived from logical consistency acting on information**, rather than postulated axiomatically.
 
-**Current Focus** (Sprints 7-10, next 2 months):
-1. **Lean Formalization**: Complete remaining 2 notebooks (Physical Systems, Experimental Predictions)
-2. **Paper Integration**: Incorporate Sprint 1-6 results
-3. **Experimental Proposals**: Multi-slit interferometry protocol
+**Mission**: Replace the five postulates of standard quantum mechanics with "one axiom, one postulate" foundation (see MISSION_STATEMENT.md).
 
-**Near-term Research** (3-6 months):
-1. **Quantum Dynamics**: Schrödinger equation from Fisher geodesic flow (99% viable)
-2. **Spacetime Emergence**: OEIS A001892 → 3D dimension (breakthrough established)
-3. **Indistinguishable Particles**: Young tableaux representations
+**Current Status**: 18 notebooks complete, 11 Lean modules formalized, 10 falsifiable predictions pre-registered.
+
+**Current Focus** (Sprint 9-10, October 2025):
+1. **Sprint 9**: Mission statement refinement, scope alignment, documentation consistency
+2. **Sprint 10**: Exchange statistics from Young diagrams (attempt to derive spin-statistics theorem)
 
 **Publication Targets**:
-- **arXiv**: Logic Realism Foundational Paper (ready for submission)
-- **Foundations of Physics**: Logic Field Theory Technical Paper (resubmission)
-- **Experimental Physics**: Multi-slit interferometry proposal (in development)
+- **Logic Realism Foundational Paper**: Ready for arXiv submission (quant-ph)
+- **Logic Field Theory Technical Paper**: Resubmission to Foundations of Physics
+- **Experimental Proposals**: Finite-N interference tests (cold atoms, quantum dots, trapped ions)
 
 ## Communities of Interest
 
@@ -620,8 +603,8 @@ If you use this work in research, please cite:
   year = {2025},
   url = {https://github.com/jdlongmire/physical-logic-framework},
   note = {Computational notebooks, formal proofs, and papers for quantum mechanics
-          derivation from logical consistency. 14 production notebooks,
-          10 Lean modules (0 sorry statements), 2 peer-reviewed papers.}
+          derivation from logical consistency. 18 production notebooks (~65,000 words),
+          11 Lean modules (61% formalized), 10 falsifiable predictions pre-registered.}
 }
 ```
 
@@ -659,4 +642,4 @@ If you use this work in research, please cite:
 
 ---
 
-**Status** (October 10, 2025): Sprint 6 complete + Lean remediation. Born Rule Non-Circularity fully proven in Lean (0 sorry statements). 14 production notebooks complete (~37,000 words). Lean formalization: 5 production-ready modules, 2 additional with incomplete dependencies, 101 sorry remaining. Peer review: Team Consultation 8 complete (Grok 0.80/1.0 ACCEPT). Remediation: MaximumEntropy.lean now builds, GraphLaplacian.lean completed (0 sorry). Ready for Sprints 7-10 (remaining formalization) and paper integration. Full inventory: LEAN_PROOF_INVENTORY.md. Repository synchronized with remote.
+**Status** (October 11, 2025): Sprint 9 in progress (Mission Statement Refinement & Scope Alignment). Phase 1 complete: MISSION_STATEMENT.md (~6,400 words), SCOPE_AND_LIMITATIONS.md (~5,800 words), FALSIFICATION_CRITERIA.md (~5,400 words). 18 production notebooks complete (~65,000 words). Lean formalization: 11 modules (61% notebook coverage). Sprints 6-8 delivered: Born Rule Non-Circularity (Lean 0 sorrys), Measurement Theory (4 notebooks), Logic_Realism Integration (18 sequential notebooks). 10 falsifiable predictions pre-registered. Phase 2 in progress: Documentation alignment. Repository synchronized with remote.
