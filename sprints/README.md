@@ -29,9 +29,11 @@ sprints/
 |--------|-------|-------|--------|
 | Sprint 6 | 1-2 | Born Rule Circularity | COMPLETE (2025-10-09) |
 | Sprint 7 | 3-4 | Measurement Theory + Quantum Dynamics | COMPLETE (2025-10-10) |
-| Sprint 8 | 5 | **Logic_Realism Integration & Renumbering** | **IN PROGRESS (2025-10-10)** |
-| Sprint 9 | 6-8 | Field Theory Foundation / Relativistic Extensions | Pending |
-| Sprint 10 | 9-10 | Integration & Paper Revision | Pending |
+| Sprint 8 | 5 | Logic_Realism Integration & Renumbering | COMPLETE (2025-10-10) |
+| Sprint 9 | 5-6 | **Mission Statement Refinement & Scope Alignment** | **PLANNING (2025-10-10)** |
+| Sprint 10 | 7-8 | **Exchange Statistics from Young Diagrams** | **PLANNING (2025-10-10)** |
+| Sprint 11 | TBD | Field Theory Foundation / Many-Body Systems | Pending |
+| Sprint 12 | TBD | Final Integration & Paper Revision | Pending |
 
 ## Sprint Documentation Protocol
 
