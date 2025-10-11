@@ -43,7 +43,7 @@
        [["PhysicalLogicFramework.LogicField.Operator transitive imports (legacy)",
          "875835273225343883"],
         ["PhysicalLogicFramework.LogicField.Operator:importAllArts",
-         "14777476737763370969"],
+         "6850871281690652481"],
         ["Mathlib.Analysis.SpecialFunctions.Exp transitive imports (legacy)",
          "11238687873220535714"],
         ["Mathlib.Analysis.SpecialFunctions.Exp:importAllArts",
@@ -95,4 +95,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "173147922988682459"}
+ "depHash": "3499166449488634067"}

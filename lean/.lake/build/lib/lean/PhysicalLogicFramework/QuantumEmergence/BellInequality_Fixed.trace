@@ -22,9 +22,9 @@
        [["PhysicalLogicFramework.LogicField.Operator transitive imports (legacy)",
          "875835273225343883"],
         ["PhysicalLogicFramework.LogicField.Operator:importAllArts",
-         "14777476737763370969"],
+         "6850871281690652481"],
         ["PhysicalLogicFramework.LogicField.ConstraintAccumulation transitive imports (legacy)",
-         "3604196272842551554"],
+         "17329042199697078386"],
         ["PhysicalLogicFramework.LogicField.ConstraintAccumulation:importAllArts",
          "12230643667995281209"],
         ["PhysicalLogicFramework.Foundations.ThreeFundamentalLaws transitive imports (legacy)",
@@ -58,4 +58,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "17527153411175525570"}
+ "depHash": "6406687446524518212"}

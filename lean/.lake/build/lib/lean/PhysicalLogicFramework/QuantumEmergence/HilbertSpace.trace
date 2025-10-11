@@ -83,7 +83,7 @@
        [["@PhysicalLogicFramework:extraDep", "1723"]]],
       ["imports",
        [["PhysicalLogicFramework.QuantumEmergence.BellInequality_Fixed transitive imports (legacy)",
-         "14918782190608067997"],
+         "1786219324172462946"],
         ["PhysicalLogicFramework.QuantumEmergence.BellInequality_Fixed:importAllArts",
          "15049192500843409432"],
         ["Mathlib.Analysis.InnerProductSpace.Basic transitive imports (legacy)",
@@ -120,4 +120,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "2076776967528085135"}
+ "depHash": "5213302722790189766"}

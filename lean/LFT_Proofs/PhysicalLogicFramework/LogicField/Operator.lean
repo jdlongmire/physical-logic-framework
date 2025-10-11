@@ -434,23 +434,6 @@ theorem quantum_state_characterization (Ω : Type*) [PhysicalDomain Ω] (i2ps : 
 -- OPERATOR PROPERTIES AND MATHEMATICAL STRUCTURE
 -- =====================================================================================
 
-/-
-FIXME: This theorem needs to be reformulated. InformationSpace is ∀ n, SymmetricGroup n,
-so info₁ n → info₂ n is not a valid proposition (these are terms, not Props).
-Need to define an ordering relation on information spaces first.
-
-/--
-The logic field operator is monotonic with respect to logical consistency.
-More constrained information leads to more constrained physical possibilities.
--/
-theorem logic_field_monotonicity (Ω : Type*) [PhysicalDomain Ω] (i2ps : I2PS) :
-  ∀ info₁ info₂ : InformationSpace,
-    (∀ n, info₁ n → info₂ n) →  -- info₁ implies info₂
-    L[Ω] i2ps info₁ ⊆ L[Ω] i2ps info₂ := by
-  -- More information constraints lead to fewer physical possibilities
-  sorry
--/
-
 /--
 The logic field operator preserves logical consistency.
 If input satisfies logical constraints, output does too.

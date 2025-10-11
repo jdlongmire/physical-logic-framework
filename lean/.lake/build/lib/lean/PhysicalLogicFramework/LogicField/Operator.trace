@@ -1,7 +1,7 @@
 {"synthetic": false,
  "outputs":
- {"o": ["3255488700992297133"],
-  "i": "17384050269825649134",
+ {"o": ["69758956642032728"],
+  "i": "10989607416321206427",
   "c": "17122841448713637661"},
  "log":
  [{"message":
@@ -39,7 +39,7 @@
   ["Lean 4.23.0, commit ad1a017949674a947f0d6794cbf7130d642c6530",
    "2372534101328293747"],
   ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\LFT_Proofs\\PhysicalLogicFramework\\LogicField\\Operator.lean",
-   "7507324430863938376"],
+   "3616195746273298135"],
   ["options",
    [["-DmaxSynthPendingDepth=3", "14379489197236848084"],
     ["-Dweak.linter.mathlibStandardSet=true", "9949955268809796418"],
@@ -47,4 +47,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "3647121920935478246"}
+ "depHash": "14268828942779444630"}

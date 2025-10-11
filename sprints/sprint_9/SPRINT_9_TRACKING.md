@@ -35,13 +35,13 @@ Refine the Physical Logic Framework mission statement to accurately reflect:
 - **Phase 1 Complete** (estimated 4-6 hours, actual ~4 hours)
 
 **Phase 2 Track (Documentation Alignment)**:
-- 🔄 Update all README files (root complete, notebooks/lean/paper pending)
+- ✅ Update all README files (Phase 2.1 complete)
   - ✅ Root README.md: Comprehensive updates (18 notebooks, Sprint 9 status, mission refs)
-  - Pending: notebooks/Logic_Realism/README.md
-  - Pending: lean/LFT_Proofs/README.md
-  - Pending: paper/README.md
-- Pending: Update paper abstracts
-- Pending: Create RESEARCH_ROADMAP.md
+  - ✅ notebooks/Logic_Realism/README.md: Status update, mission alignment, confidence categories
+  - ✅ lean/LFT_Proofs/README.md: Honest sorry count (21), 4-module structure, removed overclaims
+  - ✅ paper/README.md: Scope clarification, confidence levels, "In development" status
+- 🔄 Update paper abstracts (Phase 2.2 in progress)
+- Pending: Create RESEARCH_ROADMAP.md (Phase 2.3)
 
 **Phase 3 Track (Lean Audit)**:
 - Pending: Comprehensive sorry audit
@@ -68,12 +68,12 @@ Refine the Physical Logic Framework mission statement to accurately reflect:
 - [x] Deliverable 1.3: FALSIFICATION_CRITERIA.md - ✅ COMPLETE (~5,400 words)
 
 ### Phase 2: Repository Documentation Alignment (4-6 hours estimated)
-- [x] Deliverable 2.1: Update all README files - 🔄 IN PROGRESS (root complete, ~2 hours)
+- [x] Deliverable 2.1: Update all README files - ✅ COMPLETE (~3 hours total)
   - [x] Root README.md
-  - [ ] notebooks/Logic_Realism/README.md
-  - [ ] lean/LFT_Proofs/README.md
-  - [ ] paper/README.md
-- [ ] Deliverable 2.2: Update paper abstracts and introductions - Pending
+  - [x] notebooks/Logic_Realism/README.md
+  - [x] lean/LFT_Proofs/README.md
+  - [x] paper/README.md
+- [ ] Deliverable 2.2: Update paper abstracts and introductions - 🔄 IN PROGRESS
 - [ ] Deliverable 2.3: Create RESEARCH_ROADMAP.md - Pending
 
 ### Phase 3: Lean Proof Inventory (2-3 hours estimated)

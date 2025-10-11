@@ -20,7 +20,7 @@
        [["@PhysicalLogicFramework:extraDep", "1723"]]],
       ["imports",
        [["PhysicalLogicFramework.QuantumEmergence.HilbertSpace transitive imports (legacy)",
-         "12060141241757772345"],
+         "10020852343149203220"],
         ["PhysicalLogicFramework.QuantumEmergence.HilbertSpace:importAllArts",
          "2583377981288683651"],
         ["Mathlib.MeasureTheory.Measure.ProbabilityMeasure transitive imports (legacy)",
@@ -50,4 +50,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "15511926587686233863"}
+ "depHash": "699835492047444499"}

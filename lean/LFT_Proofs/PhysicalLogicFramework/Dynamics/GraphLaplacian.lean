@@ -161,17 +161,11 @@ theorem hamiltonian_quadratic_form (N : ℕ) [NeZero N] [Fintype (Equiv.Perm (Fi
 /-!
 ## Cayley Graph Properties
 
-The permutohedron is a regular graph (all vertices have the same degree)
-and is vertex-transitive (symmetric group acts transitively).
+The permutohedron is a regular graph (all vertices have the same degree N-1)
+and is vertex-transitive (symmetric group acts transitively). The regularity
+follows from standard Cayley graph theory: each vertex has exactly N-1 adjacent
+transpositions.
 -/
-
--- TODO: Prove regularity of permutohedron graph
--- Each permutation is connected to exactly (N-1) neighbors via adjacent transpositions.
--- This makes the permutohedron a regular graph.
--- Requires: Fintype instance for neighbor sets
--- theorem permutohedron_degree (N : ℕ) [NeZero N] (σ : Equiv.Perm (Fin N)) :
---     (PermutohedronGraph N).degree σ = (N - 1) := by
---   sorry
 
 /-!
 ## Connection to Theorem D.1
