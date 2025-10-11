@@ -110,7 +110,9 @@ For comprehensive audits, follow the complete protocol in `Program_Auditor_Agent
 
 ## 📝 Session Logging Protocol
 
-**IMPORTANT**: Sessions are tracked by sequential count, with progressive updates during active work.
+**CRITICAL**: Sessions are tracked by sequential count, with progressive updates during active work.
+
+**ENFORCEMENT**: You MUST update the session log progressively. Do NOT wait until user asks about it.
 
 ### Creating New Session Log
 
@@ -182,11 +184,11 @@ For comprehensive audits, follow the complete protocol in `Program_Auditor_Agent
 3. Continue: [Next major task]
 ```
 
-### During Session: Progressive Updates
+### During Session: Progressive Updates ⚠️ MANDATORY
 
 **CRITICAL**: Update session log progressively to protect against abrupt session interruption.
 
-**Update trigger**: After completing each major phase/task
+**Update trigger**: After completing each major phase/task (do NOT wait for user to ask!)
 
 **How to update**:
 1. Rename current file: `Session_X.Y.md` → `Session_X.(Y+1).md`
@@ -194,28 +196,32 @@ For comprehensive audits, follow the complete protocol in `Program_Auditor_Agent
 3. Add new phases as they complete
 4. Update "Files Created/Modified" list
 5. Note key achievements
-6. **Commit and push** session log immediately after each update
+6. **Commit changes** (session log updates)
 
 **Progressive Update Protocol** (Protection Against Interruption):
 
 ✅ **DO** update session log in real-time:
 - After each major task completion
-- After each git commit
-- After each notebook/file creation
+- After creating 2+ files
+- After completing a phase/milestone
 - Before any long-running operations
 - At natural breakpoints in work
+- **BEFORE reporting work completion to user**
 
 ❌ **DO NOT** wait until end of session to update
+❌ **DO NOT** wait for user to ask "did you update the session log?"
 
 **Update Frequency**: Every 30-60 minutes of active work, or after each deliverable
 
 **Example progression**:
 - `Session_3.0.md` - Session start (Sprint 1 begins)
-- `Session_3.1.md` - After claim moderation complete [COMMITTED & PUSHED]
-- `Session_3.2.md` - After sensitivity analysis complete [COMMITTED & PUSHED]
-- `Session_3.3.md` - After table addition complete (Sprint 1 done) [COMMITTED & PUSHED]
+- `Session_3.1.md` - After claim moderation complete [UPDATED]
+- `Session_3.2.md` - After sensitivity analysis complete [UPDATED]
+- `Session_3.3.md` - After table addition complete (Sprint 1 done) [UPDATED]
 
 **Session Recovery**: If session ends abruptly, the most recent Session_X.Y.md provides complete recovery point.
+
+**Lesson Learned (Session 7.2)**: Claude failed to update Session 7.1 → Session 7.2 for several hours of work. User had to point it out. This is unacceptable. Update proactively!
 
 ### End of Session: Finalize
 
@@ -286,31 +292,46 @@ git push origin main
 
 ## 📋 Sprint Documentation Protocol
 
-**IMPORTANT**: Sprints are tracked in the `sprints/` folder with daily progress updates and team consultation logs.
+**IMPORTANT**: Sprints are tracked in the `sprints/` folder with **ONLY tracking documents**. All deliverables go to canonical locations.
 
-### Sprint Folder Structure
+### Sprint Folder Structure ⚠️ CRITICAL
 
+**CORRECT structure**:
 ```
 sprints/
 ├── README.md                                    # Sprint overview and status
-├── SPRINT_PLAN_ENHANCED_TEAM_INTEGRATION.md    # Master 10-week sprint plan
-├── sprint_X/                                    # Individual sprint folders
-    ├── SPRINT_X_TRACKING.md                    # Daily progress tracking
-    ├── team_consultations/                     # Team consultation logs
-    ├── notebooks/                              # Sprint-specific notebook outputs
-    └── lean/                                   # Sprint-specific Lean development
+├── SPRINT_PLAN_*.md                            # Master sprint plans
+└── sprint_X/
+    └── SPRINT_X_TRACKING.md                    # ONLY tracking documents
 ```
+
+**WRONG - DO NOT CREATE**:
+```
+sprints/
+└── sprint_X/
+    ├── team_consultations/     # ❌ NO - goes to multi_LLM/consultation/
+    ├── notebooks/              # ❌ NO - goes to notebooks/Logic_Realism/
+    └── lean/                   # ❌ NO - goes to lean/LFT_Proofs/
+```
+
+**Rule**: Sprint folders contain **ONLY tracking markdown files**. All outputs go to canonical locations.
+
+**Why?** Sprint folders are **pointers**, not **containers**.
+- Notebooks → `notebooks/Logic_Realism/`
+- Lean files → `lean/LFT_Proofs/PhysicalLogicFramework/`
+- Consultations → `multi_LLM/consultation/`
+- Sprint docs → `sprints/sprint_X/` (tracking only)
 
 ### Starting a New Sprint
 
 **When beginning a new sprint**:
 1. ✅ Create sprint folder: `sprints/sprint_X/`
-2. ✅ Initialize tracking document: `SPRINT_X_TRACKING.md` (see template in `sprints/README.md`)
-3. ✅ Create subfolders: `team_consultations/`, `notebooks/`, `lean/`
+2. ✅ Initialize tracking document: `SPRINT_X_TRACKING.md` (see template below)
+3. ❌ **DO NOT** create subfolders (team_consultations/, notebooks/, lean/)
 4. ✅ Update `sprints/README.md`: Mark sprint as "In Progress" in status table
 5. ✅ Update session log: Reference sprint start in `Session_Log/Session_X.Y.md`
 6. ✅ Update todo list: Add sprint deliverables as trackable tasks
-7. ✅ Commit and push: Initial sprint setup
+7. ✅ Commit initial sprint setup
 
 ### During Sprint (Daily Updates)
 
@@ -318,30 +339,39 @@ sprints/
 
 **Daily workflow**:
 1. ✅ Add daily log entry to `SPRINT_X_TRACKING.md` with:
-   - Notebook track progress
-   - Lean track progress
-   - Team track consultations and quality scores
+   - Notebook track progress (files created in `notebooks/Logic_Realism/`)
+   - Lean track progress (files created in `lean/LFT_Proofs/`)
+   - Team track consultations (results in `multi_LLM/consultation/`)
    - Integration notes (how tracks informed each other)
-2. ✅ Save team consultations: Store in `sprint_X/team_consultations/` with date stamps
+2. ✅ Create deliverables in canonical locations (NOT in sprint folder)
 3. ✅ Update deliverables checklist: Mark items as in progress or complete
 4. ✅ Commit regularly: Push progress at end of each day or major milestone
 5. ✅ Cross-reference: Update both sprint tracking and session log
 
 **Team consultation workflow**:
 1. Run consultation via multi-LLM bridge
-2. Save results to `sprint_X/team_consultations/consultation_X_YYYYMMDD.txt` and `.json`
-3. Document in tracking file with quality score
+2. Save results to `multi_LLM/consultation/sprint_X_topic_YYYYMMDD.txt` and `.json`
+3. Document in `SPRINT_X_TRACKING.md` with quality score
 4. Apply insights to current development
 5. Ensure quality score >0.70 for sprint success metrics
+
+**Where deliverables go**:
+- Notebooks → `notebooks/Logic_Realism/XX_Title.ipynb`
+- Lean proofs → `lean/LFT_Proofs/PhysicalLogicFramework/[Module]/FileName.lean`
+- Consultations → `multi_LLM/consultation/description_date.txt`
+- Outputs → `notebooks/Logic_Realism/outputs/`
+- Papers → `paper/` (with appropriate subfolders)
+
+**Sprint tracking document**: References deliverables, does NOT contain them
 
 ### Completing a Sprint
 
 **Before marking sprint complete**:
 1. ✅ Finalize tracking document: Mark all deliverables as complete with final status
-2. ✅ Sprint review: Conduct comprehensive team review and document results
+2. ✅ Create completion summary (optional): `SPRINT_X_COMPLETE.md` in `sprints/sprint_X/`
 3. ✅ Update `sprints/README.md`: Mark sprint as "Complete" with completion date
-4. ✅ Archive outputs: Ensure all notebooks, Lean files, and consultations are saved
-5. ✅ Update master plan: Mark sprint complete in `SPRINT_PLAN_ENHANCED_TEAM_INTEGRATION.md`
+4. ✅ Verify outputs: Ensure all notebooks, Lean files, consultations are in canonical locations
+5. ✅ Update master plan: Mark sprint complete in `SPRINT_PLAN_*.md`
 6. ✅ Session log: Document sprint completion with full accomplishments
 7. ✅ Next sprint handoff: Document what's ready, open questions, recommendations
 8. ✅ Commit and push: Final sprint state
@@ -433,6 +463,345 @@ See Notebook 08 (`notebooks/Logic_Realism/08_Energy_Level_Structure.ipynb`) for 
 ## Repository Overview
 
 This is the **Physical Logic Framework (PLF)** repository, containing mathematical derivations and computational simulations for Logic Field Theory (LFT) - a theoretical physics framework that proposes physical reality emerges from logical filtering of information: **A = L(I)**.
+
+---
+
+## 📁 Repository Folder Structure Protocol
+
+**CRITICAL**: This section defines the canonical locations for all project artifacts. Following this structure prevents fragmentation and maintains single sources of truth.
+
+### Core Principle: **Everything Has One Home**
+
+Each type of artifact has **exactly one** canonical location. Do NOT create alternative folders or duplicate content.
+
+### Canonical Folder Structure
+
+```
+physical_logic_framework/
+├── Session_Log/                    # ✅ SESSION TRACKING (critical!)
+│   ├── Session_X.Y.md              # Progressive session updates
+│   └── README.md
+│
+├── notebooks/
+│   ├── Logic_Realism/              # ✅ CANONICAL notebook suite
+│   └── approach_1_deprecated/      # ⚠️ DEPRECATED (historical only)
+│
+├── lean/
+│   └── LFT_Proofs/
+│       └── PhysicalLogicFramework/
+│           ├── Foundations/        # ✅ Foundation theorems
+│           ├── Dynamics/           # ✅ Dynamics theorems
+│           ├── LogicField/         # ✅ Logic field theorems
+│           ├── QuantumEmergence/   # ✅ Quantum emergence theorems
+│           └── supporting_material/ # Exploratory/test work only
+│
+├── sprints/                        # ✅ SPRINT TRACKING (critical!)
+│   ├── README.md
+│   ├── SPRINT_PLAN_*.md            # Master plans (multi-sprint)
+│   └── sprint_X/
+│       └── SPRINT_X_TRACKING.md    # ONLY tracking documents (no subfolders!)
+│
+├── multi_LLM/
+│   ├── consultation/               # ✅ TEAM CONSULTATIONS (all reviews here!)
+│   └── *.py                        # Multi-LLM system code
+│
+├── paper/
+│   ├── *.md                        # ✅ Main papers
+│   ├── figures/                    # ✅ Publication-quality figures
+│   ├── supplementary/              # ✅ Supporting documents
+│   └── potential_extensions/       # Speculative research
+│
+├── scripts/                        # Analysis utilities
+├── archive/                        # Historical artifacts
+└── *.md                           # Root-level documentation (README, CLAUDE, etc.)
+```
+
+### Where Things Go: Decision Tree
+
+#### 1. Jupyter Notebooks
+
+**Question**: Where do notebooks go?
+
+**Answer**: `notebooks/Logic_Realism/` **ONLY**
+
+**Rules**:
+- ✅ **DO**: Create all new notebooks in `notebooks/Logic_Realism/`
+- ✅ **DO**: Use sequential numbering: `00_Title.ipynb`, `01_Title.ipynb`, etc.
+- ✅ **DO**: Follow V2 architecture (3-line copyright, self-contained, professional tone)
+- ❌ **DO NOT**: Create notebooks in `approach_1` (deprecated)
+- ❌ **DO NOT**: Create new notebook folders (`approach_2`, `version_X`, etc.)
+- ❌ **DO NOT**: Put notebooks in `sprints/sprint_X/notebooks/` (no such folder)
+
+**Single source of truth**: `notebooks/Logic_Realism/` is THE notebook suite.
+
+#### 2. Lean Formal Proofs
+
+**Question**: Where do Lean proofs go?
+
+**Answer**: `lean/LFT_Proofs/PhysicalLogicFramework/[MODULE]/`
+
+**Modules**:
+- `Foundations/` - Core theorems (information space, constraints, Born rule)
+- `Dynamics/` - Dynamics theorems (Fisher geometry, graph Laplacian, Schrödinger)
+- `LogicField/` - Logic field structure
+- `QuantumEmergence/` - Quantum formalism emergence
+- `supporting_material/` - Exploratory work, tests, early versions
+
+**Rules**:
+- ✅ **DO**: Organize by conceptual module
+- ✅ **DO**: Reference canonical Logic_Realism notebook numbers in comments
+- ✅ **DO**: Use descriptive filenames: `MaximumEntropy.lean`, `BornRule.lean`
+- ❌ **DO NOT**: Put Lean files in `sprints/sprint_X/lean/` (no such folder)
+- ❌ **DO NOT**: Create Lean files outside `lean/LFT_Proofs/` structure
+
+**Example**:
+```lean
+-- Notebook 03: Maximum Entropy to Born Rule (Logic_Realism)
+-- Computational validation: notebooks/Logic_Realism/03_Maximum_Entropy_to_Born_Rule.ipynb
+```
+
+#### 3. Team Consultations
+
+**Question**: Where do team consultation results go?
+
+**Answer**: `multi_LLM/consultation/` **ONLY**
+
+**Rules**:
+- ✅ **DO**: Save all team reviews/consultations to `multi_LLM/consultation/`
+- ✅ **DO**: Use descriptive filenames with dates: `measurement_theory_review_20251010.txt`
+- ✅ **DO**: Save both `.txt` (human-readable) and `.json` (structured data) if applicable
+- ❌ **DO NOT**: Put consultations in `sprints/sprint_X/team_consultations/` (no such folder)
+- ❌ **DO NOT**: Scatter consultations across multiple locations
+
+**Single source of truth**: `multi_LLM/consultation/` is THE consultation archive.
+
+#### 4. Sprint Documentation
+
+**Question**: Where does sprint tracking go?
+
+**Answer**: `sprints/sprint_X/` with **ONLY tracking documents**
+
+**Structure** (simplified):
+```
+sprints/
+├── README.md
+├── SPRINT_PLAN_*.md                # Master plans (multi-sprint scope)
+└── sprint_X/
+    ├── SPRINT_X_PLAN.md            # Sprint-specific plan
+    ├── SPRINT_X_TRACKING.md        # Daily progress
+    ├── SPRINT_X_COMPLETE.md        # Completion summary (if applicable)
+    └── *.md                        # Other tracking documents
+```
+
+**Rules**:
+- ✅ **DO**: Put ONLY markdown tracking documents in `sprints/sprint_X/`
+- ✅ **DO**: Put master plans (multi-sprint scope) in `sprints/` root
+- ✅ **DO**: Put sprint-specific plans in `sprints/sprint_X/`
+- ❌ **DO NOT**: Create subfolders: `team_consultations/`, `notebooks/`, `lean/`
+- ❌ **DO NOT**: Put outputs/deliverables in sprint folders
+
+**Why no subfolders?**
+- Notebooks go to `notebooks/Logic_Realism/`
+- Lean files go to `lean/LFT_Proofs/`
+- Consultations go to `multi_LLM/consultation/`
+
+Sprint folders are **pointers**, not **containers**.
+
+#### 5. Session Logs ⚠️ CRITICAL
+
+**Question**: Where do session logs go?
+
+**Answer**: `Session_Log/` **ONLY** (this is one of the most important folders!)
+
+**Rules**:
+- ✅ **DO**: Create `Session_X.Y.md` files in `Session_Log/`
+- ✅ **DO**: Use sequential numbering with updates (X.0 → X.1 → X.2)
+- ✅ **DO**: Update progressively during session (every 30-60 minutes)
+- ✅ **DO**: Commit and push after each update (Session_X.Y increments)
+- ❌ **DO NOT**: Put session logs anywhere else
+- ❌ **DO NOT**: Create date-based filenames (use Session_X.Y format)
+- ❌ **DO NOT**: Wait until end of session to update (update progressively!)
+
+**Why critical?**
+- Session logs are your recovery point if session ends abruptly
+- They provide complete project history and context
+- They're the first thing Claude reads when starting a new session
+- They cross-reference all other work (sprints, notebooks, Lean proofs)
+
+#### 6. Papers and Publications
+
+**Question**: Where do papers go?
+
+**Answer**: `paper/` with specific subfolders
+
+**Structure**:
+```
+paper/
+├── It_from_Logic_Scholarly_Paper.md     # Main papers
+├── Logic_Realism_Foundational_Paper.md
+├── figures/                             # Publication figures ONLY
+├── supplementary/                       # Supporting documents
+└── potential_extensions/                # Speculative research
+```
+
+**Rules**:
+- ✅ **DO**: Main papers in `paper/` root
+- ✅ **DO**: Publication-ready figures in `paper/figures/`
+- ✅ **DO**: Supporting material in `paper/supplementary/`
+- ❌ **DO NOT**: Put computational outputs in `paper/figures/` (those go to `notebooks/Logic_Realism/outputs/`)
+
+#### 7. Notebook Outputs (Generated Figures/Data)
+
+**Question**: Where do notebook-generated outputs go?
+
+**Answer**: `notebooks/Logic_Realism/outputs/`
+
+**Rules**:
+- ✅ **DO**: All notebook outputs go to `notebooks/Logic_Realism/outputs/`
+- ✅ **DO**: Use descriptive filenames: `N3_permutohedron.png`, `fisher_metric_validation.csv`
+- ❌ **DO NOT**: Put outputs in `paper/figures/` (those are curated publication figures)
+- ❌ **DO NOT**: Put outputs in sprint folders
+
+**Workflow**: Notebook generates → `outputs/` → Curate best for publication → `paper/figures/`
+
+#### 8. Scripts and Utilities
+
+**Question**: Where do analysis scripts go?
+
+**Answer**: `scripts/`
+
+**Rules**:
+- ✅ **DO**: Python scripts for analysis/validation go to `scripts/`
+- ✅ **DO**: Use descriptive names: `constraint_analysis.py`, `validate_k_threshold.py`
+- ❌ **DO NOT**: Put inline notebook code here (keep it self-contained in notebooks)
+
+#### 9. Archive and Historical Content
+
+**Question**: Where does old/deprecated content go?
+
+**Answer**: `archive/` or `*_deprecated/` folders
+
+**Rules**:
+- ✅ **DO**: Rename deprecated folders with `_deprecated` suffix
+- ✅ **DO**: Add `README_DEPRECATED.md` explaining why and pointing to replacement
+- ✅ **DO**: Keep for historical reference
+- ❌ **DO NOT**: Delete historical work (archive it instead)
+
+**Example**:
+- `notebooks/approach_1/` → `notebooks/approach_1_deprecated/` + README_DEPRECATED.md
+
+### Common Mistakes to Avoid
+
+#### ❌ Mistake 1: Creating Sprint Subfolders
+
+**WRONG**:
+```
+sprints/sprint_8/
+├── SPRINT_8_TRACKING.md
+├── team_consultations/     # ❌ NO
+├── notebooks/              # ❌ NO
+└── lean/                   # ❌ NO
+```
+
+**CORRECT**:
+```
+sprints/sprint_8/
+└── SPRINT_8_TRACKING.md    # ✅ ONLY tracking docs
+```
+
+**Why?** Outputs go to their canonical locations, not sprint folders.
+
+#### ❌ Mistake 2: Creating Alternative Notebook Folders
+
+**WRONG**:
+```
+notebooks/
+├── Logic_Realism/
+├── approach_1_deprecated/
+├── approach_2/             # ❌ NO
+└── version_3/              # ❌ NO
+```
+
+**CORRECT**:
+```
+notebooks/
+├── Logic_Realism/          # ✅ ONLY active suite
+└── approach_1_deprecated/  # Historical reference only
+```
+
+**Why?** Single source of truth prevents fragmentation.
+
+#### ❌ Mistake 3: Scattering Consultations
+
+**WRONG**:
+```
+multi_LLM/consultation/review1.txt
+sprints/sprint_7/team_consultations/review2.txt  # ❌ NO
+notebooks/Logic_Realism/review3.txt              # ❌ NO
+```
+
+**CORRECT**:
+```
+multi_LLM/consultation/
+├── review1.txt             # ✅ All in one place
+├── review2.txt
+└── review3.txt
+```
+
+**Why?** Easier to find, track, and reference.
+
+### Quick Reference: "Where Do I Put...?"
+
+| What | Where | Why |
+|------|-------|-----|
+| New notebook | `notebooks/Logic_Realism/` | Canonical suite |
+| Lean proof | `lean/LFT_Proofs/PhysicalLogicFramework/[MODULE]/` | Organized by concept |
+| Team consultation | `multi_LLM/consultation/` | Single archive |
+| Sprint tracking | `sprints/sprint_X/SPRINT_X_TRACKING.md` | Tracking only |
+| Sprint-specific plan | `sprints/sprint_X/SPRINT_X_PLAN.md` | Sprint-specific docs |
+| Multi-sprint plan | `sprints/SPRINT_PLAN_*.md` | Master planning |
+| Session log | `Session_Log/Session_X.Y.md` | Session history |
+| Main paper | `paper/*.md` | Publications |
+| Publication figure | `paper/figures/` | Curated images only |
+| Notebook output | `notebooks/Logic_Realism/outputs/` | Generated data/plots |
+| Analysis script | `scripts/` | Utilities |
+| Old/deprecated | `archive/` or `*_deprecated/` | Historical reference |
+
+### Enforcement
+
+**During file creation/modification**:
+1. Ask: "Does this file type have a canonical location?"
+2. Check this reference
+3. Place file in correct location
+4. Do NOT create new folders without updating CLAUDE.md
+
+**During sprint work**:
+- Sprint folder = tracking docs ONLY
+- Deliverables go to canonical locations
+- Reference deliverables in tracking docs (don't duplicate)
+
+**During session work**:
+- Session log = progress tracking ONLY
+- Outputs go to canonical locations
+- Reference outputs in session log (don't duplicate)
+
+### Migration Notes
+
+**If you find files in wrong locations**:
+1. Identify canonical location from this guide
+2. Move file to correct location
+3. Update all references (Lean comments, README files, etc.)
+4. Add deprecation notice if renaming folder
+
+**Example (Sprint 8)**:
+- Created notebooks in `approach_1` → Should be in `Logic_Realism`
+- Solution: Migrate to `Logic_Realism/`, deprecate `approach_1/`
+
+---
+
+**This structure is MANDATORY. Follow it strictly to maintain repository coherence.**
+
+---
 
 ## Architecture
 
@@ -608,3 +977,5 @@ This repository implements active theoretical research in fundamental physics. A
 - track sprints in the sprints root folder
 - validate all claims tied to amount of sorrys in Lean proofs
 - validate all notebooks, Lean proofs, code, etc with the multi-LLM team
+- Always add key insights gained and lessons learn for each session closeout
+- all sprints documentation goes into the sprints folder
