@@ -1,131 +1,80 @@
 {"synthetic": false,
  "outputs":
- {"o": ["17789842421428962643"],
-  "i": "5259468243098310063",
-  "c": "15577491980136968169"},
+ {"o": ["15926220519905588944"],
+  "i": "3112001937640684484",
+  "c": "4538418504760496171"},
  "log":
  [{"message":
    ".> LEAN_PATH=C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\lib\\lean c:\\Users\\jdlon\\.elan\\toolchains\\leanprover--lean4---v4.23.0-rc2\\bin\\lean.exe C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\LFT_Proofs\\PhysicalLogicFramework\\QuantumEmergence\\HilbertSpace.lean -o C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\lib\\lean\\PhysicalLogicFramework\\QuantumEmergence\\HilbertSpace.olean -i C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\lib\\lean\\PhysicalLogicFramework\\QuantumEmergence\\HilbertSpace.ilean -c C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\ir\\PhysicalLogicFramework\\QuantumEmergence\\HilbertSpace.c --setup C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\ir\\PhysicalLogicFramework\\QuantumEmergence\\HilbertSpace.setup.json --json",
    "level": "trace"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:80:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:85:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:80:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:88:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:80:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:91:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:80:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:94:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:80:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:133:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:80:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:139:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:80:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:155:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:80:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:162:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:80:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:164:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:80:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:166:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:102:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:169:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:102:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:171:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:102:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:173:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:102:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:220:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:102:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:222:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:102:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:228:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:120:4: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:230:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:120:4: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:231:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:120:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:259:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:127:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:267:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:127:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:281:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:127:0: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:371:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:127:0: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:127:0: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:127:0: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:127:0: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:127:0: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:127:0: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:156:0: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:156:0: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:156:0: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:156:0: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:156:0: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:156:0: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:156:0: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:201:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:228:8: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:259:8: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:278:8: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:302:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/QuantumEmergence/HilbertSpace.lean:408:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"}],
  "inputs":
  [["PhysicalLogicFramework.QuantumEmergence.HilbertSpace:deps",
@@ -134,9 +83,9 @@
        [["@PhysicalLogicFramework:extraDep", "1723"]]],
       ["imports",
        [["PhysicalLogicFramework.QuantumEmergence.BellInequality_Fixed transitive imports (legacy)",
-         "6064155220970026390"],
+         "14918782190608067997"],
         ["PhysicalLogicFramework.QuantumEmergence.BellInequality_Fixed:importAllArts",
-         "4463949132455162146"],
+         "15049192500843409432"],
         ["Mathlib.Analysis.InnerProductSpace.Basic transitive imports (legacy)",
          "4026462219530672127"],
         ["Mathlib.Analysis.InnerProductSpace.Basic:importAllArts",
@@ -163,7 +112,7 @@
   ["Lean 4.23.0, commit ad1a017949674a947f0d6794cbf7130d642c6530",
    "2372534101328293747"],
   ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\LFT_Proofs\\PhysicalLogicFramework\\QuantumEmergence\\HilbertSpace.lean",
-   "17806273331683199426"],
+   "284060079990419061"],
   ["options",
    [["-DmaxSynthPendingDepth=3", "14379489197236848084"],
     ["-Dweak.linter.mathlibStandardSet=true", "9949955268809796418"],
@@ -171,4 +120,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "6390058830405740756"}
+ "depHash": "2076776967528085135"}

@@ -1,27 +1,12 @@
 {"synthetic": false,
  "outputs":
- {"o": ["18228989401787019232"],
-  "i": "6090314073572247264",
+ {"o": ["3255488700992297133"],
+  "i": "17384050269825649134",
   "c": "17122841448713637661"},
  "log":
  [{"message":
    ".> LEAN_PATH=C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\Cli\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\batteries\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\Qq\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\aesop\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\proofwidgets\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\importGraph\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\LeanSearchClient\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\plausible\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\packages\\mathlib\\.lake\\build\\lib\\lean;C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\lib\\lean c:\\Users\\jdlon\\.elan\\toolchains\\leanprover--lean4---v4.23.0-rc2\\bin\\lean.exe C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\LFT_Proofs\\PhysicalLogicFramework\\LogicField\\Operator.lean -o C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\lib\\lean\\PhysicalLogicFramework\\LogicField\\Operator.olean -i C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\lib\\lean\\PhysicalLogicFramework\\LogicField\\Operator.ilean -c C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\ir\\PhysicalLogicFramework\\LogicField\\Operator.c --setup C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\.lake\\build\\ir\\PhysicalLogicFramework\\LogicField\\Operator.setup.json --json",
-   "level": "trace"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/Operator.lean:165:8: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/Operator.lean:204:8: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/Operator.lean:219:8: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/Operator.lean:255:8: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/Operator.lean:276:8: declaration uses 'sorry'",
-   "level": "warning"}],
+   "level": "trace"}],
  "inputs":
  [["PhysicalLogicFramework.LogicField.Operator:deps",
    [["deps",
@@ -54,7 +39,7 @@
   ["Lean 4.23.0, commit ad1a017949674a947f0d6794cbf7130d642c6530",
    "2372534101328293747"],
   ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\LFT_Proofs\\PhysicalLogicFramework\\LogicField\\Operator.lean",
-   "6866336706217795120"],
+   "7507324430863938376"],
   ["options",
    [["-DmaxSynthPendingDepth=3", "14379489197236848084"],
     ["-Dweak.linter.mathlibStandardSet=true", "9949955268809796418"],
@@ -62,4 +47,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "12360220802974445102"}
+ "depHash": "3647121920935478246"}

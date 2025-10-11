@@ -1,7 +1,7 @@
 {"synthetic": false,
  "outputs":
- {"o": ["1052113391409814949"],
-  "i": "17267981082504735570",
+ {"o": ["1693484455558245273"],
+  "i": "9332229377858026805",
   "c": "4433184853042026154"},
  "log":
  [{"message":
@@ -11,40 +11,28 @@
    "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:138:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:176:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:267:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:250:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:364:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:251:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:492:6: The `cases'` tactic is discouraged: please strongly consider using `obtain`, `rcases` or `cases` instead.\n\nNote: This linter can be disabled with `set_option linter.style.cases false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:312:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:505:4: The `cases'` tactic is discouraged: please strongly consider using `obtain`, `rcases` or `cases` instead.\n\nNote: This linter can be disabled with `set_option linter.style.cases false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:364:8: declaration uses 'sorry'",
+   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:553:10: The `cases'` tactic is discouraged: please strongly consider using `obtain`, `rcases` or `cases` instead.\n\nNote: This linter can be disabled with `set_option linter.style.cases false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:452:6: The `cases'` tactic is discouraged: please strongly consider using `obtain`, `rcases` or `cases` instead.\n\nNote: This linter can be disabled with `set_option linter.style.cases false`",
+   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:590:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:465:4: The `cases'` tactic is discouraged: please strongly consider using `obtain`, `rcases` or `cases` instead.\n\nNote: This linter can be disabled with `set_option linter.style.cases false`",
+   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:729:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"},
   {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:511:10: The `cases'` tactic is discouraged: please strongly consider using `obtain`, `rcases` or `cases` instead.\n\nNote: This linter can be disabled with `set_option linter.style.cases false`",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:548:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:590:8: declaration uses 'sorry'",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:685:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
-   "level": "warning"},
-  {"message":
-   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:689:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
+   "LFT_Proofs/PhysicalLogicFramework/LogicField/ConstraintAccumulation.lean:733:0: This line exceeds the 100 character limit, please shorten it!\n\nNote: This linter can be disabled with `set_option linter.style.longLine false`",
    "level": "warning"}],
  "inputs":
  [["PhysicalLogicFramework.LogicField.ConstraintAccumulation:deps",
@@ -55,7 +43,7 @@
        [["PhysicalLogicFramework.LogicField.Operator transitive imports (legacy)",
          "875835273225343883"],
         ["PhysicalLogicFramework.LogicField.Operator:importAllArts",
-         "3826387155664684845"],
+         "14777476737763370969"],
         ["Mathlib.Analysis.SpecialFunctions.Exp transitive imports (legacy)",
          "11238687873220535714"],
         ["Mathlib.Analysis.SpecialFunctions.Exp:importAllArts",
@@ -99,7 +87,7 @@
   ["Lean 4.23.0, commit ad1a017949674a947f0d6794cbf7130d642c6530",
    "2372534101328293747"],
   ["C:\\Users\\jdlon\\OneDrive\\Documents\\physical_logic_framework\\lean\\LFT_Proofs\\PhysicalLogicFramework\\LogicField\\ConstraintAccumulation.lean",
-   "2426230550460555459"],
+   "15553412626716125622"],
   ["options",
    [["-DmaxSynthPendingDepth=3", "14379489197236848084"],
     ["-Dweak.linter.mathlibStandardSet=true", "9949955268809796418"],
@@ -107,4 +95,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "3014646342937119030"}
+ "depHash": "173147922988682459"}

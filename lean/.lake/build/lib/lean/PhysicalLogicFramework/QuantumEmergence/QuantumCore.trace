@@ -14,13 +14,13 @@
        [["@PhysicalLogicFramework:extraDep", "1723"]]],
       ["imports",
        [["PhysicalLogicFramework.LogicField.Operator transitive imports (legacy)",
-         "5423604748312005589"],
+         "875835273225343883"],
         ["PhysicalLogicFramework.LogicField.Operator:importAllArts",
-         "3826387155664684845"],
+         "14777476737763370969"],
         ["PhysicalLogicFramework.LogicField.ConstraintAccumulation transitive imports (legacy)",
-         "10299437719302263378"],
+         "3604196272842551554"],
         ["PhysicalLogicFramework.LogicField.ConstraintAccumulation:importAllArts",
-         "14753883747400501741"],
+         "12230643667995281209"],
         ["Mathlib.Logic.Basic transitive imports (legacy)",
          "16691750265257323728"],
         ["Mathlib.Logic.Basic:importAllArts", "2575427433627443436"]]]]],
@@ -40,4 +40,4 @@
     ["-Dpp.unicode.fun=true", "11210593074386665387"],
     ["-DautoImplicit=false", "5369888039164004816"]]],
   ["Module.leanArgs: #[]", "1723"]],
- "depHash": "2718466447684612682"}
+ "depHash": "12884365443698165890"}
