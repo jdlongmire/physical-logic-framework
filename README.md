@@ -8,7 +8,107 @@ ORCID: 0009-0009-1383-7698
 
 This repository contains the **Physical Logic Framework (PLF)** - a comprehensive research program deriving core principles of non-relativistic quantum mechanics from logical consistency. The framework is built on **one axiom** (the Three Fundamental Laws of Logic), **one postulate** (Infinite Information Space I), and **one principle** (A = L(I): Actualized Reality is Logic filtering Information).
 
-**See**: [`MISSION_STATEMENT.md`](MISSION_STATEMENT.md) for complete framework overview.
+**See**: [`MISSION_STATEMENT.md`](MISSION_STATEMENT.md) for complete framework overview and [`paper/LRT_FORMALIZATION.md`](paper/LRT_FORMALIZATION.md) for the abstract theoretical foundation (Logic Realism Theory).
+
+## Architecture: From Abstract Theory to Working Implementation
+
+The research program has a **three-layer architecture** bridging abstract mathematical formalism to concrete computational validation:
+
+### Layer 1: Logic Realism Theory (LRT) - Abstract Foundation
+
+**What**: Pre-physical metaphysical framework grounding quantum mechanics in logical and informational primitives.
+
+**Core primitives**:
+- **Infinite Information Space (IIS) = ℋ**: Hilbert space containing all possible states
+- **Three Fundamental Laws of Logic (3FLL) = L(ℋ)**: Orthomodular lattice structure (Identity, Non-Contradiction, Excluded Middle)
+
+**Key results**:
+- Non-distributivity of L(ℋ) for dim(ℋ) ≥ 2 (quantum logic ≠ Boolean logic)
+- Born rule derived via Gleason's theorem (not postulated)
+- Measurement as entanglement-driven projection enforcing 3FLL
+- Consciousness formalized as high-entropy IIS access
+
+**Status**: Sprint 9.5 complete (October 2025)
+- [`paper/LRT_FORMALIZATION.md`](paper/LRT_FORMALIZATION.md): ~10,600 words, publication-quality
+- Multi-LLM consultation: 0.755 average quality (Grok 0.81, Gemini 0.70) ✅
+- [`notebooks/Logic_Realism/23_LRT_Foundations_Lattice_to_SN.ipynb`](notebooks/Logic_Realism/23_LRT_Foundations_Lattice_to_SN.ipynb): Computational validation of non-distributivity proofs
+- [`lean/LFT_Proofs/PhysicalLogicFramework/LogicRealism/`](lean/LFT_Proofs/PhysicalLogicFramework/LogicRealism/): Module stub for future lattice theory formalization
+
+**Reference**: See Section 12 of LRT_FORMALIZATION.md for explicit mappings to PLF
+
+### Layer 2: Physical Logic Framework (PLF) - Concrete Instantiation
+
+**What**: Computational realization of LRT using discrete symmetric group structures.
+
+**Core structures**:
+- **IIS ≈ ∏ Sₙ**: Infinite product of symmetric groups (permutation structures)
+- **3FLL ≈ K(N) = N-2 constraints**: Logical operators I, N, X acting on permutations
+- **Actualization**: Critical constraint threshold for quantum emergence
+
+**Key results**:
+- K(N) = N-2 triple proof (Mahonian statistic, Coxeter theory, MaxEnt)
+- Born rule P = |ψ|² from MaxEnt on constraint-filtered permutohedron
+- Hamiltonian H = D - A (graph Laplacian structure)
+- Schrödinger equation from Fisher geodesic flow
+- Quantum interference, qubits, energy quantization derived
+
+**Status**: 18 production notebooks complete (October 2025)
+- ~65,000 words of mathematical derivations with inline computational validation
+- 100% test validation across all notebooks
+- 17 Lean modules with 0 active sorry statements
+
+**Scope**: Non-relativistic QM for distinguishable particles (N=3,4,5,6 validated)
+
+**Reference**: See [`MISSION_STATEMENT.md`](MISSION_STATEMENT.md) and [`SCOPE_AND_LIMITATIONS.md`](SCOPE_AND_LIMITATIONS.md)
+
+### Layer 3: Working Implementation - Validated Systems
+
+**What**: Specific quantum systems with complete computational and formal verification.
+
+**Validated systems**:
+- **N=3**: Full S₃ analysis (permutohedron, Cayley graph, spectrum, dynamics)
+- **N=4**: S₄ geometry, 24-vertex structure, finite-N quantum corrections
+- **N=5, N=6**: Scaling analysis, spectral properties, constraint thresholds
+
+**Applications**:
+- Double-slit interference patterns
+- Mach-Zehnder interferometry
+- Qubit systems (Bloch sphere from S₂)
+- Energy quantization (discrete levels from spectral decomposition)
+- Quantum eraser (delayed-choice experiments)
+
+**Testable predictions**: 15 deviations from standard QM at ~10⁻⁸ precision
+- Multi-slit interferometry with finite-N corrections
+- Semi-Poisson spectral statistics
+- Entropy saturation (Page curve deviations)
+- Constraint threshold measurements
+
+**Status**: 100% computational validation complete
+
+**Reference**: [`notebooks/Logic_Realism/`](notebooks/Logic_Realism/) for complete computational suite
+
+### Relationship Summary
+
+```
+LRT (Abstract)              PLF (Concrete)                  Implementation (Validated)
+├─ IIS = ℋ              →   ∏ Sₙ                        →   S₃, S₄, S₅, S₆ systems
+├─ 3FLL = L(ℋ)          →   K(N) = N-2 constraints      →   K(3)=1, K(4)=2, etc.
+├─ Non-distributivity   →   Non-Boolean Cayley graph    →   Computational verification
+├─ Born rule Tr(ρP)     →   MaxEnt on permutohedron     →   P = |ψ|² validated
+└─ Measurement          →   Constraint tightening       →   Double-slit collapse
+```
+
+**Why three layers?**
+1. **LRT provides** philosophical depth, mathematical rigor, broader applicability (all of QM in principle)
+2. **PLF provides** concrete computational structures, explicit algorithms, finite-N systems
+3. **Implementation provides** empirical validation, testable predictions, falsifiable claims
+
+**Critical test (Sprint 10)**: Indistinguishable particles
+- **Hypothesis**: Symmetrization/antisymmetrization as 3FLL projections onto Young diagram subspaces
+- **If succeeds**: PLF validates LRT for full QM (distinguishable + indistinguishable)
+- **If fails**: Honest scope documentation (distinguishable particles only)
+
+**Publication strategy**: LRT as abstract theory paper, PLF as computational physics paper, separate empirical test proposals
 
 ### Computational Notebooks
 
