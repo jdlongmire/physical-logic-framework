@@ -52,12 +52,13 @@ The research program has a **three-layer architecture** bridging abstract mathem
 - Schrödinger equation from Fisher geodesic flow
 - Quantum interference, qubits, energy quantization derived
 
-**Status**: 18 production notebooks complete (October 2025)
+**Status**: 19 production notebooks complete (October 2025)
 - ~65,000 words of mathematical derivations with inline computational validation
 - 100% test validation across all notebooks
-- 17 Lean modules with 0 active sorry statements
+- 18 Lean modules with 0 active sorry statements (including Indistinguishability/)
 
-**Scope**: Non-relativistic QM for distinguishable particles (N=3,4,5,6 validated)
+**Scope**: Non-relativistic QM for distinguishable and indistinguishable particles (N=2,3,4,5,6 validated)
+- **Indistinguishable particles**: Symmetrization postulate derived from epistemic constraints (Sprint 10)
 
 **Reference**: See [`MISSION_STATEMENT.md`](MISSION_STATEMENT.md) and [`SCOPE_AND_LIMITATIONS.md`](SCOPE_AND_LIMITATIONS.md)
 
@@ -103,10 +104,12 @@ LRT (Abstract)              PLF (Concrete)                  Implementation (Vali
 2. **PLF provides** concrete computational structures, explicit algorithms, finite-N systems
 3. **Implementation provides** empirical validation, testable predictions, falsifiable claims
 
-**Critical test (Sprint 10)**: Indistinguishable particles
-- **Hypothesis**: Symmetrization/antisymmetrization as 3FLL projections onto Young diagram subspaces
-- **If succeeds**: PLF validates LRT for full QM (distinguishable + indistinguishable)
-- **If fails**: Honest scope documentation (distinguishable particles only)
+**Sprint 10 Result (October 2025)**: Indistinguishable particles - Success ✅
+- **Derived**: Symmetrization postulate from 3FLL + epistemic constraints
+- **Key insight**: Indistinguishability is epistemic (information limit), not ontic (particle property)
+- **Outcome**: Only symmetric/antisymmetric states correspond to well-defined propositions
+- **Significance**: PLF now covers distinguishable + indistinguishable particles
+- **Deferred**: Boson/fermion distinction (spin-statistics theorem) → Sprint 11
 
 **Publication strategy**: LRT as abstract theory paper, PLF as computational physics paper, separate empirical test proposals
 
@@ -214,15 +217,18 @@ All computational work employs three-track validation: Jupyter notebooks (comput
 
 ### Active Research
 
-**Current Focus (Sprint 9-10, ~3-4 weeks)**:
-- 🔄 **Sprint 9**: Mission Statement Refinement & Scope Alignment
+**Current Focus (Sprint 9-10, October 2025)**:
+- ✅ **Sprint 9**: Mission Statement Refinement & Scope Alignment (Complete)
   - Phase 1 Complete: MISSION_STATEMENT.md, SCOPE_AND_LIMITATIONS.md, FALSIFICATION_CRITERIA.md
-  - Phase 2 In Progress: Documentation alignment
-  - Phase 3-4 Pending: Lean sorry audit, Multi-LLM review
-- 🔄 **Sprint 10**: Exchange Statistics from Young Diagrams
-  - Hypothesis: L projects S_N onto symmetric ⊕ antisymmetric irreps only
-  - Goal: Derive spin-statistics theorem (bosons/fermions from logical filtering)
-  - If successful: Pauli exclusion principle becomes a theorem
+  - Phase 2 Complete: Documentation alignment
+  - LRT formalization paper complete (~10,600 words)
+- 🔄 **Sprint 10**: Indistinguishable Particles - Epistemic Foundations (50% complete)
+  - ✅ Implementation: Lean formalization (EpistemicStates.lean, 280 lines, 0 sorry)
+  - ✅ Validation: Notebook 24 (N=2,3 particle systems)
+  - ✅ Derivation: SPRINT_10_DERIVATION.md (~9,500 words)
+  - ⏸ Documentation: README updates (in progress)
+  - ⏸ Review: Final team consultation pending
+  - **Result**: Symmetrization postulate derived from 3FLL + epistemic constraints
 
 **Near-Term (3-6 months)**:
 - **Sprints 11-12**: Many-body systems, operator algebra completion, paper revision
@@ -545,8 +551,9 @@ lake build
 | **Schrödinger Equation** | ✅ Complete | 95% | Fisher geodesic flow, Lean formalized |
 | **Measurement Mechanism** | ✅ Complete | 80% | Constraint tightening + decoherence, strategic axioms |
 | **18 Notebooks (Logic_Realism)** | ✅ Complete | 100% | ~65,000 words, production-ready |
-| **Lean Formalization** | ✅ 17 files, 0 sorry | 95% | All modules complete (strategic axioms in QuantumEmergence) |
-| **Exchange Statistics** | 🔄 Sprint 10 target | 0% | Hypothesis: Young diagram filtering |
+| **Lean Formalization** | ✅ 18 files, 0 sorry | 95% | All modules complete (strategic axioms in QuantumEmergence) |
+| **Symmetrization Postulate** | ✅ Sprint 10 complete | 90% | Derived from 3FLL + epistemic constraints (Lean + Notebook validated) |
+| **Boson/Fermion Distinction** | 🔄 Sprint 11 target | 0% | Spin-statistics theorem (algebraic approach) |
 | **Quantum Field Theory** | ⏳ Long-term research | 0% | Speculative, out of current scope |
 | **Relativistic QM** | ⏳ Long-term research | 0% | Speculative, no clear path |
 
