@@ -10,7 +10,11 @@
       "Bash(do echo \"=== $dir ===\")",
       "Bash(find:*)",
       "Bash(python:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(git push:*)",
+      "Bash(jupyter nbconvert:*)",
+      "Bash(tee:*)",
+      "Bash(lake build:*)"
     ],
     "deny": [],
     "ask": [],
