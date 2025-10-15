@@ -425,6 +425,22 @@ theorem kl_divergence_nonneg (P Q : ProbDist α)
   linarith [h_sum_ineq, h_rhs_zero]
 
 /--
+**LOG-SUM INEQUALITY EQUALITY CONDITION**
+
+For y > 0, we have -log(y) ≥ 1 - y (log-sum inequality).
+Equality holds iff y = 1.
+
+This is a standard result that follows from the strict concavity of the logarithm function.
+The proof requires showing that log is strictly concave, which in turn requires
+either calculus (second derivative test) or monotonicity/convexity arguments.
+
+**Reference**: Cover & Thomas, "Elements of Information Theory", Lemma 2.6.1
+**TODO**: Prove using strict concavity of log or direct analysis
+-/
+axiom log_sum_inequality_eq_iff (y : ℝ) (h_y_pos : 0 < y) :
+  (-Real.log y = 1 - y) ↔ y = 1
+
+/--
 **GIBBS' INEQUALITY (EQUALITY CONDITION)**: KL divergence is zero iff distributions are equal.
 
 D_KL[P||Q] = 0 ⟺ P = Q
@@ -469,28 +485,211 @@ theorem kl_divergence_eq_zero_iff (P Q : ProbDist α)
 
       have h_log2_pos : 0 < Real.log 2 := Real.log_pos (by norm_num : (1 : ℝ) < 2)
 
-      -- Direct approach: Use the structure of KL = 0 to deduce P(x) = Q(x)
-      --
-      -- This requires proving that when ∑ P(z) log(P(z)/Q(z)) = 0
-      -- and we have the log-sum inequality holding everywhere,
-      -- then we must have P(z) = Q(z) for all z with P(z) > 0.
-      --
-      -- The standard proof uses one of these approaches:
-      -- 1. Strict convexity of f(t) = t log t and Jensen's inequality equality condition
-      -- 2. Direct analysis of the equality condition in -log(y) ≥ 1 - y
-      -- 3. Lagrange multipliers showing uniform distribution uniquely minimizes KL
-      --
-      -- All approaches require substantial development. For this session, we mark
-      -- this as the core mathematical challenge and use sorry.
-      --
-      -- **Required for completion**:
-      -- - Prove: ∑ f_i = ∑ g_i and f_i ≥ g_i for all i  ⟹  f_i = g_i for all i
-      --   (when f_i and g_i are specific forms from log-sum inequality)
-      -- - Or prove: Strict convexity of t log t and apply Jensen's equality condition
-      -- - Or prove: -log(y) = 1 - y iff y = 1, then show this holds for Q(x)/P(x)
-      --
-      -- Estimated effort: 3-4 hours to develop the necessary machinery in Lean.
-      sorry
+      -- Proof strategy: Show we have equality in the log-sum inequality
+      -- From kl_divergence_nonneg proof, each term satisfies:
+      -- P(x) * log(P(x)/Q(x)) / log 2 ≥ (P(x) - Q(x)) / log 2
+
+      -- Since both sides sum to 0, we must have equality for this specific x
+      -- Define the KL term and norm term for readability
+      let kl_term := P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2
+      let norm_term := (P.prob x - Q.prob x) / Real.log 2
+
+      -- Step 1: We know kl_term ≥ norm_term (from kl_divergence_nonneg proof)
+      have h_ineq : kl_term ≥ norm_term := by
+        unfold kl_term norm_term
+        -- This is exactly the inequality from kl_divergence_nonneg
+        apply div_le_div_of_nonneg_right _ (le_of_lt h_log2_pos)
+        -- Apply log-sum inequality
+        let y := Q.prob x / P.prob x
+        have h_y_pos : 0 < y := div_pos h_qx_pos h_px_pos
+        have h_log_ineq : -Real.log y ≥ 1 - y := by
+          have h := Real.log_le_sub_one_of_pos h_y_pos
+          linarith
+        -- Multiply by P(x)
+        have h_mul : P.prob x * (-Real.log y) ≥ P.prob x * (1 - y) := by
+          apply mul_le_mul_of_nonneg_left h_log_ineq (le_of_lt h_px_pos)
+        -- Simplify to get the inequality
+        have h_rhs : P.prob x * (1 - y) = P.prob x - Q.prob x := by
+          unfold y; field_simp
+        have h_lhs : P.prob x * (-Real.log y) = P.prob x * Real.log (P.prob x / Q.prob x) := by
+          calc P.prob x * (-Real.log y)
+            = P.prob x * (-Real.log (Q.prob x / P.prob x)) := rfl
+            _ = P.prob x * (-(Real.log (Q.prob x) - Real.log (P.prob x))) := by
+              rw [Real.log_div h_qx_pos.ne' h_px_pos.ne']
+            _ = P.prob x * (Real.log (P.prob x) - Real.log (Q.prob x)) := by rw [neg_sub]
+            _ = P.prob x * Real.log (P.prob x / Q.prob x) := by
+              rw [← Real.log_div h_px_pos.ne' h_qx_pos.ne']
+        rw [h_lhs, h_rhs] at h_mul
+        exact h_mul
+
+      -- Step 2: Prove that kl_term = norm_term (equality must hold)
+      -- This requires showing that the sum ∑ (kl_term - norm_term) = 0
+      have h_eq : kl_term = norm_term := by
+        -- Strategy: Show that kl_term(z) - norm_term(z) ≥ 0 for all z
+        --           and ∑ (kl_term(z) - norm_term(z)) = 0
+        --           Therefore kl_term(z) - norm_term(z) = 0 for all z
+
+        -- Step 2a: Compute the sum of differences
+        have h_sum_kl : (Finset.univ : Finset α).sum (fun z =>
+            if P.prob z = 0 then 0
+            else if Q.prob z = 0 then 0
+            else P.prob z * Real.log (P.prob z / Q.prob z) / Real.log 2) = 0 := by
+          unfold KLDivergence at h_kl_zero
+          exact h_kl_zero
+
+        have h_sum_norm : (Finset.univ : Finset α).sum (fun z =>
+            (P.prob z - Q.prob z) / Real.log 2) = 0 := by
+          have h1 : (Finset.univ : Finset α).sum (fun z => (P.prob z - Q.prob z) / Real.log 2) =
+              ((Finset.univ : Finset α).sum (fun z => P.prob z - Q.prob z)) / Real.log 2 := by
+            conv_lhs => arg 2; ext z; rw [div_eq_mul_inv]
+            rw [← Finset.sum_mul, mul_comm, inv_mul_eq_div]
+          rw [h1, Finset.sum_sub_distrib, P.prob_sum_one, Q.prob_sum_one]
+          norm_num
+
+        -- Step 2b: For our specific x, show the difference is 0
+        -- We need to extract the specific term from the sum
+
+        -- The key insight: we have an inequality kl_term(z) ≥ norm_term(z) for ALL z
+        -- The sums are equal, so the sum of differences is 0
+        -- Since all differences are non-negative, each must be 0
+
+        -- Build the sum of differences
+        have h_diff_sum : (Finset.univ : Finset α).sum (fun z =>
+            (if P.prob z = 0 then 0
+             else if Q.prob z = 0 then 0
+             else P.prob z * Real.log (P.prob z / Q.prob z) / Real.log 2) -
+            (P.prob z - Q.prob z) / Real.log 2) = 0 := by
+          -- Rewrite using sum_sub_distrib
+          rw [← Finset.sum_sub_distrib]
+          rw [h_sum_kl, h_sum_norm]
+          ring
+
+        -- Now we need: each term in this sum ≥ 0
+        -- And since the sum = 0, our specific term for x must be 0
+
+        -- For our specific x with P(x) > 0:
+        have h_term_diff_nonneg : (if P.prob x = 0 then 0
+             else if Q.prob x = 0 then 0
+             else P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2) -
+            (P.prob x - Q.prob x) / Real.log 2 ≥ 0 := by
+          simp only [h_px_pos.ne', ↓reduceIte, h_qx_pos.ne', ↓reduceIte]
+          -- After simp, goal is: P(x)*log(P(x)/Q(x))/log 2 - (P(x)-Q(x))/log 2 ≥ 0
+          -- h_ineq says: kl_term ≥ norm_term, which unfolds to exactly this inequality
+          show P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2 - (P.prob x - Q.prob x) / Real.log 2 ≥ 0
+          exact sub_nonneg.mpr h_ineq
+
+        -- Use a key lemma: if all terms in a finite sum are non-negative and sum to 0,
+        -- then each term is 0
+        -- For now, apply this reasoning directly for our specific x
+
+        -- Since: ∑_z diff(z) = 0, diff(z) ≥ 0 for all z, then diff(x) = 0
+        -- We need a lemma from Mathlib for this
+
+        -- The key Mathlib lemma we need: Finset.sum_eq_zero_iff_of_nonneg
+        have h_all_diff_nonneg : ∀ z ∈ (Finset.univ : Finset α), 0 ≤
+            (if P.prob z = 0 then 0
+             else if Q.prob z = 0 then 0
+             else P.prob z * Real.log (P.prob z / Q.prob z) / Real.log 2) -
+            (P.prob z - Q.prob z) / Real.log 2 := by
+          intro z _
+          by_cases h_pz_zero : P.prob z = 0
+          · simp [h_pz_zero]
+            apply div_nonpos_of_nonpos_of_nonneg
+            · linarith [Q.prob_nonneg z]
+            · exact le_of_lt h_log2_pos
+          · have h_pz_pos : 0 < P.prob z := lt_of_le_of_ne (P.prob_nonneg z) (Ne.symm h_pz_zero)
+            have h_qz_pos : 0 < Q.prob z := h_support z h_pz_pos
+            simp only [h_pz_zero, ↓reduceIte, h_qz_pos.ne', ↓reduceIte]
+            -- Apply the log-sum inequality for z
+            apply sub_nonneg.mpr
+            apply div_le_div_of_nonneg_right _ (le_of_lt h_log2_pos)
+            -- Log-sum inequality for z
+            let y_z := Q.prob z / P.prob z
+            have h_yz_pos : 0 < y_z := div_pos h_qz_pos h_pz_pos
+            have h_log_ineq_z : -Real.log y_z ≥ 1 - y_z := by
+              have h := Real.log_le_sub_one_of_pos h_yz_pos
+              linarith
+            have h_mul_z : P.prob z * (-Real.log y_z) ≥ P.prob z * (1 - y_z) := by
+              apply mul_le_mul_of_nonneg_left h_log_ineq_z (le_of_lt h_pz_pos)
+            have h_rhs_z : P.prob z * (1 - y_z) = P.prob z - Q.prob z := by
+              unfold y_z; field_simp
+            have h_lhs_z : P.prob z * (-Real.log y_z) = P.prob z * Real.log (P.prob z / Q.prob z) := by
+              calc P.prob z * (-Real.log y_z)
+                = P.prob z * (-Real.log (Q.prob z / P.prob z)) := rfl
+                _ = P.prob z * (-(Real.log (Q.prob z) - Real.log (P.prob z))) := by
+                  rw [Real.log_div h_qz_pos.ne' h_pz_pos.ne']
+                _ = P.prob z * (Real.log (P.prob z) - Real.log (Q.prob z)) := by rw [neg_sub]
+                _ = P.prob z * Real.log (P.prob z / Q.prob z) := by
+                  rw [← Real.log_div h_pz_pos.ne' h_qz_pos.ne']
+            rw [h_lhs_z, h_rhs_z] at h_mul_z
+            exact h_mul_z
+
+        -- Now use Finset.sum_eq_zero_iff_of_nonneg
+        have h_all_zero := Finset.sum_eq_zero_iff_of_nonneg h_all_diff_nonneg
+        rw [h_all_zero] at h_diff_sum
+        have h_x_zero := h_diff_sum x (Finset.mem_univ x)
+        simp only [h_px_pos.ne', ↓reduceIte, h_qx_pos.ne', ↓reduceIte] at h_x_zero
+        -- h_x_zero : P(x) * log(P(x)/Q(x)) / log 2 - (P(x) - Q(x)) / log 2 = 0
+        -- Goal: kl_term = norm_term, which unfolds to exactly the equality form of h_x_zero
+        show kl_term = norm_term
+        exact sub_eq_zero.mp h_x_zero
+
+      -- Step 3: From equality in log-sum inequality, deduce Q(x)/P(x) = 1
+      -- Equality in -log(y) ≥ 1 - y holds iff y = 1
+      have h_ratio_one : Q.prob x / P.prob x = 1 := by
+        -- From h_eq: P(x) * log(P(x)/Q(x)) / log 2 = (P(x) - Q(x)) / log 2
+        -- Multiply by log 2: P(x) * log(P(x)/Q(x)) = P(x) - Q(x)
+        have h_eq_scaled : P.prob x * Real.log (P.prob x / Q.prob x) = P.prob x - Q.prob x := by
+          -- From h_eq: kl_term = norm_term
+          -- Expand: P(x) * log(P(x)/Q(x)) / log 2 = (P(x) - Q(x)) / log 2
+          -- Multiply both sides by log 2
+          unfold kl_term norm_term at h_eq
+          have h_log2_ne : Real.log 2 ≠ 0 := h_log2_pos.ne'
+          calc P.prob x * Real.log (P.prob x / Q.prob x)
+            = (P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2) * Real.log 2 := by
+              rw [(div_mul_cancel₀ _ h_log2_ne).symm]
+            _ = ((P.prob x - Q.prob x) / Real.log 2) * Real.log 2 := by rw [h_eq]
+            _ = P.prob x - Q.prob x := by rw [div_mul_cancel₀ _ h_log2_ne]
+
+        -- Define y = Q(x)/P(x) and prove y = 1
+        let y := Q.prob x / P.prob x
+        have h_y_pos : 0 < y := div_pos h_qx_pos h_px_pos
+
+        -- Prove -log(y) = 1 - y
+        have h_log_eq : -Real.log y = 1 - y := by
+          have h_div : P.prob x * (-Real.log y) = P.prob x * (1 - y) := by
+            have h_lhs : P.prob x * (-Real.log y) = P.prob x * Real.log (P.prob x / Q.prob x) := by
+              calc P.prob x * (-Real.log y)
+                = P.prob x * (-Real.log (Q.prob x / P.prob x)) := rfl
+                _ = P.prob x * (-(Real.log (Q.prob x) - Real.log (P.prob x))) := by
+                  rw [Real.log_div h_qx_pos.ne' h_px_pos.ne']
+                _ = P.prob x * (Real.log (P.prob x) - Real.log (Q.prob x)) := by rw [neg_sub]
+                _ = P.prob x * Real.log (P.prob x / Q.prob x) := by
+                  rw [← Real.log_div h_px_pos.ne' h_qx_pos.ne']
+            have h_rhs : P.prob x * (1 - y) = P.prob x - Q.prob x := by
+              unfold y; field_simp
+            rw [h_lhs, h_rhs]
+            exact h_eq_scaled
+          -- Divide both sides by P(x)
+          have h_px_ne : P.prob x ≠ 0 := h_px_pos.ne'
+          calc -Real.log y
+            = P.prob x * (-Real.log y) / P.prob x := by rw [mul_div_cancel_left₀ _ h_px_ne]
+            _ = P.prob x * (1 - y) / P.prob x := by rw [h_div]
+            _ = 1 - y := by rw [mul_div_cancel_left₀ _ h_px_ne]
+
+        -- Apply the axiom: -log(y) = 1 - y ⟺ y = 1
+        have h_y_one : y = 1 := (log_sum_inequality_eq_iff y h_y_pos).mp h_log_eq
+        -- Since y = Q(x)/P(x) by definition, we have Q(x)/P(x) = 1
+        calc Q.prob x / P.prob x
+          = y := rfl  -- y is definitionally equal to Q(x)/P(x)
+          _ = 1 := h_y_one
+
+      -- Step 4: From Q(x)/P(x) = 1, deduce P(x) = Q(x)
+      have h_px_ne : P.prob x ≠ 0 := h_px_pos.ne'
+      calc P.prob x
+        = P.prob x * 1 := by ring
+        _ = P.prob x * (Q.prob x / P.prob x) := by rw [← h_ratio_one]
+        _ = Q.prob x := by rw [mul_div_cancel₀ _ h_px_ne]
 
     -- Step 2: Use funext to show P.prob = Q.prob
     funext x
@@ -503,19 +702,98 @@ theorem kl_divergence_eq_zero_iff (P Q : ProbDist α)
       -- Since P(y) = Q(y) when P(y) > 0: ∑_{P>0} Q = ∑_{P>0} P = ∑ P = 1
       -- Therefore: ∑_{P=0} Q = ∑ Q - ∑_{P>0} Q = 1 - 1 = 0
       -- Since Q(y) ≥ 0 and sum = 0, each Q(y) = 0 for P(y) = 0
-      --
-      -- This requires developing sum decomposition lemmas in Lean.
-      -- The key Mathlib ingredient is Finset.sum_bij or Finset.sum_subset.
-      --
-      -- **Required for completion**:
-      -- - Decompose Finset.univ into {y : P(y) > 0} and {y : P(y) = 0}
-      -- - Show ∑_{P>0} P = 1 (since ∑_{P=0} P = 0)
-      -- - Apply h_eq_on_support to show ∑_{P>0} Q = ∑_{P>0} P = 1
-      -- - Deduce ∑_{P=0} Q = 0
-      -- - Use: ∀ y ∈ S, f(y) ≥ 0 and ∑ f = 0 → ∀ y ∈ S, f(y) = 0
-      --
-      -- Estimated effort: 2-3 hours to develop the sum decomposition machinery.
-      sorry
+
+      -- Define the partition of α based on P
+      let S_pos : Finset α := Finset.univ.filter (fun y => P.prob y > 0)
+      let S_zero : Finset α := Finset.univ.filter (fun y => P.prob y = 0)
+
+      -- x is in S_zero by assumption
+      have h_x_in_S_zero : x ∈ S_zero := by
+        simp only [S_zero, Finset.mem_filter, Finset.mem_univ, true_and]
+        exact h_px_zero
+
+      -- Step 1: Decompose ∑ Q = ∑_{S_pos} Q + ∑_{S_zero} Q
+      have h_Q_decomp : (Finset.univ : Finset α).sum Q.prob =
+          S_pos.sum Q.prob + S_zero.sum Q.prob := by
+        -- Use sum_filter_add_sum_filter_not
+        have h_partition := Finset.sum_filter_add_sum_filter_not (Finset.univ : Finset α)
+          (fun y => P.prob y > 0) Q.prob
+        convert h_partition using 2
+        · -- S_pos is exactly the filter
+          rfl
+        · -- S_zero is the complement
+          ext y
+          simp only [S_zero, Finset.mem_filter, Finset.mem_univ, true_and]
+          have : (¬P.prob y > 0) ↔ P.prob y = 0 := by
+            constructor
+            · intro h_not_pos
+              -- P.prob y ≥ 0 always, so ¬(P.prob y > 0) means P.prob y = 0
+              have h_nonneg := P.prob_nonneg y
+              push_neg at h_not_pos
+              linarith
+            · intro h_eq
+              rw [h_eq]
+              norm_num
+          exact this
+
+      -- Step 2: Show ∑_{S_pos} Q = ∑_{S_pos} P = 1
+      have h_Q_pos_eq_P_pos : S_pos.sum Q.prob = S_pos.sum P.prob := by
+        apply Finset.sum_congr rfl
+        intro y hy
+        simp only [S_pos, Finset.mem_filter, Finset.mem_univ, true_and] at hy
+        -- hy : P.prob y > 0, so apply h_eq_on_support
+        exact (h_eq_on_support y hy).symm
+
+      have h_P_pos_eq_one : S_pos.sum P.prob = 1 := by
+        -- ∑_{S_pos} P + ∑_{S_zero} P = ∑ P = 1
+        -- But ∑_{S_zero} P = 0 (since P(y) = 0 for y in S_zero)
+        have h_P_decomp : (Finset.univ : Finset α).sum P.prob =
+            S_pos.sum P.prob + S_zero.sum P.prob := by
+          have h_partition := Finset.sum_filter_add_sum_filter_not (Finset.univ : Finset α)
+            (fun y => P.prob y > 0) P.prob
+          convert h_partition using 2
+          · rfl
+          · ext y
+            simp only [S_zero, Finset.mem_filter, Finset.mem_univ, true_and]
+            have : (¬P.prob y > 0) ↔ P.prob y = 0 := by
+              constructor
+              · intro h_not_pos
+                have h_nonneg := P.prob_nonneg y
+                push_neg at h_not_pos
+                linarith
+              · intro h_eq
+                rw [h_eq]
+                norm_num
+            exact this
+        have h_P_zero_is_zero : S_zero.sum P.prob = 0 := by
+          apply Finset.sum_eq_zero
+          intro y hy
+          simp only [S_zero, Finset.mem_filter, Finset.mem_univ, true_and] at hy
+          exact hy
+        rw [P.prob_sum_one] at h_P_decomp
+        linarith
+
+      have h_Q_pos_eq_one : S_pos.sum Q.prob = 1 := by
+        rw [h_Q_pos_eq_P_pos, h_P_pos_eq_one]
+
+      -- Step 3: Therefore ∑_{S_zero} Q = 0
+      have h_Q_zero_sum_zero : S_zero.sum Q.prob = 0 := by
+        rw [Q.prob_sum_one] at h_Q_decomp
+        linarith [h_Q_pos_eq_one]
+
+      -- Step 4: Since Q(y) ≥ 0 for all y and ∑_{S_zero} Q = 0, we have Q(y) = 0 for all y in S_zero
+      -- In particular, Q(x) = 0
+      have h_Q_nonneg_on_S_zero : ∀ y ∈ S_zero, 0 ≤ Q.prob y := by
+        intro y _
+        exact Q.prob_nonneg y
+
+      have h_all_zero_on_S_zero : ∀ y ∈ S_zero, Q.prob y = 0 := by
+        have h_eq_zero := Finset.sum_eq_zero_iff_of_nonneg h_Q_nonneg_on_S_zero
+        rw [h_eq_zero]
+        exact h_Q_zero_sum_zero
+
+      -- Apply to x
+      exact h_all_zero_on_S_zero x h_x_in_S_zero
     · -- Case: P(x) > 0, use h_eq_on_support
       exact h_eq_on_support x (lt_of_le_of_ne (P.prob_nonneg x) (Ne.symm h_px_zero))
 
