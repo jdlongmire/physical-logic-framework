@@ -218,7 +218,7 @@ D_KL[P||U] = log₂(|α|) - H[P]
 This connects KL divergence to Shannon entropy and is the key to proving
 the maximum entropy theorem.
 
-**Proof sketch**:
+**Proof**: Direct algebraic manipulation:
 - D_KL[P||U] = ∑ P(x) log₂(P(x)/U(x))
 - = ∑ P(x) log₂(P(x) · n)  [since U(x) = 1/n]
 - = ∑ P(x) (log₂ P(x) + log₂ n)
@@ -226,12 +226,83 @@ the maximum entropy theorem.
 - = -H[P] + log₂(n)  [since H[P] = -∑ P(x) log₂ P(x)]
 
 **Reference**: Cover & Thomas, Theorem 2.6.4
-
-For now we axiomatize this standard result.
 -/
-axiom kl_relation_to_entropy [Nonempty α] (P : ProbDist α) :
+
+-- Helper lemma for uniform distribution probability
+lemma uniform_prob [Nonempty α] (x : α) :
+  (UniformDist : ProbDist α).prob x = 1 / (Fintype.card α : ℝ) := rfl
+
+theorem kl_relation_to_entropy [Nonempty α] (P : ProbDist α) :
   KLDivergence P (UniformDist : ProbDist α) =
-    Real.log (Fintype.card α : ℝ) / Real.log 2 - ShannonEntropy P
+    Real.log (Fintype.card α : ℝ) / Real.log 2 - ShannonEntropy P := by
+  unfold KLDivergence ShannonEntropy
+  -- Transform LHS: D_KL = ∑ P(x) * log(P(x)/U(x)) / log 2
+  --             = ∑ P(x) * (log P(x) + log n) / log 2  [since U(x) = 1/n]
+  --             = ∑ [P(x) * log P(x) / log 2] + ∑ [P(x) * log n / log 2]
+  --             = -H[P] + log(n) / log 2
+  -- Therefore: D_KL = log(n)/log 2 - H[P]  QED
+
+  -- Step 1: Expand each term using log properties
+  have h_expand : ∀ (x : α), (if P.prob x = 0 then (0 : ℝ)
+      else if (UniformDist : ProbDist α).prob x = 0 then 0
+      else P.prob x * Real.log (P.prob x / (UniformDist : ProbDist α).prob x) / Real.log 2) =
+    (if P.prob x = 0 then 0
+      else P.prob x * Real.log (P.prob x) / Real.log 2) +
+    (if P.prob x = 0 then 0
+      else P.prob x * Real.log (Fintype.card α : ℝ) / Real.log 2) := by
+    intro x
+    by_cases h_px_zero : P.prob x = 0
+    · simp [h_px_zero]
+    · simp only [h_px_zero, ↓reduceIte, uniform_prob]
+      have h_unif_nonzero : (1 : ℝ) / (Fintype.card α : ℝ) ≠ 0 := by
+        apply div_ne_zero; norm_num
+        norm_cast; exact Fintype.card_ne_zero
+      simp only [h_unif_nonzero, ↓reduceIte]
+      have h_div : P.prob x / (1 / (Fintype.card α : ℝ)) =
+          P.prob x * (Fintype.card α : ℝ) := by field_simp
+      rw [h_div]
+      have h_pos_px : 0 < P.prob x :=
+        lt_of_le_of_ne (P.prob_nonneg x) (Ne.symm h_px_zero)
+      have h_pos_card : 0 < (Fintype.card α : ℝ) := by
+        norm_cast; exact Fintype.card_pos
+      rw [Real.log_mul h_pos_px.ne' h_pos_card.ne']
+      rw [mul_add, div_add_div_same]
+
+  -- Step 2: Use sum_add_distrib to split the sum
+  simp_rw [h_expand]
+  rw [Finset.sum_add_distrib]
+
+  -- Step 3: Show second sum = log(n)/log 2
+  have h_const_sum : (Finset.univ : Finset α).sum (fun x =>
+      if P.prob x = 0 then (0 : ℝ)
+      else P.prob x * Real.log (Fintype.card α : ℝ) / Real.log 2) =
+    Real.log (Fintype.card α : ℝ) / Real.log 2 := by
+    -- Factor out constant: ∑ [P(x) * c] = c * ∑ P(x)
+    have h1 : (Finset.univ : Finset α).sum (fun x =>
+        if P.prob x = 0 then (0 : ℝ)
+        else P.prob x * Real.log (Fintype.card α : ℝ) / Real.log 2) =
+      (Real.log (Fintype.card α : ℝ) / Real.log 2) *
+      (Finset.univ : Finset α).sum (fun x => if P.prob x = 0 then 0 else P.prob x) := by
+      rw [Finset.mul_sum]
+      apply Finset.sum_congr rfl
+      intro x _
+      by_cases h : P.prob x = 0
+      · simp [h]
+      · simp [h]; ring
+    rw [h1]
+    -- Sum of probabilities = 1
+    have h2 : (Finset.univ : Finset α).sum (fun x => if P.prob x = 0 then 0 else P.prob x) = 1 := by
+      have h_sum_eq : (Finset.univ : Finset α).sum (fun x => if P.prob x = 0 then 0 else P.prob x) =
+          (Finset.univ : Finset α).sum P.prob := by
+        apply Finset.sum_congr rfl
+        intro x _
+        by_cases h : P.prob x = 0
+        · simp [h]
+        · simp [h]
+      rw [h_sum_eq, P.prob_sum_one]
+    rw [h2, mul_one]
+
+  rw [h_const_sum, sub_neg_eq_add, add_comm]
 
 -- =====================================================================================
 -- MAXIMUM ENTROPY THEOREM

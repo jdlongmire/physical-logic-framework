@@ -23,7 +23,8 @@
       "WebFetch(domain:physlean.com)",
       "WebFetch(domain:loogle.physlean.com)",
       "WebFetch(domain:raw.githubusercontent.com)",
-      "Bash(awk:*)"
+      "Bash(awk:*)",
+      "Bash(for dir in Foundations LogicField Dynamics QuantumEmergence LogicRealism)"
     ],
     "deny": [],
     "ask": [],
