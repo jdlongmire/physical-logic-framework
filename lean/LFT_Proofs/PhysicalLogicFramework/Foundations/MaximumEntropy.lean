@@ -452,27 +452,70 @@ theorem kl_divergence_eq_zero_iff (P Q : ProbDist α)
     --           Then use normalization to show P(x) = Q(x) = 0 for remaining x
 
     -- Step 1: For x with P(x) > 0, show P(x) = Q(x)
-    -- Strategy: Use algebraic expansion of KL = 0 to show log(P(x)/Q(x)) = 0
+    -- Strategy: Use equality in log-sum inequality from kl_divergence_nonneg proof
     have h_eq_on_support : ∀ x, P.prob x > 0 → P.prob x = Q.prob x := by
       intro x h_px_pos
       have h_qx_pos : 0 < Q.prob x := h_support x h_px_pos
 
-      -- For now, use sorry - this requires showing that KL[P||Q] = 0 implies
-      -- the ratio P(x)/Q(x) is constant for all x with P(x) > 0
-      -- This follows from strict concavity of log and Jensen's inequality
-      -- equality condition, but requires substantial development
+      -- From kl_divergence_nonneg proof, we have:
+      -- P(x) * log(P(x)/Q(x)) / log 2 ≥ (P(x) - Q(x)) / log 2
+      -- This follows from log-sum inequality: -log(y) ≥ 1 - y for y > 0
+
+      -- Strategy: Since ∑ P(x) log(P(x)/Q(x)) / log 2 = 0 (KL = 0)
+      --           and ∑ (P(x) - Q(x)) / log 2 = 0 (normalization)
+      --           we have equality throughout the log-sum inequality
+      --           Equality in -log(y) ≥ 1 - y holds iff y = 1
+      --           So Q(x)/P(x) = 1, meaning P(x) = Q(x)
+
+      have h_log2_pos : 0 < Real.log 2 := Real.log_pos (by norm_num : (1 : ℝ) < 2)
+
+      -- Direct approach: Use the structure of KL = 0 to deduce P(x) = Q(x)
+      --
+      -- This requires proving that when ∑ P(z) log(P(z)/Q(z)) = 0
+      -- and we have the log-sum inequality holding everywhere,
+      -- then we must have P(z) = Q(z) for all z with P(z) > 0.
+      --
+      -- The standard proof uses one of these approaches:
+      -- 1. Strict convexity of f(t) = t log t and Jensen's inequality equality condition
+      -- 2. Direct analysis of the equality condition in -log(y) ≥ 1 - y
+      -- 3. Lagrange multipliers showing uniform distribution uniquely minimizes KL
+      --
+      -- All approaches require substantial development. For this session, we mark
+      -- this as the core mathematical challenge and use sorry.
+      --
+      -- **Required for completion**:
+      -- - Prove: ∑ f_i = ∑ g_i and f_i ≥ g_i for all i  ⟹  f_i = g_i for all i
+      --   (when f_i and g_i are specific forms from log-sum inequality)
+      -- - Or prove: Strict convexity of t log t and apply Jensen's equality condition
+      -- - Or prove: -log(y) = 1 - y iff y = 1, then show this holds for Q(x)/P(x)
+      --
+      -- Estimated effort: 3-4 hours to develop the necessary machinery in Lean.
       sorry
 
     -- Step 2: Use funext to show P.prob = Q.prob
     funext x
     by_cases h_px_zero : P.prob x = 0
     · -- Case: P(x) = 0, need to show Q(x) = 0
-      -- Use normalization: ∑ P = 1 and ∑ Q = 1
-      -- We've shown P(y) = Q(y) for all y with P(y) > 0
-      -- Therefore ∑_{y: P(y)>0} Q(y) = ∑_{y: P(y)>0} P(y) = ∑_y P(y) = 1
-      -- So ∑_{y: P(y)=0} Q(y) = 0
-      -- Since Q(y) ≥ 0, this implies Q(x) = 0
-      sorry -- Use sum decomposition and normalization
+      -- Strategy: Use normalization and sum decomposition
+      --
+      -- We've shown (via h_eq_on_support): P(y) = Q(y) for all y with P(y) > 0
+      -- Decompose sums: ∑ Q = ∑_{P>0} Q + ∑_{P=0} Q
+      -- Since P(y) = Q(y) when P(y) > 0: ∑_{P>0} Q = ∑_{P>0} P = ∑ P = 1
+      -- Therefore: ∑_{P=0} Q = ∑ Q - ∑_{P>0} Q = 1 - 1 = 0
+      -- Since Q(y) ≥ 0 and sum = 0, each Q(y) = 0 for P(y) = 0
+      --
+      -- This requires developing sum decomposition lemmas in Lean.
+      -- The key Mathlib ingredient is Finset.sum_bij or Finset.sum_subset.
+      --
+      -- **Required for completion**:
+      -- - Decompose Finset.univ into {y : P(y) > 0} and {y : P(y) = 0}
+      -- - Show ∑_{P>0} P = 1 (since ∑_{P=0} P = 0)
+      -- - Apply h_eq_on_support to show ∑_{P>0} Q = ∑_{P>0} P = 1
+      -- - Deduce ∑_{P=0} Q = 0
+      -- - Use: ∀ y ∈ S, f(y) ≥ 0 and ∑ f = 0 → ∀ y ∈ S, f(y) = 0
+      --
+      -- Estimated effort: 2-3 hours to develop the sum decomposition machinery.
+      sorry
     · -- Case: P(x) > 0, use h_eq_on_support
       exact h_eq_on_support x (lt_of_le_of_ne (P.prob_nonneg x) (Ne.symm h_px_zero))
 
