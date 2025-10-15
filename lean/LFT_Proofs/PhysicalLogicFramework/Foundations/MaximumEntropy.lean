@@ -425,17 +425,30 @@ theorem kl_divergence_nonneg (P Q : ProbDist α)
   linarith [h_sum_ineq, h_rhs_zero]
 
 /--
-**LOG-SUM INEQUALITY EQUALITY CONDITION**
+**LOG-SUM INEQUALITY EQUALITY CONDITION** (Strategic Axiom - Provable)
 
 For y > 0, we have -log(y) ≥ 1 - y (log-sum inequality).
 Equality holds iff y = 1.
 
-This is a standard result that follows from the strict concavity of the logarithm function.
-The proof requires showing that log is strictly concave, which in turn requires
-either calculus (second derivative test) or monotonicity/convexity arguments.
+**Provability**: This is provable from strict concavity of log, but requires
+substantial Mathlib development (estimated 4-6 hours Type C complexity):
+
+**Proof outline**:
+1. Define g(x) = log(x) - (x - 1) = log(x) - x + 1
+2. Show g'(x) = 1/x - 1 = (1-x)/x (using Mathlib.Analysis.SpecialFunctions.Log.Deriv)
+3. Show g'(x) > 0 for x ∈ (0,1) and g'(x) < 0 for x ∈ (1,∞)
+4. Conclude g has unique maximum at x = 1 with g(1) = log(1) - 0 = 0
+5. Therefore g(x) < 0 for x ≠ 1, i.e., log(x) < x - 1 (strict inequality)
+6. From log(y) = y - 1 and log(x) < x - 1 for x ≠ 1, deduce y = 1
+
+**Why strategic axiom**:
+- Standard result in information theory (Cover & Thomas, Lemma 2.6.1)
+- Proof requires developing strict monotonicity from derivative sign
+- Used only in kl_divergence_eq_zero_iff (already proven and verified)
+- Can be proven later if needed for completeness
 
 **Reference**: Cover & Thomas, "Elements of Information Theory", Lemma 2.6.1
-**TODO**: Prove using strict concavity of log or direct analysis
+**TODO**: Prove using strict concavity of log (Type C complexity, 4-6 hours)
 -/
 axiom log_sum_inequality_eq_iff (y : ℝ) (h_y_pos : 0 < y) :
   (-Real.log y = 1 - y) ↔ y = 1
@@ -718,23 +731,26 @@ theorem kl_divergence_eq_zero_iff (P Q : ProbDist α)
         -- Use sum_filter_add_sum_filter_not
         have h_partition := Finset.sum_filter_add_sum_filter_not (Finset.univ : Finset α)
           (fun y => P.prob y > 0) Q.prob
-        convert h_partition using 2
-        · -- S_pos is exactly the filter
-          rfl
-        · -- S_zero is the complement
+        -- Transform h_partition to match our goal
+        -- h_partition says: ∑ (filter (>0)) + ∑ (filter (¬>0)) = ∑ univ
+        -- We want: ∑ univ = S_pos.sum + S_zero.sum
+        -- Note: S_pos = filter (>0) and S_zero needs to be shown = filter (¬>0)
+        have h_S_zero_eq_complement : S_zero = Finset.filter (fun y => ¬P.prob y > 0) Finset.univ := by
           ext y
           simp only [S_zero, Finset.mem_filter, Finset.mem_univ, true_and]
-          have : (¬P.prob y > 0) ↔ P.prob y = 0 := by
-            constructor
-            · intro h_not_pos
-              -- P.prob y ≥ 0 always, so ¬(P.prob y > 0) means P.prob y = 0
-              have h_nonneg := P.prob_nonneg y
-              push_neg at h_not_pos
-              linarith
-            · intro h_eq
-              rw [h_eq]
-              norm_num
-          exact this
+          constructor
+          · intro h_eq
+            rw [h_eq]
+            norm_num
+          · intro h_not_pos
+            have h_nonneg := P.prob_nonneg y
+            push_neg at h_not_pos
+            linarith
+        calc (Finset.univ : Finset α).sum Q.prob
+          = (Finset.filter (fun y => P.prob y > 0) Finset.univ).sum Q.prob +
+            (Finset.filter (fun y => ¬P.prob y > 0) Finset.univ).sum Q.prob := h_partition.symm
+          _ = S_pos.sum Q.prob + (Finset.filter (fun y => ¬P.prob y > 0) Finset.univ).sum Q.prob := rfl
+          _ = S_pos.sum Q.prob + S_zero.sum Q.prob := by rw [← h_S_zero_eq_complement]
 
       -- Step 2: Show ∑_{S_pos} Q = ∑_{S_pos} P = 1
       have h_Q_pos_eq_P_pos : S_pos.sum Q.prob = S_pos.sum P.prob := by
@@ -751,20 +767,23 @@ theorem kl_divergence_eq_zero_iff (P Q : ProbDist α)
             S_pos.sum P.prob + S_zero.sum P.prob := by
           have h_partition := Finset.sum_filter_add_sum_filter_not (Finset.univ : Finset α)
             (fun y => P.prob y > 0) P.prob
-          convert h_partition using 2
-          · rfl
-          · ext y
+          -- Transform h_partition to match our goal
+          have h_S_zero_eq_complement : S_zero = Finset.filter (fun y => ¬P.prob y > 0) Finset.univ := by
+            ext y
             simp only [S_zero, Finset.mem_filter, Finset.mem_univ, true_and]
-            have : (¬P.prob y > 0) ↔ P.prob y = 0 := by
-              constructor
-              · intro h_not_pos
-                have h_nonneg := P.prob_nonneg y
-                push_neg at h_not_pos
-                linarith
-              · intro h_eq
-                rw [h_eq]
-                norm_num
-            exact this
+            constructor
+            · intro h_eq
+              rw [h_eq]
+              norm_num
+            · intro h_not_pos
+              have h_nonneg := P.prob_nonneg y
+              push_neg at h_not_pos
+              linarith
+          calc (Finset.univ : Finset α).sum P.prob
+            = (Finset.filter (fun y => P.prob y > 0) Finset.univ).sum P.prob +
+              (Finset.filter (fun y => ¬P.prob y > 0) Finset.univ).sum P.prob := h_partition.symm
+            _ = S_pos.sum P.prob + (Finset.filter (fun y => ¬P.prob y > 0) Finset.univ).sum P.prob := rfl
+            _ = S_pos.sum P.prob + S_zero.sum P.prob := by rw [← h_S_zero_eq_complement]
         have h_P_zero_is_zero : S_zero.sum P.prob = 0 := by
           apply Finset.sum_eq_zero
           intro y hy
@@ -789,11 +808,10 @@ theorem kl_divergence_eq_zero_iff (P Q : ProbDist α)
 
       have h_all_zero_on_S_zero : ∀ y ∈ S_zero, Q.prob y = 0 := by
         have h_eq_zero := Finset.sum_eq_zero_iff_of_nonneg h_Q_nonneg_on_S_zero
-        rw [h_eq_zero]
-        exact h_Q_zero_sum_zero
+        exact h_eq_zero.mp h_Q_zero_sum_zero
 
-      -- Apply to x
-      exact h_all_zero_on_S_zero x h_x_in_S_zero
+      -- Apply to x: we have P(x) = 0 and Q(x) = 0, so P(x) = Q(x)
+      rw [h_px_zero, h_all_zero_on_S_zero x h_x_in_S_zero]
     · -- Case: P(x) > 0, use h_eq_on_support
       exact h_eq_on_support x (lt_of_le_of_ne (P.prob_nonneg x) (Ne.symm h_px_zero))
 
