@@ -122,24 +122,93 @@ noncomputable def ShannonEntropy (P : ProbDist α) : ℝ :=
     if P.prob x = 0 then 0
     else P.prob x * Real.log (P.prob x) / Real.log 2
 
+-- Helper lemma for uniform distribution probability
+lemma uniform_prob [Nonempty α] (x : α) :
+  (UniformDist : ProbDist α).prob x = 1 / (Fintype.card α : ℝ) := rfl
+
 /--
 Entropy of uniform distribution equals log₂(n) where n = |α|.
 
 This is the maximum possible entropy on a finite set of n elements.
 
-**Proof sketch**:
+**Proof strategy**:
 For uniform distribution P(x) = 1/n for all x:
-- H[U] = -∑ (1/n) log₂(1/n)
-- = -n · (1/n) · log₂(1/n)
-- = -log₂(1/n)
-- = log₂(n)
+1. H[U] = -∑ (1/n) log₂(1/n)
+2. Simplify: 1/n ≠ 0, so if-then-else takes else branch
+3. Expand: log(1/n) = -log(n) using Real.log_inv
+4. Handle negations: -∑ (1/n * (-log n / log 2)) = ∑ (1/n * (log n / log 2))
+5. Factor constant: = (log n / log 2) * ∑ (1/n)
+6. Sum of constants: ∑ (1/n) = n * (1/n) = 1
+7. Result: (log n / log 2) * 1 = log₂(n)
 
 **Reference**: Cover & Thomas, "Elements of Information Theory", Example 2.1.1
-
-For now we axiomatize this standard result.
+**Proof**: Via algebraic manipulation using Mathlib lemmas (Grok 1.00/1.0 consultation)
 -/
-axiom shannon_entropy_uniform [Nonempty α] :
-  ShannonEntropy (UniformDist : ProbDist α) = Real.log (Fintype.card α : ℝ) / Real.log 2
+theorem shannon_entropy_uniform [Nonempty α] :
+  ShannonEntropy (UniformDist : ProbDist α) = Real.log (Fintype.card α : ℝ) / Real.log 2 := by
+  -- Key facts about cardinality
+  have h_card_pos : 0 < (Fintype.card α : ℝ) := Nat.cast_pos.mpr Fintype.card_pos
+  have h_card_ne_zero : (Fintype.card α : ℝ) ≠ 0 := ne_of_gt h_card_pos
+  have h_prob_ne_zero : ∀ x : α, (1 : ℝ) / (Fintype.card α : ℝ) ≠ 0 :=
+    fun x => div_ne_zero one_ne_zero h_card_ne_zero
+
+  -- Unfold definitions
+  unfold ShannonEntropy UniformDist
+
+  -- Remove if-then-else (since 1/n ≠ 0, we always take else branch)
+  have h1 : (Finset.univ : Finset α).sum (fun x =>
+      if (1 : ℝ) / (Fintype.card α : ℝ) = 0 then 0
+      else (1 / (Fintype.card α : ℝ)) * Real.log (1 / (Fintype.card α : ℝ)) / Real.log 2) =
+    (Finset.univ : Finset α).sum (fun x =>
+      (1 / (Fintype.card α : ℝ)) * Real.log (1 / (Fintype.card α : ℝ)) / Real.log 2) := by
+    apply Finset.sum_congr rfl
+    intro x _
+    rw [if_neg (h_prob_ne_zero x)]
+  rw [h1]
+
+  -- Expand log(1/n) = -log(n)
+  have h_log : Real.log (1 / (Fintype.card α : ℝ)) = -Real.log (Fintype.card α : ℝ) := by
+    rw [Real.log_div one_ne_zero h_card_ne_zero, Real.log_one, zero_sub]
+
+  -- Substitute log expansion
+  have h2 : (Finset.univ : Finset α).sum (fun x =>
+      (1 / (Fintype.card α : ℝ)) * Real.log (1 / (Fintype.card α : ℝ)) / Real.log 2) =
+    (Finset.univ : Finset α).sum (fun x =>
+      (1 / (Fintype.card α : ℝ)) * (-Real.log (Fintype.card α : ℝ)) / Real.log 2) := by
+    apply Finset.sum_congr rfl
+    intro x _
+    rw [h_log]
+  rw [h2]
+
+  -- Pull out negation: -∑ ... = -(∑ ...)
+  rw [← Finset.sum_neg_distrib]
+
+  -- Simplify negations
+  have h3 : (Finset.univ : Finset α).sum (fun x =>
+      -((1 / (Fintype.card α : ℝ)) * (-Real.log (Fintype.card α : ℝ)) / Real.log 2)) =
+    (Finset.univ : Finset α).sum (fun x =>
+      (1 / (Fintype.card α : ℝ)) * Real.log (Fintype.card α : ℝ) / Real.log 2) := by
+    apply Finset.sum_congr rfl
+    intro x _
+    ring
+  rw [h3]
+
+  -- Factor out constant
+  have h4 : (Finset.univ : Finset α).sum (fun x =>
+      (1 / (Fintype.card α : ℝ)) * Real.log (Fintype.card α : ℝ) / Real.log 2) =
+    (Real.log (Fintype.card α : ℝ) / Real.log 2) *
+    (Finset.univ : Finset α).sum (fun _ => 1 / (Fintype.card α : ℝ)) := by
+    rw [Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro x _
+    ring
+  rw [h4]
+
+  -- Sum of constants: ∑ (1/n) = n * (1/n) = 1
+  have h5 : (Finset.univ : Finset α).sum (fun _ => 1 / (Fintype.card α : ℝ)) = 1 := by
+    rw [Finset.sum_const, Finset.card_univ, nsmul_eq_mul]
+    field_simp
+  rw [h5, mul_one]
 
 /--
 Shannon entropy is non-negative.
@@ -227,10 +296,6 @@ the maximum entropy theorem.
 
 **Reference**: Cover & Thomas, Theorem 2.6.4
 -/
-
--- Helper lemma for uniform distribution probability
-lemma uniform_prob [Nonempty α] (x : α) :
-  (UniformDist : ProbDist α).prob x = 1 / (Fintype.card α : ℝ) := rfl
 
 theorem kl_relation_to_entropy [Nonempty α] (P : ProbDist α) :
   KLDivergence P (UniformDist : ProbDist α) =
