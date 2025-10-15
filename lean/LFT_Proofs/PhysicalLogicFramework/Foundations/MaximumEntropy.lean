@@ -323,17 +323,106 @@ D_KL[P||Q] ≥ 0 with equality iff P = Q.
 
 This is the fundamental inequality of information theory.
 
-**Proof sketch** (via Jensen's inequality):
-- log is strictly concave
-- By Jensen: ∑ P(x) log(Q(x)/P(x)) ≤ log(∑ Q(x)) = 0
-- Therefore: D_KL[P||Q] = ∑ P(x) log(P(x)/Q(x)) ≥ 0
+**Proof sketch** (via log-sum inequality):
+- For x > 0: log(x) ≤ x - 1, so -log(x) ≥ 1 - x
+- Apply to Q(x)/P(x): -log(Q(x)/P(x)) ≥ 1 - Q(x)/P(x)
+- Multiply by P(x): -P(x) * log(Q(x)/P(x)) ≥ P(x) - Q(x)
+- Sum: ∑ P(x) * log(P(x)/Q(x)) ≥ ∑ P(x) - ∑ Q(x) = 1 - 1 = 0
 
 **Reference**: Cover & Thomas, "Elements of Information Theory", Theorem 2.6.3
-
-For now we axiomatize this standard result.
+**Proof**: Via Real.log_le_sub_one_of_pos (Grok 0.88/1.0 consultation + direct approach)
 -/
-axiom kl_divergence_nonneg (P Q : ProbDist α) :
-  0 ≤ KLDivergence P Q
+theorem kl_divergence_nonneg (P Q : ProbDist α)
+    (h_support : ∀ x, P.prob x > 0 → Q.prob x > 0) :
+  0 ≤ KLDivergence P Q := by
+  unfold KLDivergence
+
+  -- Key inequality: For x > 0, log(x) ≤ x - 1, equivalently -log(x) ≥ 1 - x
+  have h_log_ineq : ∀ x : ℝ, 0 < x → -Real.log x ≥ 1 - x := by
+    intro x hx
+    have h := Real.log_le_sub_one_of_pos hx
+    linarith
+
+  -- Strategy: Show each term ≥ (P(x) - Q(x)) / log 2
+  -- Then sum: KL ≥ (∑ P(x) - ∑ Q(x)) / log 2 = 0
+
+  have h_log2_pos : 0 < Real.log 2 := Real.log_pos (by norm_num : (1 : ℝ) < 2)
+
+  -- Step 1: Show each term ≥ (P(x) - Q(x)) / log 2
+  have h_terms : ∀ x : α,
+      (if P.prob x = 0 then 0
+       else if Q.prob x = 0 then 0
+       else P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2) ≥
+      (P.prob x - Q.prob x) / Real.log 2 := by
+    intro x
+    by_cases h_px_zero : P.prob x = 0
+    · -- Case 1: P(x) = 0, term is 0, need: 0 ≥ (0 - Q(x)) / log 2
+      simp [h_px_zero]
+      apply div_nonpos_of_nonpos_of_nonneg
+      · linarith [Q.prob_nonneg x]
+      · exact le_of_lt h_log2_pos
+    · -- Case 2: P(x) > 0
+      have h_px_pos : 0 < P.prob x := lt_of_le_of_ne (P.prob_nonneg x) (Ne.symm h_px_zero)
+      -- By assumption, Q(x) > 0
+      have h_qx_pos : 0 < Q.prob x := h_support x h_px_pos
+      simp only [h_px_zero, ↓reduceIte, h_qx_pos.ne', ↓reduceIte]
+      -- Need: P(x) * log(P(x)/Q(x)) / log 2 ≥ (P(x) - Q(x)) / log 2
+      -- Since log 2 > 0, this is equivalent to: P(x) * log(P(x)/Q(x)) ≥ P(x) - Q(x)
+      apply div_le_div_of_nonneg_right _ (le_of_lt h_log2_pos)
+      -- Apply log-sum inequality to x = Q(x)/P(x)
+      -- We have: -log(Q(x)/P(x)) ≥ 1 - Q(x)/P(x)
+      let ratio := Q.prob x / P.prob x
+      have h_ratio_pos : 0 < ratio := div_pos h_qx_pos h_px_pos
+      have h_ineq := h_log_ineq ratio h_ratio_pos
+      -- -log(ratio) ≥ 1 - ratio
+      -- Multiply by P(x) > 0:
+      have h_mul_ineq : P.prob x * (-Real.log ratio) ≥ P.prob x * (1 - ratio) := by
+        apply mul_le_mul_of_nonneg_left h_ineq (le_of_lt h_px_pos)
+      -- Simplify RHS: P(x) * (1 - ratio) = P(x) - Q(x)
+      have h_rhs : P.prob x * (1 - ratio) = P.prob x - Q.prob x := by
+        unfold ratio
+        field_simp
+      -- Simplify LHS: P(x) * (-log(ratio)) = P(x) * log(P(x)/Q(x))
+      have h_lhs : P.prob x * (-Real.log ratio) = P.prob x * Real.log (P.prob x / Q.prob x) := by
+        calc P.prob x * (-Real.log ratio)
+          = P.prob x * (-Real.log (Q.prob x / P.prob x)) := rfl
+          _ = P.prob x * (-(Real.log (Q.prob x) - Real.log (P.prob x))) := by
+            rw [Real.log_div h_qx_pos.ne' h_px_pos.ne']
+          _ = P.prob x * (Real.log (P.prob x) - Real.log (Q.prob x)) := by
+            rw [neg_sub]
+          _ = P.prob x * Real.log (P.prob x / Q.prob x) := by
+            rw [← Real.log_div h_px_pos.ne' h_qx_pos.ne']
+      -- Combine
+      rw [h_lhs, h_rhs] at h_mul_ineq
+      exact h_mul_ineq
+
+  -- Step 2: Sum the inequalities
+  have h_sum_ineq : (Finset.univ : Finset α).sum (fun x =>
+      if P.prob x = 0 then 0
+      else if Q.prob x = 0 then 0
+      else P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2) ≥
+    (Finset.univ : Finset α).sum (fun x => (P.prob x - Q.prob x) / Real.log 2) := by
+    apply Finset.sum_le_sum
+    intro x _
+    exact h_terms x
+
+  -- Step 3: RHS = (∑ P(x) - ∑ Q(x)) / log 2 = 0
+  have h_rhs_zero : (Finset.univ : Finset α).sum (fun x => (P.prob x - Q.prob x) / Real.log 2) = 0 := by
+    have h_factor : (Finset.univ : Finset α).sum (fun x => (P.prob x - Q.prob x) / Real.log 2) =
+        ((Finset.univ : Finset α).sum (fun x => P.prob x - Q.prob x)) / Real.log 2 := by
+      -- Use field_simp to handle division algebra
+      conv_lhs => arg 2; ext x; rw [div_eq_mul_inv]
+      rw [← Finset.sum_mul]
+      -- Now goal is: ∑f * c⁻¹ = (∑f) / c
+      rw [mul_comm]
+      -- Now goal is: c⁻¹ * ∑f = (∑f) / c
+      rw [inv_mul_eq_div]
+    rw [h_factor]
+    rw [Finset.sum_sub_distrib, P.prob_sum_one, Q.prob_sum_one]
+    norm_num
+
+  -- Combine: KL ≥ 0 since KL ≥ RHS = 0
+  linarith [h_sum_ineq, h_rhs_zero]
 
 /--
 KL divergence equals zero iff distributions are equal.
@@ -471,8 +560,18 @@ theorem uniform_maximizes_entropy [Nonempty α] (P : ProbDist α) :
   -- (5) But H[U] = log₂(n)  (entropy of uniform)
   -- (6) Therefore: H[P] ≤ H[U]
 
+  -- Uniform distribution has positive probability everywhere
+  have h_unif_support : ∀ x, P.prob x > 0 → (UniformDist : ProbDist α).prob x > 0 := by
+    intro x _
+    unfold UniformDist
+    simp only []
+    apply div_pos
+    · norm_num
+    · norm_cast
+      exact Fintype.card_pos
+
   have h_gibbs : 0 ≤ KLDivergence P (UniformDist : ProbDist α) :=
-    kl_divergence_nonneg P UniformDist
+    kl_divergence_nonneg P UniformDist h_unif_support
 
   have h_relation : KLDivergence P (UniformDist : ProbDist α) =
     Real.log (Fintype.card α : ℝ) / Real.log 2 - ShannonEntropy P :=
