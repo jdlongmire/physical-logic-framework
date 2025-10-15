@@ -559,9 +559,8 @@ theorem kl_divergence_eq_zero_iff (P Q : ProbDist α)
              else if Q.prob z = 0 then 0
              else P.prob z * Real.log (P.prob z / Q.prob z) / Real.log 2) -
             (P.prob z - Q.prob z) / Real.log 2) = 0 := by
-          -- Rewrite using sum_sub_distrib
-          rw [← Finset.sum_sub_distrib]
-          rw [h_sum_kl, h_sum_norm]
+          -- Rewrite using sum_sub_distrib: ∑ (f - g) = ∑ f - ∑ g
+          rw [Finset.sum_sub_distrib, h_sum_kl, h_sum_norm]
           ring
 
         -- Now we need: each term in this sum ≥ 0
@@ -645,11 +644,12 @@ theorem kl_divergence_eq_zero_iff (P Q : ProbDist α)
           -- Multiply both sides by log 2
           unfold kl_term norm_term at h_eq
           have h_log2_ne : Real.log 2 ≠ 0 := h_log2_pos.ne'
-          calc P.prob x * Real.log (P.prob x / Q.prob x)
-            = (P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2) * Real.log 2 := by
-              rw [(div_mul_cancel₀ _ h_log2_ne).symm]
-            _ = ((P.prob x - Q.prob x) / Real.log 2) * Real.log 2 := by rw [h_eq]
-            _ = P.prob x - Q.prob x := by rw [div_mul_cancel₀ _ h_log2_ne]
+          -- Multiply both sides of h_eq by log 2
+          have h_mul : (P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2) * Real.log 2 =
+                       ((P.prob x - Q.prob x) / Real.log 2) * Real.log 2 := by
+            rw [h_eq]
+          rw [div_mul_cancel₀ _ h_log2_ne, div_mul_cancel₀ _ h_log2_ne] at h_mul
+          exact h_mul
 
         -- Define y = Q(x)/P(x) and prove y = 1
         let y := Q.prob x / P.prob x
@@ -1133,9 +1133,12 @@ These are:
 
 **Reference**: Computational verification in `notebooks/approach_1/03_n3_complete_example.ipynb`
 This matches quantum mechanical predictions for 3-level system.
+
+**Proof**: By exhaustive enumeration using decidable instance for Fintype.card
 -/
-axiom valid_perms_3_1_card :
-  Fintype.card (ValidPerms 3 1) = 3
+theorem valid_perms_3_1_card :
+  Fintype.card (ValidPerms 3 1) = 3 := by
+  decide
 
 /--
 **COMPUTATIONAL FACT**: For N=4, K=2, there are exactly 9 valid permutations.
@@ -1147,9 +1150,12 @@ These are:
 
 **Reference**: Computational verification in `notebooks/approach_1/04_n4_geometry.ipynb`
 This matches quantum mechanical predictions for 4-level system.
+
+**Proof**: By exhaustive enumeration using decidable instance for Fintype.card
 -/
-axiom valid_perms_4_2_card :
-  Fintype.card (ValidPerms 4 2) = 9
+theorem valid_perms_4_2_card :
+  Fintype.card (ValidPerms 4 2) = 9 := by
+  decide
 
 /--
 **N=3 VERIFICATION**
