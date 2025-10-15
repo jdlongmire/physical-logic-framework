@@ -211,6 +211,23 @@ theorem shannon_entropy_uniform [Nonempty α] :
   rw [h5, mul_one]
 
 /--
+For probability distributions, each probability is bounded by 1.
+
+Since all probabilities are non-negative and sum to 1, no single probability
+can exceed 1.
+-/
+lemma prob_le_one (P : ProbDist α) (x : α) : P.prob x ≤ 1 := by
+  -- Since probabilities are non-negative and sum to 1, we have P(x) ≤ ∑ P(y) = 1
+  have h_sum : (Finset.univ : Finset α).sum P.prob = 1 := P.prob_sum_one
+  have h_x_in_sum : P.prob x ≤ (Finset.univ : Finset α).sum P.prob := by
+    apply Finset.single_le_sum
+    · intro y _
+      exact P.prob_nonneg y
+    · exact Finset.mem_univ x
+  rw [h_sum] at h_x_in_sum
+  exact h_x_in_sum
+
+/--
 Shannon entropy is non-negative.
 
 This is a standard result in information theory. The proof uses the fact that
@@ -218,10 +235,60 @@ This is a standard result in information theory. The proof uses the fact that
 
 **Reference**: Cover & Thomas, "Elements of Information Theory", Theorem 2.1.1
 
-For now we axiomatize this standard result.
+**Proof strategy**:
+For each term in H[P] = -∑ P(x) log₂ P(x):
+1. If P(x) = 0: term is 0 (by if-then-else)
+2. If 0 < P(x) ≤ 1: log(P(x)) ≤ 0, so P(x) * log(P(x)) ≤ 0
+3. Therefore each term P(x) * log₂(P(x)) ≤ 0
+4. Sum of non-positive terms is non-positive
+5. Negation of non-positive is non-negative: -∑ ≥ 0
+
+**Proof**: Via logarithm properties (Gemini 0.93/1.0 consultation)
 -/
-axiom shannon_entropy_nonneg (P : ProbDist α) :
-  0 ≤ ShannonEntropy P
+theorem shannon_entropy_nonneg (P : ProbDist α) :
+  0 ≤ ShannonEntropy P := by
+  unfold ShannonEntropy
+
+  -- Step 1: Show each term is non-positive
+  have h_terms_nonpos : ∀ x : α,
+      (if P.prob x = 0 then 0
+       else P.prob x * Real.log (P.prob x) / Real.log 2) ≤ 0 := by
+    intro x
+    by_cases h_zero : P.prob x = 0
+    · -- Case 1: P(x) = 0, then term is 0
+      simp [h_zero]
+    · -- Case 2: P(x) > 0, show P(x) * log(P(x)) / log 2 ≤ 0
+      simp only [h_zero, ↓reduceIte]
+      -- We have 0 < P(x) ≤ 1
+      have h_pos : 0 < P.prob x := lt_of_le_of_ne (P.prob_nonneg x) (Ne.symm h_zero)
+      have h_nonneg : 0 ≤ P.prob x := le_of_lt h_pos
+      have h_le_one : P.prob x ≤ 1 := prob_le_one P x
+      -- For 0 < x ≤ 1, we have log x ≤ 0
+      have h_log_nonpos : Real.log (P.prob x) ≤ 0 := by
+        apply Real.log_nonpos_iff h_nonneg |>.mpr
+        exact h_le_one
+      -- P(x) > 0 and log(P(x)) ≤ 0, so P(x) * log(P(x)) ≤ 0
+      have h_mul_nonpos : P.prob x * Real.log (P.prob x) ≤ 0 := by
+        apply mul_nonpos_of_nonneg_of_nonpos
+        · exact le_of_lt h_pos
+        · exact h_log_nonpos
+      -- log 2 > 0, so dividing by log 2 preserves inequality
+      have h_log2_pos : 0 < Real.log 2 := Real.log_pos (by norm_num : (1 : ℝ) < 2)
+      apply div_nonpos_of_nonpos_of_nonneg
+      · exact h_mul_nonpos
+      · exact le_of_lt h_log2_pos
+
+  -- Step 2: Sum of non-positive terms is non-positive
+  have h_sum_nonpos :
+      (Finset.univ : Finset α).sum (fun x =>
+        if P.prob x = 0 then 0
+        else P.prob x * Real.log (P.prob x) / Real.log 2) ≤ 0 := by
+    apply Finset.sum_nonpos
+    intro x _
+    exact h_terms_nonpos x
+
+  -- Step 3: Therefore the negation is non-negative
+  linarith [h_sum_nonpos]
 
 -- =====================================================================================
 -- KULLBACK-LEIBLER DIVERGENCE
