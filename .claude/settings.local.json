@@ -14,7 +14,16 @@
       "Bash(git push:*)",
       "Bash(jupyter nbconvert:*)",
       "Bash(tee:*)",
-      "Bash(lake build:*)"
+      "Bash(lake build:*)",
+      "Bash(cat:*)",
+      "Bash(python3:*)",
+      "Bash(for dir in Foundations LogicField Dynamics QuantumEmergence Indistinguishability)",
+      "Bash(done)",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:physlean.com)",
+      "WebFetch(domain:loogle.physlean.com)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "Bash(awk:*)"
     ],
     "deny": [],
     "ask": [],

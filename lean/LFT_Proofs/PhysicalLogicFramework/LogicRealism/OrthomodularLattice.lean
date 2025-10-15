@@ -105,17 +105,26 @@ namespace QuantumProposition
 /-- Conjunction (AND) of propositions is meet (intersection of subspaces) -/
 def conj (P Q : QuantumProposition) : QuantumProposition where
   proj := P.proj ⊓ Q.proj
-  idempotent := sorry  -- Proof deferred
+  idempotent := by
+    -- Prove (P ⊓ Q) ⊓ (P ⊓ Q) = P ⊓ Q using lattice idempotence
+    show (P.proj ⊓ Q.proj) ⊓ (P.proj ⊓ Q.proj) = P.proj ⊓ Q.proj
+    exact inf_idem
 
 /-- Disjunction (OR) of propositions is join (span of subspaces) -/
 def disj (P Q : QuantumProposition) : QuantumProposition where
   proj := P.proj ⊔ Q.proj
-  idempotent := sorry  -- Proof deferred
+  idempotent := by
+    -- Prove (P ⊔ Q) ⊔ (P ⊔ Q) = P ⊔ Q using lattice idempotence
+    show (P.proj ⊔ Q.proj) ⊔ (P.proj ⊔ Q.proj) = P.proj ⊔ Q.proj
+    exact sup_idem
 
 /-- Negation (NOT) of proposition is orthocomplement -/
 def neg (P : QuantumProposition) : QuantumProposition where
   proj := compl P.proj
-  idempotent := sorry  -- Proof deferred
+  idempotent := by
+    -- Prove (¬P) ⊓ (¬P) = ¬P using lattice idempotence
+    show compl P.proj ⊓ compl P.proj = compl P.proj
+    exact inf_idem
 
 end QuantumProposition
 

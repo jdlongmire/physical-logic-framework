@@ -342,8 +342,20 @@ Identity permutation has 0 inversions.
 For id : Equiv.Perm (Fin N), there are no pairs (i,j) with i < j but id(i) > id(j),
 since id(i) = i < j = id(j) whenever i < j.
 -/
-axiom identity_zero_inversions (N : ℕ) :
-  inversionCount (1 : Equiv.Perm (Fin N)) = 0
+theorem identity_zero_inversions (N : ℕ) :
+  inversionCount (1 : Equiv.Perm (Fin N)) = 0 := by
+  unfold inversionCount
+  simp only [Equiv.Perm.coe_one, id_eq]
+  -- For identity, σ i = i, so we need i < j ∧ i > j, which is impossible
+  have h_empty : (Finset.univ : Finset (Fin N × Fin N)).filter
+    (fun p => p.1 < p.2 ∧ p.1 > p.2) = ∅ := by
+    ext p
+    simp only [Finset.mem_filter, Finset.mem_univ, true_and, Finset.notMem_empty, iff_false]
+    -- Show that p.1 < p.2 ∧ p.1 > p.2 is false
+    intro ⟨h_lt, h_gt⟩
+    exact absurd (lt_trans h_lt h_gt) (lt_irrefl p.1)
+  rw [h_empty]
+  exact Finset.card_empty
 
 /--
 ValidPerms is nonempty because identity permutation always has 0 inversions.
