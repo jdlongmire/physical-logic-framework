@@ -592,9 +592,35 @@ None yet (remediation execution begins next session)
 
 ---
 
-**Status**: Session 12.0 COMPLETE - Program audit finished, remediation plan created, PhysLean assessed
+---
+
+## Strategic Decision: Prioritize Technical Work Over Documentation
+
+**User decision**: "Focus on the work to build up the program vs doing a lot of documentation updates - we can update all of those after we have done the high value work"
+
+**Rationale**: Documentation should reflect final state, not intermediate work. Build substance first, document accurately at the end.
+
+**Revised Sprint Order**:
+1. Sprint 14a (Week 1): Complete LogicRealism + Easy Mathlib imports → 0 sorry, 157→142 axioms
+2. Sprint 13 (Weeks 2-4): Validation trace matrix → Demonstrate rigor
+3. Sprint 15 (Weeks 5-8): Prove information theory results → 142→115 axioms
+4. Sprint 16 (Weeks 9-12): Consolidate QuantumEmergence → 115→105 axioms
+5. Sprint 12 (Week 13): Documentation → Do LAST, reflect final state
+
+**Timeline**: 13 weeks total
+**Effort**: 126-145 hours
+**Final result**: 0 sorry, 105 axioms (-33%), triple validation, honest documentation
+
+**File created**: `sprints/SPRINT_PRIORITY_REVISED.md` (detailed implementation plan)
+
+---
+
+**Status**: Session 12.0 COMPLETE - Program audit, remediation plan, PhysLean assessment, priority revision
 **Deliverables**:
 - PROGRAM_REMEDIATION_PLAN.md (comprehensive 3-tier sprint plan)
 - PHYSLEAN_ASSESSMENT.md (external resource evaluation)
-**Key Finding**: Focus on Mathlib (not PhysLean) for axiom reduction
-**Next**: Execute Sprint 12 (documentation fixes) in next session
+- SPRINT_PRIORITY_REVISED.md (strategic priority order)
+**Key Findings**:
+- Focus on Mathlib (not PhysLean) for axiom reduction
+- Build technical substance first, document last
+**Next**: Execute Sprint 14a (LogicRealism completion + Mathlib imports) - START IMMEDIATELY
