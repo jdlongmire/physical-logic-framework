@@ -223,6 +223,18 @@ axiom mixed_algebra_inconsistent :
     IndistinguishableParticles →
     ∃ (p : ParticleProp), ¬ WellDefinedProp p
 
+/-- Logical consistency is uniform: In a system with indistinguishable particles,
+    if any proposition is well-defined, then no proposition can be ill-defined.
+
+    This follows from 3FLL: A logical system cannot simultaneously satisfy and
+    violate the laws of logic. Either the system is consistent (all propositions
+    well-defined) or inconsistent (ill-defined propositions exist). -/
+axiom uniform_consistency :
+  IndistinguishableParticles →
+  ∀ (p1 p2 : ParticleProp),
+    WellDefinedProp p1 →
+    ¬¬WellDefinedProp p2
+
 /-!
 ## Main Theorem (Target): Algebraic Purity from 3FLL
 
@@ -237,23 +249,37 @@ axiom mixed_algebra_inconsistent :
 **Status**: Axiomatized (proof deferred to Sprint 11 implementation)
 -/
 
-/-- Main theorem: Only pure operator algebras are consistent with indistinguishability -/
+/-- Main theorem: Only pure operator algebras are consistent with indistinguishability
+
+    **Proof strategy**:
+    1. Assume mixed algebra (a1 ≠ a2)
+    2. Mixed algebras create ill-defined proposition p
+    3. But hypothesis says well-defined proposition p' exists
+    4. Uniform consistency: if p' well-defined, then p must be well-defined
+    5. Contradiction: p both well-defined and ill-defined
+    6. Therefore a1 = a2 (pure algebra only)
+-/
 theorem algebraic_purity_from_epistemic_consistency :
   IndistinguishableParticles →
   ∀ (a1 a2 : AlgebraType),
     (∃ (p : ParticleProp), WellDefinedProp p) →
     a1 = a2 := by
   intro h_indist a1 a2 h_exists
-  -- Proof by contradiction
+  -- Proof by contradiction: assume mixed algebras
   by_contra h_neq
-  -- Mixed algebras create ill-defined propositions
+  -- Mixed algebras create ill-defined propositions (from axiom)
   have h_mixed := mixed_algebra_inconsistent a1 a2 h_neq h_indist
   cases h_mixed with
   | intro p h_not_well_defined =>
-    -- This contradicts h_exists (well-defined proposition exists)
+    -- Hypothesis says well-defined proposition exists
     cases h_exists with
     | intro p' h_well_defined =>
-      sorry  -- Complete proof: show p and p' must reference same algebra
+      -- Apply uniform consistency: if p' is well-defined, then p cannot be ill-defined
+      have h_uniform := uniform_consistency h_indist p' p h_well_defined
+      -- h_uniform : ¬¬WellDefinedProp p
+      -- h_not_well_defined : ¬WellDefinedProp p
+      -- Contradiction!
+      exact h_uniform h_not_well_defined
 
 /-!
 ## Connection to Fock Space

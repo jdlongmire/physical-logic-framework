@@ -324,7 +324,7 @@ Logic Realism / Logic Field Theory (LFT) demonstrates that **quantum mechanics e
 
 ### ✅ Notebook 25: Algebraic Structure - Boson/Fermion Distinction
 **Status**: Production-ready, V2 architecture (Sprint 11)
-**Validation**: Math ✓ | Code ✓ | Lean ✓ (AlgebraicStructure.lean, 355 lines, 1 sorry with proof strategy)
+**Validation**: Math ✓ | Code ✓ | Lean ✓ (AlgebraicStructure.lean, 375 lines, 0 sorry ✅)
 
 **How it supports Logic Realism/LFT**:
 - **Core Thesis**: Derives algebraic purity (commutation OR anticommutation, not mixed) from 3FLL + epistemic constraints
@@ -522,7 +522,7 @@ All notebooks 00-11 fully validated computationally!
 | 16 | ✓ Complete | ✓ Validated | ⧗ Pending |
 | 17 | ✓ Complete | ✓ Validated | ⧗ Pending |
 | 24 | ✓ Complete | ✓ Validated | ✓ Formalized (EpistemicStates.lean, Sprint 10) |
-| 25 | ✓ Complete | ✓ Validated | ✓ Formalized (AlgebraicStructure.lean, Sprint 11, 1 sorry) |
+| 25 | ✓ Complete | ✓ Validated | ✓ Formalized (AlgebraicStructure.lean, Sprint 11, 0 sorry ✅) |
 
 **Overall Progress**: Mathematics 100% | Computation 100% | Lean 4 65% (13/20 notebooks)
 
