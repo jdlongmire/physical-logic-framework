@@ -425,14 +425,119 @@ theorem kl_divergence_nonneg (P Q : ProbDist α)
   linarith [h_sum_ineq, h_rhs_zero]
 
 /--
-KL divergence equals zero iff distributions are equal.
+**GIBBS' INEQUALITY (EQUALITY CONDITION)**: KL divergence is zero iff distributions are equal.
 
-This follows from strict concavity of log in the Jensen's inequality proof.
+D_KL[P||Q] = 0 ⟺ P = Q
 
-**Reference**: Cover & Thomas, Theorem 2.6.3 (equality condition)
+This completes the characterization of KL divergence together with kl_divergence_nonneg.
+
+**Proof strategy**:
+- Direction (⟸): If P = Q, then log(P(x)/Q(x)) = log(1) = 0, so KL = 0 (trivial)
+- Direction (⟹): If KL = 0, show each term in sum = 0, implying P(x) = Q(x) for all x
+  - Each term ≥ 0 (by log-sum inequality from kl_divergence_nonneg proof)
+  - Sum of non-negatives = 0 → each term = 0
+  - P(x) * log(P(x)/Q(x)) = 0 → log(P(x)/Q(x)) = 0 → P(x) = Q(x)
+
+**Reference**: Cover & Thomas, "Elements of Information Theory", Theorem 2.6.3 (equality condition)
+**Proof**: Via Real.log_eq_zero and sum of non-negatives (direct approach for discrete case)
 -/
-axiom kl_divergence_eq_zero_iff (P Q : ProbDist α) :
-  KLDivergence P Q = 0 ↔ P.prob = Q.prob
+theorem kl_divergence_eq_zero_iff (P Q : ProbDist α)
+    (h_support : ∀ x, P.prob x > 0 → Q.prob x > 0) :
+  KLDivergence P Q = 0 ↔ P.prob = Q.prob := by
+  constructor
+
+  -- Direction 1 (⟹): KL = 0 → P = Q
+  · intro h_kl_zero
+    -- Strategy: First show P(x) = Q(x) for all x with P(x) > 0
+    --           Then use normalization to show P(x) = Q(x) = 0 for remaining x
+
+    -- Step 1: For x with P(x) > 0, show P(x) = Q(x)
+    have h_eq_on_support : ∀ x, P.prob x > 0 → P.prob x = Q.prob x := by
+      intro x h_px_pos
+      have h_qx_pos : 0 < Q.prob x := h_support x h_px_pos
+
+      -- The KL term for this x is:
+      --   P(x) * log(P(x)/Q(x)) / log 2
+      -- From KL = 0, this equals some value that when summed gives 0
+      -- But we need to show this specific term = 0
+
+      -- Extract this term from the sum
+      have h_log2_pos : 0 < Real.log 2 := Real.log_pos (by norm_num : (1 : ℝ) < 2)
+
+      -- The term is non-negative (by log-sum inequality)
+      have h_term_nonneg : P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2 ≥ 0 := by
+        -- Use same technique as in kl_divergence_nonneg proof
+        apply div_nonneg _ (le_of_lt h_log2_pos)
+        -- Show P(x) * log(P(x)/Q(x)) ≥ 0
+        -- This follows from -log(Q(x)/P(x)) ≥ 1 - Q(x)/P(x)
+        sorry -- Detailed calculation (similar to kl_divergence_nonneg)
+
+      -- Since KL = 0 and each term ≥ 0, this term must = 0
+      unfold KLDivergence at h_kl_zero
+      have h_term_zero : P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2 = 0 := by
+        sorry -- Extract from sum = 0 with all terms ≥ 0
+
+      -- From term = 0 and P(x) > 0, log 2 > 0, deduce log(P(x)/Q(x)) = 0
+      have h_log_zero : Real.log (P.prob x / Q.prob x) = 0 := by
+        have h1 : P.prob x * Real.log (P.prob x / Q.prob x) = 0 := by
+          -- From h_term_zero: P(x) * log(P(x)/Q(x)) / log 2 = 0
+          -- Multiply both sides by log 2:
+          have h_mul : Real.log 2 * (P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2) = 0 := by
+            rw [h_term_zero, mul_zero]
+          rwa [mul_div_cancel₀ _ h_log2_pos.ne'] at h_mul
+        exact (mul_eq_zero.mp h1).resolve_left h_px_pos.ne'
+
+      -- From log(P(x)/Q(x)) = 0, deduce P(x)/Q(x) = 1
+      have h_ratio_one : P.prob x / Q.prob x = 1 := by
+        have h_pos : 0 < P.prob x / Q.prob x := div_pos h_px_pos h_qx_pos
+        -- For x > 0: log x = 0 ↔ x = 1
+        -- We have log(P(x)/Q(x)) = 0 and P(x)/Q(x) > 0
+        -- Method: Show log is injective near 1, or use exp(log(x)) = x
+        have h1 : Real.exp (Real.log (P.prob x / Q.prob x)) = P.prob x / Q.prob x := by
+          exact Real.exp_log h_pos
+        rw [h_log_zero, Real.exp_zero] at h1
+        exact h1.symm
+
+      -- Therefore P(x) = Q(x)
+      calc P.prob x
+        = (P.prob x / Q.prob x) * Q.prob x := by rw [div_mul_cancel₀ _ h_qx_pos.ne']
+        _ = 1 * Q.prob x := by rw [h_ratio_one]
+        _ = Q.prob x := one_mul _
+
+    -- Step 2: Use funext to show P.prob = Q.prob
+    funext x
+    by_cases h_px_zero : P.prob x = 0
+    · -- Case: P(x) = 0, need to show Q(x) = 0
+      -- Use normalization: ∑ P = 1 and ∑ Q = 1
+      -- We've shown P(y) = Q(y) for all y with P(y) > 0
+      -- Therefore ∑_{y: P(y)>0} Q(y) = ∑_{y: P(y)>0} P(y) = ∑_y P(y) = 1
+      -- So ∑_{y: P(y)=0} Q(y) = 0
+      -- Since Q(y) ≥ 0, this implies Q(x) = 0
+      sorry -- Use sum decomposition and normalization
+    · -- Case: P(x) > 0, use h_eq_on_support
+      exact h_eq_on_support x (lt_of_le_of_ne (P.prob_nonneg x) (Ne.symm h_px_zero))
+
+  -- Direction 2 (⟸): P = Q → KL = 0
+  · intro h_eq
+    unfold KLDivergence
+    -- Substitute P.prob x = Q.prob x everywhere
+    simp only [h_eq]
+    -- Now each term is Q(x) * log(Q(x)/Q(x)) / log 2
+    --                = Q(x) * log(1) / log 2
+    --                = Q(x) * 0 / log 2
+    --                = 0
+    have h_all_zero : ∀ x : α,
+        (if Q.prob x = 0 then 0
+         else if Q.prob x = 0 then 0
+         else Q.prob x * Real.log (Q.prob x / Q.prob x) / Real.log 2) = 0 := by
+      intro x
+      by_cases h_qx_zero : Q.prob x = 0
+      · simp [h_qx_zero]
+      · simp only [h_qx_zero, ↓reduceIte]
+        have h_qx_pos : 0 < Q.prob x := lt_of_le_of_ne (Q.prob_nonneg x) (Ne.symm h_qx_zero)
+        rw [div_self h_qx_pos.ne', Real.log_one, mul_zero, zero_div]
+    simp_rw [h_all_zero]
+    exact Finset.sum_const_zero
 
 /--
 **KEY RELATION**: D_KL[P||U] = log₂(n) - H[P]
@@ -610,7 +715,18 @@ theorem uniform_unique_maxent [Nonempty α] (P : ProbDist α) :
     shannon_entropy_uniform
   rw [h_eq, h_uniform_entropy] at h_relation
   simp at h_relation
-  exact (kl_divergence_eq_zero_iff P UniformDist).mp h_relation
+
+  -- Uniform distribution has positive probability everywhere
+  have h_unif_support : ∀ x, P.prob x > 0 → (UniformDist : ProbDist α).prob x > 0 := by
+    intro x _
+    unfold UniformDist
+    simp only []
+    apply div_pos
+    · norm_num
+    · norm_cast
+      exact Fintype.card_pos
+
+  exact (kl_divergence_eq_zero_iff P UniformDist h_unif_support).mp h_relation
 
 -- =====================================================================================
 -- APPLICATION TO AMPLITUDE DISTRIBUTION

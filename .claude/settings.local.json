@@ -25,7 +25,12 @@
       "WebFetch(domain:raw.githubusercontent.com)",
       "Bash(awk:*)",
       "Bash(for dir in Foundations LogicField Dynamics QuantumEmergence LogicRealism)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(timeout 180 lake build:*)",
+      "Bash(for dir in Foundations LogicField Dynamics QuantumEmergence LogicRealism Indistinguishability supporting_material)",
+      "Bash(git restore:*)",
+      "Bash(while read f)",
+      "Bash(paste -:*)"
     ],
     "deny": [],
     "ask": [],
