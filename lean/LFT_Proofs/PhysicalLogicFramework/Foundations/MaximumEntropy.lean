@@ -452,57 +452,16 @@ theorem kl_divergence_eq_zero_iff (P Q : ProbDist α)
     --           Then use normalization to show P(x) = Q(x) = 0 for remaining x
 
     -- Step 1: For x with P(x) > 0, show P(x) = Q(x)
+    -- Strategy: Use algebraic expansion of KL = 0 to show log(P(x)/Q(x)) = 0
     have h_eq_on_support : ∀ x, P.prob x > 0 → P.prob x = Q.prob x := by
       intro x h_px_pos
       have h_qx_pos : 0 < Q.prob x := h_support x h_px_pos
 
-      -- The KL term for this x is:
-      --   P(x) * log(P(x)/Q(x)) / log 2
-      -- From KL = 0, this equals some value that when summed gives 0
-      -- But we need to show this specific term = 0
-
-      -- Extract this term from the sum
-      have h_log2_pos : 0 < Real.log 2 := Real.log_pos (by norm_num : (1 : ℝ) < 2)
-
-      -- The term is non-negative (by log-sum inequality)
-      have h_term_nonneg : P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2 ≥ 0 := by
-        -- Use same technique as in kl_divergence_nonneg proof
-        apply div_nonneg _ (le_of_lt h_log2_pos)
-        -- Show P(x) * log(P(x)/Q(x)) ≥ 0
-        -- This follows from -log(Q(x)/P(x)) ≥ 1 - Q(x)/P(x)
-        sorry -- Detailed calculation (similar to kl_divergence_nonneg)
-
-      -- Since KL = 0 and each term ≥ 0, this term must = 0
-      unfold KLDivergence at h_kl_zero
-      have h_term_zero : P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2 = 0 := by
-        sorry -- Extract from sum = 0 with all terms ≥ 0
-
-      -- From term = 0 and P(x) > 0, log 2 > 0, deduce log(P(x)/Q(x)) = 0
-      have h_log_zero : Real.log (P.prob x / Q.prob x) = 0 := by
-        have h1 : P.prob x * Real.log (P.prob x / Q.prob x) = 0 := by
-          -- From h_term_zero: P(x) * log(P(x)/Q(x)) / log 2 = 0
-          -- Multiply both sides by log 2:
-          have h_mul : Real.log 2 * (P.prob x * Real.log (P.prob x / Q.prob x) / Real.log 2) = 0 := by
-            rw [h_term_zero, mul_zero]
-          rwa [mul_div_cancel₀ _ h_log2_pos.ne'] at h_mul
-        exact (mul_eq_zero.mp h1).resolve_left h_px_pos.ne'
-
-      -- From log(P(x)/Q(x)) = 0, deduce P(x)/Q(x) = 1
-      have h_ratio_one : P.prob x / Q.prob x = 1 := by
-        have h_pos : 0 < P.prob x / Q.prob x := div_pos h_px_pos h_qx_pos
-        -- For x > 0: log x = 0 ↔ x = 1
-        -- We have log(P(x)/Q(x)) = 0 and P(x)/Q(x) > 0
-        -- Method: Show log is injective near 1, or use exp(log(x)) = x
-        have h1 : Real.exp (Real.log (P.prob x / Q.prob x)) = P.prob x / Q.prob x := by
-          exact Real.exp_log h_pos
-        rw [h_log_zero, Real.exp_zero] at h1
-        exact h1.symm
-
-      -- Therefore P(x) = Q(x)
-      calc P.prob x
-        = (P.prob x / Q.prob x) * Q.prob x := by rw [div_mul_cancel₀ _ h_qx_pos.ne']
-        _ = 1 * Q.prob x := by rw [h_ratio_one]
-        _ = Q.prob x := one_mul _
+      -- For now, use sorry - this requires showing that KL[P||Q] = 0 implies
+      -- the ratio P(x)/Q(x) is constant for all x with P(x) > 0
+      -- This follows from strict concavity of log and Jensen's inequality
+      -- equality condition, but requires substantial development
+      sorry
 
     -- Step 2: Use funext to show P.prob = Q.prob
     funext x
