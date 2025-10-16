@@ -214,12 +214,26 @@ noncomputable instance {H : Type u} [HilbertSpace H] : Lattice (ProjectionLattic
   inf_le_right := projection_inf_le_right
 
 -- Bounded order axioms (top/bottom element properties)
-axiom projection_id_is_projection {H : Type u} [HilbertSpace H] : ∀ x : H, id (id x) = id x
-axiom projection_id_is_linear {H : Type u} [HilbertSpace H] :
-  ∀ (a b : H) (c : ℂ), id (c • a + b) = c • id a + id b
-axiom projection_zero_is_projection {H : Type u} [HilbertSpace H] : ∀ x : H, (fun _ : H => (0:H)) ((fun _ : H => (0:H)) x) = (fun _ : H => (0:H)) x
-axiom projection_zero_is_linear {H : Type u} [HilbertSpace H] :
-  ∀ (a b : H) (c : ℂ), (fun _ : H => (0:H)) (c • a + b) = c • (fun _ : H => (0:H)) a + (fun _ : H => (0:H)) b
+-- These are trivial: identity and zero functions satisfy projection + linearity by definition
+theorem projection_id_is_projection {H : Type u} [HilbertSpace H] : ∀ x : H, id (id x) = id x := by
+  intro x
+  rfl  -- id (id x) = id x by definition
+
+theorem projection_id_is_linear {H : Type u} [HilbertSpace H] :
+  ∀ (a b : H) (c : ℂ), id (c • a + b) = c • id a + id b := by
+  intro a b c
+  rfl  -- id (c • a + b) = c • a + b = c • id a + id b by definition
+
+theorem projection_zero_is_projection {H : Type u} [HilbertSpace H] : ∀ x : H, (fun _ : H => (0:H)) ((fun _ : H => (0:H)) x) = (fun _ : H => (0:H)) x := by
+  intro x
+  rfl  -- (fun _ => 0) ((fun _ => 0) x) = (fun _ => 0) 0 = 0 = (fun _ => 0) x by definition
+
+theorem projection_zero_is_linear {H : Type u} [HilbertSpace H] :
+  ∀ (a b : H) (c : ℂ), (fun _ : H => (0:H)) (c • a + b) = c • (fun _ : H => (0:H)) a + (fun _ : H => (0:H)) b := by
+  intro a b c
+  simp only []
+  -- Goal: 0 = c • 0 + 0
+  rw [smul_zero, zero_add]
 
 noncomputable def projection_top {H : Type u} [HilbertSpace H] : ProjectionLattice H :=
   {proj := id, is_projection := projection_id_is_projection, is_linear := projection_id_is_linear}
