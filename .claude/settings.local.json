@@ -14,7 +14,9 @@
       "Bash(timeout 60 lake build:*)",
       "Bash(timeout 120 lake build:*)",
       "Bash(awk:*)",
-      "Bash(for dir in Foundations LogicField Dynamics Indistinguishability LogicRealism QuantumEmergence)"
+      "Bash(for dir in Foundations LogicField Dynamics Indistinguishability LogicRealism QuantumEmergence)",
+      "Bash(lake env lean:*)",
+      "Bash(lake build:*)"
     ],
     "deny": [],
     "ask": [],
