@@ -6,7 +6,7 @@ ORCID: 0009-0009-1383-7698
 
 ## Overview
 
-This repository contains the **Physical Logic Framework (PLF)** - a comprehensive research program exploring an information-theoretic perspective on non-relativistic quantum mechanics. The framework provides a novel computational approach built on the Three Fundamental Laws of Logic (3FLL), the Information Space postulate, and the actualization principle A = L(I). The Lean formalization comprises **138 axioms** including foundational principles, literature-supported theorems (Piron-Solèr, Gleason, CCR/CAR), and novel LFT results (K(N)=N-2, finite-N framework).
+This repository contains the **Physical Logic Framework (PLF)** - a comprehensive research program exploring an information-theoretic perspective on non-relativistic quantum mechanics. The framework is built on **three foundational axioms**: (1) the Three Fundamental Laws of Logic (3FLL), (2) the Infinite Information Space (I), and (3) the actualization principle A = L(I). The Lean formalization comprises **138 total axioms** including these 3 foundational axioms plus 135 additional axioms (literature-supported theorems such as Piron-Solèr, Gleason, CCR/CAR, and novel LFT results like K(N)=N-2, finite-N framework).
 
 **See**: [`MISSION_STATEMENT.md`](MISSION_STATEMENT.md) for complete framework overview and [`paper/LRT_FORMALIZATION.md`](paper/LRT_FORMALIZATION.md) for the abstract theoretical foundation (Logic Realism Theory).
 
@@ -716,13 +716,14 @@ This research program and methodology may be relevant to:
 **Complete Axiom Audit**: See [`AXIOM_HONESTY_AUDIT.md`](AXIOM_HONESTY_AUDIT.md) for comprehensive analysis of the 138 axioms in the Lean formalization.
 
 **Key Findings**:
-- **Total Axioms**: 138 (not "one axiom" as previously claimed)
-- **Comparison to Standard QM**: Standard QM has ~5 core axioms; LFT has 138 axioms (27× more)
+- **Total Axioms**: 138 (not "one axiom, one postulate" as previously claimed)
+- **Foundational Axioms**: 3 (3FLL, Information Space, A = L(I)) - note: "postulate" is deprecated terminology
+- **Comparison to Standard QM**: Standard QM has ~5 core axioms; LFT has 138 total axioms (27× more)
 - **Breakdown by Category**:
-  - Foundational principles (3FLL, Information Space): ~5 axioms
+  - Foundational axioms (3FLL, Information Space, A = L(I)): 3 axioms
   - Novel LFT results (K(N)=N-2, finite-N framework): ~15 axioms
   - Literature-supported theorems (Piron-Solèr, Gleason, CCR/CAR, Fisher geometry): ~80 axioms
-  - Infrastructure (lattice operations, group theory): ~38 axioms
+  - Infrastructure (lattice operations, group theory): ~40 axioms
 
 **Honest Contribution Assessment**:
 - ✅ **Novel contributions**: K(N)=N-2 constraint threshold, finite-N computational framework, testable predictions (finite-N corrections), symmetric group models
@@ -731,7 +732,7 @@ This research program and methodology may be relevant to:
 - ❌ **Not a claim**: Non-circular derivation of all QM (many QM results are axiomatized with proper citations)
 - ❌ **Not a claim**: More foundational than standard QM (different perspective, not simpler foundation)
 
-**What changed**: Early repository claims of "one axiom, one postulate, one principle" foundation have been revised to reflect the reality of the Lean formalization. This update (Sprint 14.3, October 2025) brings all documentation into alignment with the actual axiom count.
+**What changed**: Early repository claims of "one axiom, one postulate, one principle" foundation have been revised to reflect: (1) correct terminology ("postulate" is deprecated - these are all axioms), and (2) the reality of the Lean formalization (138 total axioms). This update (Sprint 14.3, October 2025) brings all documentation into alignment with modern mathematical terminology and actual axiom count.
 
 **Transparency commitment**: All 138 axioms are documented with clear justifications (foundational principles, literature citations, or novel contributions). See [`TYPE_B_AXIOM_ASSESSMENT.md`](TYPE_B_AXIOM_ASSESSMENT.md) for module-by-module breakdown.
 

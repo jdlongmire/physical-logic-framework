@@ -8,8 +8,10 @@
 
 ## Critical Discrepancy
 
-### What We Claim (README.md line 9):
+### What We Claimed (README.md line 9, prior to Session 14.3):
 > "The framework is built on **one axiom** (the Three Fundamental Laws of Logic), **one postulate** (Infinite Information Space I), and **one principle** (A = L(I): Actualized Reality is Logic filtering Information)."
+
+**Note**: "Postulate" is deprecated terminology in modern mathematics. This should have been stated as **three foundational axioms** (3FLL, Information Space, A = L(I)) from the start.
 
 ### What We Actually Have (Lean formalization):
 **138 axioms** across 6 modules:
@@ -77,16 +79,19 @@
 - Distance-preserving ↔ automorphism
 - Various group theory / combinatorics results
 
-### Category 3: Foundational Principles (~5 axioms)
+### Category 3: Foundational Axioms (3 axioms)
 
-**Three Fundamental Laws** (3 axioms):
+**Three Fundamental Laws of Logic (3FLL)**:
 - L1: Identity
 - L2: Non-Contradiction
 - L3: Excluded Middle
+- Note: Counted as 1 foundational axiom (the 3FLL as a whole)
 
-**Information Space** (2 axioms):
-- Infinite information space
-- Actualization correspondence
+**Information Space (I)**:
+- Infinite information space axiom
+
+**Actualization Principle**:
+- A = L(I): Actualized Reality is Logic filtering Information
 
 ### Category 4: Literature Results (~38 axioms)
 
@@ -166,7 +171,8 @@
 ### REMOVE These Claims:
 
 ❌ "built on **one axiom**, one postulate, one principle"
-- Reality: 138 axioms in formalization
+- Reality: **3 foundational axioms** (3FLL, Information Space, A = L(I)) + 135 additional axioms = 138 total
+- Note: "Postulate" is deprecated terminology; these are all axioms
 
 ❌ "deriving core principles of quantum mechanics from logical consistency"
 - Reality: Assuming QM results (Piron-Solèr, Gleason, CCR/CAR) as axioms
@@ -192,7 +198,9 @@
 
 ✅ "Testable predictions for finite-N quantum systems"
 
-✅ "Lean formalization with 138 axioms (literature results + novel LFT structure)"
+✅ "Built on 3 foundational axioms (3FLL, Information Space, A = L(I))"
+
+✅ "Lean formalization with 138 total axioms (3 foundational + literature results + novel LFT structure)"
 
 ✅ "Alternative foundation exploring logical and informational aspects of QM"
 
