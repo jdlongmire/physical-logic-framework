@@ -6,7 +6,7 @@ ORCID: 0009-0009-1383-7698
 
 ## Overview
 
-This repository contains the **Physical Logic Framework (PLF)** - a comprehensive research program deriving core principles of non-relativistic quantum mechanics from logical consistency. The framework is built on **one axiom** (the Three Fundamental Laws of Logic), **one postulate** (Infinite Information Space I), and **one principle** (A = L(I): Actualized Reality is Logic filtering Information).
+This repository contains the **Physical Logic Framework (PLF)** - a comprehensive research program exploring an information-theoretic perspective on non-relativistic quantum mechanics. The framework provides a novel computational approach built on the Three Fundamental Laws of Logic (3FLL), the Information Space postulate, and the actualization principle A = L(I). The Lean formalization comprises **138 axioms** including foundational principles, literature-supported theorems (Piron-Solèr, Gleason, CCR/CAR), and novel LFT results (K(N)=N-2, finite-N framework).
 
 **See**: [`MISSION_STATEMENT.md`](MISSION_STATEMENT.md) for complete framework overview and [`paper/LRT_FORMALIZATION.md`](paper/LRT_FORMALIZATION.md) for the abstract theoretical foundation (Logic Realism Theory).
 
@@ -24,7 +24,7 @@ The research program has a **three-layer architecture** bridging abstract mathem
 
 **Key results**:
 - Non-distributivity of L(ℋ) for dim(ℋ) ≥ 2 (quantum logic ≠ Boolean logic)
-- Born rule derived via Gleason's theorem (not postulated)
+- Born rule formalized via Gleason's theorem (literature-supported)
 - Measurement as entanglement-driven projection enforcing 3FLL
 - Consciousness formalized as high-entropy IIS access
 
@@ -152,7 +152,7 @@ All computational work employs three-track validation: Jupyter notebooks (comput
 - **Sprint 11 Complete** (October 14, 2025): Boson/Fermion algebraic structure derived from 3FLL ✅
 - **Sprint 12 Starting**: Axiom Reduction (0 sorry + Mathlib imports)
 - **Sprints 6-11 Delivered**: Born Rule (Sprint 6), Measurement (Sprint 7), Logic_Realism Integration (Sprint 8), Mission Refinement (Sprint 9), Indistinguishability (Sprint 10), Algebraic Structure (Sprint 11)
-- **Lean Formalization**: 20 modules, 0 sorry in production (19 files), 3 sorry in LogicRealism stub (1 file), 157 axioms (all justified)
+- **Lean Formalization**: 20 modules, 0 sorry in production (19 files), 3 sorry in LogicRealism stub (1 file), 138 axioms (foundational + literature + novel LFT results)
 - **Falsification Criteria**: 10 testable predictions pre-registered (see FALSIFICATION_CRITERIA.md)
 
 **Framework Status** (see SCOPE_AND_LIMITATIONS.md for details):
@@ -184,20 +184,20 @@ All computational work employs three-track validation: Jupyter notebooks (comput
 - K(N) = N-2 triple proof (Mahonian, Coxeter, MaxEnt)
 - OEIS A001892 connection discovered
 
-## What Has Been Derived
+## Key Results
 
 **See [`SCOPE_AND_LIMITATIONS.md`](SCOPE_AND_LIMITATIONS.md) for complete technical details.**
 
-### High Confidence Results (90-99%, rigorously proven):
-1. **Information Space Structure**: S_N permutohedron geometry
-2. **Constraint Threshold**: K(N) = N-2 (triple proof: Mahonian, Coxeter, MaxEnt)
-3. **Born Rule**: P = |ψ|² from maximum entropy on V_K (non-circular)
-4. **Hamiltonian Emergence**: H = D - A (graph Laplacian structure)
-5. **Theorem D.1**: Fisher metric = Fubini-Study, LaplaceBeltrami → GraphLaplacian
-6. **Schrödinger Equation**: iℏ∂_t|ψ⟩ = Ĥ|ψ⟩ from Fisher geodesic flow
-7. **Quantum Interference**: Double-slit and Mach-Zehnder patterns
-8. **Qubit Systems**: Bloch sphere from S_2 geometry
-9. **Energy Quantization**: Discrete levels from spectral decomposition
+### High Confidence Results (90-99%, computationally validated and formally verified):
+1. **Information Space Structure**: S_N permutohedron geometry (original)
+2. **Constraint Threshold**: K(N) = N-2 (triple proof: Mahonian, Coxeter, MaxEnt) ⭐ **Novel contribution**
+3. **Born Rule**: P = |ψ|² formalized via maximum entropy + Gleason's theorem (literature-supported)
+4. **Hamiltonian Emergence**: H = D - A (graph Laplacian structure, computationally validated)
+5. **Theorem D.1**: Fisher metric = Fubini-Study, LaplaceBeltrami → GraphLaplacian (Braunstein & Caves 1994)
+6. **Schrödinger Equation**: iℏ∂_t|ψ⟩ = Ĥ|ψ⟩ formalized via Fisher geodesic flow
+7. **Quantum Interference**: Double-slit and Mach-Zehnder patterns (computational validation)
+8. **Qubit Systems**: Bloch sphere from S_2 geometry (computational validation)
+9. **Energy Quantization**: Discrete levels from spectral decomposition (computational validation)
 
 ### Moderate Confidence Results (75-89%, strong evidence):
 - **Measurement Mechanism**: Constraint tightening + decoherence
@@ -667,9 +667,9 @@ python test_born_rule_derivation.py # Born rule computational check
 
 ## Research Context
 
-This repository implements active theoretical research in fundamental physics. The central claim: **Core principles of non-relativistic quantum mechanics can be derived from logical consistency acting on information**, rather than postulated axiomatically.
+This repository implements active theoretical research in fundamental physics. The central claim: **An information-theoretic perspective on non-relativistic quantum mechanics reveals deep connections between logical consistency, information geometry, and quantum structure**.
 
-**Mission**: Replace the five postulates of standard quantum mechanics with "one axiom, one postulate" foundation (see MISSION_STATEMENT.md).
+**Mission**: Develop an alternative foundation for quantum mechanics emphasizing computational structures (finite symmetric groups), testable predictions (finite-N corrections), and novel results (K(N)=N-2 constraint threshold). The Lean formalization has 138 axioms comprising foundational principles, standard theorems (Piron-Solèr, Gleason, CCR/CAR), and original LFT contributions (see MISSION_STATEMENT.md and AXIOM_HONESTY_AUDIT.md).
 
 **Current Status**: 18 notebooks complete, 11 Lean modules formalized, 10 falsifiable predictions pre-registered.
 
@@ -711,6 +711,30 @@ This research program and methodology may be relevant to:
 - Executable proofs with visualizations
 - Integration with symbolic computation
 
+## Axiom Transparency and Intellectual Honesty
+
+**Complete Axiom Audit**: See [`AXIOM_HONESTY_AUDIT.md`](AXIOM_HONESTY_AUDIT.md) for comprehensive analysis of the 138 axioms in the Lean formalization.
+
+**Key Findings**:
+- **Total Axioms**: 138 (not "one axiom" as previously claimed)
+- **Comparison to Standard QM**: Standard QM has ~5 core axioms; LFT has 138 axioms (27× more)
+- **Breakdown by Category**:
+  - Foundational principles (3FLL, Information Space): ~5 axioms
+  - Novel LFT results (K(N)=N-2, finite-N framework): ~15 axioms
+  - Literature-supported theorems (Piron-Solèr, Gleason, CCR/CAR, Fisher geometry): ~80 axioms
+  - Infrastructure (lattice operations, group theory): ~38 axioms
+
+**Honest Contribution Assessment**:
+- ✅ **Novel contributions**: K(N)=N-2 constraint threshold, finite-N computational framework, testable predictions (finite-N corrections), symmetric group models
+- ✅ **Alternative perspective**: Information-theoretic view connecting logic, information geometry, and quantum structure
+- ❌ **Not a claim**: Axiom reduction compared to standard QM (LFT has more axioms, not fewer)
+- ❌ **Not a claim**: Non-circular derivation of all QM (many QM results are axiomatized with proper citations)
+- ❌ **Not a claim**: More foundational than standard QM (different perspective, not simpler foundation)
+
+**What changed**: Early repository claims of "one axiom, one postulate, one principle" foundation have been revised to reflect the reality of the Lean formalization. This update (Sprint 14.3, October 2025) brings all documentation into alignment with the actual axiom count.
+
+**Transparency commitment**: All 138 axioms are documented with clear justifications (foundational principles, literature citations, or novel contributions). See [`TYPE_B_AXIOM_ASSESSMENT.md`](TYPE_B_AXIOM_ASSESSMENT.md) for module-by-module breakdown.
+
 ## Citation
 
 If you use this work in research, please cite:
@@ -721,9 +745,9 @@ If you use this work in research, please cite:
   title = {Physical Logic Framework: Logic Realism and Logic Field Theory Research Program},
   year = {2025},
   url = {https://github.com/jdlongmire/physical-logic-framework},
-  note = {Computational notebooks, formal proofs, and papers for quantum mechanics
-          derivation from logical consistency. 18 production notebooks (~65,000 words),
-          11 Lean modules (61% formalized), 10 falsifiable predictions pre-registered.}
+  note = {Information-theoretic perspective on quantum mechanics with computational validation,
+          formal Lean verification (138 axioms), and testable predictions. 25 production notebooks
+          (~70,000 words), 20 Lean modules, 10 falsifiable predictions pre-registered.}
 }
 ```
 
@@ -731,7 +755,7 @@ If you use this work in research, please cite:
 ```bibtex
 @article{longmire2025logic_realism,
   author = {Longmire, James D.},
-  title = {Logic Realism: Deriving Quantum Mechanics from Logical Consistency},
+  title = {Logic Realism: An Information-Theoretic Perspective on Quantum Mechanics},
   journal = {arXiv preprint},
   year = {2025},
   note = {In preparation}
