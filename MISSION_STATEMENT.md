@@ -9,11 +9,11 @@
 
 ## Mission Statement
 
-The Physical Logic Framework pursues a dual mission: (1) to decompose fundamental physics to its most primitive conceptual foundations, and (2) to rigorously derive the mathematical structure of quantum mechanics from those foundations. Where conventional physics begins with five postulates (state space, observables, measurement, dynamics, composite systems), we ask: *Why* do these postulates take the form they do? Can they be replaced with a more fundamental principle?
+The Physical Logic Framework pursues a dual mission: (1) to decompose fundamental physics to its most primitive conceptual foundations, and (2) to rigorously formalize the mathematical structure of quantum mechanics from an information-theoretic perspective. Where conventional physics begins with five postulates (state space, observables, measurement, dynamics, composite systems), we ask: *Why* do these postulates take the form they do? Can they be understood through a more fundamental principle?
 
-This framework proposes that quantum mechanics is not a collection of axioms about nature, but rather a theorem about the structure that must emerge when logic filters information. We formalize this through the **Logic Realism Principle**: Actualized Reality is the result of applying Logical constraints to an infinite Information space (A = L(I)). Our goal is to replace the traditional axioms of quantum mechanics with a minimal foundation: one necessary axiom (the Three Fundamental Laws of Logic) and one existential postulate (the Infinite Information Space).
+This framework proposes an alternative foundation for quantum mechanics through the **Logic Realism Principle**: Actualized Reality is the result of applying Logical constraints to an infinite Information space (A = L(I)). The Lean formalization comprises **138 axioms** including foundational principles (Three Fundamental Laws of Logic, Information Space), literature-supported theorems (Piron-Solèr, Gleason, CCR/CAR), and novel LFT results (K(N)=N-2 constraint threshold, finite-N framework, testable predictions).
 
-This research program is not merely a reformulation of quantum mechanics, but an attempt to answer the question: *Why is the universe quantum mechanical?* If successful, quantum behavior becomes inevitable—a consequence of logical necessity acting on information—rather than a brute fact requiring explanation.
+This research program is not an axiom reduction vs. standard quantum mechanics (which has ~5 core axioms), but rather an attempt to explore the question: *Why is the universe quantum mechanical?* The framework provides novel computational structures (finite symmetric groups), falsifiable predictions (finite-N corrections), and an information-theoretic perspective on quantum foundations.
 
 ---
 
@@ -77,39 +77,39 @@ From this minimal setup, we derive:
 
 ---
 
-## What Has Been Derived
+## Key Results
 
-The following results have been rigorously developed through computational validation (Jupyter notebooks) and formal proof (Lean 4 verification):
+The following results have been developed through computational validation (Jupyter notebooks) and formal verification (Lean 4 with 138 axioms):
 
 ### Foundation Layer (Notebooks 00-05, Lean: Foundations/)
 
-1. **Information Space Structure** (Notebook 00-01)
+1. **Information Space Structure** (Notebook 00-01) ⭐ *Original contribution*
    - S_N permutohedron geometry as information manifold
    - Constraint threshold K(N) = N-2 derived from three independent proofs (Mahonian statistic, Coxeter theory, maximum entropy)
-   - **Lean**: `InformationSpace.lean`, `ConstraintThreshold.lean` (0 sorrys)
+   - **Lean**: `InformationSpace.lean`, `ConstraintThreshold.lean`
 
-2. **Born Rule** (Notebook 03, Lean: MaximumEntropy.lean, BornRule.lean)
-   - Derived P = |ψ|² from maximum entropy principle on V_K
-   - Proven non-circular (does not assume quantum mechanics)
-   - **Lean**: `MaximumEntropy.lean`, `BornRuleNonCircularity.lean` (0 sorrys)
+2. **Born Rule** (Notebook 03, Lean: MaximumEntropy.lean, BornRule.lean) *Literature-supported (Gleason)*
+   - Formalized P = |ψ|² via maximum entropy principle on V_K and Gleason's theorem
+   - Framework non-circularity: does not presuppose quantum mechanics structure
+   - **Lean**: `MaximumEntropy.lean`, `BornRule.lean`
 
-3. **Hamiltonian as Graph Laplacian** (Notebook 05, Lean: GraphLaplacian.lean, TheoremD1.lean)
+3. **Hamiltonian as Graph Laplacian** (Notebook 05, Lean: GraphLaplacian.lean, TheoremD1.lean) *Literature-supported (Theorem D.1)*
    - H = D - A emerges from discrete diffusion on permutohedron
-   - Proven equivalence: Fisher metric → Graph Laplacian → Quantum Hamiltonian (Theorem D.1)
-   - **Lean**: `GraphLaplacian.lean`, `TheoremD1.lean` (0 sorrys)
+   - Formalized equivalence: Fisher metric → Graph Laplacian → Quantum Hamiltonian (Theorem D.1 from literature)
+   - **Lean**: `GraphLaplacian.lean`, `TheoremD1.lean`
 
 ### Quantum Dynamics (Notebooks 06-09, Lean: Dynamics/, QuantumEmergence/)
 
-4. **Schrödinger Equation** (Notebook 06, Lean: QuantumDynamics.lean)
-   - Derived iℏ∂_t|ψ⟩ = Ĥ|ψ⟩ from minimum Fisher information principle
+4. **Schrödinger Equation** (Notebook 06, Lean: QuantumDynamics.lean) *Computational validation*
+   - Formalized iℏ∂_t|ψ⟩ = Ĥ|ψ⟩ from minimum Fisher information principle
    - Time evolution as geodesic flow on Fisher metric manifold
-   - **Lean**: `QuantumDynamics.lean` (0 sorrys)
+   - **Lean**: `QuantumDynamics.lean`
 
-5. **Measurement Mechanism** (Notebooks 07-09, Lean: MeasurementMechanism.lean)
+5. **Measurement Mechanism** (Notebooks 07-09, Lean: MeasurementMechanism.lean) *Framework-specific*
    - Measurement as constraint tightening (K → K-1 transition)
    - Observer-system interaction via decoherence
    - Collapse mechanism formalized
-   - **Lean**: `MeasurementMechanism.lean` (strategic axioms for collapse, justified by decoherence theory)
+   - **Lean**: `MeasurementMechanism.lean` (uses strategic axioms for collapse mechanism)
 
 ### Quantum Phenomena (Notebooks 10-15)
 
@@ -125,7 +125,7 @@ The following results have been rigorously developed through computational valid
 12. **Unitary Invariance** (Notebook 16): Rotational symmetry of quantum state space
 13. **Constraint Parameter Foundations** (Notebook 17): Systematic exploration of K(N)
 
-**Status**: 18 notebooks (~65,000 words), 11 notebooks formalized in Lean 4 (61% coverage), 11 production Lean modules with 0 sorrys in core theorems.
+**Status**: 18 notebooks (~65,000 words), 11 notebooks formalized in Lean 4 (61% coverage), formal verification with 138 axioms (foundational principles + literature-supported theorems + novel LFT results).
 
 ---
 
@@ -334,19 +334,54 @@ The philosophical principle (A = L(I)) does not uniquely determine the mathemati
 
 ## Summary: Mission in Brief
 
-**One Axiom**: The Three Fundamental Laws of Logic are ontologically necessary (justified empirically and philosophically).
+**Foundation**: The Three Fundamental Laws of Logic (3FLL) and an infinite information space I = ∏ S_n provide the conceptual starting point.
 
-**One Postulate**: An infinite information space I = ∏ S_n exists.
+**Central Principle**: Actualized reality is logic filtering information (A = L(I)).
 
-**One Principle**: Actualized reality is logic filtering information (A = L(I)).
+**Formalization**: Lean 4 implementation with **138 axioms** comprising:
+- Foundational principles (3FLL, Information Space)
+- Literature-supported theorems (Piron-Solèr, Gleason, CCR/CAR)
+- Novel LFT results (K(N)=N-2, finite-N framework)
 
-**One Goal**: Derive quantum mechanics as a theorem, not a postulate set, thereby explaining *why* the universe is quantum mechanical.
+**Research Goal**: Explore an information-theoretic perspective on quantum mechanics that provides:
+- Novel computational structures (finite symmetric groups)
+- Falsifiable predictions (finite-N corrections)
+- Alternative foundation emphasizing logical constraints on information
 
-**Current Status**: Core principles of non-relativistic quantum mechanics successfully derived; known limitations honestly documented; falsifiable predictions specified; active research program with clear roadmap.
+**Current Status**: Core principles of non-relativistic quantum mechanics formalized in Lean 4; computational validation complete; known limitations honestly documented; falsifiable predictions specified; active research program with clear roadmap.
+
+**Honest Assessment**: This is NOT an axiom reduction vs. standard QM (~5 axioms). This IS an alternative perspective with original contributions (K(N)=N-2) and testable predictions.
 
 ---
 
-**Last Updated**: October 11, 2025
+## Axiom Transparency and Intellectual Honesty
+
+**Complete Axiom Audit**: See `AXIOM_HONESTY_AUDIT.md` for comprehensive breakdown.
+
+**Key Findings**:
+- **Total Axioms**: 138 (Lean formalization count)
+- **Comparison to Standard QM**: Standard QM ~5 core axioms; LFT 138 axioms (27× more)
+- **Breakdown by Category**:
+  - Foundational principles (3FLL, Information Space): ~5 axioms
+  - Novel LFT results (K(N)=N-2, finite-N framework): ~15 axioms
+  - Literature-supported theorems (Piron-Solèr, Gleason, CCR/CAR): ~80 axioms
+  - Infrastructure (lattice operations, group theory, Hilbert space): ~38 axioms
+
+**Honest Contribution Assessment**:
+- ✅ **Novel contributions**: K(N)=N-2 constraint threshold, finite-N framework, testable predictions (interference visibility, spectral gaps)
+- ✅ **Alternative perspective**: Information-theoretic view of quantum foundations
+- ✅ **Computational structures**: Symmetric group realization, permutohedron geometry
+- ❌ **Not a claim**: Axiom reduction compared to standard QM
+- ❌ **Not a claim**: Non-circular derivation of all quantum mechanics from pure logic
+- ❌ **Not a claim**: More fundamental than standard QM formulations
+
+**What Changed**: Early project claims of "one axiom, one postulate, one principle" foundation were revised in October 2025 to accurately reflect Lean formalization reality (138 axioms). This revision was made to ensure intellectual honesty and transparent communication of actual contributions vs. aspirational goals.
+
+**Scientific Integrity**: All axioms are documented with justifications (foundational necessity, literature citations, or novel framework requirements). The framework's value lies in its perspective and predictions, not in axiom minimization.
+
+---
+
+**Last Updated**: October 16, 2025
 **Framework Version**: 1.0
 **Repository**: [Physical Logic Framework](https://github.com/jdlongmire/physical_logic_framework)
 **Contact**: James D. Longmire (ORCID: 0009-0009-1383-7698)
