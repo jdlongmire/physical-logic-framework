@@ -76,8 +76,26 @@ This follows from the fact that swap(i, i+1) is a non-trivial permutation.
 **Mathematical justification**: If σ = σ * s for some permutation s, then s = 1 (identity).
 But swap(i, i+1) ≠ 1 for i ≠ i+1, so σ * swap(i, i+1) ≠ σ.
 **Reference**: Standard result in group theory (non-trivial group elements act non-trivially). -/
-axiom adjacentTransposition_loopless {N : ℕ} (σ : Equiv.Perm (Fin N)) :
-  ¬ adjacentTransposition σ σ
+theorem adjacentTransposition_loopless {N : ℕ} (σ : Equiv.Perm (Fin N)) :
+  ¬ adjacentTransposition σ σ := by
+  intro ⟨i, h⟩
+  -- h : σ = σ * Equiv.swap a b where a = ⟨i, _⟩, b = ⟨i+1, _⟩
+  -- Define the two indices for clarity
+  let a : Fin N := ⟨i.val, Nat.lt_of_lt_of_le i.2 (Nat.sub_le N 1)⟩
+  let b : Fin N := ⟨i.val + 1, by omega⟩
+  -- From σ = σ * swap(a,b), deduce swap(a,b) = 1 by group cancellativity
+  have h_swap_eq_one : Equiv.swap a b = 1 := by
+    have : σ * Equiv.swap a b = σ * 1 := by rw [← h]; simp
+    exact mul_left_cancel this
+  -- But a ≠ b (i ≠ i+1)
+  have h_ne : a ≠ b := by
+    intro h_eq
+    injection h_eq with h_val
+    omega
+  -- Swap of distinct elements is not identity, contradiction
+  have : Equiv.swap a b a = a := by rw [h_swap_eq_one]; rfl
+  rw [Equiv.swap_apply_left] at this
+  exact h_ne this.symm
 
 /-- The permutohedron graph: vertices are permutations, edges are adjacent transpositions.
 This is the Cayley graph Cay(S_N, T) where T is the set of adjacent transpositions. -/
