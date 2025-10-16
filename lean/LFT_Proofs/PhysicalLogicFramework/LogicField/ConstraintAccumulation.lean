@@ -168,14 +168,14 @@ theorem constraint_rate_is_derivative (ε : ℝ) (h_pos : ε > 0) :
   rfl
 
 /--
-**AXIOM: CONSTRAINT RATE IS THE FORMAL DERIVATIVE**
+**THEOREM: CONSTRAINT RATE IS THE FORMAL DERIVATIVE**
 
-This axiom establishes that ConstraintRate is the derivative of ConstraintAccumulation
+This theorem establishes that ConstraintRate is the derivative of ConstraintAccumulation
 using Lean's HasDerivAt predicate.
 
-**JUSTIFICATION** (Team Validated - Grok Quality Score: 0.84/1.0):
+**PROOF** (Team Validated - Grok Quality Score: 0.84/1.0):
 
-Mathematical Proof Sketch (2025-10-10 consultation):
+Mathematical Strategy (2025-10-10 consultation):
 1. C(ε) = γε(1 - e^(-ε/ε₀)) is the product (γε) * (1 - e^(-ε/ε₀))
 2. Apply product rule: d/dε[f·g] = f'·g + f·g'
    - f = γε, f' = γ
@@ -183,17 +183,43 @@ Mathematical Proof Sketch (2025-10-10 consultation):
 3. Result: dC/dε = γ(1 - e^(-ε/ε₀)) + γε·(1/ε₀)e^(-ε/ε₀)
           = γ(1 - e^(-ε/ε₀)) + γ(ε/ε₀)e^(-ε/ε₀)
           = ConstraintRate ε ✓
-
-Technical Obstacles (Lean 4 Syntax):
-- Type coercion: γ * 1 vs γ in HasDerivAt.const_mul
-- HasDerivAt.div_const structure mismatch with Mathlib version
-- Real.hasDerivAt_exp.comp argument ordering in current Mathlib
-
-Status: Mathematically rigorous and team-validated. Axiomatized pending
-resolution of Mathlib 4 syntax details. The mathematical content is sound.
 -/
-axiom constraint_has_deriv_at (ε : ℝ) (h_pos : ε > 0) :
-  HasDerivAt C (ConstraintRate ε) ε
+theorem constraint_has_deriv_at (ε : ℝ) (h_pos : ε > 0) :
+  HasDerivAt C (ConstraintRate ε) ε := by
+  unfold ConstraintAccumulation ConstraintRate
+  -- C(ε) = γ * ε * (1 - exp(-ε/ε₀))
+  -- Apply product rule: d/dε[(γε) * (1 - exp(-ε/ε₀))]
+
+  -- First factor: γ * ε with derivative γ
+  have hf : HasDerivAt (fun x => γ * x) γ ε := by
+    have : HasDerivAt id 1 ε := hasDerivAt_id ε
+    have h := this.const_mul γ
+    simp only [id, mul_one] at h
+    exact h
+
+  -- Second factor: 1 - exp(-ε/ε₀) with derivative (1/ε₀) * exp(-ε/ε₀)
+  have hg : HasDerivAt (fun x => 1 - Real.exp (-x / ε₀)) ((1 / ε₀) * Real.exp (-ε / ε₀)) ε := by
+    -- Start with exp function
+    have h_exp : HasDerivAt Real.exp (Real.exp (-ε / ε₀)) (-ε / ε₀) := Real.hasDerivAt_exp (-ε / ε₀)
+    -- Compose with -x/ε₀
+    have h_inner : HasDerivAt (fun x => -x / ε₀) (-(1 / ε₀)) ε := by
+      have h1 := hasDerivAt_id ε
+      have h2 := h1.neg
+      have h3 := h2.div_const ε₀
+      simp only [neg_div] at h3
+      exact h3
+    have h_comp := h_exp.comp ε h_inner
+    simp only [Function.comp] at h_comp
+    -- Now get derivative of 1 - exp(-x/ε₀)
+    have h_sub := h_comp.const_sub 1
+    simp only [sub_eq_add_neg] at h_sub
+    convert h_sub using 1
+    ring
+
+  -- Apply product rule
+  have h_prod := hf.mul hg
+  convert h_prod using 1
+  ring
 
 /--
 Initial conditions for the constraint accumulation equation.
@@ -245,26 +271,45 @@ theorem universal_form_satisfies_derivative (ε : ℝ) (h_pos : ε > 0) :
   exact constraint_rate_is_derivative ε h_pos
 
 /--
-**AXIOM: ASYMPTOTIC LINEARITY**
+**THEOREM: ASYMPTOTIC LINEARITY**
 
 Asymptotic behavior: C(ε) approaches γε linearly for large ε.
 The absolute error is exponentially suppressed.
 
-**JUSTIFICATION** (Standard Asymptotic Analysis):
+**PROOF** (Standard Asymptotic Analysis):
 
-Mathematical Proof Sketch:
+Mathematical Strategy:
 1. C(ε) = γε(1 - e^(-ε/ε₀)) by definition
 2. Compute error: C(ε) - γε = γε(1 - e^(-ε/ε₀)) - γε = -γε·e^(-ε/ε₀)
 3. This difference is negative (γ > 0, ε > 0, exp > 0)
 4. Therefore |C(ε) - γε| = |-γε·e^(-ε/ε₀)| = γε·e^(-ε/ε₀)
-
-Verification: Algebraic identity confirmed by ring normalization and abs_of_neg.
-
-Status: Mathematically rigorous, requires only algebraic manipulation and
-absolute value of negative numbers. Axiomatized for Sprint 7 timeline efficiency.
 -/
-axiom constraint_asymptotic_linearity :
-  ∀ ε_large : ℝ, ε_large > 10 * ε₀ → |C ε_large - γ * ε_large| = γ * ε_large * Real.exp (-ε_large / ε₀)
+theorem constraint_asymptotic_linearity :
+  ∀ ε_large : ℝ, ε_large > 10 * ε₀ → |C ε_large - γ * ε_large| = γ * ε_large * Real.exp (-ε_large / ε₀) := by
+  intro ε h_large
+  unfold ConstraintAccumulation
+  -- Goal: |γ * ε * (1 - Real.exp (-ε / ε₀)) - γ * ε| = γ * ε * Real.exp (-ε / ε₀)
+
+  -- Simplify left side
+  have h_eq : γ * ε * (1 - Real.exp (-ε / ε₀)) - γ * ε = -(γ * ε * Real.exp (-ε / ε₀)) := by
+    ring
+  rw [h_eq]
+
+  -- Show the expression is negative
+  have h_neg : -(γ * ε * Real.exp (-ε / ε₀)) < 0 := by
+    apply neg_neg_of_pos
+    apply mul_pos
+    apply mul_pos
+    · norm_num [UniversalParameter] -- γ = 1 > 0
+    · -- ε > 10 * ε₀ > 0
+      have h_10_pos : (10 : ℝ) > 0 := by norm_num
+      have h_eps0_pos : ε₀ > 0 := by norm_num [FundamentalScale]
+      exact lt_trans (mul_pos h_10_pos h_eps0_pos) h_large
+    · exact Real.exp_pos _
+
+  -- Apply abs_of_neg
+  rw [abs_of_neg h_neg]
+  ring
 
 -- =====================================================================================
 -- PHYSICAL CONSEQUENCES AND APPLICATIONS
@@ -365,18 +410,17 @@ axiom mvt_for_constraint (ε₁ ε₂ : ℝ) (h_lt : ε₁ < ε₂) (h_diff : Di
   ∃ c ∈ Set.Ioo ε₁ ε₂, (C ε₂ - C ε₁) / (ε₂ - ε₁) = deriv C c
 
 /--
-**AXIOM: HASDERIVAT IMPLIES DERIV EQUALITY**
+**THEOREM: HASDERIVAT IMPLIES DERIV EQUALITY**
 
 Connection between HasDerivAt and deriv for constraint rate.
 
-**JUSTIFICATION**: By constraint_has_deriv_at (axiomatized above with team validation),
+**PROOF**: By constraint_has_deriv_at (proved above),
 we have HasDerivAt C (ConstraintRate ε) ε. By Mathlib's HasDerivAt.deriv, this implies
 deriv C ε = ConstraintRate ε.
-
-Status: Direct consequence of HasDerivAt definition and Mathlib's HasDerivAt.deriv theorem.
 -/
-axiom has_deriv_at_implies_deriv_eq (ε : ℝ) (h_pos : ε > 0) :
-  deriv C ε = ConstraintRate ε
+theorem has_deriv_at_implies_deriv_eq (ε : ℝ) (h_pos : ε > 0) :
+  deriv C ε = ConstraintRate ε :=
+  (constraint_has_deriv_at ε h_pos).deriv
 
 /--
 **AXIOM: CONSTRAINT DIFFERENTIABLE ON INTERVALS**
