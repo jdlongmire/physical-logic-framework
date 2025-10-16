@@ -11,18 +11,20 @@
 
 ## Abstract
 
-We establish **Logic Realism**—the principle that the classical laws of logic (Identity, Non-Contradiction, Excluded Middle) are ontologically primitive and physically prescriptive—as the foundational framework for deriving physical law from first principles. Unlike conventional approaches that treat logic as descriptive or emergent, Logic Realism posits that logic actively constrains the space of physically realizable configurations, transforming pure information into actualized reality through the mapping **A = L(I)**.
+We establish **Logic Realism**—the principle that the classical laws of logic (Identity, Non-Contradiction, Excluded Middle) are ontologically primitive and physically prescriptive—as a foundational framework for quantum mechanics. Unlike conventional approaches that treat logic as descriptive or emergent, Logic Realism posits that logic actively constrains the space of physically realizable configurations, transforming pure information into actualized reality through the mapping **A = L(I)**.
 
-We demonstrate that this single principle, combined with Maximum Entropy reasoning, uniquely determines:
+Building from three foundational axioms (3FLL, Infinite Information Space, Actualization principle), combined with Maximum Entropy reasoning, we formalize:
 1. The Born rule of quantum mechanics
 2. The Hilbert space structure and complex amplitudes
 3. Hamiltonian dynamics via graph Laplacian formulation
 4. The arrow of time from monotonic logical consistency
 5. Conservation laws via Noether correspondence on permutation symmetry
 
-We prove the **Lagrangian-Hamiltonian duality** of logical dynamics, showing that minimal-inconsistency (logical action principle) and minimum Fisher information (Hamiltonian formulation) are equivalent variational principles. The framework is empirically grounded in the consistency of all recorded measurements with the logical field framework once recast through $S_N$ structure, and provides explicit falsification criteria.
+We demonstrate the **Lagrangian-Hamiltonian duality** of logical dynamics, showing that minimal-inconsistency (logical action principle) and minimum Fisher information (Hamiltonian formulation) are equivalent variational principles. The framework is empirically grounded in the consistency of all recorded measurements with the logical field framework once recast through $S_N$ structure, and provides explicit falsification criteria.
 
-**Scope**: This framework currently reformulates quantum **statics** (Born rule, Hilbert space) and **unitary dynamics** (Hamiltonian evolution) for **path-distinguishable and basis-distinguishable systems**. Two critical extensions remain open: (1) measurement collapse dynamics, and (2) indistinguishable particles (fermions/bosons via Young tableaux). Within its established domain, Logic Realism repositions logic from abstract formalism to physical substrate, deriving quantum probability structure from logical necessity rather than postulates.
+**Formalization**: Lean 4 verification with **138 axioms** comprising foundational principles (3FLL, Information Space), literature-supported theorems (Piron-Solèr, Gleason, CCR/CAR), and novel LFT results (K(N)=N-2 constraint threshold, finite-N framework). Production modules compile with 0 `sorry` statements. Complete axiom breakdown available in repository documentation.
+
+**Scope**: This framework currently reformulates quantum **statics** (Born rule, Hilbert space) and **unitary dynamics** (Hamiltonian evolution) for **path-distinguishable and basis-distinguishable systems**. Two critical extensions remain open: (1) measurement collapse dynamics (Section 5.6), and (2) indistinguishable particles (Section 8.4.1, fermions/bosons via Young tableaux). Within its established domain, Logic Realism provides an information-theoretic perspective on quantum foundations with testable predictions distinguishing from standard QM.
 
 **Keywords**: Logic Realism, foundational physics, quantum foundations, information theory, variational principles, Lagrangian-Hamiltonian duality
 
@@ -74,9 +76,10 @@ This paper establishes the **philosophical and mathematical foundations** of Log
 5. **Proof sketches** for key theorems with full proofs in appendices
 
 **Supporting Materials**:
-- **Lean 4 Formalization**: Machine-verified proofs of K(N) = N-2 and MaxEnt→Born rule available in the project repository (`lean/LFT_Proofs/`) with zero axiom gaps (0 `sorry` statements)
+- **Lean 4 Formalization**: Formal verification with **138 axioms** comprising foundational principles (3FLL, Information Space), literature-supported theorems (Piron-Solèr, Gleason, CCR/CAR), and novel LFT results (K(N)=N-2, finite-N framework). Production modules compile with 0 `sorry` statements. Available in repository (`lean/LFT_Proofs/`)
 - **Computational Validation**: Python notebooks (`notebooks/`) demonstrating explicit calculations for N=3-8 systems, computing |V_K|, probabilities, and interference patterns
 - **Extended Technical Results**: Full ~18,000-word proof of Theorem D.1 (Fisher metric = Fubini-Study metric) available in repository documentation
+- **Axiom Transparency**: Complete breakdown available in repository `AXIOM_HONESTY_AUDIT.md`
 
 **Future Directions**: Applications to spacetime emergence, 3D dimension via OEIS A001892, and Lorentz symmetry derivation are active research areas building on this foundation.
 
@@ -89,6 +92,7 @@ This paper establishes the **philosophical and mathematical foundations** of Log
 **Section 6**: Lagrangian-Hamiltonian Duality (two paths to dynamics)
 **Section 7**: Experimental Falsifiability (testable predictions)
 **Section 8**: Philosophical Implications and Outlook
+**Section 9**: Axiom Transparency and Intellectual Honesty
 
 ### 1.5 Reader's Guide
 
@@ -205,20 +209,20 @@ V_K = {σ ∈ S_N : h(σ) ≤ K}
 
 Only configurations with inversion count h(σ) below threshold K are physically actualizable. All others are logically excluded.
 
-**Constraint Law** (rigorously proven):
+**Constraint Law** (established through multiple approaches):
 ```
 K(N) = N - 2
 ```
 
-This relation is not empirical tuning but a **triply-proven mathematical necessity**:[^1]
+This relation is not empirical tuning but a **multiply-justified mathematical result**:[^1]
 
-[^1]: **Note on circularity**: This paper uses K(N) = N-2 to define V_K, then cites its derivation from MaxEnt symmetry. This is not circular: K(N) = N-2 is **independently derived** via three distinct mathematical routes (Mahonian symmetry, Coxeter braid relations, MaxEnt selection), each sufficient on its own. Here we present the constraint threshold as established fact and show its consequences for Logic Realism. The full derivations (~4,500 words) are available in the repository technical documentation and Lean formalization.
+[^1]: **Note on formalization approach**: This paper uses K(N) = N-2 to define V_K, then cites its derivation from MaxEnt symmetry. This is not circular: K(N) = N-2 is **independently justified** via three distinct mathematical routes (Mahonian symmetry, Coxeter braid relations, MaxEnt selection), each sufficient on its own. Here we present the constraint threshold as established fact and show its consequences for Logic Realism. The full derivations (~4,500 words) are available in the repository technical documentation and Lean formalization (138 axioms total across all modules).
 
 1. **Mahonian Symmetry**: Unique symmetric partition of S_N
 2. **Coxeter Braid Relations**: K = N-2 equals the number of irreducible braid relations in the type A_{N-1} root system
 3. **Maximum Entropy Selection**: Preserves informational symmetry under the principle of insufficient reason
 
-**Lean Formalization**: Machine-verified proof with 0 `sorry` statements (~400 lines)
+**Lean Formalization**: Formal verification across 138 axioms in production modules, with 0 `sorry` statements (see `AXIOM_HONESTY_AUDIT.md` for complete breakdown)
 
 ![Figure 2: Logical Constraint Structure](figures/logic_realism_fig2_constraint.png)
 **Figure 2**: Logical Constraint Structure for N=5 with K=3. The histogram shows the distribution of inversion counts h(σ) across all 120 permutations in S_5. Only 15 permutations (green, left of threshold) satisfy h(σ) ≤ K = N-2 = 3 and are physically allowed in V_K. The remaining 105 permutations (red, right of threshold) violate the logical constraint and are excluded from physical reality.
@@ -1085,10 +1089,10 @@ Does Logic Realism predict a cosmological arrow of time or initial conditions? (
 
 **Current Work** (This Paper):
 - Logic Realism foundational framework established
-- Born rule derived from MaxEnt on logically constrained space
-- K(N) = N-2 proven three ways (Mahonian, Coxeter, MaxEnt)
+- Born rule formalized via MaxEnt on logically constrained space
+- K(N) = N-2 justified through multiple approaches (Mahonian, Coxeter, MaxEnt)
 - Lagrangian-Hamiltonian duality demonstrated
-- Lean formalization complete (0 `sorry` statements)
+- Lean formalization: 138 axioms across production modules (0 `sorry` statements; combines foundational principles, literature-supported theorems, novel LFT results)
 - Experimental predictions specified
 
 **Near-Term Research** (Active Development):
@@ -1113,7 +1117,7 @@ Does Logic Realism predict a cosmological arrow of time or initial conditions? (
 
 The framework is:
 - **Empirically grounded** (all recorded observations consistent with logical framework)
-- **Mathematically rigorous** (Theorems proven, Lean-verified with 0 `sorry` statements)
+- **Formally verified** (138-axiom Lean formalization with 0 `sorry` statements in production modules; combines foundational principles, literature-supported theorems, and novel LFT results)
 - **Experimentally falsifiable** (explicit predictions at finite N and Planck scale)
 - **Philosophically coherent** (resolves foundational puzzles within its scope)
 
@@ -1129,6 +1133,68 @@ The framework is:
 > Physical law is logic made quantitative.
 
 This remains a conjecture, not established fact. Its validation requires: (1) experimental confirmation of finite-N predictions, (2) successful extension to fermionic/bosonic statistics, and (3) rigorous derivation of measurement dynamics. Until then, Logic Realism stands as a promising but incomplete program.
+
+---
+
+## 9. Axiom Transparency and Intellectual Honesty
+
+### 9.1 Formalization Approach
+
+**Complete Axiom Count**: The Lean 4 formalization comprises **138 axioms** across production modules:
+- **Foundations**: 16 axioms
+- **QuantumEmergence**: 72 axioms
+- **Dynamics**: 18 axioms
+- **LogicField**: 8 axioms
+- **Indistinguishability**: 17 axioms
+- **LogicRealism**: 7 axioms
+
+**Production Status**: All production modules compile with **0 `sorry` statements**. Exploratory code in `supporting_material/` contains work-in-progress proofs not used in main formalization.
+
+### 9.2 Axiom Categories
+
+**Breakdown by Justification**:
+1. **Foundational Principles** (~5 axioms): Three Fundamental Laws of Logic (3FLL), Infinite Information Space (I), Actualization principle A = L(I)
+2. **Novel LFT Results** (~15 axioms): K(N)=N-2 constraint threshold, finite-N framework, testable predictions
+3. **Literature-Supported Theorems** (~80 axioms): Piron-Solèr theorem, Gleason's theorem, CCR/CAR algebras (axiomatized with citations; ~50-page proofs deferred as literature results)
+4. **Mathematical Infrastructure** (~38 axioms): Lattice operations, group theory, Hilbert space structure
+
+**Complete Documentation**: See `AXIOM_HONESTY_AUDIT.md` in repository for line-by-line justifications.
+
+### 9.3 Honest Contribution Assessment
+
+**This Framework IS**:
+- ✅ A formal verification of Logic Realism with 138 axioms
+- ✅ An information-theoretic perspective on quantum foundations
+- ✅ A source of novel predictions (finite-N corrections, K(N)=N-2)
+- ✅ A multiply-justified constraint threshold (Mahonian, Coxeter, MaxEnt)
+
+**This Framework IS NOT**:
+- ❌ An axiom reduction vs. standard QM (~5 core axioms)
+- ❌ A first-principles proof of Gleason's theorem (axiomatized with literature citation)
+- ❌ A complete theory of measurement collapse (Section 5.6 acknowledges this gap)
+- ❌ A fully general theory of indistinguishable particles (Section 8.4.1 identifies this as primary open problem)
+
+### 9.4 Comparison to Standard Quantum Mechanics
+
+**Standard QM Axioms** (~5):
+1. States are rays in Hilbert space
+2. Observables are Hermitian operators
+3. Measurement: eigenvalue outcomes with Born rule probabilities
+4. Time evolution: Schrödinger equation iℏ∂_t|ψ⟩ = Ĥ|ψ⟩
+5. Composite systems: Tensor product structure
+
+**LFT Axioms** (138):
+- **More axioms** than standard QM, not fewer
+- **Different perspective**: Emphasizes information-theoretic and logical constraints
+- **Novel contributions**: K(N)=N-2, finite-N framework, testable predictions distinguishing from standard QM
+
+**Value Proposition**: LFT's contribution lies in its **alternative foundation** (logic + information → QM structure) and **testable predictions**, not in axiom minimization.
+
+### 9.5 Scientific Integrity
+
+**What Changed**: Early project documentation emphasized "deriving QM from pure logic" with minimal axioms. Formal verification reality (138 axioms, strategic axiomatization of literature results) led to revised claims in October 2025 for intellectual honesty.
+
+**Current Stance**: LFT provides an information-theoretic perspective on quantum foundations with original contributions (K(N)=N-2, finite-N corrections) and falsifiable predictions. It complements rather than replaces standard QM formulations.
 
 ---
 
@@ -1191,7 +1257,7 @@ The author thanks the developers of Lean 4 and Mathlib for providing the formal 
 
 **Appendix B: Lean Proof Sketch (K(N) = N-2)**
 
-**Note**: This is an **illustrative sketch** showing the theorem statement structure. The complete formalization with full proof (0 `sorry` statements) is available in the project repository at `lean/LFT_Proofs/PhysicalLogicFramework/Foundations/ConstraintThreshold.lean` (~400 lines) and can be verified by running `lake build`.
+**Note**: This is an **illustrative sketch** showing the theorem statement structure. The complete formalization is available in the project repository at `lean/LFT_Proofs/PhysicalLogicFramework/` (138 axioms total across all production modules, 0 `sorry` statements in production code). The K(N)=N-2 result is established through multiple justifications (Mahonian symmetry, Coxeter braid relations, MaxEnt selection) and formalized across Foundations/ and related modules. Build with `lake build`.
 
 ```lean
 import Mathlib.Data.Fintype.Card

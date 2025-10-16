@@ -22,7 +22,7 @@ We formalize logical constraints as operators on permutation groups S_N represen
 
 For uniform ground states, quantum structure—Hilbert space, orthogonality, superposition, and interference—emerges from distinguishability requirements and phase coherence, not from quantum axioms. Born rule probabilities |⟨σ|ψ⟩|² = 1/|V_K| follow necessarily from the amplitude hypothesis, which we prove via maximum entropy applied to amplitude space (Section 3.2). The framework reduces static Born rule probabilities to two axioms (classical logic + reference ordering) plus the maximum entropy principle, compared to five axioms in standard quantum mechanics.
 
-Computational validation yields perfect accuracy across eight test cases (N=3-10, spanning three orders of magnitude in system size, 100% match with exact enumeration). Formal verification in Lean 4 achieves complete formalization: 11 production modules with 0 active sorry statements in core theorems (MaxEnt derivation, Born rule non-circularity, Hamiltonian emergence, Schrödinger equation). Strategic axioms in measurement collapse mechanism are clearly documented with justification from decoherence theory (roadmap for removal in Sprint 11 many-body extension).
+Computational validation yields perfect accuracy across eight test cases (N=3-10, spanning three orders of magnitude in system size, 100% match with exact enumeration). Formal verification in Lean 4: **138 axioms** across production modules (foundational principles, literature-supported theorems with citations, novel LFT results) with 0 `sorry` statements in production code (MaxEnt derivation, Born rule non-circularity, Hamiltonian emergence, Schrödinger equation verified). Strategic axioms in measurement collapse mechanism clearly documented with decoherence justification. Complete axiom breakdown available in `AXIOM_HONESTY_AUDIT.md`.
 
 **Scope and Limitations**: This work derives quantum probability structure (Born rule), Hamiltonian dynamics (H = D - A graph Laplacian), and time evolution (Schrödinger equation from Fisher geodesics) in a **non-relativistic setting** for **distinguishable particle systems**. The primary limitation is **indistinguishable particle statistics** (bosons/fermions): the framework currently handles distinguishable particles only; extension to exchange statistics via Young diagram filtering is under investigation (Sprint 10 target). Additional open problems include quantum field theory, relativistic extensions, and complete measurement collapse dynamics (strategic axioms with decoherence justification). Despite these limitations, deriving core quantum structure from logical consistency + maximum entropy represents genuine progress in reducing the postulational basis of quantum theory.
 
@@ -1258,6 +1258,76 @@ These indicate future research directions, not fatal objections.
 7. Complete theory from logical constraints
 
 **Realistic Outcome**: Even if full unification proves elusive, this work achieves a substantive result: *deriving* quantum probability from information theory + logical constraints, reducing QM's postulational basis.
+
+---
+
+## 6.5. Axiom Transparency and Intellectual Honesty
+
+### 6.5.1 Lean Formalization Reality
+
+**Conceptual vs. Technical Axioms**: This paper emphasizes "two foundational axioms" (classical logic + reference ordering) as the **conceptual starting point**. However, the Lean 4 formalization comprises **138 axioms** across production modules implementing this vision with mathematical rigor.
+
+**Complete Axiom Breakdown** (138 total):
+- **Foundations**: 16 axioms
+- **QuantumEmergence**: 72 axioms
+- **Dynamics**: 18 axioms
+- **LogicField**: 8 axioms
+- **Indistinguishability**: 17 axioms
+- **LogicRealism**: 7 axioms
+
+**Production Status**: All production modules compile with **0 `sorry` statements** (verified October 2025). Exploratory code in `supporting_material/` contains work-in-progress proofs not used in main formalization.
+
+### 6.5.2 Axiom Categories
+
+**Breakdown by Justification**:
+1. **Foundational Principles** (~5 axioms): Three Fundamental Laws of Logic (3FLL), Infinite Information Space (I), Actualization principle A = L(I)
+2. **Novel LFT Results** (~15 axioms): K(N)=N-2 constraint threshold (multiply-justified via Mahonian, Coxeter, MaxEnt), finite-N framework, testable predictions
+3. **Literature-Supported Theorems** (~80 axioms): Piron-Solèr theorem, Gleason's theorem, CCR/CAR algebras, MaxEnt results (axiomatized with citations to Cover & Thomas, Jaynes, Gleason; ~50-page proofs strategically deferred as established literature results)
+4. **Mathematical Infrastructure** (~38 axioms): Lattice operations, group theory, Hilbert space structure (standard mathematical machinery)
+
+**Strategic Axiomatization Rationale** (Section 5 already explains this well): We axiomatize established theory (entropy, KL divergence, Gleason) with citations to focus formal verification on novel contributions (K=N-2, Born rule derivation, L-flow monotonicity).
+
+### 6.5.3 Honest Assessment of Claims
+
+**This Paper IS**:
+- ✅ First derivation of Born rule from non-quantum axioms (classical logic + MaxEnt)
+- ✅ Multiply-justified K(N)=N-2 threshold (Mahonian + Coxeter + MaxEnt)
+- ✅ Formal verification: 138-axiom Lean formalization with 0 `sorry` in production modules
+- ✅ Novel predictions distinguishing from standard QM (finite-N corrections)
+- ✅ Reduction in **conceptual** basis: 2 foundational principles vs. 5 QM postulates
+
+**This Paper IS NOT**:
+- ❌ An axiom reduction in **technical** sense: 138 Lean axioms vs. ~5 standard QM axioms
+- ❌ A first-principles proof of Gleason's theorem (~50 pages; axiomatized with citation)
+- ❌ A complete quantum mechanics derivation (indistinguishable particles, measurement collapse unresolved)
+- ❌ A claim that complex numbers ℂ are derived (Section 3.7 acknowledges ℂ as input, not output)
+
+### 6.5.4 Comparison to Standard Quantum Mechanics
+
+**Standard QM Axioms** (~5 as per Section 1.1):
+1. Hilbert space structure
+2. Observables as Hermitian operators
+3. Born rule P = |⟨a|ψ⟩|²
+4. Schrödinger equation
+5. Measurement collapse
+
+**LFT Formalization** (138 Lean axioms):
+- **More axioms technically**, fewer conceptually
+- **Different perspective**: Information-theoretic and logical constraints
+- **Novel contributions**: K(N)=N-2, finite-N framework, multiply-justified threshold
+- **Value**: Alternative foundation with testable predictions, not axiom minimization
+
+### 6.5.5 Documentation and Reproducibility
+
+**Complete Transparency**: Repository includes:
+- `AXIOM_HONESTY_AUDIT.md` - Line-by-line justification of all 138 axioms
+- `lean/LFT_Proofs/PhysicalLogicFramework/` - Verifiable Lean source (build with `lake build`)
+- `notebooks/Logic_Realism/` - Computational validation (18 notebooks, 100% execution success)
+- `MISSION_STATEMENT.md`, `README.md`, `FOUNDATIONAL_RATIONALE_v2.md` - Consistent honest framing across all documentation
+
+**Scientific Integrity**: Early project documentation (pre-October 2025) emphasized "deriving QM from two axioms." Formal verification reality (138 axioms, strategic axiomatization of literature results) prompted revised claims for intellectual honesty. The framework's value lies in its novel perspective and predictions, not in axiom counting.
+
+**Invitation to Scrutiny**: All 138 axioms are documented, justified, and verifiable. We welcome critical review and invite researchers to examine the complete formalization.
 
 ---
 
