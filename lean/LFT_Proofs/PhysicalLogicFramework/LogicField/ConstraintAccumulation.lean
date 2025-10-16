@@ -396,15 +396,30 @@ noncomputable def TemporalParameter (C_val : ℝ) : ℝ :=
     0  -- Placeholder - actual implementation would use numerical solver
 
 /--
-**AXIOM: MEAN VALUE THEOREM FOR CONSTRAINT**
+**AXIOM: MEAN VALUE THEOREM FOR CONSTRAINT** (TYPE C - Infrastructure Complexity)
 
 Helper axiom for monotonicity proofs. Standard MVT application.
 
-**JUSTIFICATION**: Mathlib contains exists_hasDerivAt_eq_slope (Mean Value Theorem).
+**CLASSIFICATION RATIONALE**: Initially classified as Type B (30 min estimate), but reclassified
+as Type C due to Mathlib API complexity. Proof attempts encountered:
+1. Difficulty locating correct MVT theorem name (exists_hasDerivAt_eq_slope vs exists_deriv_eq_slope)
+2. Hypothesis mismatch: axiom doesn't assume ε₁ > 0, but constraint_has_deriv_at requires it
+3. Conversion between HasDerivAt, HasDerivWithinAt, and deriv predicates unclear
+
+**MATHEMATICAL JUSTIFICATION**: This is the standard Mean Value Theorem from calculus.
 For differentiable C on [ε₁, ε₂], there exists c in (ε₁, ε₂) with:
   deriv C c = (C ε₂ - C ε₁) / (ε₂ - ε₁)
 
-Status: Standard Mathlib theorem, exact name verification pending.
+C(ε) = γε(1 - e^(-ε/ε₀)) is differentiable everywhere as a composition of:
+- Multiplication (differentiable)
+- Identity function (differentiable)
+- Exponential function (differentiable)
+
+Therefore the MVT applies. The proof is standard but requires navigating Mathlib's
+derivative API carefully.
+
+**STATUS**: Deferred to later sprint phase focused on infrastructure-heavy proofs.
+Estimated 2-3 hours with careful Mathlib exploration.
 -/
 axiom mvt_for_constraint (ε₁ ε₂ : ℝ) (h_lt : ε₁ < ε₂) (h_diff : DifferentiableOn ℝ C (Set.Ioo ε₁ ε₂)) :
   ∃ c ∈ Set.Ioo ε₁ ε₂, (C ε₂ - C ε₁) / (ε₂ - ε₁) = deriv C c
