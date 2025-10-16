@@ -423,23 +423,36 @@ theorem has_deriv_at_implies_deriv_eq (ε : ℝ) (h_pos : ε > 0) :
   (constraint_has_deriv_at ε h_pos).deriv
 
 /--
-**AXIOM: CONSTRAINT DIFFERENTIABLE ON INTERVALS**
+**THEOREM: CONSTRAINT DIFFERENTIABLE ON INTERVALS**
 
 C is differentiable on any interval (ε₁, ε₂).
 
-**JUSTIFICATION**: C(ε) = γε(1 - e^(-ε/ε₀)) is a composition of:
+**PROOF**: C(ε) = γε(1 - e^(-ε/ε₀)) is a composition of:
 - Multiplication by constants (γ)
 - Identity function (ε)
 - Exponential function (e^(-ε/ε₀))
 All these are differentiable, so C is differentiable by closure properties.
-
-The detailed proof in temporal_ordering (lines 420-433, 495-512) shows the construction
-using DifferentiableAt.mul, differentiableAt_id, Real.differentiableAt_exp.comp.
-
-Status: Standard Mathlib differentiability closure. Axiomatized to simplify proof structure.
 -/
-axiom constraint_differentiable_on (ε₁ ε₂ : ℝ) (h_lt : ε₁ < ε₂) :
-  DifferentiableOn ℝ C (Set.Ioo ε₁ ε₂)
+theorem constraint_differentiable_on (ε₁ ε₂ : ℝ) (h_lt : ε₁ < ε₂) :
+  DifferentiableOn ℝ C (Set.Ioo ε₁ ε₂) := by
+  intro x hx
+  -- Show C is differentiable at any point x in the open interval
+  unfold ConstraintAccumulation
+  -- C(ε) = γ * ε * (1 - Real.exp(-ε/ε₀))
+  -- First prove DifferentiableAt, then convert to DifferentiableWithinAt
+  have h_diff_at : DifferentiableAt ℝ (fun y => γ * y * (1 - Real.exp (-y / ε₀))) x := by
+    apply DifferentiableAt.mul
+    · apply DifferentiableAt.mul
+      · apply differentiableAt_const
+      · apply differentiableAt_fun_id
+    · apply DifferentiableAt.sub
+      · apply differentiableAt_const
+      · -- For Real.exp(-ε/ε₀), use explicit composition
+        apply Real.differentiableAt_exp.comp
+        apply DifferentiableAt.div_const
+        apply DifferentiableAt.neg
+        apply differentiableAt_fun_id
+  exact h_diff_at.differentiableWithinAt
 
 /--
 Temporal ordering: Earlier times correspond to lower constraint accumulation.
