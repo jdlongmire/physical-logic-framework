@@ -1,12 +1,18 @@
 /-
-Copyright (c) 2024 James D. Longmire. All rights reserved.
+Copyright (c) 2025 James D. Longmire. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: James D. Longmire
+
+ORCID: 0009-0009-1383-7698
+Affiliation: Northrop Grumman Fellow (unaffiliated research)
 -/
 import PhysicalLogicFramework.Foundations.ThreeFundamentalLaws
 import Mathlib.GroupTheory.Perm.Basic
 import Mathlib.Data.Fintype.Perm
 import Mathlib.Analysis.SpecialFunctions.Log.Basic
+import Mathlib.Data.Set.Basic
+import Mathlib.Logic.Basic
+import Mathlib.Order.Basic
 
 -- Disable linters for foundational file
 set_option linter.style.docString false
@@ -14,17 +20,41 @@ set_option linter.unusedVariables false
 set_option linter.style.commandStart false
 
 /-!
-# Infinite Information Probability Space (I2PS) - Permutation-Based Formalization
+# Infinite Information Space (IIS) - Foundation and Particle System Realization
 
-This file establishes the infinite information probability space using the product of
-symmetric groups as the underlying structure. This aligns with the constraint counting
-theory used in FeasibilityRatio.lean and PermutationGeometry.lean.
+This file establishes the foundational concept of the Infinite Information Space (IIS)
+and its concrete realization for particle systems as an infinite product of symmetric groups.
 
-## Core Concept
+## Structure
+
+1. **Abstract IIS Foundation** - Philosophical and axiomatic basis
+2. **Three Fundamental Laws & Logical Filtering** - Constraints on actualization
+3. **Particle System Projection** - How particle physics emerges from IIS
+4. **Symmetric Groups** - Mathematical structure for permutations
+5. **Information Space Realization** - Concrete product structure ∏(n=1→∞) S_n
+6. **Measure Theory** - Probability structure and Shannon entropy
+7. **Physical Applications** - Constraint counting and temporal evolution
+
+## Philosophical Context
+
+In this framework, we model information as primitive and explore how physical reality
+emerges from logical constraints on information. This follows the information-theoretic
+tradition in quantum mechanics (Wheeler, Hardy, Chiribella, Caticha) with a novel
+application: constraint-based filtering through the symmetric group structure.
+
+## References
+
+- Wheeler, J.A. "It from Bit" - Information as foundation of physics
+- Hardy, L. "Quantum Theory From Five Reasonable Axioms" (2001)
+- Chiribella et al. "Informational derivation of quantum theory" (2010)
+- Caticha, A. "Entropic Dynamics" - Information-theoretic approaches to QM
+- This framework: Novel application of constraint-based information theory to QM
+
+## Core Concept (Particle System Realization)
 
 Information space I represents the totality of all possible orderings and relationships
-among elements. For N elements, the space is S_N (symmetric group). The I2PS is the
-infinite product Ω = ∏(n=1→∞) S_n.
+among elements. For N elements, the space is S_N (symmetric group). The concrete
+particle system realization is the infinite product Ω = ∏(n=1→∞) S_n.
 
 ## Main definitions
 
@@ -60,7 +90,138 @@ fundamental for LFT as it directly captures ordering relationships.
 namespace LFT
 
 -- =====================================================================================
--- SYMMETRIC GROUPS - BASIC STRUCTURE
+-- SECTION 1: ABSTRACT IIS FOUNDATION
+-- =====================================================================================
+
+/-!
+## Infinite Information Space (IIS) - Abstract Foundation
+
+The IIS is the primitive concept in this framework. We posit it as the substrate
+from which physical reality emerges through logical constraints.
+
+**Key Principle**: A = L(I)
+- I: Infinite Information Space (all possibilities)
+- L: Logical filtering operator (applies 3FLL)
+- A: Actualization (what can manifest)
+
+**Positioning**: This follows the information-theoretic tradition (Wheeler, Hardy,
+Chiribella, Caticha) with a novel application to symmetric group structure.
+-/
+
+/--
+**INFORMATION SPACE STRUCTURE AXIOMS**
+
+Any realization of an information space must support:
+1. **Identity**: Elements are self-identical
+2. **Distinguishability**: Elements can be distinguished
+3. **Relations**: Elements have relational structure
+4. **Richness**: Space supports observable complexity
+5. **Definiteness**: Properties have definite truth values
+-/
+class InfoSpaceStructure (I : Type*) where
+  /-- Elements have well-defined identity -/
+  has_identity : I → Prop
+  identity_holds : ∀ x : I, has_identity x
+
+  /-- Elements can be distinguished -/
+  distinguishable : I → I → Prop
+  distinguishable_irrefl : ∀ x, ¬distinguishable x x
+  distinguishable_symm : ∀ x y, distinguishable x y → distinguishable y x
+
+  /-- Elements have relational structure -/
+  relational_structure : I → I → Prop
+  structure_refl : ∀ x, relational_structure x x
+
+  /-- Space is non-trivial -/
+  non_trivial : ∃ (x y : I), x ≠ y ∧ distinguishable x y
+
+  /-- Properties are definite (classical logic for actualization) -/
+  property_definite : ∀ (P : I → Prop) (x : I), P x ∨ ¬(P x)
+
+/--
+**THE GLOBAL INFINITE INFORMATION SPACE (IIS)**
+
+Axiomatic primitive: A global information space containing all possibilities.
+
+This is a modeling choice in the information-theoretic tradition. We do not
+specify what IIS "is made of" concretely - we only require it satisfies the
+InfoSpaceStructure axioms.
+
+Different contexts (particles, fields, spacetime) correspond to different
+projections of this global IIS.
+-/
+axiom InfiniteInformationSpace : Type*
+
+/-- The global IIS satisfies the information space structure axioms -/
+axiom iis_has_structure : InfoSpaceStructure InfiniteInformationSpace
+
+-- =====================================================================================
+-- SECTION 2: THREE FUNDAMENTAL LAWS & LOGICAL FILTERING
+-- =====================================================================================
+
+/-!
+## The A = L(I) Principle
+
+Logic does not create information - it filters information to produce actualization.
+The logical filter L applies the Three Fundamental Laws of Logic (3FLL).
+-/
+
+/-- Law of Identity: A = A -/
+def satisfies_identity {I : Type*} [InfoSpaceStructure I] (x : I) : Prop :=
+  InfoSpaceStructure.has_identity x
+
+/-- Law of Non-Contradiction: ¬(P ∧ ¬P) -/
+def satisfies_non_contradiction {I : Type*} [InfoSpaceStructure I]
+    (x : I) (P : I → Prop) : Prop :=
+  ¬(P x ∧ ¬(P x))
+
+/-- Law of Excluded Middle: P ∨ ¬P -/
+def satisfies_excluded_middle {I : Type*} [InfoSpaceStructure I]
+    (x : I) (P : I → Prop) : Prop :=
+  P x ∨ ¬(P x)
+
+/-- The logical filter: L(x) = true iff x satisfies all three laws -/
+def logical_filter {I : Type*} [InfoSpaceStructure I] (x : I) : Prop :=
+  satisfies_identity x ∧
+  (∀ P : I → Prop, satisfies_non_contradiction x P) ∧
+  (∀ P : I → Prop, satisfies_excluded_middle x P)
+
+/-- Actualization: A = L(I) -/
+def Actualization (I : Type*) [InfoSpaceStructure I] : Set I :=
+  { x : I | logical_filter x }
+
+/-- Actualization is a subset of the full space -/
+theorem actualization_subset {I : Type*} [InfoSpaceStructure I] :
+    Actualization I ⊆ (Set.univ : Set I) := by
+  intro x _
+  trivial
+
+-- =====================================================================================
+-- SECTION 3: PARTICLE SYSTEM PROJECTION
+-- =====================================================================================
+
+/-!
+## From Abstract IIS to Particle Systems
+
+For particle physics, we project the global IIS onto the symmetric group structure.
+This captures ordering relationships among indistinguishable particles.
+
+**Particle Context Projection**: IIS → ∏(n=1→∞) S_n
+
+Each physical context (particles, fields, etc.) corresponds to a different
+projection of the universal IIS. The symmetric group structure is specifically
+for particle orderings.
+-/
+
+/-- Contextual projection from global IIS to specific realizations -/
+class ContextualProjection (Context : Type*) where
+  /-- Map from global IIS to context-specific structure -/
+  project : InfiniteInformationSpace → Context
+  /-- The context satisfies information axioms -/
+  context_is_info_space : InfoSpaceStructure Context
+
+-- =====================================================================================
+-- SECTION 4: SYMMETRIC GROUPS - PARTICLE ORDERING STRUCTURE
 -- =====================================================================================
 
 /--
@@ -90,7 +251,7 @@ theorem symmetric_group_card (N : ℕ) :
   simp
 
 -- =====================================================================================
--- INFORMATION SPACE - INFINITE PRODUCT OF SYMMETRIC GROUPS
+-- SECTION 5: INFORMATION SPACE - INFINITE PRODUCT OF SYMMETRIC GROUPS
 -- =====================================================================================
 
 /--
@@ -122,7 +283,7 @@ Extract the n-th component (permutation in S_n) from an information point.
 def InformationPoint.component (ω : InformationPoint) (n : ℕ) : SymmetricGroup n := ω n
 
 -- =====================================================================================
--- MEASURE THEORY STRUCTURE
+-- SECTION 6: MEASURE THEORY STRUCTURE
 -- =====================================================================================
 
 /--
@@ -166,7 +327,7 @@ theorem shannon_entropy_connection (N : ℕ) (h : N > 0) :
   use Real.log (Nat.factorial N : ℝ) / Real.log 2
 
 -- =====================================================================================
--- INFINITE INFORMATION PROBABILITY SPACE (I2PS)
+-- SECTION 7: INFINITE INFORMATION PROBABILITY SPACE (I2PS)
 -- =====================================================================================
 
 /--
@@ -200,7 +361,7 @@ The canonical I2PS instance.
 def canonicalI2PS : I2PS := {}
 
 -- =====================================================================================
--- CYLINDER SETS - FINITE CONSTRAINTS
+-- SECTION 8: CYLINDER SETS - FINITE CONSTRAINTS
 -- =====================================================================================
 
 /--
@@ -230,7 +391,7 @@ theorem cylinder_sets_generate_sigma_algebra :
   exact hA
 
 -- =====================================================================================
--- CONNECTION TO CONSTRAINT COUNTING (FeasibilityRatio.lean)
+-- SECTION 9: CONNECTION TO CONSTRAINT COUNTING
 -- =====================================================================================
 
 -- **CONSTRAINT COUNTING ON S_N**
@@ -270,7 +431,7 @@ theorem finite_projection_measure (N : ℕ) (C : SymmetricGroup N → Prop) [Dec
   · use ((Finset.univ.filter (fun σ => C σ)).card : ℝ) / (Nat.factorial N : ℝ)
 
 -- =====================================================================================
--- INFORMATION SPACE IS INFINITE
+-- SECTION 10: INFORMATION SPACE IS INFINITE
 -- =====================================================================================
 
 /--
@@ -310,7 +471,7 @@ theorem information_space_product_structure :
   InformationSpace = (∀ n : ℕ, SymmetricGroup n) := rfl
 
 -- =====================================================================================
--- CONNECTION TO PHYSICAL ACTUALIZATION
+-- SECTION 11: CONNECTION TO PHYSICAL ACTUALIZATION
 -- =====================================================================================
 
 /--
@@ -349,7 +510,7 @@ axiom actualization_correspondence (Ω_phys : Type*) [PhysicalDomain Ω_phys] :
   ∃ φ : PhysicalActualization Ω_phys → InformationSpace, Function.Injective φ
 
 -- =====================================================================================
--- CONSTRAINT ACCUMULATION AND TEMPORAL EVOLUTION
+-- SECTION 12: CONSTRAINT ACCUMULATION AND TEMPORAL EVOLUTION
 -- =====================================================================================
 
 /--
@@ -381,25 +542,45 @@ theorem constraint_accumulation_monotonic (N : ℕ) (K₁ K₂ : ℕ) (h : K₁ 
   exact Nat.le_trans hσ h
 
 -- =====================================================================================
--- MODULE SUMMARY
+-- SECTION 13: MODULE SUMMARY
 -- =====================================================================================
 
 /--
-**I2PS FOUNDATIONAL SUMMARY**
+**MODULE SUMMARY**
 
-This module establishes:
-1. I2PS = ∏(n=1→∞) S_n (infinite product of symmetric groups)
-2. Uniform measure μ_n on each S_n with μ_n(σ) = 1/n!
-3. Product measure μ = ⊗ μ_n on the infinite product
-4. Shannon entropy H(μ_n) = log₂(n!)
-5. Connection to constraint counting (FeasibilityRatio.lean)
-6. Cylinder sets as finite constraints
-7. Information space is infinite
+This module establishes the complete story from abstract foundation to concrete mathematics:
 
-This provides the rigorous measure-theoretic foundation for Logic Field Theory,
-aligning with the permutation-based constraint counting used throughout.
+**Section 1-2: Abstract Foundation**
+1. Infinite Information Space (IIS) as primitive concept
+2. InfoSpaceStructure axioms (identity, distinguishability, relations, richness, definiteness)
+3. A = L(I) principle (actualization from logical filtering)
+4. Three Fundamental Laws (identity, non-contradiction, excluded middle)
+
+**Section 3: Particle Projection**
+5. ContextualProjection framework (IIS → specific contexts)
+6. Particle systems correspond to symmetric group structure
+
+**Section 4-13: Concrete Realization**
+7. Symmetric groups S_N (permutations of N elements)
+8. InformationSpace = ∏(n=1→∞) S_n (infinite product)
+9. Uniform measure μ_n on each S_n with μ_n(σ) = 1/n!
+10. Product measure μ = ⊗ μ_n on the infinite product
+11. Shannon entropy H(μ_n) = log₂(n!)
+12. Cylinder sets (finite constraints)
+13. Information space is infinite
+14. Connection to constraint counting
+15. Physical actualization correspondence
+16. Constraint accumulation dynamics (temporal evolution)
+
+**Philosophical Positioning**:
+- Follows information-theoretic QM tradition (Wheeler, Hardy, Chiribella, Caticha)
+- Novel contribution: Constraint-based filtering through symmetric group structure
+- A = L(I) principle provides conceptual framework for emergence
+
+This provides the complete foundation for Logic Field Theory, from abstract
+principles to rigorous measure-theoretic mathematics.
 -/
-theorem i2ps_foundational_summary :
+theorem iis_foundational_summary :
   -- Information space is infinite
   Infinite InformationSpace ∧
   -- Has product structure
