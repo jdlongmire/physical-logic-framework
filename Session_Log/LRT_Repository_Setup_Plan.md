@@ -301,15 +301,34 @@ Copy from PLF `CLAUDE.md` with modifications:
 
 ### Phase 3: Theory Folder
 
-**Step 3.1: Copy and adapt main paper**
+**Step 3.1: Create fresh LRT paper (North Star)**
 
-Source: `physical_logic_framework/paper/Logic_Realism_Theory_Foundational.md`
+**NEW PAPER**: `theory/Logic_Realism_Theory.md`
 
-Action: Copy to `theory/Logic_Realism_Theory.md` with updates:
-- Add explicit S_N realization section (link to Approach 2)
-- Expand β prediction section (experimental protocol)
-- Add computational validation references (point to notebooks)
-- Update abstract with new framing
+**Important**: Written FRESH, not adapted from Approach 2 papers
+- All Approach 2 papers archived in `approach_2_reference/papers/`
+- LRT paper is THE unified paper (north star)
+- Can reference Approach 2 results, but with clean LRT framing
+
+**Structure** (from LRT_Notebook_Sequence.md and Session_16.0):
+1. **Abstract**: A = L(I) principle, 5-7 axioms, 9 notebooks, β prediction
+2. **Introduction**: Wheeler/Hardy/Chiribella lineage, information-theoretic QM
+3. **Philosophical Foundation**: Why logical constraints? (Necessity argument)
+4. **Operator Formalism**: Π_id, {Π_i}, R (abstract)
+5. **Derivations**: Time (Stone), Energy (Spohn), Born rule, Superposition, Measurement
+6. **Testable Predictions**: β ≠ 0 (primary), finite-N (secondary, cite Approach 2)
+7. **Symmetric Group Realization**: S_N as concrete example (bridge to Approach 2)
+8. **Computational Validation**: 9 notebooks
+9. **Formal Verification**: Lean 4, 5-7 axioms, 0 sorry
+10. **Discussion**: Comparison to Tegmark, pancomputationalism, structural realism
+11. **Conclusions**: Philosophy → Operators → S_N hierarchy
+
+**Content mining from Approach 2**:
+- Reference computational results (K(N)=N-2, finite-N, permutohedron geometry)
+- Cite literature search (A001892)
+- Acknowledge 140-axiom formalization as proof-of-concept
+- Learn from honest transparency (Sessions 14.3-14.6)
+- But: Write fresh LRT narrative, don't copy-paste
 
 **Step 3.2: Create figures/ folder**
 
