@@ -245,7 +245,7 @@ theorem constraint_hierarchy :
 ### Lean File Organization
 
 ```
-lean/LRT/
+lean/LogicRealismTheory/
 ├── Foundation/
 │   ├── IIS.lean                    # Axioms 1-5 (foundation)
 │   ├── ThreeLaws.lean              # 3FLL properties and lemmas

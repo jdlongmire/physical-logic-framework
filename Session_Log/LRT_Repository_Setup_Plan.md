@@ -45,7 +45,7 @@ logic-realism-theory/
 ├── lean/                               # Formal proofs
 │   ├── lakefile.lean                   # Lake build configuration
 │   ├── lean-toolchain                  # Lean version specification
-│   └── LRT/                            # Main package
+│   └── LogicRealismTheory/             # Main package
 │       ├── Basic.lean                  # Package root
 │       ├── Foundation/                 # 5-7 axioms
 │       │   ├── IIS.lean                # Axioms 1-5 (IIS + 3FLL)
@@ -292,7 +292,7 @@ ORCID: [0009-0009-1383-7698](https://orcid.org/0009-0009-1383-7698)
 
 Copy from PLF `CLAUDE.md` with modifications:
 - Update project name: Physical Logic Framework → Logic Realism Theory
-- Update file paths: `lean/LFT_Proofs` → `lean/LRT`
+- Update file paths: `lean/LFT_Proofs` → `lean/LogicRealismTheory`
 - Update notebook path: `notebooks/Logic_Realism` → `notebooks/`
 - Add reference to `approach_2_reference/` archive
 - Update target axiom count: 140 → 5-7
@@ -337,7 +337,7 @@ Stub files for future expansion:
 **Step 4.1: Initialize Lean project**
 ```bash
 cd lean
-lake init LRT
+lake init LogicRealismTheory
 ```
 
 **Step 4.2: Configure lakefile.lean**
@@ -345,10 +345,10 @@ lake init LRT
 import Lake
 open Lake DSL
 
-package LRT where
+package LogicRealismTheory where
   -- add package configuration options here
 
-lean_lib LRT where
+lean_lib LogicRealismTheory where
   -- add library configuration options here
 
 require mathlib from git
@@ -718,7 +718,7 @@ Initial commit: Logic Realism Theory repository structure
 - README.md: Project overview
 - CLAUDE.md: Instructions for Claude Code
 - theory/Logic_Realism_Theory.md: Main paper (adapted from PLF)
-- lean/LRT/Foundation/IIS.lean: 5 axioms (IIS + 3FLL)
+- lean/LogicRealismTheory/Foundation/IIS.lean: 5 axioms (IIS + 3FLL)
 - approach_2_reference/README_APPROACH_2.md: Archive overview
 - Session_Log/Session_0.0.md: Initial handoff
 
